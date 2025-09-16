@@ -13,10 +13,6 @@ try:
     from dotenv import load_dotenv  # type: ignore
 except Exception:  # pragma: no cover - optional
     load_dotenv = None
-try:
-    from openai import OpenAI  # type: ignore
-except Exception:
-    OpenAI = None  # optional, fallback to requests if unavailable
 
 
 # ----- Schemas (aligned with iOS app) -----
@@ -58,9 +54,9 @@ class CorrectRequest(BaseModel):
     deviceId: Optional[str] = None
 
 
-# ----- LLM Provider -----
+# ----- LLM Provider (Gemini only) -----
 
-OPENAI_URL = "https://api.openai.com/v1/chat/completions"
+GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
 
 # Load .env if present (repo root or backend/). Simplifies local dev.
 if load_dotenv is not None:
@@ -70,7 +66,9 @@ if load_dotenv is not None:
     # then backend/.env (takes precedence)
     load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 
-OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5-mini")
+# Model selection (Gemini). You can override via LLM_MODEL or GEMINI_MODEL.
+GENERIC_MODEL = os.environ.get("LLM_MODEL")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", GENERIC_MODEL or "gemini-2.5-flash")
 
 
 def _load_system_prompt() -> str:
@@ -130,66 +128,43 @@ def _deck_debug_write(payload: Dict):
         pass
 
 
-def call_openai(zh: str, en: str) -> CorrectResponse:
-    api_key = os.environ.get("OPENAI_API_KEY")
+def _call_gemini_json(system_prompt: str, user_content: str) -> dict:
+    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
-        raise RuntimeError("OPENAI_API_KEY not set")
+        raise RuntimeError("GEMINI_API_KEY/GOOGLE_API_KEY not set")
+    url = f"{GEMINI_BASE}/models/{GEMINI_MODEL}:generateContent?key={api_key}"
+    payload = {
+        "system_instruction": {"parts": [{"text": system_prompt}]},
+        "contents": [{"role": "user", "parts": [{"text": user_content}]}],
+        "generationConfig": {"response_mime_type": "application/json"},
+    }
+    r = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=60)
+    if r.status_code // 100 != 2:
+        raise RuntimeError(f"gemini_error status={r.status_code} body={r.text[:400]}")
+    data = r.json()
+    try:
+        content = data["candidates"][0]["content"]["parts"][0]["text"]
+    except Exception:
+        raise RuntimeError(f"gemini_invalid_response: {json.dumps(data)[:400]}")
+    try:
+        return json.loads(content)
+    except Exception as e:
+        raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
 
+
+def call_gemini_correct(zh: str, en: str) -> CorrectResponse:
     user_content = (
         "請批改以下內容並輸出 JSON。\n"
         f"zh: {zh}\n"
         f"en: {en}\n"
     )
-
-    # Preferred: official SDK (no temperature, new models)
-    if OpenAI is not None:
-        client = OpenAI()
-        try:
-            resp = client.chat.completions.create(
-                model=OPENAI_MODEL,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": user_content},
-                ],
-                response_format={"type": "json_object"},
-            )
-        except Exception as e:
-            raise RuntimeError(f"openai_sdk_error: {e}")
-        content = resp.choices[0].message.content
-        try:
-            obj = json.loads(content)
-        except Exception as e:
-            raise RuntimeError(f"invalid_model_json: {e}\ncontent={str(content)[:400]}")
-        return _to_response_or_422(obj)
-
-    # Fallback: raw HTTP
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "model": OPENAI_MODEL,
-        "response_format": {"type": "json_object"},
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_content},
-        ],
-    }
-    r = requests.post(OPENAI_URL, headers=headers, json=payload, timeout=60)
-    if r.status_code // 100 != 2:
-        raise RuntimeError(f"openai_error status={r.status_code} body={r.text[:400]}")
-    data = r.json()
-    content = data["choices"][0]["message"]["content"]
-    try:
-        obj = json.loads(content)
-    except Exception as e:
-        raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
+    obj = _call_gemini_json(SYSTEM_PROMPT, user_content)
     return _to_response_or_422(obj)
 
 
 # ----- FastAPI -----
 
-app = FastAPI(title="Local Correct Backend", version="0.1.0")
+app = FastAPI(title="Local Correct Backend", version="0.3.0")
 
 
 def _to_response_or_422(obj: dict) -> CorrectResponse:
@@ -239,7 +214,7 @@ def _simple_analyze(zh: str, en: str) -> CorrectResponse:
 
 @app.post("/correct", response_model=CorrectResponse)
 def correct(req: CorrectRequest):
-    # Optional offline switch: bypass OpenAI and use simple analyzer
+    # Optional offline switch: bypass LLM and use simple analyzer
     if os.environ.get("FORCE_SIMPLE_CORRECT") in ("1", "true", "yes"):
         resp = _simple_analyze(req.zh, req.en)
         try:
@@ -248,7 +223,7 @@ def correct(req: CorrectRequest):
             pass
         return resp
     try:
-        resp = call_openai(req.zh, req.en)
+        resp = call_gemini_correct(req.zh, req.en)
     except HTTPException as he:
         # Propagate 4xx like 422 invalid types directly
         raise he
@@ -273,20 +248,16 @@ def correct(req: CorrectRequest):
 
 @app.get("/healthz")
 def healthz() -> dict:
-    api_key = os.environ.get("OPENAI_API_KEY")
+    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
-        return {"status": "no_key"}
+        return {"status": "no_key", "provider": "gemini"}
     try:
-        r = requests.get(
-            "https://api.openai.com/v1/models",
-            headers={"Authorization": f"Bearer {api_key}"},
-            timeout=10,
-        )
+        r = requests.get(f"{GEMINI_BASE}/models?key={api_key}", timeout=10)
         if r.status_code // 100 == 2:
-            return {"status": "ok", "provider": "openai", "model": OPENAI_MODEL}
-        return {"status": "auth_error", "code": r.status_code}
+            return {"status": "ok", "provider": "gemini", "model": GEMINI_MODEL}
+        return {"status": "auth_error", "provider": "gemini", "code": r.status_code}
     except Exception as e:
-        return {"status": "error", "message": str(e)}
+        return {"status": "error", "provider": "gemini", "message": str(e)}
 
 
 # -----------------------------
@@ -682,10 +653,7 @@ class DeckMakeResponse(BaseModel):
     cards: List[DeckCard]
 
 
-def call_openai_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise RuntimeError("OPENAI_API_KEY not set")
+def call_gemini_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
     # Compact user JSON to save tokens
     items = [
         {
@@ -708,38 +676,18 @@ def call_openai_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
 
     debug_info: Dict[str, object] = {
         "ts": time.time(),
-        "model": OPENAI_MODEL,
+        "provider": "gemini",
+        "model": GEMINI_MODEL,
         "system_prompt": DECK_PROMPT,
         "user_content": user_content,
         "items_in": len(items),
     }
-
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": OPENAI_MODEL,
-        "response_format": {"type": "json_object"},
-        "messages": [
-            {"role": "system", "content": DECK_PROMPT},
-            {"role": "user", "content": user_content},
-        ],
-    }
-    r = requests.post(OPENAI_URL, headers=headers, json=payload, timeout=60)
-    if r.status_code // 100 != 2:
-        debug_info.update({
-            "http_error": r.status_code,
-            "http_body_head": r.text[:800],
-        })
-        _deck_debug_write(debug_info)
-        raise RuntimeError(f"openai_error status={r.status_code} body={r.text[:400]}")
-    data = r.json()
-    content = data["choices"][0]["message"]["content"]
-    debug_info["response_raw"] = content
     try:
-        obj = json.loads(content)
+        obj = _call_gemini_json(DECK_PROMPT, user_content)
     except Exception as e:
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)
-        raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
+        raise
     # Validate shape
     if not isinstance(obj, dict) or not isinstance(obj.get("cards"), list):
         debug_info.update({"parsed_obj_head": json.dumps(obj, ensure_ascii=False)[:800]})
@@ -774,7 +722,7 @@ def call_openai_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
 @app.post("/make_deck", response_model=DeckMakeResponse)
 def make_deck(req: DeckMakeRequest):
     try:
-        return call_openai_make_deck(req)
+        return call_gemini_make_deck(req)
     except HTTPException as he:
         raise he
     except Exception as e:

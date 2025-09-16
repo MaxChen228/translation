@@ -6,7 +6,8 @@ set -euo pipefail
 HOST="${HOST:-127.0.0.1}"
 PORT="${PORT:-8080}"
 BASE="http://$HOST:$PORT"
-OPENAI_MODEL="${OPENAI_MODEL:-gpt-5-mini}"
+LLM_MODEL="${LLM_MODEL:-}"
+GEMINI_MODEL="${GEMINI_MODEL:-gemini-2.5-flash}"
 # 確保 DEVICE_ID 一定有值（允許外部覆蓋）
 DEVICE_ID="${DEVICE_ID:-dev-ai-$(date +%s)-$RANDOM}"
 
@@ -26,14 +27,15 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-if [[ -z "${OPENAI_API_KEY:-}" ]]; then
-  echo "[ERR] 環境變數 OPENAI_API_KEY 未設定。請 export OPENAI_API_KEY=..." >&2
+if [[ -z "${GEMINI_API_KEY:-}${GOOGLE_API_KEY:-}" ]]; then
+  echo "[ERR] 需要 GEMINI_API_KEY 或 GOOGLE_API_KEY（本腳本僅支援 Gemini）" >&2
   exit 1
 fi
+MODEL_USE="${LLM_MODEL:-$GEMINI_MODEL}"
 
-echo "[INFO] 啟動後端 (AI 模式) on $BASE, model=$OPENAI_MODEL"
+echo "[INFO] 啟動後端 (AI 模式) on $BASE, provider=gemini, model=$MODEL_USE"
 set +e
-HOST=$HOST PORT=$PORT OPENAI_MODEL=$OPENAI_MODEL \
+HOST=$HOST PORT=$PORT LLM_MODEL="$LLM_MODEL" GEMINI_MODEL=$GEMINI_MODEL \
   python3 backend/main.py >"$SERVER_LOG" 2>&1 &
 SERVER_PID=$!
 set -e

@@ -13,6 +13,12 @@
       "attempts": 1,
       "lastScore": 72,
       "updatedAt": 1757855038.485162
+    },
+    "33333333-3333-3333-3333-333333333333": {
+      "completed": true,
+      "attempts": 2,
+      "lastScore": 82,
+      "updatedAt": 1758032878.6414342
     }
   }
 }
