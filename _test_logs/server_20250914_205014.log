@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/chenliangyu/Desktop/translation/backend/main.py", line 10, in <module>
+    from fastapi import FastAPI, HTTPException, Query
+ModuleNotFoundError: No module named 'fastapi'
