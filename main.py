@@ -384,7 +384,7 @@ class BankItem(BaseModel):
     difficulty: int = Field(ge=1, le=5)
 
 
-_BANK_DATA: List[BankItem] = []
+_BANK_DATA: List[BankItem] = []  # legacy; no longer used
 
 # Resolve forward refs in CloudBookDetail now that BankItem is defined
 try:
@@ -405,158 +405,43 @@ class ProgressRecord(BaseModel):
 
 
 # in-memory: deviceId -> itemId -> ProgressRecord
-_PROGRESS: Dict[str, Dict[str, ProgressRecord]] = {}
-
-_PROGRESS_FILE = os.path.join(os.path.dirname(__file__), "progress.json")
+_PROGRESS: Dict[str, Dict[str, ProgressRecord]] = {}  # legacy; no longer used
+_PROGRESS_FILE = os.path.join(os.path.dirname(__file__), "progress.json")  # legacy; no longer used
 
 
 def _load_progress() -> None:
-    global _PROGRESS
-    if not os.path.exists(_PROGRESS_FILE):
-        _PROGRESS = {}
-        return
-    try:
-        with open(_PROGRESS_FILE, "r", encoding="utf-8") as f:
-            raw = json.load(f)
-        _PROGRESS = {
-            dev: {iid: ProgressRecord.model_validate(rec) for iid, rec in recs.items()}
-            for dev, recs in (raw or {}).items()
-        }
-    except Exception:
-        _PROGRESS = {}
+    pass  # removed
 
 
 def _save_progress() -> None:
-    try:
-        payload = {
-            dev: {iid: rec.model_dump() for iid, rec in recs.items()}
-            for dev, recs in _PROGRESS.items()
-        }
-        with open(_PROGRESS_FILE, "w", encoding="utf-8") as f:
-            json.dump(payload, f, ensure_ascii=False, indent=2)
-    except Exception:
-        pass
+    pass  # removed
 
 
 def _update_progress_after_correct(bank_item_id: Optional[str], device_id: Optional[str], score: Optional[int]):
-    if not bank_item_id:
-        return
-    dev = device_id or "default"
-    recs = _PROGRESS.setdefault(dev, {})
-    rec = recs.get(bank_item_id) or ProgressRecord()
-    rec.attempts += 1
-    rec.lastScore = score
-    # Mark as completed; optional min score threshold
-    try:
-        min_score = int(os.environ.get("BANK_COMPLETE_MIN_SCORE", "0"))
-    except Exception:
-        min_score = 0
-    if score is None or score >= min_score:
-        rec.completed = True
-    rec.updatedAt = time.time()
-    recs[bank_item_id] = rec
-    _save_progress()
+    pass  # removed
 
 
 def _load_bank() -> None:
-    global _BANK_DATA
-    path = os.path.join(os.path.dirname(__file__), "bank.json")
-    if not os.path.exists(path):
-        _BANK_DATA = []
-        return
-    with open(path, "r", encoding="utf-8") as f:
-        raw = json.load(f)
-    _BANK_DATA = [BankItem.model_validate(it) for it in raw]
+    pass  # removed
 
 
 def _save_bank() -> None:
-    path = os.path.join(os.path.dirname(__file__), "bank.json")
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump([it.model_dump() for it in _BANK_DATA], f, ensure_ascii=False, indent=2)
+    pass  # removed
 
 
-@app.on_event("startup")
-def _startup_load_bank():
-    _load_bank()
-    _load_progress()
+# (removed) startup loading of bank/progress; app uses local-only bank
 
 
-class BankItemWithStatus(BankItem):
-    completed: bool = False
+## Bank remote endpoints removed; keeping minimal types for cloud responses
 
 
-@app.get("/bank/items", response_model=List[BankItemWithStatus])
-def bank_items(
-    limit: int = Query(20, ge=1, le=200),
-    offset: int = Query(0, ge=0),
-    difficulty: Optional[int] = Query(None, ge=1, le=5),
-    tag: Optional[str] = None,
-    deviceId: Optional[str] = Query(None, alias="deviceId"),
-):
-    data: List[BankItemWithStatus] = []
-    dev = deviceId or "default"
-    recs = _PROGRESS.get(dev, {})
-    src = _BANK_DATA
-    if difficulty is not None:
-        src = [x for x in src if x.difficulty == difficulty]
-    if tag:
-        src = [x for x in src if tag in (x.tags or [])]
-    for it in src[offset : offset + limit]:
-        completed = bool(recs.get(it.id).completed) if it.id in recs else False
-        data.append(BankItemWithStatus(**it.model_dump(), completed=completed))
-    return data
+## /bank/items removed
 
 
-@app.get("/bank/random", response_model=BankItemWithStatus)
-def bank_random(
-    difficulty: Optional[int] = Query(None, ge=1, le=5),
-    tag: Optional[str] = None,
-    deviceId: Optional[str] = None,
-    skipCompleted: bool = Query(False),
-):
-    import random
-
-    dev = deviceId or "default"
-    recs = _PROGRESS.get(dev, {})
-    data: List[BankItem] = _BANK_DATA
-    if difficulty is not None:
-        data = [x for x in data if x.difficulty == difficulty]
-    if tag:
-        data = [x for x in data if tag in (x.tags or [])]
-    if skipCompleted:
-        data = [x for x in data if not recs.get(x.id, ProgressRecord()).completed]
-    if not data:
-        raise HTTPException(status_code=404, detail="no_item")
-    pick = random.choice(data)
-    completed = bool(recs.get(pick.id).completed) if pick.id in recs else False
-    return BankItemWithStatus(**pick.model_dump(), completed=completed)
+## /bank/random removed
 
 
-class BankBook(BaseModel):
-    name: str
-    count: int
-    difficultyMin: int
-    difficultyMax: int
-
-
-@app.get("/bank/books", response_model=List[BankBook])
-def bank_books():
-    # Aggregate by tag as "book" name. If no tag, put under "default".
-    buckets: dict[str, List[BankItem]] = {}
-    for it in _BANK_DATA:
-        tags = it.tags or ["default"]
-        for t in tags:
-            buckets.setdefault(t, []).append(it)
-
-    books: List[BankBook] = []
-    for name, items in buckets.items():
-        counts = len(items)
-        dmin = min(i.difficulty for i in items) if items else 1
-        dmax = max(i.difficulty for i in items) if items else 1
-        books.append(BankBook(name=name, count=counts, difficultyMin=dmin, difficultyMax=dmax))
-    # stable order
-    books.sort(key=lambda b: b.name)
-    return books
+## /bank/books removed
 
 
 class ImportRequest(BaseModel):
@@ -672,17 +557,7 @@ def _parse_bank_text(text: str, default_tag: Optional[str]) -> tuple[List[BankIt
     return items, errors
 
 
-@app.post("/bank/import", response_model=ImportResponse)
-def bank_import(req: ImportRequest):
-    items, errs = _parse_bank_text(req.text, req.defaultTag)
-    if req.replace:
-        _BANK_DATA.clear()
-    _BANK_DATA.extend(items)
-    try:
-        _save_bank()
-    except Exception as e:
-        errs.append(f"save_error: {e}")
-    return ImportResponse(imported=len(items), errors=errs)
+## /bank/import removed
 
 
 # ----- Progress endpoints -----
@@ -704,28 +579,7 @@ class ProgressSummary(BaseModel):
     records: List[ProgressRecordOut]
 
 
-@app.post("/bank/progress/complete", response_model=ProgressRecordOut)
-def progress_complete(req: ProgressMarkRequest):
-    dev = req.deviceId or "default"
-    recs = _PROGRESS.setdefault(dev, {})
-    rec = recs.get(req.itemId) or ProgressRecord()
-    rec.completed = bool(req.completed)
-    rec.attempts += 1
-    if req.score is not None:
-        rec.lastScore = req.score
-    rec.updatedAt = time.time()
-    recs[req.itemId] = rec
-    _save_progress()
-    return ProgressRecordOut(itemId=req.itemId, **rec.model_dump())
-
-
-@app.get("/bank/progress", response_model=ProgressSummary)
-def progress_get(deviceId: Optional[str] = None):
-    dev = deviceId or "default"
-    recs = _PROGRESS.get(dev, {})
-    completed_ids = [iid for iid, r in recs.items() if r.completed]
-    records = [ProgressRecordOut(itemId=iid, **r.model_dump()) for iid, r in recs.items()]
-    return ProgressSummary(deviceId=dev, completedIds=completed_ids, records=records)
+## /bank/progress removed
 
 
 # -----------------------------
