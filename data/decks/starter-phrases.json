@@ -1,0 +1,10 @@
+{
+  "id": "starter-phrases",
+  "name": "Starter Phrases",
+  "cards": [
+    { "front": "Hello!", "back": "你好！" },
+    { "front": "How are you?", "back": "你最近好嗎？" },
+    { "front": "Thank you.", "back": "謝謝你。" }
+  ]
+}
+

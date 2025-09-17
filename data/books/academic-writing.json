@@ -1,0 +1,23 @@
+{
+  "id": "academic-writing",
+  "name": "Academic Writing",
+  "items": [
+    {
+      "id": "acad-intro",
+      "zh": "撰寫研究引言",
+      "hints": [],
+      "suggestions": [],
+      "tags": ["academic"],
+      "difficulty": 3
+    },
+    {
+      "id": "acad-method",
+      "zh": "描述研究方法",
+      "hints": [],
+      "suggestions": [],
+      "tags": ["academic"],
+      "difficulty": 3
+    }
+  ]
+}
+
