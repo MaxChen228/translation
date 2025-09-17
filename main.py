@@ -736,7 +736,8 @@ def make_deck(req: DeckMakeRequest):
 def dev():  # uvicorn entry helper
     import uvicorn
 
-    host = os.environ.get("HOST", "127.0.0.1")
+    # Bind to all interfaces by default so phones on the same LAN can connect.
+    host = os.environ.get("HOST", "0.0.0.0")
     port = int(os.environ.get("PORT", "8080"))
     # Run by passing the app object directly to avoid import path issues
     uvicorn.run(app, host=host, port=port, reload=False, log_level="info")
