@@ -261,6 +261,107 @@ def healthz() -> dict:
 
 
 # -----------------------------
+# Cloud Library (curated, read-only)
+# -----------------------------
+
+class CloudDeckSummary(BaseModel):
+    id: str
+    name: str
+    count: int
+
+
+class CloudCard(BaseModel):
+    id: str
+    front: str
+    back: str
+    frontNote: Optional[str] = None
+    backNote: Optional[str] = None
+
+
+class CloudDeckDetail(BaseModel):
+    id: str
+    name: str
+    cards: List[CloudCard]
+
+
+class CloudBookSummary(BaseModel):
+    name: str
+    count: int
+
+
+class CloudBookDetail(BaseModel):
+    name: str
+    items: List["BankItem"]  # forward ref to BankItem defined below
+
+
+_CLOUD_DECKS = [
+    {
+        "id": "starter-phrases",
+        "name": "Starter Phrases",
+        "cards": [
+            {"front": "Hello!", "back": "你好！"},
+            {"front": "How are you?", "back": "你最近好嗎？"},
+            {"front": "Thank you.", "back": "謝謝你。"},
+        ],
+    },
+    {
+        "id": "common-errors",
+        "name": "Common Errors",
+        "cards": [
+            {"front": "I look forward to hear from you.", "back": "更自然：I look forward to hearing from you."},
+            {"front": "He suggested me to go.", "back": "更自然：He suggested that I go / He suggested going."},
+        ],
+    },
+]
+
+
+_CLOUD_BOOKS = [
+    {
+        "name": "Daily Conversations",
+        "items": [
+            {"id": "conv-greet", "zh": "跟陌生人打招呼", "hints": [], "suggestions": [], "tags": ["daily"], "difficulty": 1},
+            {"id": "conv-order", "zh": "點餐時的常見句型", "hints": [], "suggestions": [], "tags": ["daily"], "difficulty": 2},
+        ],
+    },
+    {
+        "name": "Academic Writing",
+        "items": [
+            {"id": "acad-intro", "zh": "撰寫研究引言", "hints": [], "suggestions": [], "tags": ["academic"], "difficulty": 3},
+            {"id": "acad-method", "zh": "描述研究方法", "hints": [], "suggestions": [], "tags": ["academic"], "difficulty": 3},
+        ],
+    },
+]
+
+
+@app.get("/cloud/decks", response_model=List[CloudDeckSummary])
+def cloud_decks():
+    return [CloudDeckSummary(id=d["id"], name=d["name"], count=len(d["cards"])) for d in _CLOUD_DECKS]
+
+
+@app.get("/cloud/decks/{deck_id}", response_model=CloudDeckDetail)
+def cloud_deck_detail(deck_id: str):
+    deck = next((d for d in _CLOUD_DECKS if d["id"] == deck_id), None)
+    if not deck:
+        raise HTTPException(status_code=404, detail="not_found")
+    cards = [CloudCard(id=str(uuid.uuid4()), front=c.get("front", ""), back=c.get("back", ""), frontNote=c.get("frontNote"), backNote=c.get("backNote")) for c in deck["cards"]]
+    return CloudDeckDetail(id=deck["id"], name=deck["name"], cards=cards)
+
+
+@app.get("/cloud/books", response_model=List[CloudBookSummary])
+def cloud_books():
+    return [CloudBookSummary(name=b["name"], count=len(b["items"])) for b in _CLOUD_BOOKS]
+
+
+@app.get("/cloud/books/{name}", response_model=CloudBookDetail)
+def cloud_book_detail(name: str):
+    # name is URL-decoded by FastAPI
+    book = next((b for b in _CLOUD_BOOKS if b["name"] == name), None)
+    if not book:
+        raise HTTPException(status_code=404, detail="not_found")
+    return CloudBookDetail(name=book["name"], items=[BankItem.model_validate(it) for it in book["items"]])
+
+
+# -----------------------------
 # Bank (題庫)
 # -----------------------------
 
@@ -284,6 +385,12 @@ class BankItem(BaseModel):
 
 
 _BANK_DATA: List[BankItem] = []
+
+# Resolve forward refs in CloudBookDetail now that BankItem is defined
+try:
+    CloudBookDetail.model_rebuild()
+except Exception:
+    pass
 
 
 # -----------------------------

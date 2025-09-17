@@ -14,6 +14,7 @@ import json
 import os
 import re
 import uuid
+import urllib.parse
 
 
 def _mk_error(span, etype, explain_zh, suggestion=None, before=None, after=None, occurrence=None):
@@ -89,6 +90,129 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(data)))
         self.end_headers()
         self.wfile.write(data)
+
+    # --- Cloud curated content (read-only) ---
+    _CLOUD_DECKS = [
+        {
+            "id": "starter-phrases",
+            "name": "Starter Phrases",
+            "cards": [
+                {"front": "Hello!", "back": "你好！"},
+                {"front": "How are you?", "back": "你最近好嗎？"},
+                {"front": "Thank you.", "back": "謝謝你。"},
+            ],
+        },
+        {
+            "id": "common-errors",
+            "name": "Common Errors",
+            "cards": [
+                {
+                    "front": "I look forward to hear from you.",
+                    "back": "更自然：I look forward to hearing from you.",
+                },
+                {
+                    "front": "He suggested me to go.",
+                    "back": "更自然：He suggested that I go / He suggested going.",
+                },
+            ],
+        },
+    ]
+
+    _CLOUD_BOOKS = [
+        {
+            "name": "Daily Conversations",
+            "items": [
+                {
+                    "id": "conv-greet",
+                    "zh": "跟陌生人打招呼",
+                    "hints": [],
+                    "suggestions": [],
+                    "tags": ["daily"],
+                    "difficulty": 1,
+                },
+                {
+                    "id": "conv-order",
+                    "zh": "點餐時的常見句型",
+                    "hints": [],
+                    "suggestions": [],
+                    "tags": ["daily"],
+                    "difficulty": 2,
+                },
+            ],
+        },
+        {
+            "name": "Academic Writing",
+            "items": [
+                {
+                    "id": "acad-intro",
+                    "zh": "撰寫研究引言",
+                    "hints": [],
+                    "suggestions": [],
+                    "tags": ["academic"],
+                    "difficulty": 3,
+                },
+                {
+                    "id": "acad-method",
+                    "zh": "描述研究方法",
+                    "hints": [],
+                    "suggestions": [],
+                    "tags": ["academic"],
+                    "difficulty": 3,
+                },
+            ],
+        },
+    ]
+
+    def _handle_cloud_get(self, path: str):
+        # /cloud/decks
+        if path == "/cloud/decks":
+            lst = [{"id": d["id"], "name": d["name"], "count": len(d["cards"]) } for d in self._CLOUD_DECKS]
+            self._send_json(200, lst)
+            return True
+        # /cloud/decks/<id>
+        if path.startswith("/cloud/decks/"):
+            deck_id = path.split("/", 3)[-1]
+            deck = next((d for d in self._CLOUD_DECKS if d["id"] == deck_id), None)
+            if not deck:
+                self._send_json(404, {"error": "not_found"})
+                return True
+            # Map to app schema: {id, name, cards:[{id(UUID), front, back, frontNote?, backNote?}]}
+            cards = []
+            for c in deck["cards"]:
+                card = {
+                    "id": str(uuid.uuid4()),
+                    "front": c.get("front", ""),
+                    "back": c.get("back", ""),
+                }
+                if "frontNote" in c:
+                    card["frontNote"] = c["frontNote"]
+                if "backNote" in c:
+                    card["backNote"] = c["backNote"]
+                cards.append(card)
+            self._send_json(200, {"id": deck["id"], "name": deck["name"], "cards": cards})
+            return True
+        # /cloud/books
+        if path == "/cloud/books":
+            lst = [{"name": b["name"], "count": len(b["items"]) } for b in self._CLOUD_BOOKS]
+            self._send_json(200, lst)
+            return True
+        # /cloud/books/<name> (URL-encoded)
+        if path.startswith("/cloud/books/"):
+            encoded = path.split("/", 3)[-1]
+            name = urllib.parse.unquote(encoded)
+            book = next((b for b in self._CLOUD_BOOKS if b["name"] == name), None)
+            if not book:
+                self._send_json(404, {"error": "not_found"})
+                return True
+            self._send_json(200, {"name": book["name"], "items": book["items"]})
+            return True
+        return False
+
+    def do_GET(self):  # noqa: N802
+        # Route cloud library endpoints
+        if self._handle_cloud_get(self.path):
+            return
+        self._send_json(404, {"error": "not_found"})
 
     def do_POST(self):  # noqa: N802 (BaseHTTPRequestHandler API)
         if self.path != "/correct":
