@@ -1,0 +1,40 @@
+name: backend-ci
+on:
+  push:
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - 'render.yaml'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - 'render.yaml'
+      - '.github/workflows/backend-ci.yml'
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Launch backend
+        run: |
+          uvicorn main:app --host 127.0.0.1 --port 8000 &
+          echo $! > uvicorn.pid
+          sleep 2
+      - name: Health check
+        run: |
+          curl -sS -f http://127.0.0.1:8000/healthz | jq .
+      - name: Stop backend
+        if: always()
+        run: |
+          kill $(cat uvicorn.pid) || true
