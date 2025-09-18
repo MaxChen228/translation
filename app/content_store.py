@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 
 from app.schemas import BankHint, BankItem, BankSuggestion
 from app.config import content_dir
+from app.core.logging import logger
 
 
 # Fallback in-code seeds (used only when data/ folders are empty)
@@ -113,7 +114,7 @@ class ContentStore:
                 d = self._ensure_card_ids(d)
                 decks[did] = d
             except Exception as e:
-                print(f"[cloud] deck load error {fp}: {e}")
+                logger.warning("cloud_deck_load_error", extra={"path": fp, "error": str(e)})
         # Load books (strict validation: hints.category must be one of five allowed)
         books_by_name: Dict[str, dict] = {}
         for fp in book_files:
@@ -138,7 +139,7 @@ class ContentStore:
                 b["items"] = items
                 books_by_name[b["name"]] = b
             except Exception as e:
-                print(f"[cloud] book load error {fp}: {e}")
+                logger.warning("cloud_book_load_error", extra={"path": fp, "error": str(e)})
         if not decks:
             self._decks_by_id = {d["id"]: d for d in CLOUD_DECKS_SEED}
         else:

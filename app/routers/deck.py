@@ -1,19 +1,20 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
-from app.llm import resolve_model as llm_resolve_model, load_deck_prompt
+from app.llm import load_deck_prompt
 from app.schemas import DeckMakeRequest, DeckMakeResponse
 from app.services.deck_maker import make_deck_from_request
+from app.providers.llm import LLMProvider, get_provider
 
 
 router = APIRouter()
 DECK_PROMPT = load_deck_prompt()
 
 
-def _resolve_model(override: str | None) -> str:
+def _resolve_model(provider: LLMProvider, override: str | None) -> str:
     try:
-        return llm_resolve_model(override)
+        return provider.resolve_model(override)
     except ValueError as e:
         from json import loads
 
@@ -25,9 +26,9 @@ def _resolve_model(override: str | None) -> str:
 
 
 @router.post("/make_deck", response_model=DeckMakeResponse)
-def make_deck(req: DeckMakeRequest):
+def make_deck(req: DeckMakeRequest, provider: LLMProvider = Depends(get_provider)):
     try:
-        chosen_model = _resolve_model(req.model)
+        chosen_model = _resolve_model(provider, req.model)
         return make_deck_from_request(req, DECK_PROMPT, chosen_model)
     except HTTPException as he:
         raise he
@@ -37,4 +38,3 @@ def make_deck(req: DeckMakeRequest):
         if "status=429" in msg:
             status = 429
         raise HTTPException(status_code=status, detail=msg)
-
