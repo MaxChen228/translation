@@ -8,43 +8,14 @@ from typing import List, Optional, Dict
 
 import requests
 from fastapi import FastAPI, HTTPException, Query
-from app.content_store import ContentStore
 from app.llm import (
     GEMINI_BASE,
-    load_system_prompt,
-    load_deck_prompt,
-    call_gemini_json as llm_call_json,
-    resolve_model as llm_resolve_model,
     get_current_model,
 )
-from app.services.corrector import build_user_content, validate_correct_response
-from app.schemas import (
-    RangeDTO,
-    InputHintDTO,
-    ErrorHintsDTO,
-    ErrorDTO,
-    CorrectResponse,
-    CorrectRequest,
-    CloudDeckSummary,
-    CloudCard,
-    CloudDeckDetail,
-    CloudBookSummary,
-    CloudBookDetail,
-    BankHint,
-    BankSuggestion,
-    BankItem,
-    ProgressRecord,
-    ProgressMarkRequest,
-    ProgressRecordOut,
-    ProgressSummary,
-    ImportRequest,
-    ImportResponse,
-    DeckMakeItem,
-    DeckMakeRequest,
-    DeckCard,
-    DeckMakeResponse,
-)
-from app.services.deck_maker import make_deck_from_request
+from fastapi import APIRouter
+from app.routers.correct import router as correct_router
+from app.routers.deck import router as deck_router
+from app.routers.cloud import router as cloud_router
 try:
     from dotenv import load_dotenv  # type: ignore
 except Exception:  # pragma: no cover - optional
@@ -65,63 +36,15 @@ if load_dotenv is not None:
     # then backend/.env (takes precedence)
     load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 
-SYSTEM_PROMPT = load_system_prompt()
-DECK_PROMPT = load_deck_prompt()
-
-
-
-def _resolve_model(override: Optional[str]) -> str:
-    try:
-        return llm_resolve_model(override)
-    except ValueError as e:
-        # e.args[0] carries a JSON string with details
-        detail = None
-        try:
-            detail = json.loads(e.args[0])
-        except Exception:
-            detail = {"invalid_model": str(override)}
-        raise HTTPException(status_code=422, detail=detail)
-
-
-def call_gemini_correct(req: CorrectRequest) -> CorrectResponse:
-    # Pack user content as compact JSON to avoid parsing ambiguity.
-    user_content = build_user_content(req)
-    chosen_model = _resolve_model(req.model)
-    obj = llm_call_json(SYSTEM_PROMPT, user_content, model=chosen_model)
-    return validate_correct_response(obj)
+# Prompts, model-resolution, and LLM calls are handled in routers/services
 
 
 # ----- FastAPI -----
 
-app = FastAPI(title="Local Correct Backend", version="0.4.2")
-
-
-# Validation moved to app.services.corrector.validate_correct_response
+app = FastAPI(title="Local Correct Backend", version="0.4.3")
 
 
 # simple/offline analyzer removed: backend now requires a working LLM
-
-
-@app.post("/correct", response_model=CorrectResponse)
-def correct(req: CorrectRequest):
-    try:
-        resp = call_gemini_correct(req)
-    except HTTPException as he:
-        # Propagate 4xx like 422 invalid types directly
-        raise he
-    except Exception as e:
-        # No offline fallback: require working LLM
-        msg = str(e)
-        status = 500
-        if "status=429" in msg:
-            status = 429
-        raise HTTPException(status_code=status, detail=msg)
-    # Update progress if linked to a bank item; best-effort only
-    try:
-        _update_progress_after_correct(req.bankItemId, req.deviceId, resp.score)
-    except Exception:
-        pass
-    return resp
 
 
 @app.get("/healthz")
@@ -138,46 +61,10 @@ def healthz() -> dict:
         return {"status": "error", "provider": "gemini", "message": str(e)}
 
 
-# -----------------------------
-# Cloud Library (curated, read-only)
-# -----------------------------
+# Cloud endpoints moved into app.routers.cloud
 
 
-_CONTENT = ContentStore()
-
-
-@app.get("/cloud/decks", response_model=List[CloudDeckSummary])
-def cloud_decks():
-    decks = _CONTENT.list_decks()
-    return [CloudDeckSummary(id=d["id"], name=d["name"], count=len(d.get("cards", []))) for d in decks]
-
-
-@app.get("/cloud/decks/{deck_id}", response_model=CloudDeckDetail)
-def cloud_deck_detail(deck_id: str):
-    deck = _CONTENT.get_deck(deck_id)
-    if not deck:
-        raise HTTPException(status_code=404, detail="not_found")
-    cards = [CloudCard.model_validate(c) for c in deck.get("cards", [])]
-    return CloudDeckDetail(id=deck["id"], name=deck["name"], cards=cards)
-
-
-@app.get("/cloud/books", response_model=List[CloudBookSummary])
-def cloud_books():
-    books = _CONTENT.list_books()
-    return [CloudBookSummary(name=b["name"], count=len(b.get("items", []))) for b in books]
-
-
-@app.get("/cloud/books/{name}", response_model=CloudBookDetail)
-def cloud_book_detail(name: str):
-    # name is URL-decoded by FastAPI
-    book = _CONTENT.get_book_by_name(name)
-    if not book:
-        raise HTTPException(status_code=404, detail="not_found")
-    items = [BankItem.model_validate(it) for it in book.get("items", [])]
-    return CloudBookDetail(name=book["name"], items=items)
-
-
-_BANK_DATA: List[BankItem] = []  # legacy; no longer used
+_BANK_DATA = []  # legacy; no longer used
 
 
 # -----------------------------
@@ -335,30 +222,7 @@ def _parse_bank_text(text: str, default_tag: Optional[str]) -> tuple[List[BankIt
 # ----- Progress endpoints removed (schemas available in app.schemas) -----
 
 
-# -----------------------------
-# Make Deck (flashcards)
-# -----------------------------
-
-## DeckMake* schemas moved to app.schemas
-
-
-def call_gemini_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
-    chosen_model = _resolve_model(req.model)
-    return make_deck_from_request(req, DECK_PROMPT, chosen_model)
-
-
-@app.post("/make_deck", response_model=DeckMakeResponse)
-def make_deck(req: DeckMakeRequest):
-    try:
-        return call_gemini_make_deck(req)
-    except HTTPException as he:
-        raise he
-    except Exception as e:
-        status = 500
-        msg = str(e)
-        if "status=429" in msg:
-            status = 429
-        raise HTTPException(status_code=status, detail=msg)
+# Make-deck endpoint moved into app.routers.deck
 
 
 def dev():  # uvicorn entry helper
@@ -373,3 +237,8 @@ def dev():  # uvicorn entry helper
 
 if __name__ == "__main__":
     dev()
+
+# Mount routers
+app.include_router(correct_router)
+app.include_router(deck_router)
+app.include_router(cloud_router)
