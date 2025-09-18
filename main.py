@@ -17,6 +17,7 @@ from app.llm import (
     resolve_model as llm_resolve_model,
     get_current_model,
 )
+from app.services.corrector import build_user_content, validate_correct_response
 from app.schemas import (
     RangeDTO,
     InputHintDTO,
@@ -116,53 +117,18 @@ def _resolve_model(override: Optional[str]) -> str:
 
 def call_gemini_correct(req: CorrectRequest) -> CorrectResponse:
     # Pack user content as compact JSON to avoid parsing ambiguity.
-    payload: Dict[str, object] = {
-        "zh": req.zh,
-        "en": req.en,
-    }
-    if req.bankItemId:
-        payload["bankItemId"] = req.bankItemId
-    if req.deviceId:
-        payload["deviceId"] = req.deviceId
-    if req.hints:
-        # Convert Pydantic models to plain dicts
-        payload["hints"] = [h.model_dump() if hasattr(h, "model_dump") else dict(h) for h in req.hints]
-    if req.suggestion:
-        payload["suggestion"] = req.suggestion
-    user_content = json.dumps(payload, ensure_ascii=False)
+    user_content = build_user_content(req)
     chosen_model = _resolve_model(req.model)
     obj = llm_call_json(SYSTEM_PROMPT, user_content, model=chosen_model)
-    return _to_response_or_422(obj)
+    return validate_correct_response(obj)
 
 
 # ----- FastAPI -----
 
-app = FastAPI(title="Local Correct Backend", version="0.4.1")
+app = FastAPI(title="Local Correct Backend", version="0.4.2")
 
 
-def _to_response_or_422(obj: dict) -> CorrectResponse:
-    """Validate that all error types are within the five categories.
-    If any are invalid, raise 422 with details; otherwise coerce and return.
-    """
-    import uuid
-    allowed = {"morphological", "syntactic", "lexical", "phonological", "pragmatic"}
-    errs = obj.get("errors") or []
-    invalid = []
-    for idx, e in enumerate(errs):
-        t = (e.get("type") or "").strip().lower()
-        if t not in allowed:
-            invalid.append({"index": idx, "value": t})
-        else:
-            e["type"] = t
-        # Drop any range-like keys entirely (prompt不再提及 range)
-        e.pop("originalRange", None)
-        e.pop("suggestionRange", None)
-        e.pop("correctedRange", None)
-        # Always assign server-side UUID to id（不要求模型輸出 id）
-        e["id"] = str(uuid.uuid4())
-    if invalid:
-        raise HTTPException(status_code=422, detail={"invalid_types": invalid, "allowed": sorted(allowed)})
-    return CorrectResponse.model_validate(obj)
+# Validation moved to app.services.corrector.validate_correct_response
 
 
 # simple/offline analyzer removed: backend now requires a working LLM
