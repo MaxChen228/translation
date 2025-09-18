@@ -5,6 +5,7 @@ import os
 from typing import Optional, Dict
 
 import requests
+from app.config import llm_generation_config
 
 
 # Public constants
@@ -79,31 +80,8 @@ def has_api_key() -> bool:
 
 
 def _gen_config() -> Dict[str, object]:
-    def _float(name: str, default: float) -> float:
-        v = os.environ.get(name)
-        if v is None:
-            return default
-        try:
-            return float(v)
-        except Exception:
-            return default
-
-    def _int(name: str, default: int) -> int:
-        v = os.environ.get(name)
-        if v is None:
-            return default
-        try:
-            return int(v)
-        except Exception:
-            return default
-
-    return {
-        "response_mime_type": "application/json",
-        "temperature": _float("LLM_TEMPERATURE", 0.1),
-        "topP": _float("LLM_TOP_P", 0.1),
-        "topK": _int("LLM_TOP_K", 1),
-        "maxOutputTokens": _int("LLM_MAX_OUTPUT_TOKENS", 320),
-    }
+    # Delegate to centralized config for easier tuning/testing
+    return llm_generation_config()
 
 
 def call_gemini_json(system_prompt: str, user_content: str, *, model: Optional[str] = None, timeout: int = 60) -> dict:
@@ -129,4 +107,3 @@ def call_gemini_json(system_prompt: str, user_content: str, *, model: Optional[s
         return json.loads(content)
     except Exception as e:
         raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
-

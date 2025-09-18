@@ -57,10 +57,6 @@ Step 1 modularization: Pydantic schemas moved to app.schemas.
 """
 
 
-# ----- LLM Provider (Gemini only) -----
-
-GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
-
 # Load .env if present (repo root or backend/). Simplifies local dev.
 if load_dotenv is not None:
     # try project root
@@ -68,17 +64,6 @@ if load_dotenv is not None:
     load_dotenv(dotenv_path=root_env)
     # then backend/.env (takes precedence)
     load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
-
-# Model selection (Gemini). You can override via LLM_MODEL or GEMINI_MODEL.
-GENERIC_MODEL = os.environ.get("LLM_MODEL")
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", GENERIC_MODEL or "gemini-2.5-flash")
-# Allow-list for request-time model override (extendable via env ALLOWED_MODELS)
-_ALLOWED_MODEL_ENV = os.environ.get("ALLOWED_MODELS")
-if _ALLOWED_MODEL_ENV:
-    ALLOWED_MODELS = {m.strip() for m in _ALLOWED_MODEL_ENV.split(",") if m.strip()}
-else:
-    ALLOWED_MODELS = {"gemini-2.5-pro", "gemini-2.5-flash"}
-
 
 SYSTEM_PROMPT = load_system_prompt()
 DECK_PROMPT = load_deck_prompt()

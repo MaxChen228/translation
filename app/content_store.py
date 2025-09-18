@@ -6,6 +6,7 @@ import uuid
 from typing import Dict, List, Optional
 
 from app.schemas import BankHint, BankItem, BankSuggestion
+from app.config import content_dir
 
 
 # Fallback in-code seeds (used only when data/ folders are empty)
@@ -56,9 +57,8 @@ class ContentStore:
     """
 
     def __init__(self) -> None:
-        here = os.path.dirname(__file__)
-        base = os.environ.get("CONTENT_DIR") or os.path.join(os.path.dirname(here), "data")
-        self.base = os.path.abspath(base)
+        # Use centralized content directory resolution
+        self.base = content_dir()
         self._decks_by_id: Dict[str, dict] = {}
         self._books_by_name: Dict[str, dict] = {}
         self._loaded = False
@@ -166,4 +166,3 @@ class ContentStore:
     def get_book_by_name(self, name: str) -> Optional[dict]:
         self.load()
         return self._books_by_name.get(name)
-
