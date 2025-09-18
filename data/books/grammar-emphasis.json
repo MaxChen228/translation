@@ -1,0 +1,364 @@
+{
+  "id": "grammar-emphasis",
+  "name": "Chapter 1 強調用法（精選）",
+  "items": [
+    {
+      "id": "ch01-1-1-cleft-001",
+      "zh": "就在聖誕夜，王太太產下了一名嬰兒。",
+      "hints": [
+        { "category": "syntactic", "text": "It was + 時間/地點 + that + 子句" },
+        { "category": "pragmatic", "text": "give birth to + a baby" }
+      ],
+      "suggestions": [
+        { "text": "鼓勵用 It‑cleft 突顯時間焦點；若使用一般語序也可接受，但可提示強調法更貼合中文語感。", "category": "style" }
+      ],
+      "tags": ["cleft", "emphasis", "time"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-1-cleft-002",
+      "zh": "當我陷入麻煩時，是約翰幫了我的忙。",
+      "hints": [
+        { "category": "syntactic", "text": "It was + 人 + who/that + V" },
+        { "category": "lexical", "text": "give sb a hand" }
+      ],
+      "suggestions": [
+        { "text": "人作焦點時常用 who/that 引導子句；鼓勵保持動詞時態一致與自然搭配。", "category": "grammar" }
+      ],
+      "tags": ["cleft", "focus"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-1-cleft-003",
+      "zh": "是我的父親一直鼓勵我、從不放棄我。",
+      "hints": [
+        { "category": "syntactic", "text": "It was + 主語 + who/that + 子句" },
+        { "category": "pragmatic", "text": "keep V‑ing; never give up on sb" }
+      ],
+      "suggestions": [
+        { "text": "可用並列動詞保持節奏（kept encouraging… and never gave up on…）。", "category": "style" }
+      ],
+      "tags": ["cleft", "emphasis"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-1-cleft-004",
+      "zh": "就在一個炎熱的夏日，他到了港口。",
+      "hints": [
+        { "category": "syntactic", "text": "It was on + 時間 + that/when + 過去式" },
+        { "category": "pragmatic", "text": "arrive at/in 的搭配：at the harbor" }
+      ],
+      "suggestions": [
+        { "text": "that/when 皆可；保持簡潔，避免贅字。", "category": "style" }
+      ],
+      "tags": ["cleft", "time"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-1-do-001",
+      "zh": "他羞辱人的話，當時的確使我感到很尷尬。",
+      "hints": [
+        { "category": "morphological", "text": "強調語氣：do‑support（did + V）" },
+        { "category": "pragmatic", "text": "insulting remark; embarrass sb" }
+      ],
+      "suggestions": [
+        { "text": "用 do‑support 作肯定強調（did embarrass）以呼應中文的『的確』語氣。", "category": "style" }
+      ],
+      "tags": ["emphasis", "do-support"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-1-fact-001",
+      "zh": "溫室氣體造成全球暖化，這是個既定事實。",
+      "hints": [
+        { "category": "syntactic", "text": "It is an established fact that + 子句" },
+        { "category": "pragmatic", "text": "greenhouse gases contribute to global warming" }
+      ],
+      "suggestions": [
+        { "text": "學術語域可偏正式：an established fact / contribute to…。", "category": "style" }
+      ],
+      "tags": ["it-clause", "fact"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-2-what-001",
+      "zh": "她是多麼可愛的一個女孩呀！",
+      "hints": [
+        { "category": "syntactic", "text": "What a/an + adj + N + S + be!" }
+      ],
+      "suggestions": [
+        { "text": "感嘆句可省略 be（口語），正式寫作保留 be 動詞更工整。", "category": "style" }
+      ],
+      "tags": ["exclamation", "what"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch01-1-2-what-002",
+      "zh": "在我們眼前的是多麼令人震撼的景色呀！",
+      "hints": [
+        { "category": "syntactic", "text": "What + adj + N + V（主詞位移）" },
+        { "category": "pragmatic", "text": "breathtaking scenery; lie in front of us（第三人稱單數）" }
+      ],
+      "suggestions": [
+        { "text": "注意主詞單複數一致（scenery 為不可數）。", "category": "grammar" }
+      ],
+      "tags": ["exclamation", "what"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-2-what-003",
+      "zh": "可以出國留學是多麼珍貴的經驗呀！",
+      "hints": [
+        { "category": "syntactic", "text": "What a/an + adj + N + it is + to V / V‑ing" },
+        { "category": "pragmatic", "text": "study abroad / go abroad for further studies" }
+      ],
+      "suggestions": [
+        { "text": "How… 亦可自然：How precious an experience it is to study abroad.", "category": "style" }
+      ],
+      "tags": ["exclamation", "what", "how"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-3-how-001",
+      "zh": "她在舞臺上看起來多麼美麗呀！",
+      "hints": [
+        { "category": "syntactic", "text": "How + adj + S + V!（連綴動詞 look）" },
+        { "category": "pragmatic", "text": "on stage（非 in the stage）" }
+      ],
+      "suggestions": [
+        { "text": "連綴動詞後接形容詞（look beautiful），避免誤用副詞。", "category": "grammar" }
+      ],
+      "tags": ["exclamation", "how"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch01-1-3-how-002",
+      "zh": "他們在舞池裡跳舞跳得多麼優雅呀！",
+      "hints": [
+        { "category": "syntactic", "text": "How + adv + S + V!（修飾動作方式）" },
+        { "category": "pragmatic", "text": "dance gracefully; in the ballroom" }
+      ],
+      "suggestions": [
+        { "text": "優先用副詞修飾動詞（gracefully）。", "category": "grammar" }
+      ],
+      "tags": ["exclamation", "how"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch01-1-3-how-003",
+      "zh": "這些年來，她變得好多！",
+      "hints": [
+        { "category": "syntactic", "text": "How + S + have/has + p.p.!（表變化）" },
+        { "category": "pragmatic", "text": "over the years + 現在完成式" }
+      ],
+      "suggestions": [
+        { "text": "變化/經驗以現在完成式搭配時間副詞片語更自然。", "category": "usage" }
+      ],
+      "tags": ["exclamation", "how", "perfect"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-4-such-that-001",
+      "zh": "她是個這麼善解人意的女人，以至於她的朋友們常對她傾吐心事。",
+      "hints": [
+        { "category": "syntactic", "text": "such + a/an + adj + N + that + 子句" },
+        { "category": "lexical", "text": "confide in sb（向…傾吐）" }
+      ],
+      "suggestions": [
+        { "text": "可視需要調整時態與頻率副詞以貼合語境（usually/常）。", "category": "usage" }
+      ],
+      "tags": ["such-that", "result"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-4-such-that-002",
+      "zh": "天氣如此宜人，以至於我們在那裡度過了愉快的假期。",
+      "hints": [
+        { "category": "syntactic", "text": "It was such + adj + weather that… / so + adj + that…" },
+        { "category": "pragmatic", "text": "enjoy our holidays there" }
+      ],
+      "suggestions": [
+        { "text": "such/so 皆可；可鼓勵挑選更自然的名詞（pleasant weather）。", "category": "style" }
+      ],
+      "tags": ["such-that", "so-that", "result"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-4-so-that-003",
+      "zh": "他說話的聲音如此輕柔，以至於你需要集中注意力才能聽到他說的話。",
+      "hints": [
+        { "category": "syntactic", "text": "so + adv + that + 子句（speaks so softly that…）" },
+        { "category": "pragmatic", "text": "pay close attention to hear sb" }
+      ],
+      "suggestions": [
+        { "text": "副詞修飾動詞（speak softly），避免以形容詞誤修飾。", "category": "grammar" }
+      ],
+      "tags": ["so-that", "result"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch01-1-5-so-as-to-001",
+      "zh": "湯姆用功讀書是為了能通過期末考試。",
+      "hints": [
+        { "category": "syntactic", "text": "so as to / in order to / so that + S + can/could" }
+      ],
+      "suggestions": [
+        { "text": "三種表目的寫法皆常見；保持全句時態/語域一致。", "category": "usage" }
+      ],
+      "tags": ["purpose", "so-as-to"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch01-1-5-so-as-not-to-002",
+      "zh": "她踮著腳尖走路是為了不要吵醒正在睡覺的寶寶。",
+      "hints": [
+        { "category": "syntactic", "text": "so as not to + V（否定目的）" },
+        { "category": "lexical", "text": "walk on tiptoe; wake the sleeping baby (up)" }
+      ],
+      "suggestions": [
+        { "text": "‘so as not to’ 比 ‘in order not to’ 更精煉，兩者皆可。", "category": "style" }
+      ],
+      "tags": ["purpose", "so-as-to"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-6-too-to-001",
+      "zh": "那個男孩還太小，不能上學。",
+      "hints": [
+        { "category": "syntactic", "text": "too + adj + to + V" },
+        { "category": "pragmatic", "text": "go to school（固定搭配）" }
+      ],
+      "suggestions": [
+        { "text": "避免 double negative；too…to 結構表無法達成。", "category": "grammar" }
+      ],
+      "tags": ["too-to"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch01-1-6-too-to-002",
+      "zh": "他還太小，無法回答這麼困難的問題。",
+      "hints": [
+        { "category": "syntactic", "text": "too + adj + a/an + N + to + V；such + a/an + adj + N" }
+      ],
+      "suggestions": [
+        { "text": "可示範升級：He is too young a boy to answer such a difficult question.（但不強制）", "category": "style" }
+      ],
+      "tags": ["too-to", "such-that"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch01-1-7-cannot-too-001",
+      "zh": "開車的時候，再怎麼小心也不為過。",
+      "hints": [
+        { "category": "syntactic", "text": "cannot be too + adj." }
+      ],
+      "suggestions": [
+        { "text": "常見格言式語氣；注意駕駛情境可用 when/while driving。", "category": "usage" }
+      ],
+      "tags": ["cannot-too"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch01-1-7-cannot-over-002",
+      "zh": "守時的重要性，再怎麼強調也不為過。",
+      "hints": [
+        { "category": "syntactic", "text": "cannot over‑V / cannot V enough" },
+        { "category": "pragmatic", "text": "punctuality（準時）" }
+      ],
+      "suggestions": [
+        { "text": "over‑emphasize/overstate 均可；保持名詞抽象程度一致。", "category": "style" }
+      ],
+      "tags": ["cannot-too"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-8-mandative-001",
+      "zh": "他要求貨物一定要準時送達。",
+      "hints": [
+        { "category": "syntactic", "text": "demand/require/insist/suggest + (that) + S (should) + VR" },
+        { "category": "morphological", "text": "被動：the goods be delivered on time" }
+      ],
+      "suggestions": [
+        { "text": "美式常用虛擬原形（deliver/be delivered）；英式可見 should + VR。", "category": "usage" }
+      ],
+      "tags": ["mandative", "subjunctive"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch01-1-8-mandative-002",
+      "zh": "老師建議他每週背誦一首詩。",
+      "hints": [
+        { "category": "syntactic", "text": "suggest that + S (should) + VR / suggest V‑ing" },
+        { "category": "pragmatic", "text": "recite a poem every week" }
+      ],
+      "suggestions": [
+        { "text": "避免 ‘suggest sb to V’ 結構；兩種正確寫法皆可。", "category": "pitfall" }
+      ],
+      "tags": ["mandative", "subjunctive"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-9-important-001",
+      "zh": "每個學童都得了解老師所說的話，這是很重要的。",
+      "hints": [
+        { "category": "syntactic", "text": "It is important that + S + VR（虛擬現在式）" }
+      ],
+      "suggestions": [
+        { "text": "鼓勵使用虛擬現在式（understand），避免第三人稱加 s。", "category": "grammar" }
+      ],
+      "tags": ["it-clause", "subjunctive"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-10-should-001",
+      "zh": "他竟然會這麼早離開，真是奇怪。",
+      "hints": [
+        { "category": "syntactic", "text": "It is strange that + S + should + VR（情態 should 表意外）" }
+      ],
+      "suggestions": [
+        { "text": "‘should’ 非義務，表說話者意外/不尋常之感。", "category": "usage" }
+      ],
+      "tags": ["it-clause", "should"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch01-1-10-should-002",
+      "zh": "令人驚訝地，他竟然得了演講比賽的第一名。",
+      "hints": [
+        { "category": "syntactic", "text": "It is surprising that + S + should + VR" },
+        { "category": "pragmatic", "text": "win first place in the speech contest" }
+      ],
+      "suggestions": [
+        { "text": "也可用 To our astonishment 開頭作語氣變化。", "category": "style" }
+      ],
+      "tags": ["it-clause", "should"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch01-1-11-lest-001",
+      "zh": "他帶著傘，以免淋成落湯雞。",
+      "hints": [
+        { "category": "syntactic", "text": "lest + S + (should) + VR（以免）" },
+        { "category": "pragmatic", "text": "get soaking wet in the rain" }
+      ],
+      "suggestions": [
+        { "text": "lest 後慣用虛擬（should + VR / VR）；也可改寫 in case。", "category": "grammar" }
+      ],
+      "tags": ["lest", "purpose"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch01-1-11-lest-002",
+      "zh": "我們盡可能用功讀書，以免被當掉。",
+      "hints": [
+        { "category": "syntactic", "text": "lest + S + (should) + VR" },
+        { "category": "pragmatic", "text": "study as hard as possible; be flunked" }
+      ],
+      "suggestions": [
+        { "text": "lest 子句用動詞原形/should + VR，語域較正式。", "category": "style" }
+      ],
+      "tags": ["lest", "purpose"],
+      "difficulty": 4
+    }
+  ]
+}

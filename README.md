@@ -48,7 +48,15 @@ cp .env.example .env
 ### POST /correct
 請求（JSON）：
 ```json
-{ "zh": "中文原文", "en": "我的英文", "bankItemId": "可選", "deviceId": "可選" }
+{
+  "zh": "中文原文",
+  "en": "我的英文",
+  "bankItemId": "可選",
+  "deviceId": "可選",
+  "hints": [ { "category": "morphological", "text": "過去式" } ],
+  "suggestion": "（教師建議/期待寫法，供批改者參考）",
+  "model": "gemini-2.5-pro | gemini-2.5-flash"  // 可選，覆蓋預設模型
+}
 ```
 回應（JSON）：
 ```json
@@ -70,6 +78,8 @@ cp .env.example .env
 
 ### GET /cloud/books、GET /cloud/books/{name}
 - 從 `data/books/*.json` 提供唯讀題庫本清單與內容。
+- 注意：`items[].hints[].category` 僅允許五種值（morphological | syntactic | lexical | phonological | pragmatic）。
+  若檔案中存在其他分類值，後端會拒絕載入該內容（於啟動時記錄錯誤並略過該書）。
 
 ### GET /cloud/decks、GET /cloud/decks/{id}
 - 從 `data/decks/*.json` 提供唯讀卡片集清單與內容。
@@ -81,7 +91,8 @@ cp .env.example .env
   "name": "未命名",
   "items": [
     { "zh": "…", "en": "…", "corrected": "…", "span": "…", "suggestion": "…", "explainZh": "…", "type": "lexical" }
-  ]
+  ],
+  "model": "gemini-2.5-pro | gemini-2.5-flash"  // 可選，覆蓋預設模型
 }
 ```
 回應（JSON）：
@@ -114,4 +125,3 @@ cp .env.example .env
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。
 - 建議使用 `.env`（本地）與 Render/雲端平台的環境變數管理機制（雲端）。
-

@@ -4,7 +4,7 @@ import os
 import json
 import time
 import uuid
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Literal
 
 import requests
 from fastapi import FastAPI, HTTPException, Query
@@ -20,6 +20,11 @@ except Exception:  # pragma: no cover - optional
 class RangeDTO(BaseModel):
     start: int
     length: int
+
+
+class InputHintDTO(BaseModel):
+    category: str  # morphological | syntactic | lexical | phonological | pragmatic
+    text: str
 
 
 class ErrorHintsDTO(BaseModel):
@@ -52,6 +57,11 @@ class CorrectRequest(BaseModel):
     # Optional linkage to a bank item and device for progress tracking
     bankItemId: Optional[str] = None
     deviceId: Optional[str] = None
+    # Optional authoring aids for the corrector (from item designer)
+    hints: Optional[List[InputHintDTO]] = None
+    suggestion: Optional[str] = None
+    # Optional model override from app settings
+    model: Optional[str] = None
 
 
 # ----- LLM Provider (Gemini only) -----
@@ -69,6 +79,12 @@ if load_dotenv is not None:
 # Model selection (Gemini). You can override via LLM_MODEL or GEMINI_MODEL.
 GENERIC_MODEL = os.environ.get("LLM_MODEL")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", GENERIC_MODEL or "gemini-2.5-flash")
+# Allow-list for request-time model override (extendable via env ALLOWED_MODELS)
+_ALLOWED_MODEL_ENV = os.environ.get("ALLOWED_MODELS")
+if _ALLOWED_MODEL_ENV:
+    ALLOWED_MODELS = {m.strip() for m in _ALLOWED_MODEL_ENV.split(",") if m.strip()}
+else:
+    ALLOWED_MODELS = {"gemini-2.5-pro", "gemini-2.5-flash"}
 
 
 def _load_system_prompt() -> str:
@@ -128,11 +144,12 @@ def _deck_debug_write(payload: Dict):
         pass
 
 
-def _call_gemini_json(system_prompt: str, user_content: str) -> dict:
+def _call_gemini_json(system_prompt: str, user_content: str, *, model: Optional[str] = None) -> dict:
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY/GOOGLE_API_KEY not set")
-    url = f"{GEMINI_BASE}/models/{GEMINI_MODEL}:generateContent?key={api_key}"
+    chosen = (model or GEMINI_MODEL).strip()
+    url = f"{GEMINI_BASE}/models/{chosen}:generateContent?key={api_key}"
     payload = {
         "system_instruction": {"parts": [{"text": system_prompt}]},
         "contents": [{"role": "user", "parts": [{"text": user_content}]}],
@@ -152,13 +169,33 @@ def _call_gemini_json(system_prompt: str, user_content: str) -> dict:
         raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
 
 
-def call_gemini_correct(zh: str, en: str) -> CorrectResponse:
-    user_content = (
-        "請批改以下內容並輸出 JSON。\n"
-        f"zh: {zh}\n"
-        f"en: {en}\n"
-    )
-    obj = _call_gemini_json(SYSTEM_PROMPT, user_content)
+def _resolve_model(override: Optional[str]) -> str:
+    if override is None or override.strip() == "":
+        return GEMINI_MODEL
+    m = override.strip()
+    if m in ALLOWED_MODELS:
+        return m
+    raise HTTPException(status_code=422, detail={"invalid_model": m, "allowed": sorted(ALLOWED_MODELS)})
+
+
+def call_gemini_correct(req: CorrectRequest) -> CorrectResponse:
+    # Pack user content as compact JSON to avoid parsing ambiguity.
+    payload: Dict[str, object] = {
+        "zh": req.zh,
+        "en": req.en,
+    }
+    if req.bankItemId:
+        payload["bankItemId"] = req.bankItemId
+    if req.deviceId:
+        payload["deviceId"] = req.deviceId
+    if req.hints:
+        # Convert Pydantic models to plain dicts
+        payload["hints"] = [h.model_dump() if hasattr(h, "model_dump") else dict(h) for h in req.hints]
+    if req.suggestion:
+        payload["suggestion"] = req.suggestion
+    user_content = json.dumps(payload, ensure_ascii=False)
+    chosen_model = _resolve_model(req.model)
+    obj = _call_gemini_json(SYSTEM_PROMPT, user_content, model=chosen_model)
     return _to_response_or_422(obj)
 
 
@@ -223,7 +260,7 @@ def correct(req: CorrectRequest):
             pass
         return resp
     try:
-        resp = call_gemini_correct(req.zh, req.en)
+        resp = call_gemini_correct(req)
     except HTTPException as he:
         # Propagate 4xx like 422 invalid types directly
         raise he
@@ -399,24 +436,27 @@ class _ContentStore:
                 decks[did] = d
             except Exception as e:
                 print(f"[cloud] deck load error {fp}: {e}")
-        # Load books
+        # Load books (strict validation: hints.category must be one of five allowed)
         books_by_name: Dict[str, dict] = {}
         for fp in book_files:
             try:
                 b = self._read(fp)
                 if not b.get("name"):
                     b["name"] = b.get("id") or os.path.splitext(os.path.basename(fp))[0]
-                # Normalize items
-                items = []
+                # Normalize and strictly validate items using Pydantic models
+                items: List[dict] = []
                 for it in b.get("items", []):
-                    items.append({
-                        "id": it.get("id") or str(uuid.uuid4()),
-                        "zh": it.get("zh", ""),
-                        "hints": it.get("hints", []),
-                        "suggestions": it.get("suggestions", []),
-                        "tags": it.get("tags", []),
-                        "difficulty": int(it.get("difficulty", 1)),
-                    })
+                    hint_objs = [BankHint(**h) for h in it.get("hints", [])]
+                    sugg_objs = [BankSuggestion(**s) for s in it.get("suggestions", [])]
+                    bi = BankItem(
+                        id=it.get("id") or str(uuid.uuid4()),
+                        zh=it.get("zh", ""),
+                        hints=hint_objs,
+                        suggestions=sugg_objs,
+                        tags=it.get("tags", []),
+                        difficulty=int(it.get("difficulty", 1)),
+                    )
+                    items.append(bi.model_dump())
                 b["items"] = items
                 books_by_name[b["name"]] = b
             except Exception as e:
@@ -489,7 +529,9 @@ def cloud_book_detail(name: str):
 # -----------------------------
 
 class BankHint(BaseModel):
-    category: str  # grammar | structure | collocation | idiom | usage | style | translation | pitfall
+    # Strictly limited to five categories used by the app/UI
+    # morphological | syntactic | lexical | phonological | pragmatic
+    category: Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]
     text: str
 
 
@@ -722,6 +764,8 @@ class DeckMakeItem(BaseModel):
 class DeckMakeRequest(BaseModel):
     name: Optional[str] = "未命名"
     items: List[DeckMakeItem]
+    # Optional model override from app settings
+    model: Optional[str] = None
 
 
 class DeckCard(BaseModel):
@@ -758,16 +802,17 @@ def call_gemini_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
     compact = {"name": req.name or "未命名", "items": items}
     user_content = json.dumps(compact, ensure_ascii=False)
 
+    chosen_model = _resolve_model(req.model)
     debug_info: Dict[str, object] = {
         "ts": time.time(),
         "provider": "gemini",
-        "model": GEMINI_MODEL,
+        "model": chosen_model,
         "system_prompt": DECK_PROMPT,
         "user_content": user_content,
         "items_in": len(items),
     }
     try:
-        obj = _call_gemini_json(DECK_PROMPT, user_content)
+        obj = _call_gemini_json(DECK_PROMPT, user_content, model=chosen_model)
     except Exception as e:
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)
