@@ -5,7 +5,7 @@ import os
 from typing import Optional, Dict
 
 import requests
-from app.config import llm_generation_config
+from app.core.settings import get_settings
 
 
 # Public constants
@@ -19,8 +19,11 @@ def _base_dir() -> str:
 
 
 def load_system_prompt() -> str:
-    default_path = os.path.join(_base_dir(), "prompt.txt")
-    path = os.environ.get("PROMPT_FILE", default_path)
+    settings = get_settings()
+    # Allow relative path (resolved against backend base), or absolute path
+    path = settings.PROMPT_FILE or "prompt.txt"
+    if not os.path.isabs(path):
+        path = os.path.join(_base_dir(), path)
     try:
         with open(path, "r", encoding="utf-8") as f:
             content = f.read().strip()
@@ -32,8 +35,10 @@ def load_system_prompt() -> str:
 
 
 def load_deck_prompt() -> str:
-    default_path = os.path.join(_base_dir(), "prompt_deck.txt")
-    path = os.environ.get("DECK_PROMPT_FILE", default_path)
+    settings = get_settings()
+    path = settings.DECK_PROMPT_FILE or "prompt_deck.txt"
+    if not os.path.isabs(path):
+        path = os.path.join(_base_dir(), path)
     try:
         with open(path, "r", encoding="utf-8") as f:
             content = f.read().strip()
@@ -45,13 +50,9 @@ def load_deck_prompt() -> str:
 
 
 def _env_model_defaults() -> tuple[str, set[str]]:
-    generic = os.environ.get("LLM_MODEL")
-    gemini_model = os.environ.get("GEMINI_MODEL", generic or "gemini-2.5-flash")
-    allowed_env = os.environ.get("ALLOWED_MODELS")
-    if allowed_env:
-        allowed = {m.strip() for m in allowed_env.split(",") if m.strip()}
-    else:
-        allowed = {"gemini-2.5-pro", "gemini-2.5-flash"}
+    settings = get_settings()
+    gemini_model = settings.GEMINI_MODEL or "gemini-2.5-flash"
+    allowed = settings.allowed_models_set()
     return gemini_model, allowed
 
 
@@ -76,16 +77,18 @@ def resolve_model(override: Optional[str]) -> str:
 
 
 def has_api_key() -> bool:
-    return bool(os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY"))
+    s = get_settings()
+    return bool(s.GEMINI_API_KEY or s.GOOGLE_API_KEY)
 
 
 def _gen_config() -> Dict[str, object]:
-    # Delegate to centralized config for easier tuning/testing
-    return llm_generation_config()
+    # Centralized generation config from settings
+    return get_settings().generation_config()
 
 
 def call_gemini_json(system_prompt: str, user_content: str, *, model: Optional[str] = None, timeout: int = 60) -> dict:
-    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    s = get_settings()
+    api_key = s.GEMINI_API_KEY or s.GOOGLE_API_KEY
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY/GOOGLE_API_KEY not set")
     chosen = (model or get_current_model()).strip()

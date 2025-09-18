@@ -32,8 +32,12 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 ## 環境變數
 - `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要）。
 - `GEMINI_MODEL`：模型名稱（預設 `gemini-2.5-flash`）。
+- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `DECK_DEBUG_LOG`：`1/true` 時在 `_test_logs` 留下 `/make_deck` 呼叫摘要以利除錯。
+- `PROMPT_FILE`：批改系統提示檔路徑（相對於 backend 目錄或絕對路徑，預設 `prompt.txt`）。
+- `DECK_PROMPT_FILE`：卡片生成系統提示檔路徑（預設 `prompt_deck.txt`）。
+- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1/0.1/1/320）。
 - `HOST`、`PORT`：本機啟動位址與連接埠（`uvicorn` 參數也可覆蓋）。
 
 將範例複製為 `.env`（可選）：
@@ -118,6 +122,7 @@ cp .env.example .env
 - 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `requests` 直呼 API）。
 - 內容來源：`data/` 下 JSON；可透過 `CONTENT_DIR` 指向自定資料夾。
 - 除錯：`DECK_DEBUG_LOG=1` 會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）。
+ - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
   
 
 ## 安全

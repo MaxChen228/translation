@@ -10,11 +10,11 @@ from fastapi import HTTPException
 
 from app.llm import call_gemini_json
 from app.schemas import DeckMakeRequest, DeckMakeResponse, DeckCard
+from app.core.settings import get_settings
 
 
 def _deck_debug_enabled() -> bool:
-    v = os.environ.get("DECK_DEBUG_LOG", "1").lower()
-    return v in ("1", "true", "yes", "on")
+    return get_settings().deck_debug_enabled()
 
 
 def _deck_debug_write(payload: Dict):
@@ -98,4 +98,3 @@ def make_deck_from_request(req: DeckMakeRequest, deck_prompt: str, chosen_model:
     if not cards:
         raise HTTPException(status_code=422, detail="deck_cards_empty")
     return DeckMakeResponse(name=name, cards=cards)
-

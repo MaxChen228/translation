@@ -24,6 +24,10 @@ class Settings(BaseSettings):
     # Content/data
     CONTENT_DIR: str = "data"
 
+    # Prompts
+    PROMPT_FILE: str = "prompt.txt"
+    DECK_PROMPT_FILE: str = "prompt_deck.txt"
+
     # Debug / logging
     DECK_DEBUG_LOG: str = "1"
     LOG_LEVEL: str = "INFO"
@@ -43,8 +47,11 @@ class Settings(BaseSettings):
             "maxOutputTokens": int(self.LLM_MAX_OUTPUT_TOKENS),
         }
 
+    def deck_debug_enabled(self) -> bool:
+        v = (self.DECK_DEBUG_LOG or "").strip().lower()
+        return v in ("1", "true", "yes", "on")
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
     return Settings()  # reads from env by default
-

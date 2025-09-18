@@ -6,7 +6,7 @@ import uuid
 from typing import Dict, List, Optional
 
 from app.schemas import BankHint, BankItem, BankSuggestion
-from app.config import content_dir
+from app.core.settings import get_settings
 from app.core.logging import logger
 
 
@@ -59,7 +59,15 @@ class ContentStore:
 
     def __init__(self) -> None:
         # Use centralized content directory resolution
-        self.base = content_dir()
+        settings = get_settings()
+        base_cfg = settings.CONTENT_DIR
+        if os.path.isabs(base_cfg):
+            self.base = base_cfg
+        else:
+            # app/ -> backend dir, join relative content dir
+            here = os.path.dirname(__file__)
+            backend_dir = os.path.abspath(os.path.join(here, ".."))
+            self.base = os.path.abspath(os.path.join(backend_dir, base_cfg))
         self._decks_by_id: Dict[str, dict] = {}
         self._books_by_name: Dict[str, dict] = {}
         self._loaded = False
