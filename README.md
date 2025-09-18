@@ -5,7 +5,7 @@ FastAPI 後端，為 iOS App 提供中英翻譯批改、雲端題庫/卡片瀏�
 Repo（GitHub）：https://github.com/MaxChen228/translation
 
 ## 功能總覽
-- 批改（`POST /correct`）：回傳修正版、分數與錯誤清單（支援 Gemini，亦可啟用簡易規則本地 fallback）。
+- 批改（`POST /correct`）：回傳修正版、分數與錯誤清單（使用 Gemini）。
 - 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*` 從 `data/` 提供精選題庫/卡片集。
 - 單字卡產生（`POST /make_deck`）：由 Saved JSON 彙整卡片，支援變體括號語法輸出。
 - 健康檢查（`GET /healthz`）。
@@ -30,10 +30,8 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 預設情況下，若未設定 API Key，`/healthz` 會顯示 `{"status": "no_key"}`。
 
 ## 環境變數
-- `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（啟用雲端批改/單字卡產生）。
+- `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要）。
 - `GEMINI_MODEL`：模型名稱（預設 `gemini-2.5-flash`）。
-- `FORCE_SIMPLE_CORRECT`：`1/true` 時強制使用本地簡易規則（不調用 LLM）。
-- `ALLOW_FALLBACK_ON_FAILURE`：`1/true` 時在 429 時以本地規則備援。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `DECK_DEBUG_LOG`：`1/true` 時在 `_test_logs` 留下 `/make_deck` 呼叫摘要以利除錯。
 - `HOST`、`PORT`：本機啟動位址與連接埠（`uvicorn` 參數也可覆蓋）。
@@ -120,7 +118,7 @@ cp .env.example .env
 - 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `requests` 直呼 API）。
 - 內容來源：`data/` 下 JSON；可透過 `CONTENT_DIR` 指向自定資料夾。
 - 除錯：`DECK_DEBUG_LOG=1` 會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）。
-- 本地簡易規則：`FORCE_SIMPLE_CORRECT=1` 可在離線開發時仍提供基本批改。
+  
 
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。

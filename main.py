@@ -229,48 +229,19 @@ def _to_response_or_422(obj: dict) -> CorrectResponse:
     return CorrectResponse.model_validate(obj)
 
 
-def _simple_analyze(zh: str, en: str) -> CorrectResponse:
-    # Lightweight fallback mirroring backend/server.py rules
-    import re, uuid
-    corrected = en
-    errors: List[ErrorDTO] = []
-    def err(span, etype, explain, suggestion=None, before=None, after=None, occurrence=None):
-        return ErrorDTO(id=str(uuid.uuid4()), span=span, type=etype, explainZh=explain, suggestion=suggestion, hints=ErrorHintsDTO(before=before, after=after, occurrence=occurrence))
-    if re.search(r"\byesterday\b", en, flags=re.I) and re.search(r"\bgo\b", en):
-        errors.append(err("go", "morphological", "應使用過去式。", "went", before="I ", after=" to", occurrence=1))
-        corrected = re.sub(r"\bgo\b", "went", corrected, count=1)
-    if re.search(r"\bshop\b", en, flags=re.I):
-        errors.append(err("shop", "lexical", "在此語境更常用 store。", "store", before="the ", after=" "))
-        corrected = re.sub(r"\bshop\b", "store", corrected, count=1, flags=re.I)
-    if re.search(r"\bfruits\b", en, flags=re.I):
-        errors.append(err("fruits", "pragmatic", "一般泛指時常用不可數名詞 fruit。", "fruit", before="some "))
-        corrected = re.sub(r"\bfruits\b", "fruit", corrected, count=1, flags=re.I)
-    score = max(60, 100 - 5 * len(errors))
-    return CorrectResponse(corrected=corrected, score=score, errors=errors)
+# simple/offline analyzer removed: backend now requires a working LLM
 
 
 @app.post("/correct", response_model=CorrectResponse)
 def correct(req: CorrectRequest):
-    # Optional offline switch: bypass LLM and use simple analyzer
-    if os.environ.get("FORCE_SIMPLE_CORRECT") in ("1", "true", "yes"):
-        resp = _simple_analyze(req.zh, req.en)
-        try:
-            _update_progress_after_correct(req.bankItemId, req.deviceId, resp.score)
-        except Exception:
-            pass
-        return resp
     try:
         resp = call_gemini_correct(req)
     except HTTPException as he:
         # Propagate 4xx like 422 invalid types directly
         raise he
     except Exception as e:
-        # Graceful handling: for 429/insufficient_quota optionally fallback to simple rules
+        # No offline fallback: require working LLM
         msg = str(e)
-        allow_fallback = os.environ.get("ALLOW_FALLBACK_ON_FAILURE") in ("1", "true", "yes")
-        if "status=429" in msg and allow_fallback:
-            resp = _simple_analyze(req.zh, req.en)
-        # Propagate with appropriate status
         status = 500
         if "status=429" in msg:
             status = 429
