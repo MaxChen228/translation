@@ -4,64 +4,47 @@ import os
 import json
 import time
 import uuid
-from typing import List, Optional, Dict, Literal
+from typing import List, Optional, Dict
 
 import requests
 from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel, Field
+from app.content_store import ContentStore
+from app.schemas import (
+    RangeDTO,
+    InputHintDTO,
+    ErrorHintsDTO,
+    ErrorDTO,
+    CorrectResponse,
+    CorrectRequest,
+    CloudDeckSummary,
+    CloudCard,
+    CloudDeckDetail,
+    CloudBookSummary,
+    CloudBookDetail,
+    BankHint,
+    BankSuggestion,
+    BankItem,
+    ProgressRecord,
+    ProgressMarkRequest,
+    ProgressRecordOut,
+    ProgressSummary,
+    ImportRequest,
+    ImportResponse,
+    DeckMakeItem,
+    DeckMakeRequest,
+    DeckCard,
+    DeckMakeResponse,
+)
 try:
     from dotenv import load_dotenv  # type: ignore
 except Exception:  # pragma: no cover - optional
     load_dotenv = None
 
 
-# ----- Schemas (aligned with iOS app) -----
+"""Main FastAPI app entry.
 
-class RangeDTO(BaseModel):
-    start: int
-    length: int
-
-
-class InputHintDTO(BaseModel):
-    category: str  # morphological | syntactic | lexical | phonological | pragmatic
-    text: str
-
-
-class ErrorHintsDTO(BaseModel):
-    before: Optional[str] = None
-    after: Optional[str] = None
-    occurrence: Optional[int] = Field(default=None, ge=1)
-
-
-class ErrorDTO(BaseModel):
-    id: Optional[str] = None
-    span: str
-    type: str  # morphological | syntactic | lexical | phonological | pragmatic
-    explainZh: str
-    suggestion: Optional[str] = None
-    hints: Optional[ErrorHintsDTO] = None
-    originalRange: Optional[RangeDTO] = None
-    suggestionRange: Optional[RangeDTO] = None
-    correctedRange: Optional[RangeDTO] = None
-
-
-class CorrectResponse(BaseModel):
-    corrected: str
-    score: int
-    errors: List[ErrorDTO]
-
-
-class CorrectRequest(BaseModel):
-    zh: str
-    en: str
-    # Optional linkage to a bank item and device for progress tracking
-    bankItemId: Optional[str] = None
-    deviceId: Optional[str] = None
-    # Optional authoring aids for the corrector (from item designer)
-    hints: Optional[List[InputHintDTO]] = None
-    suggestion: Optional[str] = None
-    # Optional model override from app settings
-    model: Optional[str] = None
+Step 1 modularization: Pydantic schemas moved to app.schemas.
+"""
 
 
 # ----- LLM Provider (Gemini only) -----
@@ -201,7 +184,7 @@ def call_gemini_correct(req: CorrectRequest) -> CorrectResponse:
 
 # ----- FastAPI -----
 
-app = FastAPI(title="Local Correct Backend", version="0.4.0")
+app = FastAPI(title="Local Correct Backend", version="0.4.1")
 
 
 def _to_response_or_422(obj: dict) -> CorrectResponse:
@@ -272,196 +255,8 @@ def healthz() -> dict:
 # Cloud Library (curated, read-only)
 # -----------------------------
 
-class CloudDeckSummary(BaseModel):
-    id: str
-    name: str
-    count: int
 
-
-class CloudCard(BaseModel):
-    id: str
-    front: str
-    back: str
-    frontNote: Optional[str] = None
-    backNote: Optional[str] = None
-
-
-class CloudDeckDetail(BaseModel):
-    id: str
-    name: str
-    cards: List[CloudCard]
-
-
-class CloudBookSummary(BaseModel):
-    name: str
-    count: int
-
-
-class CloudBookDetail(BaseModel):
-    name: str
-    items: List["BankItem"]  # forward ref to BankItem defined below
-
-
-_CLOUD_DECKS = [
-    {
-        "id": "starter-phrases",
-        "name": "Starter Phrases",
-        "cards": [
-            {"front": "Hello!", "back": "你好！"},
-            {"front": "How are you?", "back": "你最近好嗎？"},
-            {"front": "Thank you.", "back": "謝謝你。"},
-        ],
-    },
-    {
-        "id": "common-errors",
-        "name": "Common Errors",
-        "cards": [
-            {"front": "I look forward to hear from you.", "back": "更自然：I look forward to hearing from you."},
-            {"front": "He suggested me to go.", "back": "更自然：He suggested that I go / He suggested going."},
-        ],
-    },
-]
-
-
-_CLOUD_BOOKS = [
-    {
-        "name": "Daily Conversations",
-        "items": [
-            {"id": "conv-greet", "zh": "跟陌生人打招呼", "hints": [], "suggestions": [], "tags": ["daily"], "difficulty": 1},
-            {"id": "conv-order", "zh": "點餐時的常見句型", "hints": [], "suggestions": [], "tags": ["daily"], "difficulty": 2},
-        ],
-    },
-    {
-        "name": "Academic Writing",
-        "items": [
-            {"id": "acad-intro", "zh": "撰寫研究引言", "hints": [], "suggestions": [], "tags": ["academic"], "difficulty": 3},
-            {"id": "acad-method", "zh": "描述研究方法", "hints": [], "suggestions": [], "tags": ["academic"], "difficulty": 3},
-        ],
-    },
-]
-
-class _ContentStore:
-    """Load curated decks/books from JSON files if present; otherwise, fallback to in-code seeds.
-
-    Layout (default base from $CONTENT_DIR or backend/data):
-      data/decks/<id>.json  { id, name, cards:[{ id?, front, back, frontNote?, backNote? }] }
-      data/books/<id>.json  { id, name, items:[{ id, zh, hints:[], suggestions:[], tags?, difficulty? }] }
-    """
-
-    def __init__(self) -> None:
-        here = os.path.dirname(__file__)
-        base = os.environ.get("CONTENT_DIR") or os.path.join(here, "data")
-        self.base = os.path.abspath(base)
-        self._decks_by_id: Dict[str, dict] = {}
-        self._books_by_name: Dict[str, dict] = {}
-        self._loaded = False
-
-    def _json_files(self, sub: str) -> List[str]:
-        p = os.path.join(self.base, sub)
-        try:
-            return [os.path.join(p, f) for f in os.listdir(p) if f.endswith(".json")]
-        except FileNotFoundError:
-            return []
-
-    def _read(self, path: str) -> dict:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-
-    def _ensure_card_ids(self, deck: dict) -> dict:
-        deck_id = deck.get("id") or deck.get("name") or "deck"
-        cards = []
-        for idx, c in enumerate(deck.get("cards", [])):
-            cid = c.get("id") or str(uuid.uuid5(uuid.NAMESPACE_URL, f"deck:{deck_id}:{idx}"))
-            cards.append({
-                "id": cid,
-                "front": c.get("front", ""),
-                "back": c.get("back", ""),
-                **({"frontNote": c.get("frontNote")} if c.get("frontNote") is not None else {}),
-                **({"backNote": c.get("backNote")} if c.get("backNote") is not None else {}),
-            })
-        d = dict(deck)
-        d["cards"] = cards
-        return d
-
-    def load(self) -> None:
-        if self._loaded:
-            return
-        deck_files = self._json_files("decks")
-        book_files = self._json_files("books")
-        if not deck_files and not book_files:
-            # fallback to in-code lists
-            self._decks_by_id = {d["id"]: d for d in _CLOUD_DECKS}
-            self._books_by_name = {b["name"]: b for b in _CLOUD_BOOKS}
-            self._loaded = True
-            return
-        # Load decks
-        decks: Dict[str, dict] = {}
-        for fp in deck_files:
-            try:
-                d = self._read(fp)
-                did = d.get("id") or os.path.splitext(os.path.basename(fp))[0]
-                d["id"] = did
-                if not d.get("name"):
-                    d["name"] = did
-                d = self._ensure_card_ids(d)
-                decks[did] = d
-            except Exception as e:
-                print(f"[cloud] deck load error {fp}: {e}")
-        # Load books (strict validation: hints.category must be one of five allowed)
-        books_by_name: Dict[str, dict] = {}
-        for fp in book_files:
-            try:
-                b = self._read(fp)
-                if not b.get("name"):
-                    b["name"] = b.get("id") or os.path.splitext(os.path.basename(fp))[0]
-                # Normalize and strictly validate items using Pydantic models
-                items: List[dict] = []
-                for it in b.get("items", []):
-                    hint_objs = [BankHint(**h) for h in it.get("hints", [])]
-                    sugg_objs = [BankSuggestion(**s) for s in it.get("suggestions", [])]
-                    bi = BankItem(
-                        id=it.get("id") or str(uuid.uuid4()),
-                        zh=it.get("zh", ""),
-                        hints=hint_objs,
-                        suggestions=sugg_objs,
-                        tags=it.get("tags", []),
-                        difficulty=int(it.get("difficulty", 1)),
-                    )
-                    items.append(bi.model_dump())
-                b["items"] = items
-                books_by_name[b["name"]] = b
-            except Exception as e:
-                print(f"[cloud] book load error {fp}: {e}")
-        if not decks:
-            self._decks_by_id = {d["id"]: d for d in _CLOUD_DECKS}
-        else:
-            self._decks_by_id = decks
-        if not books_by_name:
-            self._books_by_name = {b["name"]: b for b in _CLOUD_BOOKS}
-        else:
-            self._books_by_name = books_by_name
-        self._loaded = True
-
-    # API helpers
-    def list_decks(self) -> List[dict]:
-        self.load()
-        return list(self._decks_by_id.values())
-
-    def get_deck(self, deck_id: str) -> Optional[dict]:
-        self.load()
-        d = self._decks_by_id.get(deck_id)
-        return self._ensure_card_ids(d) if d else None
-
-    def list_books(self) -> List[dict]:
-        self.load()
-        return list(self._books_by_name.values())
-
-    def get_book_by_name(self, name: str) -> Optional[dict]:
-        self.load()
-        return self._books_by_name.get(name)
-
-
-_CONTENT = _ContentStore()
+_CONTENT = ContentStore()
 
 
 @app.get("/cloud/decks", response_model=List[CloudDeckSummary])
@@ -495,50 +290,12 @@ def cloud_book_detail(name: str):
     return CloudBookDetail(name=book["name"], items=items)
 
 
-# -----------------------------
-# Bank (題庫)
-# -----------------------------
-
-class BankHint(BaseModel):
-    # Strictly limited to five categories used by the app/UI
-    # morphological | syntactic | lexical | phonological | pragmatic
-    category: Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]
-    text: str
-
-
-class BankSuggestion(BaseModel):
-    text: str
-    category: Optional[str] = None
-
-
-class BankItem(BaseModel):
-    id: str
-    zh: str
-    hints: List[BankHint] = []
-    suggestions: List[BankSuggestion] = []
-    tags: List[str] = []
-    difficulty: int = Field(ge=1, le=5)
-
-
 _BANK_DATA: List[BankItem] = []  # legacy; no longer used
-
-# Resolve forward refs in CloudBookDetail now that BankItem is defined
-try:
-    CloudBookDetail.model_rebuild()
-except Exception:
-    pass
 
 
 # -----------------------------
 # Progress tracking (per device)
 # -----------------------------
-
-class ProgressRecord(BaseModel):
-    completed: bool = False
-    attempts: int = 0
-    lastScore: Optional[int] = None
-    updatedAt: float = Field(default_factory=lambda: time.time())
-
 
 # in-memory: deviceId -> itemId -> ProgressRecord
 _PROGRESS: Dict[str, Dict[str, ProgressRecord]] = {}  # legacy; no longer used
@@ -580,15 +337,7 @@ def _save_bank() -> None:
 ## /bank/books removed
 
 
-class ImportRequest(BaseModel):
-    text: str
-    defaultTag: Optional[str] = None
-    replace: bool = False
-
-
-class ImportResponse(BaseModel):
-    imported: int
-    errors: List[str] = []
+## ImportRequest/ImportResponse moved to app.schemas
 
 
 def _parse_bank_text(text: str, default_tag: Optional[str]) -> tuple[List[BankItem], List[str]]:
@@ -696,60 +445,14 @@ def _parse_bank_text(text: str, default_tag: Optional[str]) -> tuple[List[BankIt
 ## /bank/import removed
 
 
-# ----- Progress endpoints -----
-
-class ProgressMarkRequest(BaseModel):
-    itemId: str
-    deviceId: Optional[str] = None
-    score: Optional[int] = None
-    completed: bool = True
-
-
-class ProgressRecordOut(ProgressRecord):
-    itemId: str
-
-
-class ProgressSummary(BaseModel):
-    deviceId: str
-    completedIds: List[str]
-    records: List[ProgressRecordOut]
-
-
-## /bank/progress removed
+# ----- Progress endpoints removed (schemas available in app.schemas) -----
 
 
 # -----------------------------
 # Make Deck (flashcards)
 # -----------------------------
 
-class DeckMakeItem(BaseModel):
-    zh: Optional[str] = None
-    en: Optional[str] = None
-    corrected: Optional[str] = None
-    span: Optional[str] = None
-    suggestion: Optional[str] = None
-    explainZh: Optional[str] = None
-    type: Optional[str] = None
-
-
-class DeckMakeRequest(BaseModel):
-    name: Optional[str] = "未命名"
-    items: List[DeckMakeItem]
-    # Optional model override from app settings
-    model: Optional[str] = None
-
-
-class DeckCard(BaseModel):
-    # 四欄位卡片：正面中文、正面備註（可選）、背面英文、背面備註（可選）
-    front: str
-    frontNote: Optional[str] = None
-    back: str
-    backNote: Optional[str] = None
-
-
-class DeckMakeResponse(BaseModel):
-    name: str
-    cards: List[DeckCard]
+## DeckMake* schemas moved to app.schemas
 
 
 def call_gemini_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
