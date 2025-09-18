@@ -9,6 +9,14 @@ from typing import List, Optional, Dict
 import requests
 from fastapi import FastAPI, HTTPException, Query
 from app.content_store import ContentStore
+from app.llm import (
+    GEMINI_BASE,
+    load_system_prompt,
+    load_deck_prompt,
+    call_gemini_json as llm_call_json,
+    resolve_model as llm_resolve_model,
+    get_current_model,
+)
 from app.schemas import (
     RangeDTO,
     InputHintDTO,
@@ -70,42 +78,8 @@ else:
     ALLOWED_MODELS = {"gemini-2.5-pro", "gemini-2.5-flash"}
 
 
-def _load_system_prompt() -> str:
-    """Load prompt text from a .txt file.
-    Order of precedence:
-    1) env PROMPT_FILE
-    2) backend/prompt.txt
-    If missing/unreadable, raise clear error to avoid accidental empty prompts.
-    """
-    default_path = os.path.join(os.path.dirname(__file__), "prompt.txt")
-    path = os.environ.get("PROMPT_FILE", default_path)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-            if not content:
-                raise RuntimeError("prompt_file_empty")
-            return content
-    except Exception as e:
-        raise RuntimeError(f"prompt_file_error: {e}")
-
-
-SYSTEM_PROMPT = _load_system_prompt()
-
-
-def _load_deck_prompt() -> str:
-    default_path = os.path.join(os.path.dirname(__file__), "prompt_deck.txt")
-    path = os.environ.get("DECK_PROMPT_FILE", default_path)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-            if not content:
-                raise RuntimeError("deck_prompt_file_empty")
-            return content
-    except Exception as e:
-        raise RuntimeError(f"deck_prompt_file_error: {e}")
-
-
-DECK_PROMPT = _load_deck_prompt()
+SYSTEM_PROMPT = load_system_prompt()
+DECK_PROMPT = load_deck_prompt()
 
 # ----- Deck debug logging -----
 def _deck_debug_enabled() -> bool:
@@ -127,38 +101,17 @@ def _deck_debug_write(payload: Dict):
         pass
 
 
-def _call_gemini_json(system_prompt: str, user_content: str, *, model: Optional[str] = None) -> dict:
-    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-    if not api_key:
-        raise RuntimeError("GEMINI_API_KEY/GOOGLE_API_KEY not set")
-    chosen = (model or GEMINI_MODEL).strip()
-    url = f"{GEMINI_BASE}/models/{chosen}:generateContent?key={api_key}"
-    payload = {
-        "system_instruction": {"parts": [{"text": system_prompt}]},
-        "contents": [{"role": "user", "parts": [{"text": user_content}]}],
-        "generationConfig": {"response_mime_type": "application/json"},
-    }
-    r = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=60)
-    if r.status_code // 100 != 2:
-        raise RuntimeError(f"gemini_error status={r.status_code} body={r.text[:400]}")
-    data = r.json()
-    try:
-        content = data["candidates"][0]["content"]["parts"][0]["text"]
-    except Exception:
-        raise RuntimeError(f"gemini_invalid_response: {json.dumps(data)[:400]}")
-    try:
-        return json.loads(content)
-    except Exception as e:
-        raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
-
-
 def _resolve_model(override: Optional[str]) -> str:
-    if override is None or override.strip() == "":
-        return GEMINI_MODEL
-    m = override.strip()
-    if m in ALLOWED_MODELS:
-        return m
-    raise HTTPException(status_code=422, detail={"invalid_model": m, "allowed": sorted(ALLOWED_MODELS)})
+    try:
+        return llm_resolve_model(override)
+    except ValueError as e:
+        # e.args[0] carries a JSON string with details
+        detail = None
+        try:
+            detail = json.loads(e.args[0])
+        except Exception:
+            detail = {"invalid_model": str(override)}
+        raise HTTPException(status_code=422, detail=detail)
 
 
 def call_gemini_correct(req: CorrectRequest) -> CorrectResponse:
@@ -178,7 +131,7 @@ def call_gemini_correct(req: CorrectRequest) -> CorrectResponse:
         payload["suggestion"] = req.suggestion
     user_content = json.dumps(payload, ensure_ascii=False)
     chosen_model = _resolve_model(req.model)
-    obj = _call_gemini_json(SYSTEM_PROMPT, user_content, model=chosen_model)
+    obj = llm_call_json(SYSTEM_PROMPT, user_content, model=chosen_model)
     return _to_response_or_422(obj)
 
 
@@ -245,7 +198,7 @@ def healthz() -> dict:
     try:
         r = requests.get(f"{GEMINI_BASE}/models?key={api_key}", timeout=10)
         if r.status_code // 100 == 2:
-            return {"status": "ok", "provider": "gemini", "model": GEMINI_MODEL}
+            return {"status": "ok", "provider": "gemini", "model": get_current_model()}
         return {"status": "auth_error", "provider": "gemini", "code": r.status_code}
     except Exception as e:
         return {"status": "error", "provider": "gemini", "message": str(e)}
@@ -486,7 +439,7 @@ def call_gemini_make_deck(req: DeckMakeRequest) -> DeckMakeResponse:
         "items_in": len(items),
     }
     try:
-        obj = _call_gemini_json(DECK_PROMPT, user_content, model=chosen_model)
+        obj = llm_call_json(DECK_PROMPT, user_content, model=chosen_model)
     except Exception as e:
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)
