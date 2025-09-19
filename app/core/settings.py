@@ -20,7 +20,8 @@ class Settings(BaseSettings):
     LLM_TEMPERATURE: float = 0.1
     LLM_TOP_P: float = 0.1
     LLM_TOP_K: int = 1
-    LLM_MAX_OUTPUT_TOKENS: int = 320
+    # Raise default output cap high to avoid MAX_TOKENS truncation under JSON mode
+    LLM_MAX_OUTPUT_TOKENS: int = 2048
 
     # Content/data
     CONTENT_DIR: str = "data"
