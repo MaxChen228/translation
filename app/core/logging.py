@@ -15,6 +15,9 @@ class JsonFormatter(logging.Formatter):
             "name": record.name,
             "message": record.getMessage(),
         }
+        if record.exc_info:
+            base["exception"] = self.formatException(record.exc_info)
+
         # include extras except default attributes
         for k, v in record.__dict__.items():
             if k in ("msg", "args", "levelname", "levelno", "pathname", "filename", "module", "exc_info", "exc_text", "stack_info", "lineno", "funcName", "created", "msecs", "relativeCreated", "thread", "threadName", "processName", "process"):
@@ -43,4 +46,3 @@ def get_logger(name: str = "app") -> logging.Logger:
     return logger
 
 logger = get_logger("app")
-

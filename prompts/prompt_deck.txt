@@ -22,14 +22,20 @@
 6) 如無合適備註，frontNote/backNote 請輸出空字串 ""。嚴禁捏造事實或脫離上下文。
 
 輸入資料：
-- 以 JSON 提供 {"name": string, "items": [{"zh", "en", "corrected", "span", "suggestion", "explainZh", "type"}, ...]}
-- 欄位含義：
-  - zh：原中文短語或句子（優先用於 front）
-  - en：使用者原始英文（可參考）
-  - corrected：更正後英文句子或片語（可從中提取 back 的變體，或拆成多個括號群組）
-  - span/suggestion：錯誤片段與建議詞（可作為 back 變體的候選）
-  - explainZh：中文解釋（可用於 backNote/frontNote 的極簡提示）
-  - type：錯誤類型（參考即可）
+- 以 JSON 提供 `{ "name": string, "items": [...] }`
+- `items` 內可能有兩種來源：
+  1. `source: "correction"` 搭配 `correction` 物件，欄位含義：
+     - zh：原中文短語或句子（優先用於 front）
+     - en：使用者原始英文（可參考）
+     - corrected：更正後英文句子或片語（可從中提取 back 的變體，或拆成多個括號群組）
+     - span/suggestion：錯誤片段與建議詞（可作為 back 變體的候選）
+     - explainZh：中文解釋（可用於 backNote/frontNote 的極簡提示）
+     - type：錯誤類型（參考即可）
+  2. `source: "research"` 搭配 `research` 物件，欄位含義：
+     - term：要記住的單字或片語（可用於 back 或作為主題）
+     - explanation：繁體中文說明，可用來補充 front/back 的語感
+     - context：英文語境句，可作為 back 的句型參考或拆解片語
+     - type：分類標籤（參考即可）
 
 製作原則：
 - 以「一對一」為主：盡量讓每個 item 產生 1 張卡。僅在條目高度重覆（同義、完全等價）時可合併，避免不必要的省略。

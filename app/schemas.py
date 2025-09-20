@@ -82,11 +82,15 @@ class ChatResearchRequest(BaseModel):
     model: Optional[str] = None
 
 
-class ChatResearchResponse(BaseModel):
-    summary: str
-    en: str
-    focus: str
+class ChatResearchItem(BaseModel):
+    term: str
+    explanation: str
+    context: str
     type: Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]
+
+
+class ChatResearchResponse(BaseModel):
+    items: List[ChatResearchItem]
 
 
 # ----- Cloud library DTOs (Decks/Books) -----
@@ -193,9 +197,9 @@ class DeckCorrectionPayload(BaseModel):
 
 
 class DeckResearchPayload(BaseModel):
-    summary: Optional[str] = None
-    en: Optional[str] = None
-    focus: Optional[str] = None
+    term: Optional[str] = None
+    explanation: Optional[str] = None
+    context: Optional[str] = None
     type: Optional[Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]] = None
 
 
