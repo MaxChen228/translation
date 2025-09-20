@@ -49,6 +49,31 @@ def load_deck_prompt() -> str:
         raise RuntimeError(f"deck_prompt_file_error: {e}")
 
 
+def _load_prompt(path: str, default_filename: str) -> str:
+    if not path:
+        path = default_filename
+    if not os.path.isabs(path):
+        path = os.path.join(_base_dir(), path)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+            if not content:
+                raise RuntimeError(f"prompt_file_empty:{default_filename}")
+            return content
+    except Exception as e:  # pragma: no cover - configuration error path
+        raise RuntimeError(f"prompt_file_error:{default_filename}:{e}")
+
+
+def load_chat_turn_prompt() -> str:
+    settings = get_settings()
+    return _load_prompt(settings.CHAT_TURN_PROMPT_FILE or "prompt_chat_turn.txt", "prompt_chat_turn.txt")
+
+
+def load_chat_research_prompt() -> str:
+    settings = get_settings()
+    return _load_prompt(settings.CHAT_RESEARCH_PROMPT_FILE or "prompt_chat_research.txt", "prompt_chat_research.txt")
+
+
 def _env_model_defaults() -> tuple[str, set[str]]:
     settings = get_settings()
     gemini_model = settings.GEMINI_MODEL or "gemini-2.5-flash"

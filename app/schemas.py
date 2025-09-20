@@ -52,6 +52,38 @@ class CorrectRequest(BaseModel):
     model: Optional[str] = None
 
 
+# ----- Chat workflow DTOs -----
+
+class ChatMessage(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str
+
+
+class ChatTurnRequest(BaseModel):
+    messages: List[ChatMessage]
+    model: Optional[str] = None
+
+
+class ChatTurnResponse(BaseModel):
+    reply: str
+    state: Literal["gathering", "ready", "completed"] = "gathering"
+    checklist: Optional[List[str]] = None
+
+
+class ChatResearchRequest(BaseModel):
+    messages: List[ChatMessage]
+    model: Optional[str] = None
+
+
+class ChatResearchResponse(BaseModel):
+    title: str
+    summary: str
+    sourceZh: Optional[str] = None
+    attemptEn: Optional[str] = None
+    correctedEn: str
+    errors: List[ErrorDTO]
+
+
 # ----- Cloud library DTOs (Decks/Books) -----
 
 class CloudDeckSummary(BaseModel):
@@ -178,4 +210,3 @@ try:
     CloudBookDetail.model_rebuild()
 except Exception:
     pass
-

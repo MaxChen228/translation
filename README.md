@@ -8,6 +8,7 @@ Repo（GitHub）：https://github.com/MaxChen228/translation
 - 批改（`POST /correct`）：回傳修正版、分數與錯誤清單（使用 Gemini）。
 - 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*` 從 `data/` 提供精選題庫/卡片集。
 - 單字卡產生（`POST /make_deck`）：由 Saved JSON 彙整卡片，支援變體括號語法輸出。
+- 深入研究 chat 流程：`POST /chat/respond` 進行多輪確認、`POST /chat/research` 產出修正版與錯誤清單。
 - 健康檢查（`GET /healthz`）。
 
 ## 環境需求
@@ -104,6 +105,34 @@ cp .env.example .env
   "cards": [ { "front": "中文短語", "back": "(A | B) …", "frontNote": "可選", "backNote": "可選" } ]
 }
 ```
+
+### POST /chat/respond
+- 輸入：`{ messages: [{ role: "user"|"assistant", content: "..." }], model?: string }`
+- 回應：`{ reply: string, state: "gathering"|"ready"|"completed", checklist?: string[] }`
+- 用途：多輪確認需求，當 `state` 變為 `ready` 代表可以進入深入研究。
+
+### POST /chat/research
+- 輸入：`{ messages: [...] , model?: string }`（建議送上 `state=ready` 後的整段對話）。
+- 回應：
+  ```json
+  {
+    "title": "研究主題標題",
+    "summary": "傳統中文摘要",
+    "sourceZh": "原始中文描述（可選）",
+    "attemptEn": "使用者英文草稿（可選）",
+    "correctedEn": "潤飾後的英文",
+    "errors": [
+      {
+        "id": "uuid",
+        "span": "want study",
+        "type": "morphological",
+        "explainZh": "缺少 to 不定詞",
+        "suggestion": "want to study"
+      }
+    ]
+  }
+  ```
+- `errors` 會通過與 `/correct` 相同的驗證邏輯，確保五大錯誤分類與 UUID。
 
 ### GET /healthz
 - 若設好金鑰且可存取模型，回傳 `{ status: "ok", provider: "gemini", model: "…" }`。

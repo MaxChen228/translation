@@ -1,12 +1,44 @@
 from __future__ import annotations
 
 import json
-from typing import Dict
+from typing import Dict, Iterable, Any
+
+from fastapi import HTTPException
 
 from app.schemas import CorrectRequest, CorrectResponse
 
 
 ALLOWED_ERROR_TYPES = {"morphological", "syntactic", "lexical", "phonological", "pragmatic"}
+
+
+def _coerce_mapping(obj: Any) -> Dict[str, Any]:
+    if isinstance(obj, dict):
+        return dict(obj)
+    if hasattr(obj, "model_dump"):
+        return obj.model_dump()
+    raise TypeError(f"Unsupported error payload type: {type(obj)}")
+
+
+def normalize_errors(raw_errors: Iterable[Any]) -> list[Dict[str, Any]]:
+    import uuid
+
+    normalized: list[Dict[str, Any]] = []
+    invalid = []
+    for idx, item in enumerate(list(raw_errors or [])):
+        data = _coerce_mapping(item)
+        err_type = str(data.get("type", "")).strip().lower()
+        if err_type not in ALLOWED_ERROR_TYPES:
+            invalid.append({"index": idx, "value": err_type})
+        else:
+            data["type"] = err_type
+        data.pop("originalRange", None)
+        data.pop("suggestionRange", None)
+        data.pop("correctedRange", None)
+        data["id"] = str(uuid.uuid4())
+        normalized.append(data)
+    if invalid:
+        raise HTTPException(status_code=422, detail={"invalid_types": invalid, "allowed": sorted(ALLOWED_ERROR_TYPES)})
+    return normalized
 
 
 def build_user_content(req: CorrectRequest) -> str:
@@ -33,23 +65,6 @@ def validate_correct_response(obj: dict) -> CorrectResponse:
     - Drop any range-like keys
     - Assign UUID for every error id
     """
-    import uuid
-
-    errs = obj.get("errors") or []
-    invalid = []
-    for idx, e in enumerate(errs):
-        t = (e.get("type") or "").strip().lower()
-        if t not in ALLOWED_ERROR_TYPES:
-            invalid.append({"index": idx, "value": t})
-        else:
-            e["type"] = t
-        e.pop("originalRange", None)
-        e.pop("suggestionRange", None)
-        e.pop("correctedRange", None)
-        e["id"] = str(uuid.uuid4())
-    if invalid:
-        from fastapi import HTTPException
-
-        raise HTTPException(status_code=422, detail={"invalid_types": invalid, "allowed": sorted(ALLOWED_ERROR_TYPES)})
+    obj = dict(obj)
+    obj["errors"] = normalize_errors(obj.get("errors") or [])
     return CorrectResponse.model_validate(obj)
-
