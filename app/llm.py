@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import os
-from typing import Optional, Dict
+from typing import Optional, Dict, Sequence, Mapping
 
 import requests
 from app.core.settings import get_settings
@@ -111,16 +111,28 @@ def _gen_config() -> Dict[str, object]:
     return get_settings().generation_config()
 
 
-def call_gemini_json(system_prompt: str, user_content: str, *, model: Optional[str] = None, timeout: int = 60) -> dict:
+def call_gemini_json(
+    system_prompt: str,
+    user_content: str,
+    *,
+    model: Optional[str] = None,
+    inline_parts: Optional[Sequence[Mapping[str, object]]] = None,
+    timeout: int = 60,
+) -> dict:
     s = get_settings()
     api_key = s.GEMINI_API_KEY or s.GOOGLE_API_KEY
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY/GOOGLE_API_KEY not set")
     chosen = (model or get_current_model()).strip()
     url = f"{GEMINI_BASE}/models/{chosen}:generateContent?key={api_key}"
+    parts = [{"text": user_content}]
+    if inline_parts:
+        for part in inline_parts:
+            if part:
+                parts.append(dict(part))
     payload = {
         "system_instruction": {"parts": [{"text": system_prompt}]},
-        "contents": [{"role": "user", "parts": [{"text": user_content}]}],
+        "contents": [{"role": "user", "parts": parts}],
         "generationConfig": _gen_config(),
     }
     r = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=timeout)

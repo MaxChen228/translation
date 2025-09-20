@@ -54,9 +54,16 @@ class CorrectRequest(BaseModel):
 
 # ----- Chat workflow DTOs -----
 
+class ChatAttachment(BaseModel):
+    type: Literal["image"]
+    mimeType: str
+    data: str  # base64 (Gemini inline_data)
+
+
 class ChatMessage(BaseModel):
     role: Literal["user", "assistant"]
     content: str
+    attachments: Optional[List[ChatAttachment]] = None
 
 
 class ChatTurnRequest(BaseModel):

@@ -24,7 +24,14 @@ def dev():  # uvicorn entry helper
     host = os.environ.get("HOST", "0.0.0.0")
     port = int(os.environ.get("PORT", "8080"))
     # Run by passing the app object directly to avoid import path issues
-    uvicorn.run(app, host=host, port=port, reload=False, log_level="info")
+    uvicorn.run(
+        app,
+        host=host,
+        port=port,
+        reload=False,
+        log_level="info",
+        limit_max_request_size=5 * 1024 * 1024,
+    )
 
 
 if __name__ == "__main__":

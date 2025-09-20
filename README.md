@@ -22,7 +22,7 @@ pip install -r requirements.txt
 # 本機啟動（預設 0.0.0.0:8080）
 export HOST=0.0.0.0
 export PORT=8080
-uvicorn main:app --reload --host "$HOST" --port "$PORT"
+uvicorn main:app --reload --host "$HOST" --port "$PORT" --limit-max-request-size 5242880
 
 # 健康檢查
 curl -s http://127.0.0.1:8080/healthz | jq .
@@ -141,7 +141,7 @@ cp .env.example .env
 - 在 GitHub 建立 repo 並推送（本倉已對應 https://github.com/MaxChen228/translation）。
 - Render → New Blueprint → 選擇本 repo；使用以下設定（也可使用倉庫內的 `render.yaml`）：
   - Build Command：`pip install -r requirements.txt`
-  - Start Command：`uvicorn main:app --host 0.0.0.0 --port $PORT`
+  - Start Command：`uvicorn main:app --host 0.0.0.0 --port $PORT --limit-max-request-size 5242880`
   - Health Check：`/healthz`
   - Env Vars：設定 `GEMINI_API_KEY`（必要）、`GEMINI_MODEL`（可選）
 

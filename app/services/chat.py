@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from typing import Optional
+from typing import Optional, List, Dict
 
 from fastapi import HTTPException
 
@@ -15,6 +15,7 @@ from app.schemas import (
     ChatTurnResponse,
     ChatResearchRequest,
     ChatResearchResponse,
+    ChatMessage,
 )
 from app.services.corrector import normalize_errors
 
@@ -22,9 +23,39 @@ TURN_PROMPT = load_chat_turn_prompt()
 RESEARCH_PROMPT = load_chat_research_prompt()
 
 
-def _serialize_messages(messages) -> str:
-    data = [m.model_dump() if hasattr(m, "model_dump") else dict(m) for m in messages]
-    return json.dumps({"messages": data}, ensure_ascii=False)
+def _serialize_messages(messages: List[ChatMessage]) -> tuple[str, List[Dict[str, object]]]:
+    serialized: list[dict] = []
+    inline_parts: list[Dict[str, object]] = []
+
+    for msg in messages:
+        base = {"role": msg.role, "content": msg.content}
+        atts = []
+        for attachment in msg.attachments or []:
+            if attachment.type != "image":
+                continue
+            data = (attachment.data or "").strip()
+            if not data:
+                continue
+            index = len(inline_parts) + 1
+            inline_parts.append(
+                {
+                    "inline_data": {
+                        "data": data,
+                        "mime_type": attachment.mimeType,
+                    }
+                }
+            )
+            placeholder = {
+                "type": attachment.type,
+                "mimeType": attachment.mimeType,
+                "index": index,
+            }
+            atts.append(placeholder)
+        if atts:
+            base["attachments"] = atts
+        serialized.append(base)
+
+    return json.dumps({"messages": serialized}, ensure_ascii=False), inline_parts
 
 
 def _require_str(obj: dict, key: str, *, allow_empty: bool = False) -> str:
@@ -37,12 +68,13 @@ def _require_str(obj: dict, key: str, *, allow_empty: bool = False) -> str:
 
 
 def run_turn(req: ChatTurnRequest, provider: LLMProvider) -> ChatTurnResponse:
-    payload = _serialize_messages(req.messages)
+    payload, inline_parts = _serialize_messages(req.messages)
     try:
         data = provider.generate_json(
             system_prompt=TURN_PROMPT,
             user_content=payload,
             model=req.model,
+            inline_parts=inline_parts,
         )
     except HTTPException:
         raise
@@ -61,12 +93,13 @@ def run_turn(req: ChatTurnRequest, provider: LLMProvider) -> ChatTurnResponse:
 
 
 def run_research(req: ChatResearchRequest, provider: LLMProvider) -> ChatResearchResponse:
-    payload = _serialize_messages(req.messages)
+    payload, inline_parts = _serialize_messages(req.messages)
     try:
         data = provider.generate_json(
             system_prompt=RESEARCH_PROMPT,
             user_content=payload,
             model=req.model,
+            inline_parts=inline_parts,
             timeout=90,
         )
     except HTTPException:

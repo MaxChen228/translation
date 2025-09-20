@@ -1,7 +1,7 @@
 import unittest
 
-from app.schemas import ChatMessage, ChatTurnRequest, ChatResearchRequest
-from app.services.chat import run_turn, run_research
+from app.schemas import ChatMessage, ChatTurnRequest, ChatResearchRequest, ChatAttachment
+from app.services.chat import run_turn, run_research, _serialize_messages
 
 
 class StubProvider:
@@ -11,7 +11,7 @@ class StubProvider:
     def resolve_model(self, override):
         return override or "stub"
 
-    def generate_json(self, system_prompt, user_content, *, model=None, timeout=60):
+    def generate_json(self, system_prompt, user_content, *, model=None, inline_parts=None, timeout=60):
         return self.payload
 
 
@@ -51,6 +51,15 @@ class ChatServiceTests(unittest.TestCase):
         self.assertEqual(resp.correctedEn, "I want to study abroad to broaden my perspective.")
         self.assertEqual(len(resp.errors), 1)
         self.assertEqual(resp.errors[0].type, "morphological")
+
+    def test_serialize_messages_with_image(self):
+        attachment = ChatAttachment(type="image", mimeType="image/png", data="ZmFrZV9iYXNlNjQ=")
+        msg = ChatMessage(role="user", content="看圖說故事", attachments=[attachment])
+        payload, parts = _serialize_messages([msg])
+        self.assertIn("attachments", payload)
+        self.assertEqual(len(parts), 1)
+        self.assertEqual(parts[0]["inline_data"]["mime_type"], "image/png")
+        self.assertIn('"index": 1', payload)
 
 
 if __name__ == "__main__":
