@@ -36,8 +36,8 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `DECK_DEBUG_LOG`：`1/true` 時在 `_test_logs` 留下 `/make_deck` 呼叫摘要以利除錯。
-- `PROMPT_FILE`：批改系統提示檔路徑（相對於 backend 目錄或絕對路徑，預設 `prompt.txt`）。
-- `DECK_PROMPT_FILE`：卡片生成系統提示檔路徑（預設 `prompt_deck.txt`）。
+- `PROMPT_FILE`：批改系統提示檔路徑（相對於 backend 目錄或絕對路徑，預設 `prompts/prompt.txt`）。
+- `DECK_PROMPT_FILE`：卡片生成系統提示檔路徑（預設 `prompts/prompt_deck.txt`）。
 - `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1/0.1/1/320）。
 - `HOST`、`PORT`：本機啟動位址與連接埠（`uvicorn` 參數也可覆蓋）。
 
@@ -93,7 +93,27 @@ cp .env.example .env
 {
   "name": "未命名",
   "items": [
-    { "zh": "…", "en": "…", "corrected": "…", "span": "…", "suggestion": "…", "explainZh": "…", "type": "lexical" }
+    {
+      "source": "correction",
+      "correction": {
+        "zh": "中文原句",
+        "en": "使用者英文原文",
+        "corrected": "修正版英文",
+        "span": "錯誤片段",
+        "suggestion": "建議修正",
+        "explainZh": "中文解釋",
+        "type": "lexical"
+      }
+    },
+    {
+      "source": "research",
+      "research": {
+        "summary": "研究摘要",
+        "en": "完整英文語境",
+        "focus": "重點說明",
+        "type": "lexical"
+      }
+    }
   ],
   "model": "gemini-2.5-pro | gemini-2.5-flash"  // 可選，覆蓋預設模型
 }
@@ -107,7 +127,7 @@ cp .env.example .env
 ```
 
 ### POST /chat/respond
-- 輸入：`{ messages: [{ role: "user"|"assistant", content: "..." }], model?: string }`
+- 輸入：`{ messages: [{ role: "user"|"assistant", content: "...", attachments?: [{ type: "image", mimeType: "image/png", data: "base64" }] }], model?: string }`
 - 回應：`{ reply: string, state: "gathering"|"ready"|"completed", checklist?: string[] }`
 - 用途：多輪確認需求，當 `state` 變為 `ready` 代表可以進入深入研究。
 
@@ -116,23 +136,13 @@ cp .env.example .env
 - 回應：
   ```json
   {
-    "title": "研究主題標題",
     "summary": "傳統中文摘要",
-    "sourceZh": "原始中文描述（可選）",
-    "attemptEn": "使用者英文草稿（可選）",
-    "correctedEn": "潤飾後的英文",
-    "errors": [
-      {
-        "id": "uuid",
-        "span": "want study",
-        "type": "morphological",
-        "explainZh": "缺少 to 不定詞",
-        "suggestion": "want to study"
-      }
-    ]
+    "en": "帶前後文的英文段落",
+    "focus": "重點單字或文法說明",
+    "type": "lexical"
   }
   ```
-- `errors` 會通過與 `/correct` 相同的驗證邏輯，確保五大錯誤分類與 UUID。
+- `type` 僅允許：`morphological`、`syntactic`、`lexical`、`phonological`、`pragmatic`。
 
 ### GET /healthz
 - 若設好金鑰且可存取模型，回傳 `{ status: "ok", provider: "gemini", model: "…" }`。

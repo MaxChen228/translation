@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import List, Optional, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 # ----- Correct endpoint DTOs -----
@@ -83,12 +83,10 @@ class ChatResearchRequest(BaseModel):
 
 
 class ChatResearchResponse(BaseModel):
-    title: str
     summary: str
-    sourceZh: Optional[str] = None
-    attemptEn: Optional[str] = None
-    correctedEn: str
-    errors: List[ErrorDTO]
+    en: str
+    focus: str
+    type: Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]
 
 
 # ----- Cloud library DTOs (Decks/Books) -----
@@ -184,14 +182,53 @@ class ImportResponse(BaseModel):
 
 # ----- Deck (flashcards) -----
 
-class DeckMakeItem(BaseModel):
+class DeckCorrectionPayload(BaseModel):
     zh: Optional[str] = None
     en: Optional[str] = None
     corrected: Optional[str] = None
     span: Optional[str] = None
     suggestion: Optional[str] = None
     explainZh: Optional[str] = None
-    type: Optional[str] = None
+    type: Optional[Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]] = None
+
+
+class DeckResearchPayload(BaseModel):
+    summary: Optional[str] = None
+    en: Optional[str] = None
+    focus: Optional[str] = None
+    type: Optional[Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]] = None
+
+
+class DeckMakeItem(BaseModel):
+    source: Literal["correction", "research"]
+    correction: Optional[DeckCorrectionPayload] = None
+    research: Optional[DeckResearchPayload] = None
+
+    @classmethod
+    def _require_payload(cls, value: Optional[BaseModel], field: str) -> BaseModel:
+        if value is None:
+            raise ValueError(f"deck_item_missing_{field}")
+        return value
+
+    @field_validator("correction", "research", mode="after")
+    @classmethod
+    def _strip_empty(cls, value):
+        if value is None:
+            return None
+        data = value.model_dump(exclude_none=True)
+        if not data:
+            return None
+        return value
+
+    @model_validator(mode="after")
+    def _validate_payload(self):
+        if self.source == "correction":
+            self._require_payload(self.correction, "correction")
+            self.research = None
+        elif self.source == "research":
+            self._require_payload(self.research, "research")
+            self.correction = None
+        return self
 
 
 class DeckMakeRequest(BaseModel):

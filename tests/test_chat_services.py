@@ -30,27 +30,18 @@ class ChatServiceTests(unittest.TestCase):
 
     def test_run_research(self):
         provider = StubProvider({
-            "title": "留學動機整理",
-            "summary": "整理使用者提供的草稿並提出修正建議。",
-            "sourceZh": "申請內容",
-            "attemptEn": "I want study abroad.",
-            "correctedEn": "I want to study abroad to broaden my perspective.",
-            "errors": [
-                {
-                    "span": "want study",
-                    "type": "morphological",
-                    "explainZh": "缺少 to 不定詞",
-                    "suggestion": "want to study",
-                }
-            ],
+            "summary": "整理使用者請求並給出正確用法說明。",
+            "en": "I want to study abroad to broaden my perspective." \
+                "\nThis clarifies the learner's motivation and uses the correct infinitive form.",
+            "focus": "不定詞 to study 用於動詞 want 後表達目的。",
+            "type": "morphological",
         })
         req = ChatResearchRequest(messages=[ChatMessage(role="user", content="幫我潤飾這段英文")])
         resp = run_research(req, provider)
-        self.assertEqual(resp.title, "留學動機整理")
-        self.assertEqual(resp.summary, "整理使用者提供的草稿並提出修正建議。")
-        self.assertEqual(resp.correctedEn, "I want to study abroad to broaden my perspective.")
-        self.assertEqual(len(resp.errors), 1)
-        self.assertEqual(resp.errors[0].type, "morphological")
+        self.assertEqual(resp.summary, "整理使用者請求並給出正確用法說明。")
+        self.assertIn("I want to study abroad", resp.en)
+        self.assertEqual(resp.focus, "不定詞 to study 用於動詞 want 後表達目的。")
+        self.assertEqual(resp.type, "morphological")
 
     def test_serialize_messages_with_image(self):
         attachment = ChatAttachment(type="image", mimeType="image/png", data="ZmFrZV9iYXNlNjQ=")

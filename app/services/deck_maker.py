@@ -36,22 +36,24 @@ def _deck_debug_write(payload: Dict):
 
 def make_deck_from_request(req: DeckMakeRequest, deck_prompt: str, chosen_model: str) -> DeckMakeResponse:
     # Compact user JSON to save tokens
-    items = [
-        {
-            k: v
-            for k, v in {
-                "zh": it.zh,
-                "en": it.en,
-                "corrected": it.corrected,
-                "span": it.span,
-                "suggestion": it.suggestion,
-                "explainZh": it.explainZh,
-                "type": it.type,
-            }.items()
-            if v not in (None, "")
-        }
-        for it in req.items
-    ]
+    items = []
+    for it in req.items:
+        entry: Dict[str, object] = {"source": it.source}
+        if it.source == "correction" and it.correction:
+            payload = {
+                k: v
+                for k, v in it.correction.model_dump(exclude_none=True).items()
+                if v != ""
+            }
+            entry["correction"] = payload
+        elif it.source == "research" and it.research:
+            payload = {
+                k: v
+                for k, v in it.research.model_dump(exclude_none=True).items()
+                if v != ""
+            }
+            entry["research"] = payload
+        items.append(entry)
     compact = {"name": req.name or "未命名", "items": items}
     user_content = json.dumps(compact, ensure_ascii=False)
 

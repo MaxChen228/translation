@@ -7,7 +7,7 @@
     python scripts/chat_cli.py
 
 指令：
-    /research   觸發深入研究並顯示錯誤清單
+    /research   觸發深入研究並顯示摘要與重點
     /reset      清空對話歷史
     /show       列出目前的對話訊息
     /exit       結束程式
@@ -64,18 +64,6 @@ def _print_checklist(items: List[str] | None) -> None:
         print(f"  {idx}. {item}")
 
 
-def _print_errors(errors: List[Dict]) -> None:
-    if not errors:
-        print("\n[Errors] 無錯誤項目")
-        return
-    print("\n[Errors]")
-    for idx, err in enumerate(errors, 1):
-        print(f"  {idx}. span: {err.get('span')} ({err.get('type')})")
-        print(f"     explain: {err.get('explainZh')}")
-        suggestion = err.get("suggestion")
-        if suggestion:
-            print(f"     suggestion: {suggestion}")
-
 
 def run_chat() -> None:
     print(SEPARATOR)
@@ -119,16 +107,10 @@ def run_chat() -> None:
             payload = {"messages": conversation}
             data = _post(RESEARCH_URL, payload)
             print(SEPARATOR)
-            _print_block("Title", data.get("title", ""))
             _print_block("Summary", data.get("summary", ""))
-            src = data.get("sourceZh")
-            if src:
-                _print_block("SourceZh", src)
-            attempt = data.get("attemptEn")
-            if attempt:
-                _print_block("AttemptEn", attempt)
-            _print_block("CorrectedEn", data.get("correctedEn", ""))
-            _print_errors(data.get("errors") or [])
+            _print_block("English", data.get("en", ""))
+            _print_block("Focus", data.get("focus", ""))
+            _print_block("Type", data.get("type", ""))
             print(SEPARATOR)
             continue
 

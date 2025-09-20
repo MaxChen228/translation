@@ -17,7 +17,6 @@ from app.schemas import (
     ChatResearchResponse,
     ChatMessage,
 )
-from app.services.corrector import normalize_errors
 
 TURN_PROMPT = load_chat_turn_prompt()
 RESEARCH_PROMPT = load_chat_research_prompt()
@@ -107,14 +106,11 @@ def run_research(req: ChatResearchRequest, provider: LLMProvider) -> ChatResearc
     except Exception as exc:  # pragma: no cover
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
-    errors = normalize_errors(data.get("errors") or [])
     response_payload = {
-        "title": _require_str(data, "title"),
         "summary": _require_str(data, "summary"),
-        "sourceZh": data.get("sourceZh"),
-        "attemptEn": data.get("attemptEn"),
-        "correctedEn": _require_str(data, "correctedEn", allow_empty=True),
-        "errors": errors,
+        "en": _require_str(data, "en", allow_empty=False),
+        "focus": _require_str(data, "focus", allow_empty=False),
+        "type": _require_str(data, "type", allow_empty=False),
     }
     try:
         return ChatResearchResponse.model_validate(response_payload)

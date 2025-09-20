@@ -28,10 +28,10 @@ class Settings(BaseSettings):
     CONTENT_DIR: str = "data"
 
     # Prompts
-    PROMPT_FILE: str = "prompt.txt"
-    DECK_PROMPT_FILE: str = "prompt_deck.txt"
-    CHAT_TURN_PROMPT_FILE: str = "prompt_chat_turn.txt"
-    CHAT_RESEARCH_PROMPT_FILE: str = "prompt_chat_research.txt"
+    PROMPT_FILE: str = "prompts/prompt.txt"
+    DECK_PROMPT_FILE: str = "prompts/prompt_deck.txt"
+    CHAT_TURN_PROMPT_FILE: str = "prompts/prompt_chat_turn.txt"
+    CHAT_RESEARCH_PROMPT_FILE: str = "prompts/prompt_chat_research.txt"
 
     # Debug / logging
     DECK_DEBUG_LOG: str = "1"
