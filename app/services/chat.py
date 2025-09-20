@@ -74,6 +74,77 @@ def _require_str(obj: dict, key: str, *, allow_empty: bool = False) -> str:
     return value
 
 
+def _first_non_empty_line(text: str) -> str:
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped:
+            return stripped
+    return ""
+
+
+def _summary_list(text: str) -> str:
+    lines: list[str] = []
+    for raw in text.splitlines():
+        stripped = raw.strip()
+        if not stripped:
+            continue
+        if stripped.startswith(('-', '*')):
+            stripped = stripped.lstrip('-* ').strip()
+        if stripped.startswith('##'):
+            continue
+        if stripped.startswith('>'):
+            stripped = stripped.lstrip('>').strip()
+        if stripped:
+            lines.append(stripped)
+        if len(lines) >= 3:
+            break
+    if not lines:
+        first_line = _first_non_empty_line(text)
+        cleaned = first_line.lstrip('-*# ').strip()
+        lines = [cleaned or "已回覆您的請求，有任何需要請告訴我。"]
+    return "\n".join(f"- {line}" for line in lines)
+
+
+def _normalize_markdown_reply(reply: str) -> str:
+    stripped = reply.strip()
+    if not stripped:
+        return (
+            "## 回覆摘要\n"
+            "- 目前沒有可以分享的資訊\n\n"
+            "## 詳細說明\n"
+            "尚未取得有效內容，請提供更多線索。"
+        )
+
+    has_summary = "## 回覆摘要" in stripped
+    has_detail = "## 詳細說明" in stripped
+
+    if has_summary and has_detail:
+        return stripped
+
+    if not has_summary and not has_detail:
+        summary = _summary_list(stripped)
+        return (
+            f"## 回覆摘要\n{summary}\n\n"
+            f"## 詳細說明\n{stripped}"
+        )
+
+    if has_summary and not has_detail:
+        return (
+            f"{stripped}\n\n"
+            "## 詳細說明\n"
+            "上述摘要即為目前掌握的資訊，若需要更多細節請提供補充資料。"
+        ).strip()
+
+    if not has_summary and has_detail:
+        summary = _summary_list(stripped)
+        return (
+            f"## 回覆摘要\n{summary}\n\n"
+            f"{stripped}"
+        ).strip()
+
+    return stripped
+
+
 def run_turn(req: ChatTurnRequest, provider: LLMProvider) -> ChatTurnResponse:
     payload, inline_parts = _serialize_messages(req.messages)
     try:
@@ -98,7 +169,7 @@ def run_turn(req: ChatTurnRequest, provider: LLMProvider) -> ChatTurnResponse:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
     response_payload = {
-        "reply": _require_str(data, "reply"),
+        "reply": _normalize_markdown_reply(_require_str(data, "reply")),
         "state": str(data.get("state", "gathering") or "gathering"),
         "checklist": data.get("checklist"),
     }
