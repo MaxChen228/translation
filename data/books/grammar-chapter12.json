@@ -6,429 +6,812 @@
       "id": "ch12-1-1-rob-001",
       "zh": "那個黑衣人搶了那個女人的錢包。",
       "hints": [
-        {"category": "syntactic", "text": "rob sb. of sth.（搶某人某物）"},
-        {"category": "lexical", "text": "the man in black 黑衣人"}
+        {
+          "category": "syntactic",
+          "text": "rob sb. of sth.（搶某人某物）"
+        },
+        {
+          "category": "lexical",
+          "text": "the man in black 黑衣人"
+        }
       ],
       "suggestions": [
-        {"text": "注意 rob 的介詞搭配：rob sb. of sth.，不是 rob sth. from sb.", "category": "grammar"}
+        {
+          "text": "注意 rob 的介詞搭配：rob sb. of sth.，不是 rob sth. from sb.",
+          "category": "grammar"
+        }
       ],
-      "tags": ["verb-of", "rob"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-1-1-accuse-002",
       "zh": "村民控告農夫謀殺了他的太太。",
       "hints": [
-        {"category": "syntactic", "text": "accuse sb. of V-ing/N（控告某人做某事）"},
-        {"category": "pragmatic", "text": "murder 當動詞用，謀殺"}
+        {
+          "category": "syntactic",
+          "text": "accuse sb. of V-ing/N（控告某人做某事）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "murder 當動詞用，謀殺"
+        }
       ],
       "suggestions": [
-        {"text": "accuse 後接 of，不要與 charge sb. with sth. 混淆", "category": "grammar"}
+        {
+          "text": "accuse 後接 of，不要與 charge sb. with sth. 混淆",
+          "category": "grammar"
+        }
       ],
-      "tags": ["verb-of", "accuse"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-1-1-suspect-003",
       "zh": "有人懷疑他縱火燒了這間公寓。",
       "hints": [
-        {"category": "syntactic", "text": "suspect sb. of V-ing（懷疑某人做某事）"},
-        {"category": "lexical", "text": "set fire to 縱火燒"}
+        {
+          "category": "syntactic",
+          "text": "suspect sb. of V-ing（懷疑某人做某事）"
+        },
+        {
+          "category": "lexical",
+          "text": "set fire to 縱火燒"
+        }
       ],
       "suggestions": [
-        {"text": "可用被動語態：He was suspected of setting fire to...", "category": "style"}
+        {
+          "text": "可用被動語態：He was suspected of setting fire to...",
+          "category": "style"
+        }
       ],
-      "tags": ["verb-of", "suspect"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-1-1-cure-004",
       "zh": "幸好，他罹患新冠肺炎後痊癒，終於出院了。",
       "hints": [
-        {"category": "syntactic", "text": "be cured of 疾病（從疾病中痊癒）"},
-        {"category": "pragmatic", "text": "be released from hospital 出院"}
+        {
+          "category": "syntactic",
+          "text": "be cured of 疾病（從疾病中痊癒）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "be released from hospital 出院"
+        }
       ],
       "suggestions": [
-        {"text": "cure of 表示治癒，recover from 表示康復，注意區別", "category": "usage"}
+        {
+          "text": "cure of 表示治癒，recover from 表示康復，注意區別",
+          "category": "usage"
+        }
       ],
-      "tags": ["verb-of", "cure"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-1-1-deprive-005",
       "zh": "黑人曾經被剝奪人權。",
       "hints": [
-        {"category": "syntactic", "text": "be deprived of sth.（被剝奪某物）"},
-        {"category": "pragmatic", "text": "human rights 人權"}
+        {
+          "category": "syntactic",
+          "text": "be deprived of sth.（被剝奪某物）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "human rights 人權"
+        }
       ],
       "suggestions": [
-        {"text": "deprive 常用被動語態，強調受害者的角度", "category": "style"}
+        {
+          "text": "deprive 常用被動語態，強調受害者的角度",
+          "category": "style"
+        }
       ],
-      "tags": ["verb-of", "deprive"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 4
     },
     {
       "id": "ch12-2-1-punch-001",
       "zh": "盛怒之下，他朝對手的肚子擊了一拳。",
       "hints": [
-        {"category": "syntactic", "text": "punch sb. in the + 身體部位"},
-        {"category": "pragmatic", "text": "in great rage 盛怒之下"}
+        {
+          "category": "syntactic",
+          "text": "punch sb. in the + 身體部位"
+        },
+        {
+          "category": "pragmatic",
+          "text": "in great rage 盛怒之下"
+        }
       ],
       "suggestions": [
-        {"text": "打擊身體內部用 in，表面用 on，抓住用 by", "category": "grammar"}
+        {
+          "text": "打擊身體內部用 in，表面用 on，抓住用 by",
+          "category": "grammar"
+        }
       ],
-      "tags": ["hit-body-parts", "punch"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-2-1-pat-002",
       "zh": "當我正要從人群中擠過去時，我覺得有人拍了我的肩膀。",
       "hints": [
-        {"category": "syntactic", "text": "pat sb. on the shoulder（拍某人肩膀）"},
-        {"category": "lexical", "text": "force one's way through 擠過去"}
+        {
+          "category": "syntactic",
+          "text": "pat sb. on the shoulder（拍某人肩膀）"
+        },
+        {
+          "category": "lexical",
+          "text": "force one's way through 擠過去"
+        }
       ],
       "suggestions": [
-        {"text": "while + V-ing 可簡化時間子句", "category": "style"}
+        {
+          "text": "while + V-ing 可簡化時間子句",
+          "category": "style"
+        }
       ],
-      "tags": ["hit-body-parts", "pat"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-2-1-slap-003",
       "zh": "我爸勃然大怒，打了我一巴掌。",
       "hints": [
-        {"category": "syntactic", "text": "slap sb. across the face（打某人耳光）"},
-        {"category": "lexical", "text": "hit the ceiling 勃然大怒"}
+        {
+          "category": "syntactic",
+          "text": "slap sb. across the face（打某人耳光）"
+        },
+        {
+          "category": "lexical",
+          "text": "hit the ceiling 勃然大怒"
+        }
       ],
       "suggestions": [
-        {"text": "across 表示橫跨，用於 face/cheek 等", "category": "grammar"}
+        {
+          "text": "across 表示橫跨，用於 face/cheek 等",
+          "category": "grammar"
+        }
       ],
-      "tags": ["hit-body-parts", "slap"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-3-1-stop-001",
       "zh": "大雨使他們無法外出參加晚宴。",
       "hints": [
-        {"category": "syntactic", "text": "stop sb. from V-ing（阻止某人做某事）"},
-        {"category": "lexical", "text": "dinner party 晚宴"}
+        {
+          "category": "syntactic",
+          "text": "stop sb. from V-ing（阻止某人做某事）"
+        },
+        {
+          "category": "lexical",
+          "text": "dinner party 晚宴"
+        }
       ],
       "suggestions": [
-        {"text": "prevent/keep/stop 都可與 from 搭配，語意相近", "category": "usage"}
+        {
+          "text": "prevent/keep/stop 都可與 from 搭配，語意相近",
+          "category": "usage"
+        }
       ],
-      "tags": ["verb-from", "stop"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 2
     },
     {
       "id": "ch12-3-1-protect-002",
       "zh": "別擔心，我會保護你不讓你受傷的。",
       "hints": [
-        {"category": "syntactic", "text": "protect sb. from harm（保護某人免受傷害）"},
-        {"category": "pragmatic", "text": "Don't worry 別擔心"}
+        {
+          "category": "syntactic",
+          "text": "protect sb. from harm（保護某人免受傷害）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "Don't worry 別擔心"
+        }
       ],
       "suggestions": [
-        {"text": "protect 後接 from，表示免於某種傷害", "category": "grammar"}
+        {
+          "text": "protect 後接 from，表示免於某種傷害",
+          "category": "grammar"
+        }
       ],
-      "tags": ["verb-from", "protect"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 2
     },
     {
       "id": "ch12-3-1-prevent-003",
       "zh": "失去父母，使那些孤兒無法享受童年。",
       "hints": [
-        {"category": "syntactic", "text": "prevent sb. from V-ing（阻止某人做某事）"},
-        {"category": "lexical", "text": "at such a tender age 在如此年幼時"}
+        {
+          "category": "syntactic",
+          "text": "prevent sb. from V-ing（阻止某人做某事）"
+        },
+        {
+          "category": "lexical",
+          "text": "at such a tender age 在如此年幼時"
+        }
       ],
       "suggestions": [
-        {"text": "可加入時間狀語使句子更完整", "category": "style"}
+        {
+          "text": "可加入時間狀語使句子更完整",
+          "category": "style"
+        }
       ],
-      "tags": ["verb-from", "prevent"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-4-1-devote-001",
       "zh": "德蕾莎修女終其一生都致力於幫助窮人。",
       "hints": [
-        {"category": "syntactic", "text": "devote oneself to V-ing/N（致力於某事）"},
-        {"category": "pragmatic", "text": "throughout one's life 終其一生"}
+        {
+          "category": "syntactic",
+          "text": "devote oneself to V-ing/N（致力於某事）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "throughout one's life 終其一生"
+        }
       ],
       "suggestions": [
-        {"text": "devote to 中的 to 是介詞，後接 V-ing 或名詞", "category": "grammar"}
+        {
+          "text": "devote to 中的 to 是介詞，後接 V-ing 或名詞",
+          "category": "grammar"
+        }
       ],
-      "tags": ["reflexive-to", "devote"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-4-1-dedicate-002",
       "zh": "他最新的小說是獻給他的太太與孩子的。",
       "hints": [
-        {"category": "syntactic", "text": "be dedicated to sb.（獻給某人）"},
-        {"category": "morphological", "text": "被動語態的使用"}
+        {
+          "category": "syntactic",
+          "text": "be dedicated to sb.（獻給某人）"
+        },
+        {
+          "category": "morphological",
+          "text": "被動語態的使用"
+        }
       ],
       "suggestions": [
-        {"text": "dedicate 可用主動或被動，depending on 語境", "category": "style"}
+        {
+          "text": "dedicate 可用主動或被動，depending on 語境",
+          "category": "style"
+        }
       ],
-      "tags": ["reflexive-to", "dedicate"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-4-1-accustom-003",
       "zh": "搬到另一個城市後，你最好調適自己適應該地的生活方式。",
       "hints": [
-        {"category": "syntactic", "text": "accustom oneself to sth.（使自己適應某事）"},
-        {"category": "pragmatic", "text": "lifestyle 生活方式"}
+        {
+          "category": "syntactic",
+          "text": "accustom oneself to sth.（使自己適應某事）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "lifestyle 生活方式"
+        }
       ],
       "suggestions": [
-        {"text": "也可用 get/be used to 表示習慣", "category": "usage"}
+        {
+          "text": "也可用 get/be used to 表示習慣",
+          "category": "usage"
+        }
       ],
-      "tags": ["reflexive-to", "accustom"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 4
     },
     {
       "id": "ch12-4-1-expose-004",
       "zh": "曝太久太陽對你有害。",
       "hints": [
-        {"category": "syntactic", "text": "expose oneself to sth.（暴露於某事物）"},
-        {"category": "pragmatic", "text": "It is harmful to V（做某事有害）"}
+        {
+          "category": "syntactic",
+          "text": "expose oneself to sth.（暴露於某事物）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "It is harmful to V（做某事有害）"
+        }
       ],
       "suggestions": [
-        {"text": "可用 It 作形式主語：It is harmful to expose yourself to...", "category": "style"}
+        {
+          "text": "可用 It 作形式主語：It is harmful to expose yourself to...",
+          "category": "style"
+        }
       ],
-      "tags": ["reflexive-to", "expose"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-5-1-persuade-001",
       "zh": "那個推銷員說服她購買那條價值連城的項鍊，真是讓我們目瞪口呆。",
       "hints": [
-        {"category": "syntactic", "text": "persuade sb. into V-ing（說服某人做某事）"},
-        {"category": "lexical", "text": "priceless necklace 價值連城的項鍊"}
+        {
+          "category": "syntactic",
+          "text": "persuade sb. into V-ing（說服某人做某事）"
+        },
+        {
+          "category": "lexical",
+          "text": "priceless necklace 價值連城的項鍊"
+        }
       ],
       "suggestions": [
-        {"text": "Our jaws dropped 是生動的慣用語，表示震驚", "category": "style"}
+        {
+          "text": "Our jaws dropped 是生動的慣用語，表示震驚",
+          "category": "style"
+        }
       ],
-      "tags": ["persuade-into", "persuade"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 4
     },
     {
       "id": "ch12-5-1-dissuade-002",
       "zh": "身為他的朋友，我認為我有義務要勸阻他，不要做這麼蠢的事。",
       "hints": [
-        {"category": "syntactic", "text": "dissuade sb. from V-ing（勸阻某人做某事）"},
-        {"category": "pragmatic", "text": "regard it as one's duty 認為是某人的義務"}
+        {
+          "category": "syntactic",
+          "text": "dissuade sb. from V-ing（勸阻某人做某事）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "regard it as one's duty 認為是某人的義務"
+        }
       ],
       "suggestions": [
-        {"text": "such stupid action 中 such 修飾 action，加強語氣", "category": "grammar"}
+        {
+          "text": "such stupid action 中 such 修飾 action，加強語氣",
+          "category": "grammar"
+        }
       ],
-      "tags": ["dissuade-from", "dissuade"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 4
     },
     {
       "id": "ch12-5-1-talk-into-003",
       "zh": "令人難以置信地，那個吝嗇鬼竟然被說服了，捐了一大筆錢給孤兒院。",
       "hints": [
-        {"category": "syntactic", "text": "talk sb. into V-ing（說服某人做某事）"},
-        {"category": "morphological", "text": "被動語態：be talked into V-ing"}
+        {
+          "category": "syntactic",
+          "text": "talk sb. into V-ing（說服某人做某事）"
+        },
+        {
+          "category": "morphological",
+          "text": "被動語態：be talked into V-ing"
+        }
       ],
       "suggestions": [
-        {"text": "talk into 與 persuade into 意思相同但較口語", "category": "usage"}
+        {
+          "text": "talk into 與 persuade into 意思相同但較口語",
+          "category": "usage"
+        }
       ],
-      "tags": ["talk-into", "persuade"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-6-1-emphasize-001",
       "zh": "老師常強調課堂參與的重要性。",
       "hints": [
-        {"category": "syntactic", "text": "emphasize sth. = put emphasis on sth."},
-        {"category": "lexical", "text": "classroom participation 課堂參與"}
+        {
+          "category": "syntactic",
+          "text": "emphasize sth. = put emphasis on sth."
+        },
+        {
+          "category": "lexical",
+          "text": "classroom participation 課堂參與"
+        }
       ],
       "suggestions": [
-        {"text": "動詞與名詞形式可互換，根據句子結構選擇", "category": "style"}
+        {
+          "text": "動詞與名詞形式可互換，根據句子結構選擇",
+          "category": "style"
+        }
       ],
-      "tags": ["verb-noun-conversion", "emphasize"],
+      "tags": [
+        "emphasis",
+        "grammar"
+      ],
       "difficulty": 2
     },
     {
       "id": "ch12-6-1-stress-002",
       "zh": "媽媽一直強調個人衛生的重要性。",
       "hints": [
-        {"category": "syntactic", "text": "stress sth. = lay stress on sth."},
-        {"category": "pragmatic", "text": "personal hygiene 個人衛生"}
+        {
+          "category": "syntactic",
+          "text": "stress sth. = lay stress on sth."
+        },
+        {
+          "category": "pragmatic",
+          "text": "personal hygiene 個人衛生"
+        }
       ],
       "suggestions": [
-        {"text": "keep V-ing 表示持續的動作", "category": "grammar"}
+        {
+          "text": "keep V-ing 表示持續的動作",
+          "category": "grammar"
+        }
       ],
-      "tags": ["verb-noun-conversion", "stress"],
+      "tags": [
+        "emphasis",
+        "grammar"
+      ],
       "difficulty": 2
     },
     {
       "id": "ch12-7-1-see-001",
       "zh": "回家途中，他看到一位機車騎士撞上了樹。",
       "hints": [
-        {"category": "syntactic", "text": "see sb. V（看到某人做某事完整過程）"},
-        {"category": "lexical", "text": "on one's way home 回家途中"}
+        {
+          "category": "syntactic",
+          "text": "see sb. V（看到某人做某事完整過程）"
+        },
+        {
+          "category": "lexical",
+          "text": "on one's way home 回家途中"
+        }
       ],
       "suggestions": [
-        {"text": "感官動詞後可接原形動詞或現在分詞，表示不同動作狀態", "category": "grammar"}
+        {
+          "text": "感官動詞後可接原形動詞或現在分詞，表示不同動作狀態",
+          "category": "grammar"
+        }
       ],
-      "tags": ["sensory-verbs", "see"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-7-1-hear-002",
       "zh": "他聽到小豬用人聲說話。",
       "hints": [
-        {"category": "syntactic", "text": "hear sb. V（聽到某人做某事）"},
-        {"category": "pragmatic", "text": "in a human voice 用人聲"}
+        {
+          "category": "syntactic",
+          "text": "hear sb. V（聽到某人做某事）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "in a human voice 用人聲"
+        }
       ],
       "suggestions": [
-        {"text": "感官動詞的受詞補語可以是原形動詞", "category": "grammar"}
+        {
+          "text": "感官動詞的受詞補語可以是原形動詞",
+          "category": "grammar"
+        }
       ],
-      "tags": ["sensory-verbs", "hear"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-7-1-make-003",
       "zh": "他的父母叫他去遛狗。",
       "hints": [
-        {"category": "syntactic", "text": "make sb. V（使某人做某事）"},
-        {"category": "morphological", "text": "被動：be made to V"}
+        {
+          "category": "syntactic",
+          "text": "make sb. V（使某人做某事）"
+        },
+        {
+          "category": "morphological",
+          "text": "被動：be made to V"
+        }
       ],
       "suggestions": [
-        {"text": "make 的被動語態要加 to，主動語態則用原形動詞", "category": "grammar"}
+        {
+          "text": "make 的被動語態要加 to，主動語態則用原形動詞",
+          "category": "grammar"
+        }
       ],
-      "tags": ["causative-verbs", "make"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-7-1-get-004",
       "zh": "儘管我努力嘗試，他還是不肯聽我說。",
       "hints": [
-        {"category": "syntactic", "text": "get sb. to V（讓某人做某事）"},
-        {"category": "pragmatic", "text": "Try as I may 儘管我努力嘗試"}
+        {
+          "category": "syntactic",
+          "text": "get sb. to V（讓某人做某事）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "Try as I may 儘管我努力嘗試"
+        }
       ],
       "suggestions": [
-        {"text": "get 與 make 不同，get sb. to V 需要 to", "category": "grammar"}
+        {
+          "text": "get 與 make 不同，get sb. to V 需要 to",
+          "category": "grammar"
+        }
       ],
-      "tags": ["causative-verbs", "get"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 4
     },
     {
       "id": "ch12-8-1-stand-001",
       "zh": "矗立在山頂的塔，俯視著下面的美麗湖泊。",
       "hints": [
-        {"category": "syntactic", "text": "stand on/at（矗立於某處）"},
-        {"category": "lexical", "text": "overlook 俯視，眺望"}
+        {
+          "category": "syntactic",
+          "text": "stand on/at（矗立於某處）"
+        },
+        {
+          "category": "lexical",
+          "text": "overlook 俯視，眺望"
+        }
       ],
       "suggestions": [
-        {"text": "現在分詞片語可作形容詞用法修飾名詞", "category": "grammar"}
+        {
+          "text": "現在分詞片語可作形容詞用法修飾名詞",
+          "category": "grammar"
+        }
       ],
-      "tags": ["location-verbs", "stand"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-8-1-situated-002",
       "zh": "這家餐廳位於河邊，提供風景如畫的景色。",
       "hints": [
-        {"category": "syntactic", "text": "be situated by/near（位於...附近）"},
-        {"category": "pragmatic", "text": "scenic view 風景如畫的景色"}
+        {
+          "category": "syntactic",
+          "text": "be situated by/near（位於...附近）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "scenic view 風景如畫的景色"
+        }
       ],
       "suggestions": [
-        {"text": "offering 作現在分詞表示伴隨狀況", "category": "style"}
+        {
+          "text": "offering 作現在分詞表示伴隨狀況",
+          "category": "style"
+        }
       ],
-      "tags": ["location-verbs", "situated"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-8-1-lie-003",
       "zh": "他壯麗的別墅位於河畔。",
       "hints": [
-        {"category": "syntactic", "text": "lie on/by（位於...）"},
-        {"category": "lexical", "text": "riverside 河畔，河邊"}
+        {
+          "category": "syntactic",
+          "text": "lie on/by（位於...）"
+        },
+        {
+          "category": "lexical",
+          "text": "riverside 河畔，河邊"
+        }
       ],
       "suggestions": [
-        {"text": "lie 表示位置時為不及物動詞，不要與 lay 混淆", "category": "pitfall"}
+        {
+          "text": "lie 表示位置時為不及物動詞，不要與 lay 混淆",
+          "category": "pitfall"
+        }
       ],
-      "tags": ["location-verbs", "lie"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-9-1-consist-001",
       "zh": "這個活潑的班級由二十個男生與二十個女生所組成。",
       "hints": [
-        {"category": "syntactic", "text": "consist of（由...組成，主動語態）"},
-        {"category": "pragmatic", "text": "lively class 活潑的班級"}
+        {
+          "category": "syntactic",
+          "text": "consist of（由...組成，主動語態）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "lively class 活潑的班級"
+        }
       ],
       "suggestions": [
-        {"text": "consist of 沒有被動語態，不要說 be consisted of", "category": "pitfall"}
+        {
+          "text": "consist of 沒有被動語態，不要說 be consisted of",
+          "category": "pitfall"
+        }
       ],
-      "tags": ["composition", "consist"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-9-1-composed-002",
       "zh": "交響樂團是由許多演奏不同樂器的音樂家所組成的。",
       "hints": [
-        {"category": "syntactic", "text": "be composed of（被動：由...組成）"},
-        {"category": "lexical", "text": "musical instruments 樂器"}
+        {
+          "category": "syntactic",
+          "text": "be composed of（被動：由...組成）"
+        },
+        {
+          "category": "lexical",
+          "text": "musical instruments 樂器"
+        }
       ],
       "suggestions": [
-        {"text": "compose 有主動和被動兩種用法", "category": "usage"}
+        {
+          "text": "compose 有主動和被動兩種用法",
+          "category": "usage"
+        }
       ],
-      "tags": ["composition", "composed"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-9-1-made-up-003",
       "zh": "超過五十幅印象派畫作構成了那個展覽。",
       "hints": [
-        {"category": "syntactic", "text": "make up/be made up of（組成）"},
-        {"category": "lexical", "text": "impressionist paintings 印象派畫作"}
+        {
+          "category": "syntactic",
+          "text": "make up/be made up of（組成）"
+        },
+        {
+          "category": "lexical",
+          "text": "impressionist paintings 印象派畫作"
+        }
       ],
       "suggestions": [
-        {"text": "make up 可用主動或被動，靈活運用", "category": "style"}
+        {
+          "text": "make up 可用主動或被動，靈活運用",
+          "category": "style"
+        }
       ],
-      "tags": ["composition", "make-up"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-10-1-date-back-001",
       "zh": "這個傳統可以追溯到五百年前，當時我們的祖先大部分都是農夫。",
       "hints": [
-        {"category": "syntactic", "text": "date back to（追溯到...時期）"},
-        {"category": "pragmatic", "text": "when 引導非限制性關係子句"}
+        {
+          "category": "syntactic",
+          "text": "date back to（追溯到...時期）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "when 引導非限制性關係子句"
+        }
       ],
       "suggestions": [
-        {"text": "date back to 通常不用被動語態", "category": "grammar"}
+        {
+          "text": "date back to 通常不用被動語態",
+          "category": "grammar"
+        }
       ],
-      "tags": ["trace-back", "date-back"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-10-1-traced-002",
       "zh": "這個習俗可以追溯到唐代。",
       "hints": [
-        {"category": "syntactic", "text": "can be traced back to（可追溯到）"},
-        {"category": "pragmatic", "text": "Tang Dynasty 唐代"}
+        {
+          "category": "syntactic",
+          "text": "can be traced back to（可追溯到）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "Tang Dynasty 唐代"
+        }
       ],
       "suggestions": [
-        {"text": "trace back 有主動和被動兩種形式", "category": "usage"}
+        {
+          "text": "trace back 有主動和被動兩種形式",
+          "category": "usage"
+        }
       ],
-      "tags": ["trace-back", "traced"],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
       "difficulty": 3
     },
     {
       "id": "ch12-10-1-originate-003",
       "zh": "源自中國鬼節的盂蘭盆節已經發展成家庭團聚的時刻。",
       "hints": [
-        {"category": "syntactic", "text": "originate from（源自...）"},
-        {"category": "morphological", "text": "現在完成式：has evolved"}
+        {
+          "category": "syntactic",
+          "text": "originate from（源自...）"
+        },
+        {
+          "category": "morphological",
+          "text": "現在完成式：has evolved"
+        }
       ],
       "suggestions": [
-        {"text": "evolve into 表示演變成為", "category": "lexical"}
+        {
+          "text": "evolve into 表示演變成為",
+          "category": "lexical"
+        }
       ],
-      "tags": ["trace-back", "originate"],
+      "tags": [
+        "grammar"
+      ],
       "difficulty": 4
     }
   ]
