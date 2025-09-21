@@ -39,6 +39,8 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `PROMPT_FILE`：批改系統提示檔路徑（相對於 backend 目錄或絕對路徑，預設 `prompts/prompt.txt`）。
 - `DECK_PROMPT_FILE`：卡片生成系統提示檔路徑（預設 `prompts/prompt_deck.txt`）。
 - `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1/0.1/1/320）。
+- `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應原始 JSON（`off`｜`input`｜`output`｜`both`，預設 `both`）。
+- `LLM_LOG_PRETTY`：是否以縮排行輸出 JSON 日誌（預設 `true`）。
 - `HOST`、`PORT`：本機啟動位址與連接埠（`uvicorn` 參數也可覆蓋）。
 
 將範例複製為 `.env`（可選）：
@@ -161,8 +163,9 @@ cp .env.example .env
 - 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `requests` 直呼 API）。
 - 內容來源：`data/` 下 JSON；可透過 `CONTENT_DIR` 指向自定資料夾。
 - 除錯：`DECK_DEBUG_LOG=1` 會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）。
- - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
-  
+- 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
+- LLM 請求監控：設定 `LLM_LOG_MODE=input`（或 `output`/`both`）即可在日誌中看到縮排後的請求/回應 JSON，若需關閉縮排可將 `LLM_LOG_PRETTY` 設為 `false`。
+
 
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。

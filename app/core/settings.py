@@ -36,6 +36,8 @@ class Settings(BaseSettings):
     # Debug / logging
     DECK_DEBUG_LOG: str = "1"
     LOG_LEVEL: str = "INFO"
+    LLM_LOG_MODE: str = "both"  # off | input | output | both
+    LLM_LOG_PRETTY: bool = True
 
     def allowed_models_set(self) -> Set[str]:
         raw = (self.ALLOWED_MODELS or "").strip()

@@ -6,6 +6,7 @@ from typing import Optional, Dict, Sequence, Mapping
 
 import requests
 from app.core.settings import get_settings
+from app.core.logging import logger
 
 
 # Public constants
@@ -111,6 +112,12 @@ def _gen_config() -> Dict[str, object]:
     return get_settings().generation_config()
 
 
+def _format_json_for_log(data: object, pretty: bool) -> str:
+    if pretty:
+        return json.dumps(data, ensure_ascii=False, indent=2)
+    return json.dumps(data, ensure_ascii=False)
+
+
 def call_gemini_json(
     system_prompt: str,
     user_content: str,
@@ -135,6 +142,22 @@ def call_gemini_json(
         "contents": [{"role": "user", "parts": parts}],
         "generationConfig": _gen_config(),
     }
+
+    mode = (s.LLM_LOG_MODE or "off").strip().lower()
+    pretty = bool(s.LLM_LOG_PRETTY)
+    if mode in ("input", "both"):
+        try:
+            logger.info(
+                _format_json_for_log(payload, pretty),
+                extra={
+                    "event": "llm_request",
+                    "direction": "input",
+                    "model": chosen,
+                    "endpoint": url,
+                },
+            )
+        except Exception:
+            pass
     r = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=timeout)
     if r.status_code // 100 != 2:
         raise RuntimeError(f"gemini_error status={r.status_code} body={r.text[:400]}")
@@ -143,7 +166,24 @@ def call_gemini_json(
         content = data["candidates"][0]["content"]["parts"][0]["text"]
     except Exception:
         raise RuntimeError(f"gemini_invalid_response: {json.dumps(data)[:400]}")
+    parsed_obj: object | None = None
     try:
-        return json.loads(content)
+        parsed_obj = json.loads(content)
+        return parsed_obj
     except Exception as e:
         raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
+    finally:
+        if mode in ("output", "both"):
+            try:
+                logged_obj: object = parsed_obj if parsed_obj is not None else {"raw": content}
+                logger.info(
+                    _format_json_for_log(logged_obj, pretty),
+                    extra={
+                        "event": "llm_response",
+                        "direction": "output",
+                        "model": chosen,
+                        "endpoint": url,
+                    },
+                )
+            except Exception:
+                pass
