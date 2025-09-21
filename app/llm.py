@@ -112,11 +112,6 @@ def _gen_config() -> Dict[str, object]:
     return get_settings().generation_config()
 
 
-def _format_json_for_log(data: object, pretty: bool) -> str:
-    if pretty:
-        return json.dumps(data, ensure_ascii=False, indent=2)
-    return json.dumps(data, ensure_ascii=False)
-
 
 def call_gemini_json(
     system_prompt: str,
@@ -144,16 +139,16 @@ def call_gemini_json(
     }
 
     mode = (s.LLM_LOG_MODE or "off").strip().lower()
-    pretty = bool(s.LLM_LOG_PRETTY)
     if mode in ("input", "both"):
         try:
             logger.info(
-                _format_json_for_log(payload, pretty),
+                "Gemini request",
                 extra={
                     "event": "llm_request",
                     "direction": "input",
                     "model": chosen,
                     "endpoint": url,
+                    "payload": payload,
                 },
             )
         except Exception:
@@ -176,14 +171,23 @@ def call_gemini_json(
         if mode in ("output", "both"):
             try:
                 logged_obj: object = parsed_obj if parsed_obj is not None else {"raw": content}
+                extra = {
+                    "event": "llm_response",
+                    "direction": "output",
+                    "model": chosen,
+                    "endpoint": url,
+                    "response": logged_obj,
+                }
+                if isinstance(logged_obj, dict):
+                    state_value = logged_obj.get("state")
+                    if state_value is not None:
+                        extra["state"] = state_value
+                    checklist_value = logged_obj.get("checklist")
+                    if checklist_value is not None:
+                        extra["checklist"] = checklist_value
                 logger.info(
-                    _format_json_for_log(logged_obj, pretty),
-                    extra={
-                        "event": "llm_response",
-                        "direction": "output",
-                        "model": chosen,
-                        "endpoint": url,
-                    },
+                    "Gemini response",
+                    extra=extra,
                 )
             except Exception:
                 pass

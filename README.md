@@ -1,6 +1,6 @@
 # translation-backend
 
-FastAPI 後端，為 iOS App 提供中英翻譯批改、雲端題庫/卡片瀏覽、與單字卡產生等 API。
+FastAPI 後端，為 iOS App 提供中英翻譯批改、雲端題庫/卡片瀏覽、單字卡產生與聊天研究等 API。
 
 Repo（GitHub）：https://github.com/MaxChen228/translation
 
@@ -8,7 +8,7 @@ Repo（GitHub）：https://github.com/MaxChen228/translation
 - 批改（`POST /correct`）：回傳修正版、分數與錯誤清單（使用 Gemini）。
 - 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*` 從 `data/` 提供精選題庫/卡片集。
 - 單字卡產生（`POST /make_deck`）：由 Saved JSON 彙整卡片，支援變體括號語法輸出。
-- 深入研究 chat 流程：`POST /chat/respond` 進行多輪確認、`POST /chat/research` 產出修正版與錯誤清單。
+- 深入研究 chat 流程：`POST /chat/respond` 進行多輪確認、`POST /chat/research` 產出研究詞彙列表（term/explanation/context/type）。
 - 健康檢查（`GET /healthz`）。
 
 ## 環境需求
@@ -31,16 +31,19 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 預設情況下，若未設定 API Key，`/healthz` 會顯示 `{"status": "no_key"}`。
 
 ## 環境變數
-- `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要）。
-- `GEMINI_MODEL`：模型名稱（預設 `gemini-2.5-flash`）。
+- `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要，擇一即可）。
+- `GEMINI_MODEL`：預設模型名稱（預設 `gemini-2.5-flash`）。
 - `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
-- `DECK_DEBUG_LOG`：`1/true` 時在 `_test_logs` 留下 `/make_deck` 呼叫摘要以利除錯。
-- `PROMPT_FILE`：批改系統提示檔路徑（相對於 backend 目錄或絕對路徑，預設 `prompts/prompt.txt`）。
-- `DECK_PROMPT_FILE`：卡片生成系統提示檔路徑（預設 `prompts/prompt_deck.txt`）。
-- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1/0.1/1/320）。
-- `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應原始 JSON（`off`｜`input`｜`output`｜`both`，預設 `both`）。
-- `LLM_LOG_PRETTY`：是否以縮排行輸出 JSON 日誌（預設 `true`）。
+- `PROMPT_FILE`：批改系統提示檔路徑（預設 `prompts/prompt.txt`）。
+- `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。
+- `CHAT_TURN_PROMPT_FILE`：聊天回合提示檔路徑（預設 `prompts/prompt_chat_turn.txt`）。
+- `CHAT_RESEARCH_PROMPT_FILE`：聊天研究提示檔路徑（預設 `prompts/prompt_chat_research.txt`）。
+- `DECK_DEBUG_LOG`：控制是否輸出 `/make_deck` 呼叫摘要，預設 `1`（啟用）；設為 `0`/`false` 可停用。
+- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1 / 0.1 / 1 / 8192）。
+- `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應（`off`｜`input`｜`output`｜`both`，預設 `both`）。
+- `LLM_LOG_PRETTY`：是否以縮排行輸出 LLM JSON 日誌（預設 `true`）。
+- `LOG_LEVEL`：一般日誌層級（預設 `INFO`）。
 - `HOST`、`PORT`：本機啟動位址與連接埠（`uvicorn` 參數也可覆蓋）。
 
 將範例複製為 `.env`（可選）：
@@ -110,9 +113,9 @@ cp .env.example .env
     {
       "source": "research",
       "research": {
-        "summary": "研究摘要",
-        "en": "完整英文語境",
-        "focus": "重點說明",
+        "term": "關鍵詞彙",
+        "explanation": "深入研究說明",
+        "context": "完整英文語境",
         "type": "lexical"
       }
     }
@@ -130,7 +133,9 @@ cp .env.example .env
 
 ### POST /chat/respond
 - 輸入：`{ messages: [{ role: "user"|"assistant", content: "...", attachments?: [{ type: "image", mimeType: "image/png", data: "base64" }] }], model?: string }`
+- 附件：僅支援 `type="image"`，`data` 需為 base64 字串，後端會轉換為 Gemini `inline_data`。
 - 回應：`{ reply: string, state: "gathering"|"ready"|"completed", checklist?: string[] }`
+- 補充：`reply` 會自動補齊 `## 回覆摘要` 與 `## 詳細說明` 區塊以利前端呈現。
 - 用途：多輪確認需求，當 `state` 變為 `ready` 代表可以進入深入研究。
 
 ### POST /chat/research
@@ -138,13 +143,18 @@ cp .env.example .env
 - 回應：
   ```json
   {
-    "summary": "傳統中文摘要",
-    "en": "帶前後文的英文段落",
-    "focus": "重點單字或文法說明",
-    "type": "lexical"
+    "items": [
+      {
+        "term": "片語",
+        "explanation": "研究重點說明",
+        "context": "帶前後文的英文段落",
+        "type": "lexical"
+      }
+    ]
   }
   ```
 - `type` 僅允許：`morphological`、`syntactic`、`lexical`、`phonological`、`pragmatic`。
+- 若 LLM 回傳空陣列，後端會回傳 500 以提示前端需要補充更多上下文。
 
 ### GET /healthz
 - 若設好金鑰且可存取模型，回傳 `{ status: "ok", provider: "gemini", model: "…" }`。
@@ -162,10 +172,13 @@ cp .env.example .env
 ## 開發說明
 - 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `requests` 直呼 API）。
 - 內容來源：`data/` 下 JSON；可透過 `CONTENT_DIR` 指向自定資料夾。
-- 除錯：`DECK_DEBUG_LOG=1` 會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）。
+- 除錯：`DECK_DEBUG_LOG` 預設為啟用（`1`），會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）；若希望停用請設定 `0`/`false`。
 - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
 - LLM 請求監控：設定 `LLM_LOG_MODE=input`（或 `output`/`both`）即可在日誌中看到縮排後的請求/回應 JSON，若需關閉縮排可將 `LLM_LOG_PRETTY` 設為 `false`。
 
+## 工具腳本
+- `scripts/smoke_test.py`：快速呼叫 `/healthz` 與 `/correct` 驗證部署環境。
+- `scripts/test_gemini_key.py`：檢查環境金鑰是否有效，可在部署前先行測試。
 
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。

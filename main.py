@@ -30,7 +30,6 @@ def dev():  # uvicorn entry helper
         port=port,
         reload=False,
         log_level="info",
-        limit_max_request_size=5 * 1024 * 1024,
     )
 
 
