@@ -1,0 +1,331 @@
+{
+  "id": "grammar-chapter11",
+  "name": "Chapter 11",
+  "items": [
+    {
+      "id": "ch11-1-1-compare-001",
+      "zh": "臺北的氣候比東京暖和。",
+      "hints": [
+        {"category": "syntactic", "text": "The + N + of/in + 地點 + be + 比較級 + than + that + of/in + 地點"},
+        {"category": "lexical", "text": "climate 搭配 warmer；that 代替前面的 climate"}
+      ],
+      "suggestions": [
+        {"text": "使用 that 代替重複的名詞（climate），避免冗贅表達。", "category": "style"}
+      ],
+      "tags": ["comparative", "that-substitution"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-1-1-compare-002",
+      "zh": "兔子的耳朵比老鼠的長。",
+      "hints": [
+        {"category": "syntactic", "text": "The + 複數名詞 + of + A + be + much + 比較級 + than + those + of + B"},
+        {"category": "morphological", "text": "those 代替複數名詞 ears；much 強化比較級"}
+      ],
+      "suggestions": [
+        {"text": "複數名詞用 those 代替，單數名詞用 that 代替。", "category": "grammar"}
+      ],
+      "tags": ["comparative", "those-substitution"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-1-1-compare-003",
+      "zh": "那家餐廳的服務比這家好。",
+      "hints": [
+        {"category": "syntactic", "text": "The + N + of + that + N + be + 比較級 + than + that + of + this one"},
+        {"category": "pragmatic", "text": "service 為不可數名詞，用 that 代替"}
+      ],
+      "suggestions": [
+        {"text": "this one 可簡化表達，避免重複 restaurant。", "category": "style"}
+      ],
+      "tags": ["comparative", "demonstrative"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch11-1-1-compare-004",
+      "zh": "臺灣人比中國人享有更多的自由。",
+      "hints": [
+        {"category": "syntactic", "text": "People in + 地點 + V + more + N + than + those in + 地點"},
+        {"category": "lexical", "text": "enjoy freedom；those 代替 people"}
+      ],
+      "suggestions": [
+        {"text": "注意 people 為複數概念，用 those 代替。", "category": "grammar"}
+      ],
+      "tags": ["comparative", "people"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-2-1-multiple-001",
+      "zh": "這所大學是那所小學的十倍大。",
+      "hints": [
+        {"category": "syntactic", "text": "倍數 + times + 比較級 + than + 比較對象"},
+        {"category": "morphological", "text": "ten times larger than"}
+      ],
+      "suggestions": [
+        {"text": "倍數表達有三種形式，此為比較級形式，較直觀易懂。", "category": "style"}
+      ],
+      "tags": ["multiple", "comparative"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-2-1-multiple-002",
+      "zh": "我姊每月賺的錢約是我的三倍。",
+      "hints": [
+        {"category": "syntactic", "text": "倍數 + as + much/many + (N) + as + 比較對象"},
+        {"category": "lexical", "text": "earn money；much 修飾不可數名詞 money"}
+      ],
+      "suggestions": [
+        {"text": "money 為不可數，用 much；可數名詞用 many。", "category": "grammar"}
+      ],
+      "tags": ["multiple", "as-as"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-2-1-multiple-003",
+      "zh": "信不信由你，這位丈夫的年紀是他太太的兩倍。",
+      "hints": [
+        {"category": "syntactic", "text": "倍數 + the + 名詞 + of + 比較對象"},
+        {"category": "pragmatic", "text": "Believe it or not 為慣用語；twice the age of"}
+      ],
+      "suggestions": [
+        {"text": "三種倍數表達法中，此為最簡潔的形式。", "category": "style"}
+      ],
+      "tags": ["multiple", "age"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-2-1-multiple-004",
+      "zh": "爸爸的體重是女兒的三倍。",
+      "hints": [
+        {"category": "syntactic", "text": "三種倍數表達法的同義轉換"},
+        {"category": "morphological", "text": "three times heavier/as heavy as/the weight of"}
+      ],
+      "suggestions": [
+        {"text": "展示三種表達法的靈活運用，增強語言豐富性。", "category": "style"}
+      ],
+      "tags": ["multiple", "synonymous"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-3-1-senior-001",
+      "zh": "我年紀比你哥哥大。",
+      "hints": [
+        {"category": "syntactic", "text": "A + be + senior to + B；不用 than"},
+        {"category": "lexical", "text": "senior/junior to 為固定搭配"}
+      ],
+      "suggestions": [
+        {"text": "senior/junior 不可與 than 連用，須用 to。", "category": "pitfall"}
+      ],
+      "tags": ["senior-junior", "age"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-3-1-superior-002",
+      "zh": "在速度方面，汽車勝過腳踏車。",
+      "hints": [
+        {"category": "syntactic", "text": "A + be + superior to + B + in + 方面"},
+        {"category": "lexical", "text": "superior/inferior to；in speed"}
+      ],
+      "suggestions": [
+        {"text": "superior/inferior 表示品質高低，可加介詞片語說明比較方面。", "category": "usage"}
+      ],
+      "tags": ["superior-inferior", "comparison"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-3-1-prior-003",
+      "zh": "這椿悲劇發生在二次世界大戰前。",
+      "hints": [
+        {"category": "syntactic", "text": "sth. happen prior to + 時間"},
+        {"category": "lexical", "text": "prior to = before；tragic incident"}
+      ],
+      "suggestions": [
+        {"text": "prior to 較 before 正式，常用於書面語。", "category": "style"}
+      ],
+      "tags": ["prior-to", "time"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-4-1-the-more-001",
+      "zh": "她吃得愈多，變得愈胖。",
+      "hints": [
+        {"category": "syntactic", "text": "The more + S + V, the + 比較級 + S + V"},
+        {"category": "morphological", "text": "become 的變化形 became"}
+      ],
+      "suggestions": [
+        {"text": "前後子句時態保持一致，表達因果關係。", "category": "grammar"}
+      ],
+      "tags": ["the-more-the-more", "causation"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-4-1-the-more-002",
+      "zh": "你車開得愈快就愈危險。",
+      "hints": [
+        {"category": "syntactic", "text": "The + 比較級 + S + V, the more + adj. + it will be"},
+        {"category": "pragmatic", "text": "drive fast；dangerous 為形容詞"}
+      ],
+      "suggestions": [
+        {"text": "可用 it 作虛主詞，使句子更簡潔自然。", "category": "style"}
+      ],
+      "tags": ["the-more-the-more", "driving"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-4-1-the-more-003",
+      "zh": "你讀得愈多，愈博學。",
+      "hints": [
+        {"category": "syntactic", "text": "The more + S + V, the + 比較級 + S + become"},
+        {"category": "lexical", "text": "wiser 表示更有智慧"}
+      ],
+      "suggestions": [
+        {"text": "省略重複的主詞和動詞，保持句子簡潔。", "category": "style"}
+      ],
+      "tags": ["the-more-the-more", "wisdom"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-4-1-the-more-004",
+      "zh": "愈快愈好。",
+      "hints": [
+        {"category": "syntactic", "text": "The + 比較級, the + 比較級（省略句）"},
+        {"category": "pragmatic", "text": "慣用語：The sooner, the better"}
+      ],
+      "suggestions": [
+        {"text": "此為固定慣用語，表達急迫需求。", "category": "usage"}
+      ],
+      "tags": ["the-more-the-more", "idiom"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch11-5-1-would-rather-001",
+      "zh": "他寧可坦蕩地輸，也不願欺詐地贏。",
+      "hints": [
+        {"category": "syntactic", "text": "would rather + V1 + than + V2"},
+        {"category": "lexical", "text": "play honestly；cheat 作動詞"}
+      ],
+      "suggestions": [
+        {"text": "would rather 後接原形動詞，表達偏好選擇。", "category": "grammar"}
+      ],
+      "tags": ["would-rather", "preference"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-5-1-would-rather-002",
+      "zh": "我寧願在家，也不願上網咖。",
+      "hints": [
+        {"category": "syntactic", "text": "would sooner + V + than + V"},
+        {"category": "lexical", "text": "internet café；stay at home"}
+      ],
+      "suggestions": [
+        {"text": "would sooner 與 would rather 同義，可互換使用。", "category": "style"}
+      ],
+      "tags": ["would-rather", "sooner"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-5-1-prefer-003",
+      "zh": "他寧可環島旅行，也不願出國。",
+      "hints": [
+        {"category": "syntactic", "text": "多種同義表達：would rather/prefer to/rather than"},
+        {"category": "lexical", "text": "travel around the island；go abroad"}
+      ],
+      "suggestions": [
+        {"text": "展示多種偏好表達法，增強語言靈活性。", "category": "style"}
+      ],
+      "tags": ["would-rather", "prefer", "synonymous"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-6-1-not-so-much-001",
+      "zh": "比賽結束後，與其說他精疲力竭，不如說他失望透頂。",
+      "hints": [
+        {"category": "syntactic", "text": "not so much + adj. + as + adj."},
+        {"category": "lexical", "text": "exhausted vs disappointed；after the game"}
+      ],
+      "suggestions": [
+        {"text": "此句型強調後者程度更甚，非單純否定前者。", "category": "usage"}
+      ],
+      "tags": ["not-so-much-as", "comparison"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-6-1-not-so-much-002",
+      "zh": "這部電影與其說是具教育意義，不如說是具娛樂性。",
+      "hints": [
+        {"category": "syntactic", "text": "not so much for + 目的 + as for + 目的"},
+        {"category": "pragmatic", "text": "education vs entertainment；介詞 for 表目的"}
+      ],
+      "suggestions": [
+        {"text": "for education/entertainment 表達電影的用途目的。", "category": "usage"}
+      ],
+      "tags": ["not-so-much-as", "purpose"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-6-1-not-so-much-003",
+      "zh": "與其說她是歌手，不如說她是演員。",
+      "hints": [
+        {"category": "syntactic", "text": "not so much + a + N + as + an + N"},
+        {"category": "morphological", "text": "多種同義表達法的轉換"}
+      ],
+      "suggestions": [
+        {"text": "展示四種同義句型，豐富表達方式。", "category": "style"}
+      ],
+      "tags": ["not-so-much-as", "profession"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch11-7-1-had-better-001",
+      "zh": "談到投資，你最好聽專家的忠告。",
+      "hints": [
+        {"category": "syntactic", "text": "had better + 原形動詞"},
+        {"category": "pragmatic", "text": "When it comes to + N；follow advice"}
+      ],
+      "suggestions": [
+        {"text": "had better 表強烈建議，語氣比 should 更強。", "category": "usage"}
+      ],
+      "tags": ["had-better", "advice"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-7-1-know-better-002",
+      "zh": "我十分明白不能酒後駕車。",
+      "hints": [
+        {"category": "syntactic", "text": "know better than to + 原形動詞"},
+        {"category": "lexical", "text": "drink and drive 為固定搭配"}
+      ],
+      "suggestions": [
+        {"text": "know better than to 表示「夠聰明而不至於做某事」。", "category": "usage"}
+      ],
+      "tags": ["know-better", "wisdom"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-7-1-had-better-003",
+      "zh": "他最好守分點，不然會被處罰。",
+      "hints": [
+        {"category": "syntactic", "text": "had better + V, or + 結果子句"},
+        {"category": "lexical", "text": "behave oneself；be punished"}
+      ],
+      "suggestions": [
+        {"text": "or 連接可能的後果，增強警告語氣。", "category": "style"}
+      ],
+      "tags": ["had-better", "warning"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch11-7-1-should-have-004",
+      "zh": "我早該聰明點，竟然會相信這樣一個騙子。",
+      "hints": [
+        {"category": "syntactic", "text": "should have known better than to + V"},
+        {"category": "morphological", "text": "過去完成的後悔語氣"}
+      ],
+      "suggestions": [
+        {"text": "should have + p.p. 表示對過去行為的後悔。", "category": "grammar"}
+      ],
+      "tags": ["should-have", "regret"],
+      "difficulty": 4
+    }
+  ]
+}

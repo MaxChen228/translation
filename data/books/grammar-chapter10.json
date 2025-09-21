@@ -1,0 +1,516 @@
+{
+  "id": "grammar-chapter10",
+  "name": "Chapter 10",
+  "items": [
+    {
+      "id": "ch10-1-1-as-known-001",
+      "zh": "眾所皆知，安迪在附近河裡救出一個快溺斃的孩子。",
+      "hints": [
+        {"category": "syntactic", "text": "As is known to all, S + V（眾所皆知結構）"},
+        {"category": "lexical", "text": "save sb from being drowned（救溺）"},
+        {"category": "pragmatic", "text": "非限定關係子句置於句首，全句為評述"}
+      ],
+      "suggestions": [
+        {"text": "As is known to all 可置於句首、句中、句尾，語域較正式", "category": "style"},
+        {"text": "也可改寫為 It is known to all that...或 As we all know", "category": "usage"}
+      ],
+      "tags": ["as-clause", "non-restrictive", "common-knowledge"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-1-1-as-known-002",
+      "zh": "眾所皆知，憑著她堅強的意志力，海倫‧凱勒成功地克服了因眼盲及耳聾造成的障礙。",
+      "hints": [
+        {"category": "syntactic", "text": "As is known to all + 複雜主句結構"},
+        {"category": "lexical", "text": "with strong will; overcome hindrances/obstacles"},
+        {"category": "morphological", "text": "resulting from being blind and deaf（分詞片語作後位修飾）"}
+      ],
+      "suggestions": [
+        {"text": "長句中注意主句與從句的邏輯連接，避免句子過於冗長", "category": "style"},
+        {"text": "Helen Keller 為專有名詞，注意大小寫", "category": "grammar"}
+      ],
+      "tags": ["as-clause", "complex-sentence", "biography"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-1-1-as-known-003",
+      "zh": "我們學校的人都知道，這個學生代表學校在游泳比賽中得到第一名。",
+      "hints": [
+        {"category": "syntactic", "text": "As is known to + 特定群體"},
+        {"category": "lexical", "text": "on behalf of our school; win first prize"},
+        {"category": "pragmatic", "text": "限定知識範圍至特定群體（學校）"}
+      ],
+      "suggestions": [
+        {"text": "可變化表達：As is known to people in our school", "category": "style"},
+        {"text": "注意 win/get first prize 的搭配用法", "category": "usage"}
+      ],
+      "tags": ["as-clause", "competition", "school-context"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-1-1-as-known-004",
+      "zh": "規律運動有益健康，眾所皆知。",
+      "hints": [
+        {"category": "syntactic", "text": "主句 + as is known to all（後置）"},
+        {"category": "lexical", "text": "regular exercise; be good for health"},
+        {"category": "pragmatic", "text": "as子句後置強調既定事實"}
+      ],
+      "suggestions": [
+        {"text": "後置as子句作附加說明，語氣較溫和", "category": "style"},
+        {"text": "注意標點：主句後用逗號分隔", "category": "grammar"}
+      ],
+      "tags": ["as-clause", "health", "postposed"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-1-1-as-insert-005",
+      "zh": "就如我告訴過你，這個慶典將持續一週。",
+      "hints": [
+        {"category": "syntactic", "text": "插入語：as I told you"},
+        {"category": "morphological", "text": "will last for a week（未來式表預定）"},
+        {"category": "pragmatic", "text": "as子句作為既有資訊的確認"}
+      ],
+      "suggestions": [
+        {"text": "插入語前後用逗號隔開：The festivity, as I told you, will...", "category": "grammar"},
+        {"text": "可改為：As I told you, the festivity will last for a week", "category": "style"}
+      ],
+      "tags": ["as-clause", "parenthetical", "future"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-2-1-saying-001",
+      "zh": "正如俗話所說的，「不勞則無獲」。",
+      "hints": [
+        {"category": "syntactic", "text": "As a saying goes + 引用句"},
+        {"category": "lexical", "text": "No pains, no gains（固定諺語）"},
+        {"category": "phonological", "text": "引號內為直接引用，保持原文"}
+      ],
+      "suggestions": [
+        {"text": "也可寫成 As the saying goes 或 As they say", "category": "usage"},
+        {"text": "引用知名諺語時保持其原有形式", "category": "style"}
+      ],
+      "tags": ["proverb", "as-saying", "quote"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch10-2-1-saying-002",
+      "zh": "正如俗話所說的，「活到老，學到老」。",
+      "hints": [
+        {"category": "syntactic", "text": "As a saying goes結構"},
+        {"category": "lexical", "text": "It is never too late to learn"},
+        {"category": "pragmatic", "text": "終身學習概念的表達"}
+      ],
+      "suggestions": [
+        {"text": "注意 too...to 句型的正確運用", "category": "grammar"},
+        {"text": "可變化為 One is never too old to learn", "category": "usage"}
+      ],
+      "tags": ["proverb", "as-saying", "learning"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-2-1-saying-003",
+      "zh": "他總是保持著積極的態度，正如俗話所說，相信「每朵烏雲都鑲著銀邊」（情況再壞，總有一線希望）。",
+      "hints": [
+        {"category": "syntactic", "text": "複合句：主句 + as說明 + 分詞片語"},
+        {"category": "lexical", "text": "keep a positive attitude; every cloud has a silver lining"},
+        {"category": "pragmatic", "text": "括號內提供文化背景解釋"}
+      ],
+      "suggestions": [
+        {"text": "英文諺語可能需要文化背景說明", "category": "style"},
+        {"text": "believing that 引導間接引述，注意時態協調", "category": "grammar"}
+      ],
+      "tags": ["proverb", "as-saying", "optimism", "cultural"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-3-1-as-for-001",
+      "zh": "對我來說，獨力撫養三個孩子壓力很大。",
+      "hints": [
+        {"category": "syntactic", "text": "As for + 人稱，S + V（主題轉換）"},
+        {"category": "lexical", "text": "raise/bring up children alone"},
+        {"category": "pragmatic", "text": "as for 引入個人觀點或經驗"}
+      ],
+      "suggestions": [
+        {"text": "As for me 可替換為 For me 或 In my case", "category": "usage"},
+        {"text": "注意 stress 可作可數或不可數名詞", "category": "grammar"}
+      ],
+      "tags": ["as-for", "personal-experience", "parenting"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-3-1-as-for-002",
+      "zh": "關於使用金錢方面，青少年應該學習如何收支平衡。",
+      "hints": [
+        {"category": "syntactic", "text": "As for + V-ing（主題介紹）"},
+        {"category": "lexical", "text": "make ends meet（收支平衡）"},
+        {"category": "pragmatic", "text": "理財教育主題"}
+      ],
+      "suggestions": [
+        {"text": "As for using money 也可改為 As for money management", "category": "style"},
+        {"text": "make ends meet 為固定搭配，不可分割", "category": "usage"}
+      ],
+      "tags": ["as-for", "money-management", "teenagers"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-3-1-as-to-003",
+      "zh": "我朋友沒有提到關於她和她先生吵架的原因。",
+      "hints": [
+        {"category": "syntactic", "text": "as to + 名詞片語（關於）"},
+        {"category": "lexical", "text": "have an argument with sb"},
+        {"category": "morphological", "text": "didn't say anything 否定結構"}
+      ],
+      "suggestions": [
+        {"text": "as to 比 as for 更正式，常用於具體事項", "category": "style"},
+        {"text": "注意代名詞指涉：her husband（非his）", "category": "grammar"}
+      ],
+      "tags": ["as-to", "relationship", "argument"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-4-1-as-adj-as-001",
+      "zh": "她盡可能地堅定果決，期望在職涯中獲得成功。",
+      "hints": [
+        {"category": "syntactic", "text": "as + adj + as + S + can be"},
+        {"category": "lexical", "text": "determined; succeed in one's career"},
+        {"category": "morphological", "text": "to succeed 不定詞表目的"}
+      ],
+      "suggestions": [
+        {"text": "as...as she can 比 as...as possible 更強調個人能力", "category": "style"},
+        {"text": "determined 可替換為 decisive, resolute", "category": "usage"}
+      ],
+      "tags": ["as-adj-as", "determination", "career"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-4-1-as-adv-as-002",
+      "zh": "為了考試得高分，你最好盡可能用功。",
+      "hints": [
+        {"category": "syntactic", "text": "study as hard as you can"},
+        {"category": "pragmatic", "text": "had better 表建議"},
+        {"category": "morphological", "text": "to get good grades 目的不定詞"}
+      ],
+      "suggestions": [
+        {"text": "had better 後接原形動詞，語氣較強烈", "category": "grammar"},
+        {"text": "可改為 You should study as hard as possible", "category": "usage"}
+      ],
+      "tags": ["as-adv-as", "study", "advice"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-4-1-as-adj-as-003",
+      "zh": "這位女士盡量使自己在舞會上看起來漂亮。",
+      "hints": [
+        {"category": "syntactic", "text": "make oneself look as + adj + as + S + could"},
+        {"category": "lexical", "text": "at the party/ball"},
+        {"category": "morphological", "text": "使役動詞 make + O + OC"}
+      ],
+      "suggestions": [
+        {"text": "could 表過去的能力或可能性", "category": "grammar"},
+        {"text": "注意 look beautiful 中beautiful為形容詞", "category": "usage"}
+      ],
+      "tags": ["as-adj-as", "appearance", "party"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-4-1-as-adv-as-004",
+      "zh": "如果你方便的話，請盡早到辦公室。",
+      "hints": [
+        {"category": "syntactic", "text": "if條件句 + as early as you can"},
+        {"category": "pragmatic", "text": "禮貌請求的表達"},
+        {"category": "lexical", "text": "if it is convenient for you"}
+      ],
+      "suggestions": [
+        {"text": "條件句可簡化：If convenient, please come...", "category": "style"},
+        {"text": "come to the office 注意介系詞搭配", "category": "usage"}
+      ],
+      "tags": ["as-adv-as", "request", "politeness"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-5-1-as-soon-as-001",
+      "zh": "考試的結果在網路上一公布，我的家人就會知道。",
+      "hints": [
+        {"category": "syntactic", "text": "as soon as + 被動式"},
+        {"category": "morphological", "text": "未來式 will know"},
+        {"category": "lexical", "text": "be announced on the internet"}
+      ],
+      "suggestions": [
+        {"text": "時間子句用現在式代替未來式", "category": "grammar"},
+        {"text": "可改寫：The moment/Once the result is announced...", "category": "usage"}
+      ],
+      "tags": ["as-soon-as", "time-clause", "internet"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-5-1-as-long-as-002",
+      "zh": "只要你不說，沒有人會知道這個秘密。",
+      "hints": [
+        {"category": "syntactic", "text": "as long as + 否定（條件）"},
+        {"category": "pragmatic", "text": "條件與結果的邏輯關係"},
+        {"category": "lexical", "text": "keep a secret; tell/reveal"}
+      ],
+      "suggestions": [
+        {"text": "as long as 表條件，也可用 provided that", "category": "usage"},
+        {"text": "注意雙重否定邏輯：don't tell → nobody will know", "category": "grammar"}
+      ],
+      "tags": ["as-long-as", "condition", "secret"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-5-1-as-far-as-003",
+      "zh": "就我所知，他妹妹仍是單身。",
+      "hints": [
+        {"category": "syntactic", "text": "as far as I know（就...而言）"},
+        {"category": "pragmatic", "text": "表達資訊來源的限制"},
+        {"category": "lexical", "text": "still single/unmarried"}
+      ],
+      "suggestions": [
+        {"text": "as far as I know 可替換為 to my knowledge", "category": "usage"},
+        {"text": "single 比 unmarried 更常用且自然", "category": "style"}
+      ],
+      "tags": ["as-far-as", "knowledge-limit", "marital-status"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch10-5-1-as-far-as-004",
+      "zh": "對她而言，她才不在乎剛惹她生氣的男友發生什麼事。",
+      "hints": [
+        {"category": "syntactic", "text": "as far as she is concerned"},
+        {"category": "lexical", "text": "piss sb off（惹怒）；what happens to sb"},
+        {"category": "pragmatic", "text": "表達個人立場或觀點"}
+      ],
+      "suggestions": [
+        {"text": "piss off 較非正式，正式用法可用 annoy/irritate", "category": "style"},
+        {"text": "關係代名詞 who 修飾 boyfriend", "category": "grammar"}
+      ],
+      "tags": ["as-far-as-concerned", "relationship", "anger"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-6-1-think-of-as-001",
+      "zh": "琳達把她的母親視為生命中最重要的人。",
+      "hints": [
+        {"category": "syntactic", "text": "think of A as B（視A為B）"},
+        {"category": "lexical", "text": "the most important person in one's life"},
+        {"category": "pragmatic", "text": "表達對他人的評價或看法"}
+      ],
+      "suggestions": [
+        {"text": "think of...as 也可用 regard...as, consider...as", "category": "usage"},
+        {"text": "注意最高級的正確用法", "category": "grammar"}
+      ],
+      "tags": ["think-of-as", "family", "importance"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-6-1-look-upon-as-002",
+      "zh": "我的同學們認為瑪姬是個好相處的女孩。",
+      "hints": [
+        {"category": "syntactic", "text": "look upon A as B"},
+        {"category": "lexical", "text": "get along well with; easy-going"},
+        {"category": "pragmatic", "text": "群體對個人的評價"}
+      ],
+      "suggestions": [
+        {"text": "look upon 較正式，也可用 see...as", "category": "style"},
+        {"text": "關係代名詞whom在介系詞後，但口語常用who", "category": "grammar"}
+      ],
+      "tags": ["look-upon-as", "classmates", "personality"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-6-1-refer-to-as-003",
+      "zh": "大部分的科學家認為溫室效應是全球暖化的原因之一。",
+      "hints": [
+        {"category": "syntactic", "text": "refer to A as B"},
+        {"category": "lexical", "text": "greenhouse effect; global warming; one of the reasons"},
+        {"category": "pragmatic", "text": "科學論述的表達方式"}
+      ],
+      "suggestions": [
+        {"text": "refer to...as 常用於學術或專業語境", "category": "style"},
+        {"text": "one of + 複數名詞，動詞用單數", "category": "grammar"}
+      ],
+      "tags": ["refer-to-as", "science", "environment"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-7-1-known-as-001",
+      "zh": "李遠哲博士以諾貝爾獎得主而為人所知。",
+      "hints": [
+        {"category": "syntactic", "text": "be known as（以...身分著稱）"},
+        {"category": "lexical", "text": "Nobel Prize winner"},
+        {"category": "pragmatic", "text": "名人成就的描述"}
+      ],
+      "suggestions": [
+        {"text": "be known as 強調身分，be known for 強調原因", "category": "usage"},
+        {"text": "Dr. 的正確使用和專有名詞大寫", "category": "grammar"}
+      ],
+      "tags": ["known-as", "achievement", "nobel-prize"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-7-1-known-for-002",
+      "zh": "德蕾莎修女以一生奉獻給需要幫助的人而為人所知。",
+      "hints": [
+        {"category": "syntactic", "text": "be known for + V-ing"},
+        {"category": "lexical", "text": "devote one's life to; people in need"},
+        {"category": "pragmatic", "text": "慈善事業的表達"}
+      ],
+      "suggestions": [
+        {"text": "devote...to 中to為介系詞，後接名詞或動名詞", "category": "grammar"},
+        {"text": "Mother Teresa 專有名詞需大寫", "category": "usage"}
+      ],
+      "tags": ["known-for", "charity", "devotion"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-7-1-famous-for-003",
+      "zh": "阿里山以美麗的日出聞名。",
+      "hints": [
+        {"category": "syntactic", "text": "be famous for（以...聞名）"},
+        {"category": "lexical", "text": "beautiful sunrise"},
+        {"category": "pragmatic", "text": "地理景點的特色描述"}
+      ],
+      "suggestions": [
+        {"text": "famous for 也可用 well-known for, renowned for", "category": "usage"},
+        {"text": "Mt. Ali 為地名，注意縮寫和大寫", "category": "grammar"}
+      ],
+      "tags": ["famous-for", "tourism", "scenery"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch10-8-1-adj-as-001",
+      "zh": "雖然凱文很年輕，卻有成功的事業。",
+      "hints": [
+        {"category": "syntactic", "text": "adj + as + S + be（倒裝讓步句）"},
+        {"category": "pragmatic", "text": "對比年齡與成就"},
+        {"category": "morphological", "text": "倒裝：Young as Kevin is"}
+      ],
+      "suggestions": [
+        {"text": "倒裝句強調對比，也可用 Although Kevin is young", "category": "style"},
+        {"text": "注意 successful career 的正確搭配", "category": "usage"}
+      ],
+      "tags": ["concessive", "inversion", "young-success"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-8-1-noun-as-002",
+      "zh": "雖然珊蒂是醫生，但她無法治好她兒子的病。",
+      "hints": [
+        {"category": "syntactic", "text": "N + as + S + be（名詞倒裝）"},
+        {"category": "lexical", "text": "cure sb of the disease"},
+        {"category": "morphological", "text": "Doctor as Sandy was（省略冠詞）"}
+      ],
+      "suggestions": [
+        {"text": "名詞倒裝時省略冠詞a/an，但保留the", "category": "grammar"},
+        {"text": "cure sb of sth 為固定搭配", "category": "usage"}
+      ],
+      "tags": ["concessive", "inversion", "medical"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-8-1-adv-as-003",
+      "zh": "我雖然很感謝約翰救我一命，但我不想讓他占我便宜。",
+      "hints": [
+        {"category": "syntactic", "text": "adv + as + S + V（副詞倒裝）"},
+        {"category": "lexical", "text": "save one's life; take advantage of sb"},
+        {"category": "pragmatic", "text": "恩情與界限的平衡"}
+      ],
+      "suggestions": [
+        {"text": "Very much 移至句首形成倒裝", "category": "grammar"},
+        {"text": "take advantage of 為負面意義，注意語境", "category": "usage"}
+      ],
+      "tags": ["concessive", "inversion", "gratitude"],
+      "difficulty": 5
+    },
+    {
+      "id": "ch10-8-1-try-as-004",
+      "zh": "不管你怎麼努力，要找到此問題的解方是不可能的。",
+      "hints": [
+        {"category": "syntactic", "text": "Try as you may（無論如何努力）"},
+        {"category": "lexical", "text": "find a solution to the problem"},
+        {"category": "morphological", "text": "may表假設可能性"}
+      ],
+      "suggestions": [
+        {"text": "Try as you may = No matter how hard you try", "category": "usage"},
+        {"text": "solution to 的介系詞搭配要正確", "category": "grammar"}
+      ],
+      "tags": ["concessive", "inversion", "impossibility"],
+      "difficulty": 5
+    },
+    {
+      "id": "ch10-9-1-analogy-001",
+      "zh": "空氣之於人類，猶如水之於魚。",
+      "hints": [
+        {"category": "syntactic", "text": "A be to B as C be to D（類比結構）"},
+        {"category": "pragmatic", "text": "基本生存需求的比擬"},
+        {"category": "lexical", "text": "air; man; water; fish"}
+      ],
+      "suggestions": [
+        {"text": "類比句型表達兩組事物的相似關係", "category": "usage"},
+        {"text": "man 在此指人類，也可用 human beings", "category": "style"}
+      ],
+      "tags": ["analogy", "necessity", "survival"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-9-1-analogy-002",
+      "zh": "父母之於孩子，猶如陽光之於植物。",
+      "hints": [
+        {"category": "syntactic", "text": "A be to B as C be to D"},
+        {"category": "pragmatic", "text": "滋養關係的比擬"},
+        {"category": "lexical", "text": "parents; children; sun; plants"}
+      ],
+      "suggestions": [
+        {"text": "the sun 需要定冠詞，因為太陽是唯一的", "category": "grammar"},
+        {"text": "類比句展現父母對孩子的重要性", "category": "style"}
+      ],
+      "tags": ["analogy", "family", "nurturing"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch10-9-1-as-so-003",
+      "zh": "空氣之於人類，猶如水之於魚。",
+      "hints": [
+        {"category": "syntactic", "text": "As A be to B, so C be to D"},
+        {"category": "pragmatic", "text": "as...so結構強調類比"},
+        {"category": "morphological", "text": "平行結構要對稱"}
+      ],
+      "suggestions": [
+        {"text": "As...so 結構較 A be to B as C be to D 更強調對應關係", "category": "style"},
+        {"text": "注意前後句的動詞時態要一致", "category": "grammar"}
+      ],
+      "tags": ["analogy", "as-so-structure", "parallel"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-9-1-proverb-004",
+      "zh": "憂慮耗損心神，猶如鏽蝕腐蝕鐵。",
+      "hints": [
+        {"category": "syntactic", "text": "As A V B, so C V D（動作類比）"},
+        {"category": "lexical", "text": "rust eats into iron; care eats into heart"},
+        {"category": "pragmatic", "text": "抽象概念具象化表達"}
+      ],
+      "suggestions": [
+        {"text": "eat into 表漸進性侵蝕，比喻用法", "category": "usage"},
+        {"text": "care 在此指憂慮、煩惱", "category": "lexical"}
+      ],
+      "tags": ["analogy", "proverb", "metaphor"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch10-9-1-reciprocal-005",
+      "zh": "你怎樣對待我，我就怎樣對待你。",
+      "hints": [
+        {"category": "syntactic", "text": "As you treat me, so I will treat you"},
+        {"category": "pragmatic", "text": "相互對待的原則"},
+        {"category": "morphological", "text": "will 表意志或未來"}
+      ],
+      "suggestions": [
+        {"text": "表達相互性原則，類似「以其人之道還治其人之身」", "category": "style"},
+        {"text": "treat 的賓語和主語要對應正確", "category": "grammar"}
+      ],
+      "tags": ["analogy", "reciprocity", "principle"],
+      "difficulty": 3
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "id": "grammar-chapter8",
+  "name": "Chapter 8",
+  "items": [
+    {
+      "id": "ch08-1-1-one-other-001",
+      "zh": "我的父母其中一個是警官，另一個是護士。",
+      "hints": [
+        {"category": "syntactic", "text": "one of + 複數名詞，謂語動詞用單數"},
+        {"category": "morphological", "text": "the other 指兩者中的另一個"},
+        {"category": "lexical", "text": "police officer 和 nurse 的職業搭配"}
+      ],
+      "suggestions": [
+        {"text": "強調 one...the other 固定搭配用於兩者關係", "category": "grammar"},
+        {"text": "注意單複數一致性：one is...the other is...", "category": "usage"}
+      ],
+      "tags": ["one-other", "quantifiers", "family"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-1-1-one-another-002",
+      "zh": "王先生有三個兒子。一個住臺北，一個住臺南，而另一個住高雄。",
+      "hints": [
+        {"category": "syntactic", "text": "one...another...the other 三者分配句型"},
+        {"category": "pragmatic", "text": "地理位置的適當介詞：live in + 城市"},
+        {"category": "morphological", "text": "省略相同主詞避免冗贅"}
+      ],
+      "suggestions": [
+        {"text": "三個對象用 one...another...the other 分配", "category": "grammar"},
+        {"text": "可省略重複的主詞和動詞以求簡潔", "category": "style"}
+      ],
+      "tags": ["one-another-other", "quantifiers", "location"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-1-1-some-others-003",
+      "zh": "學英文有許多方法。有些人聽英文歌，有些與外國人聊天，還有些閱讀英文小說。",
+      "hints": [
+        {"category": "syntactic", "text": "some...others...still others 多者分配"},
+        {"category": "lexical", "text": "chat with foreigners; read English novels"},
+        {"category": "pragmatic", "text": "學習方法的實用表達"}
+      ],
+      "suggestions": [
+        {"text": "多個選項用 some...others...still others 表達", "category": "grammar"},
+        {"text": "動詞短語保持平行結構", "category": "style"}
+      ],
+      "tags": ["some-others", "quantifiers", "learning-methods"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-1-1-some-others-004",
+      "zh": "這個班級由十五個海外學生組成。有些來自歐洲，有些來自亞洲，其餘來自美洲。",
+      "hints": [
+        {"category": "syntactic", "text": "be made up of 被動結構"},
+        {"category": "morphological", "text": "the others 指剩餘的全部"},
+        {"category": "pragmatic", "text": "come from 表示來源地"}
+      ],
+      "suggestions": [
+        {"text": "the others 指特定群體中的剩餘全部", "category": "usage"},
+        {"text": "地理區域搭配適當介詞", "category": "grammar"}
+      ],
+      "tags": ["some-others", "quantifiers", "geography"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-2-1-from-to-001",
+      "zh": "命名的習俗因文化而異。",
+      "hints": [
+        {"category": "syntactic", "text": "from...to... 表示範圍或變化"},
+        {"category": "lexical", "text": "customs of giving names; differ from...to..."},
+        {"category": "pragmatic", "text": "文化差異的表達方式"}
+      ],
+      "suggestions": [
+        {"text": "differ from A to B 強調差異性", "category": "grammar"},
+        {"text": "naming customs 或 customs of giving names 皆可", "category": "style"}
+      ],
+      "tags": ["from-to", "cultural-differences", "customs"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-2-1-door-to-door-002",
+      "zh": "這名窮困的男孩每天早上必須挨家挨戶送報紙。",
+      "hints": [
+        {"category": "lexical", "text": "from door to door 固定片語"},
+        {"category": "morphological", "text": "have to + V 表示必要性"},
+        {"category": "pragmatic", "text": "deliver newspapers 送報紙"}
+      ],
+      "suggestions": [
+        {"text": "door to door 表示逐一拜訪的意思", "category": "usage"},
+        {"text": "every morning 時間副詞位置靈活", "category": "style"}
+      ],
+      "tags": ["from-to", "daily-routine", "necessity"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch08-2-1-person-to-person-003",
+      "zh": "每個人的品味各有不同，而且人各有所好，無法解釋。",
+      "hints": [
+        {"category": "syntactic", "text": "from person to person 表示個體差異"},
+        {"category": "pragmatic", "text": "there is no accounting for tastes 俚語"},
+        {"category": "lexical", "text": "tastes differ 品味不同"}
+      ],
+      "suggestions": [
+        {"text": "用俚語 there's no accounting for tastes 更自然", "category": "style"},
+        {"text": "個體差異常用 from...to... 句型", "category": "usage"}
+      ],
+      "tags": ["from-to", "individual-differences", "idioms"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch08-2-2-one-after-another-004",
+      "zh": "經濟不景氣促使小型企業紛紛倒閉。",
+      "hints": [
+        {"category": "lexical", "text": "economic depression; small businesses"},
+        {"category": "syntactic", "text": "one after another 表示連續性"},
+        {"category": "pragmatic", "text": "cause...to collapse 因果關係"}
+      ],
+      "suggestions": [
+        {"text": "one after another 強調連續發生", "category": "grammar"},
+        {"text": "經濟詞彙需要精確搭配", "category": "usage"}
+      ],
+      "tags": ["one-after-another", "economics", "causation"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch08-2-3-one-thing-another-005",
+      "zh": "知道是一回事，而去做又是另外一回事。",
+      "hints": [
+        {"category": "syntactic", "text": "To know...to do 不定詞作主詞"},
+        {"category": "pragmatic", "text": "one thing...quite another 對比結構"},
+        {"category": "morphological", "text": "動名詞或不定詞皆可作主詞"}
+      ],
+      "suggestions": [
+        {"text": "強調知行差異用 one thing...quite another", "category": "style"},
+        {"text": "可用 Knowing...doing 變化", "category": "grammar"}
+      ],
+      "tags": ["one-thing-another", "contrast", "infinitive"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-3-1-by-oneself-001",
+      "zh": "小木屋孤零零地座落在田中央。",
+      "hints": [
+        {"category": "lexical", "text": "all by itself 強調孤立狀態"},
+        {"category": "pragmatic", "text": "in the middle of the field 位置描述"},
+        {"category": "syntactic", "text": "stand 表示位置狀態"}
+      ],
+      "suggestions": [
+        {"text": "all by itself 強調完全孤立", "category": "style"},
+        {"text": "描述建築物位置用 stand", "category": "usage"}
+      ],
+      "tags": ["by-oneself", "location", "isolation"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-3-1-on-ones-own-002",
+      "zh": "老師鼓勵學生獨力解決問題。",
+      "hints": [
+        {"category": "syntactic", "text": "encourage sb to do sth"},
+        {"category": "lexical", "text": "on their own 獨立地"},
+        {"category": "pragmatic", "text": "solve problems independently"}
+      ],
+      "suggestions": [
+        {"text": "on one's own 和 by oneself 可互換", "category": "grammar"},
+        {"text": "鼓勵獨立學習的教育理念", "category": "usage"}
+      ],
+      "tags": ["on-ones-own", "education", "independence"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch08-3-1-by-themselves-003",
+      "zh": "這系列的讀本是專供學前孩童自行閱讀的。",
+      "hints": [
+        {"category": "syntactic", "text": "be intended for sb to do sth"},
+        {"category": "lexical", "text": "preschool kids; by themselves"},
+        {"category": "pragmatic", "text": "教育材料的目標對象"}
+      ],
+      "suggestions": [
+        {"text": "be intended for 表示專門設計給某群體", "category": "grammar"},
+        {"text": "學前教育詞彙要準確", "category": "usage"}
+      ],
+      "tags": ["by-themselves", "education", "children"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-3-2-by-herself-004",
+      "zh": "就讓她一個人靜一下。她想獨自待一會兒。",
+      "hints": [
+        {"category": "pragmatic", "text": "leave sb alone 讓某人獨處"},
+        {"category": "syntactic", "text": "by herself 和 alone 意思相近"},
+        {"category": "lexical", "text": "for a while 一會兒"}
+      ],
+      "suggestions": [
+        {"text": "leave sb alone 是固定搭配", "category": "usage"},
+        {"text": "情感需求的貼切表達", "category": "style"}
+      ],
+      "tags": ["by-herself", "emotions", "privacy"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch08-4-1-those-these-001",
+      "zh": "有些醫生建議以豆漿代替牛奶，因為前者比後者健康。",
+      "hints": [
+        {"category": "syntactic", "text": "substitute A for B 用A代替B"},
+        {"category": "pragmatic", "text": "that(前者) vs this(後者)的指代"},
+        {"category": "lexical", "text": "soy milk vs milk; healthier"}
+      ],
+      "suggestions": [
+        {"text": "that 指較遠的事物(soy milk)，this 指較近的(milk)", "category": "grammar"},
+        {"text": "substitute...for... 固定搭配要熟記", "category": "usage"}
+      ],
+      "tags": ["those-these", "comparison", "health"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch08-4-1-those-these-002",
+      "zh": "真正的朋友與酒肉朋友的分別在於當我們需要幫助時，前者陪伴我們，後者卻背叛我們。",
+      "hints": [
+        {"category": "lexical", "text": "true friends vs fair-weather friends"},
+        {"category": "syntactic", "text": "those(前者) vs these(後者)複數指代"},
+        {"category": "pragmatic", "text": "in our hour of need 需要時刻"}
+      ],
+      "suggestions": [
+        {"text": "複數時用 those...these 做前後者對比", "category": "grammar"},
+        {"text": "fair-weather friends 是慣用語", "category": "usage"}
+      ],
+      "tags": ["those-these", "friendship", "contrast"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch08-4-2-former-latter-003",
+      "zh": "JK 羅琳和丹·布朗兩人都是知名的暢銷作家。前者寫了《哈利波特》系列，後者寫了《達文西密碼》。",
+      "hints": [
+        {"category": "syntactic", "text": "the former...the latter 正式的前後者"},
+        {"category": "pragmatic", "text": "best-selling writers; book titles"},
+        {"category": "lexical", "text": "famous authors; series vs single work"}
+      ],
+      "suggestions": [
+        {"text": "formal writing 用 the former...the latter", "category": "style"},
+        {"text": "書籍標題用斜體或引號", "category": "grammar"}
+      ],
+      "tags": ["former-latter", "literature", "authors"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-5-1-the-adjective-001",
+      "zh": "德蕾莎修女奉獻她的一生給窮人與那些不被照顧的人。",
+      "hints": [
+        {"category": "syntactic", "text": "the + adj 表示一類人"},
+        {"category": "lexical", "text": "devote one's life to; the needy"},
+        {"category": "pragmatic", "text": "those who are uncared for 關係代名詞"}
+      ],
+      "suggestions": [
+        {"text": "the poor, the needy 等形容詞名詞化", "category": "grammar"},
+        {"text": "慈善工作的崇高表達", "category": "style"}
+      ],
+      "tags": ["the-adjective", "charity", "social-groups"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-5-1-the-adjective-002",
+      "zh": "弱肉強食的叢林法則似乎在人類社會中也適用。",
+      "hints": [
+        {"category": "lexical", "text": "the law of the jungle; the weak/strong"},
+        {"category": "syntactic", "text": "the weak fall prey to the strong"},
+        {"category": "pragmatic", "text": "seem applicable in human society"}
+      ],
+      "suggestions": [
+        {"text": "the weak, the strong 表示群體概念", "category": "grammar"},
+        {"text": "fall prey to 是固定搭配", "category": "usage"}
+      ],
+      "tags": ["the-adjective", "society", "nature"],
+      "difficulty": 4
+    },
+    {
+      "id": "ch08-5-1-the-adjective-003",
+      "zh": "他是個虔誠的基督徒，相信好人死後上天堂。",
+      "hints": [
+        {"category": "lexical", "text": "pious Christian; the good"},
+        {"category": "syntactic", "text": "go to heaven when they die"},
+        {"category": "pragmatic", "text": "religious belief expression"}
+      ],
+      "suggestions": [
+        {"text": "the good 指善良的人們", "category": "grammar"},
+        {"text": "宗教信仰表達要尊重", "category": "style"}
+      ],
+      "tags": ["the-adjective", "religion", "morality"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-6-1-such-as-001",
+      "zh": "青少年對於像林書豪和周杰倫這一類名人的成功故事十分著迷。",
+      "hints": [
+        {"category": "syntactic", "text": "celebrities such as + 具體例子"},
+        {"category": "lexical", "text": "be fascinated by success stories"},
+        {"category": "pragmatic", "text": "舉例說明的適當方式"}
+      ],
+      "suggestions": [
+        {"text": "such as 用於舉例，後接具體名詞", "category": "grammar"},
+        {"text": "名人例子要具有代表性", "category": "usage"}
+      ],
+      "tags": ["such-as", "celebrities", "teenagers"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch08-6-1-such-as-002",
+      "zh": "中國人相信命名和擇吉日這一類的習俗會帶給人好運。",
+      "hints": [
+        {"category": "syntactic", "text": "such customs as + 具體習俗"},
+        {"category": "lexical", "text": "name giving; selecting auspicious day"},
+        {"category": "pragmatic", "text": "bring good luck to people"}
+      ],
+      "suggestions": [
+        {"text": "such + N + as 的倒裝用法", "category": "grammar"},
+        {"text": "文化習俗的客觀描述", "category": "style"}
+      ],
+      "tags": ["such-as", "culture", "customs"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-6-2-for-example-003",
+      "zh": "許多國家例如印度和菲律賓，經常發生地震。",
+      "hints": [
+        {"category": "syntactic", "text": "for example 插入語用法"},
+        {"category": "pragmatic", "text": "have a lot of earthquakes"},
+        {"category": "phonological", "text": "逗號隔開插入語"}
+      ],
+      "suggestions": [
+        {"text": "for example 比 such as 更正式", "category": "style"},
+        {"text": "地理現象的客觀陳述", "category": "usage"}
+      ],
+      "tags": ["for-example", "geography", "natural-disasters"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch08-7-1-large-number-001",
+      "zh": "很多人參加市政府前的元旦升旗典禮。",
+      "hints": [
+        {"category": "morphological", "text": "a large number of + 可數名詞複數"},
+        {"category": "lexical", "text": "New Year flag-raising ceremony"},
+        {"category": "pragmatic", "text": "before the City Hall 位置表達"}
+      ],
+      "suggestions": [
+        {"text": "number of 修飾可數名詞", "category": "grammar"},
+        {"text": "公共活動的正式表達", "category": "usage"}
+      ],
+      "tags": ["large-number", "public-events", "ceremonies"],
+      "difficulty": 2
+    },
+    {
+      "id": "ch08-7-1-great-amount-002",
+      "zh": "他投資了許多錢在股票中，結果卻血本無歸。",
+      "hints": [
+        {"category": "morphological", "text": "a great amount of + 不可數名詞"},
+        {"category": "syntactic", "text": "only to + V 表示意外結果"},
+        {"category": "lexical", "text": "invest money in stocks"}
+      ],
+      "suggestions": [
+        {"text": "amount of 修飾不可數名詞", "category": "grammar"},
+        {"text": "only to 表示令人失望的結果", "category": "usage"}
+      ],
+      "tags": ["great-amount", "investment", "disappointment"],
+      "difficulty": 3
+    },
+    {
+      "id": "ch08-7-2-many-a-003",
+      "zh": "許多青少年公開贊成解除頭髮長度的禁令。",
+      "hints": [
+        {"category": "morphological", "text": "many a + 單數名詞，動詞用單數"},
+        {"category": "lexical", "text": "come out in favor of"},
+        {"category": "pragmatic", "text": "lifting of the ban 解除禁令"}
+      ],
+      "suggestions": [
+        {"text": "many a 後接單數但語義為複數", "category": "grammar"},
+        {"text": "學生權益的表達方式", "category": "usage"}
+      ],
+      "tags": ["many-a", "student-rights", "regulations"],
+      "difficulty": 4
+    }
+  ]
+}
