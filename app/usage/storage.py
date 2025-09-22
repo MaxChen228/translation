@@ -73,9 +73,9 @@ class UsageStorage:
                 conn.execute(stmt)
         conn.commit()
 
-    def record(self, usage: LLMUsage) -> None:
+    def record(self, usage: LLMUsage) -> int:
         with self._connect() as conn:
-            conn.execute(
+            cursor = conn.execute(
                 """
                 INSERT INTO llm_usage (
                     timestamp, provider, api_kind, model, api_endpoint,
@@ -108,6 +108,7 @@ class UsageStorage:
                 ),
             )
             conn.commit()
+            return int(cursor.lastrowid)
 
     def _build_filters(
         self,
@@ -163,7 +164,7 @@ class UsageStorage:
             until=until,
         )
         sql = (
-            "SELECT timestamp, provider, api_kind, model, api_endpoint, route, device_id, inline_parts, "
+            "SELECT id, timestamp, provider, api_kind, model, api_endpoint, route, device_id, inline_parts, "
             "prompt_chars, input_tokens, output_tokens, total_tokens, latency_ms, status_code, "
             "cost_input, cost_output, cost_total, request_payload, response_payload "
             "FROM llm_usage"
@@ -184,6 +185,19 @@ class UsageStorage:
         with self._connect() as conn:
             rows = conn.execute(sql, params).fetchall()
         return [LLMUsage(**dict(row)) for row in rows]
+
+    def get(self, usage_id: int) -> Optional[LLMUsage]:
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT id, timestamp, provider, api_kind, model, api_endpoint, route, device_id, inline_parts, "
+                "prompt_chars, input_tokens, output_tokens, total_tokens, latency_ms, status_code, "
+                "cost_input, cost_output, cost_total, request_payload, response_payload "
+                "FROM llm_usage WHERE id = ?",
+                (usage_id,),
+            ).fetchone()
+        if row is None:
+            return None
+        return LLMUsage(**dict(row))
 
     def summarize(
         self,

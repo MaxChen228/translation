@@ -1,5 +1,5 @@
 from .models import LLMUsage, LLMUsageQueryResponse, LLMUsageSummary
-from .recorder import record_usage, query_usage, summarize_usage, reset_usage
+from .recorder import record_usage, query_usage, summarize_usage, reset_usage, get_usage
 
 __all__ = [
     "LLMUsage",
@@ -9,4 +9,5 @@ __all__ = [
     "query_usage",
     "summarize_usage",
     "reset_usage",
+    "get_usage",
 ]

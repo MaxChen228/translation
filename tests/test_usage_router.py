@@ -28,7 +28,7 @@ def test_usage_endpoint_returns_records():
         latency_ms=88.2,
         status_code=200,
     )
-    record_usage(usage, route=usage.route, device_id=usage.device_id)
+    saved = record_usage(usage, route=usage.route, device_id=usage.device_id)
 
     client = TestClient(create_app())
     resp = client.get("/usage/llm")
@@ -38,6 +38,9 @@ def test_usage_endpoint_returns_records():
     assert data["summary"]["total_tokens"] == 75
     assert data["summary"]["total_cost_usd"] > 0
     assert data["items"][0]["device_id"] == "device-123"
+    detail = client.get(f"/usage/llm/{saved.id}/view")
+    assert detail.status_code == 200
+    assert "Request Payload" in detail.text
 
 
 def test_usage_endpoint_filters():

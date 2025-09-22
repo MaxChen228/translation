@@ -25,8 +25,8 @@ def _with_costs(usage: LLMUsage) -> LLMUsage:
 def record_usage(usage: LLMUsage, *, route: str, device_id: str) -> LLMUsage:
     usage_with_ctx = usage.model_copy(update={"route": route, "device_id": device_id})
     usage_with_costs = _with_costs(usage_with_ctx)
-    get_storage().record(usage_with_costs)
-    return usage_with_costs
+    inserted_id = get_storage().record(usage_with_costs)
+    return usage_with_costs.model_copy(update={"id": inserted_id})
 
 
 def query_usage(
@@ -74,3 +74,6 @@ def summarize_usage(
 def reset_usage() -> None:
     get_storage().reset()
 
+
+def get_usage(usage_id: int) -> Optional[LLMUsage]:
+    return get_storage().get(usage_id)

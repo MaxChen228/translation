@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 from fastapi.responses import HTMLResponse
 
 from .models import LLMUsageQueryResponse
-from .recorder import query_usage, summarize_usage
+from .recorder import query_usage, summarize_usage, get_usage
 
 
 router = APIRouter(prefix="/usage", tags=["usage"])
@@ -239,19 +239,11 @@ def llm_usage_view() -> HTMLResponse:
             <th>Status</th>
             <th>成本 (USD)</th>
             <th>Endpoint</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody id=\"tableBody\"></tbody>
       </table>
-    </div>
-
-    <div id=\"modalOverlay\" hidden style=\"position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:50;\"></div>
-    <div id=\"detailModal\" hidden style=\"position:fixed;inset:10%;background:#fff;color:#111827;padding:1rem;border-radius:10px;z-index:60;overflow:auto;max-height:80vh;box-shadow:0 20px 40px rgba(0,0,0,0.35);font-family:monospace;white-space:pre-wrap;word-break:break-word;\">
-      <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">
-        <h2 style=\"margin:0;font-size:1.1rem;\">詳細內容</h2>
-        <button id=\"modalClose\" style=\"background:#ef4444;color:#fff;border:none;border-radius:4px;padding:0.35rem 0.6rem;cursor:pointer;\">關閉</button>
-      </div>
-      <pre id=\"detailContent\" style=\"background:#111827;color:#f9fafb;padding:0.75rem;border-radius:6px;font-size:0.85rem;\"></pre>
     </div>
 
     <script>
@@ -319,6 +311,15 @@ def llm_usage_view() -> HTMLResponse:
             td.textContent = value;
             tr.appendChild(td);
           });
+          const actionTd = document.createElement('td');
+          const link = document.createElement('a');
+          link.href = `/usage/llm/${item.id}/view`;
+          link.textContent = '查看';
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.style = 'color:#2563eb;text-decoration:none;font-weight:600;';
+          actionTd.appendChild(link);
+          tr.appendChild(actionTd);
           tbody.appendChild(tr);
         });
       }
@@ -367,20 +368,6 @@ def llm_usage_view() -> HTMLResponse:
         };
       }
 
-      function showDetail(item) {
-        const overlay = document.getElementById('modalOverlay');
-        const modal = document.getElementById('detailModal');
-        const content = document.getElementById('detailContent');
-        content.textContent = JSON.stringify(item, null, 2);
-        overlay.hidden = false;
-        modal.hidden = false;
-      }
-
-      function closeDetail() {
-        document.getElementById('modalOverlay').hidden = true;
-        document.getElementById('detailModal').hidden = true;
-      }
-
       function init() {
         const form = document.getElementById('filters');
         form.addEventListener('submit', (ev) => {
@@ -423,15 +410,79 @@ def llm_usage_view() -> HTMLResponse:
           URL.revokeObjectURL(url);
         });
 
-        document.getElementById('modalOverlay').addEventListener('click', closeDetail);
-        document.getElementById('modalClose').addEventListener('click', closeDetail);
-
         state.lastQuery = buildQueryFromForm(form);
         fetchUsage(state.lastQuery);
       }
 
       document.addEventListener('DOMContentLoaded', init);
     </script>
+  </body>
+</html>
+"""
+    return HTMLResponse(content=html)
+
+
+@router.get("/llm/{usage_id}/view", response_class=HTMLResponse)
+def llm_usage_detail_view(usage_id: int) -> HTMLResponse:
+    record = get_usage(usage_id)
+    if record is None:
+        raise HTTPException(status_code=404, detail="usage_not_found")
+
+    def _pretty(data: str) -> str:
+        import json
+
+        try:
+            return json.dumps(json.loads(data), ensure_ascii=False, indent=2)
+        except Exception:
+            return data
+
+    request_pretty = _pretty(record.request_payload)
+    response_pretty = _pretty(record.response_payload)
+
+    html = f"""
+<!DOCTYPE html>
+<html lang=\"zh-Hant\">
+  <head>
+    <meta charset=\"utf-8\" />
+    <title>Usage Detail #{record.id}</title>
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+    <style>
+      body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 1.5rem; background:#f4f4f5; color:#111827; }}
+      h1 {{ margin-top:0; }}
+      .meta {{ display:grid; gap:0.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom:1.5rem; }}
+      .meta div {{ background:#fff; border-radius:8px; padding:0.75rem; box-shadow:0 1px 2px rgba(0,0,0,0.08); }}
+      .section {{ margin-bottom:1.5rem; }}
+      pre {{ background:#111827; color:#f9fafb; padding:1rem; border-radius:8px; overflow:auto; font-size:0.85rem; white-space:pre-wrap; word-break:break-word; }}
+      a.back {{ display:inline-block; margin-bottom:1rem; color:#2563eb; text-decoration:none; }}
+      @media (prefers-color-scheme: dark) {{
+        body {{ background:#0f172a; color:#f9fafb; }}
+        .meta div {{ background:#1e293b; box-shadow:none; }}
+      }}
+    </style>
+  </head>
+  <body>
+    <a class=\"back\" href=\"/usage/llm/view\">&larr; 返回列表</a>
+    <h1>LLM 使用紀錄 #{record.id}</h1>
+    <div class=\"meta\">
+      <div><strong>時間</strong><br />{record.timestamp}</div>
+      <div><strong>Device</strong><br />{record.device_id or '-'}</div>
+      <div><strong>Route</strong><br />{record.route or '-'}</div>
+      <div><strong>Model</strong><br />{record.model}</div>
+      <div><strong>Tokens (in/out/total)</strong><br />{record.input_tokens}/{record.output_tokens}/{record.total_tokens}</div>
+      <div><strong>Latency (ms)</strong><br />{record.latency_ms:.2f}</div>
+      <div><strong>Status</strong><br />{record.status_code or '-'}</div>
+      <div><strong>成本 USD</strong><br />{record.cost_total:.6f}</div>
+    </div>
+
+    <div class=\"section\">
+      <h2>Request Payload</h2>
+      <pre>{request_pretty}</pre>
+    </div>
+
+    <div class=\"section\">
+      <h2>Response Payload</h2>
+      <pre>{response_pretty}</pre>
+    </div>
   </body>
 </html>
 """

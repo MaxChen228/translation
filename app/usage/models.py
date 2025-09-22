@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 
 class LLMUsage(BaseModel):
+    id: Optional[int] = None
     timestamp: float = Field(..., description="Unix timestamp when the call finished")
     provider: str = "gemini"
     api_kind: str = "generateContent"
