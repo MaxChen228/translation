@@ -156,15 +156,6 @@ def llm_usage_view() -> HTMLResponse:
         gap: 0.5rem;
         margin-top: 0.75rem;
       }
-      pre {
-        white-space: pre-wrap;
-        word-break: break-word;
-        background: #111827;
-        color: #f9fafb;
-        padding: 0.75rem;
-        border-radius: 6px;
-        font-size: 0.8rem;
-      }
       .table-container {
         overflow-x: auto;
         max-height: 60vh;
@@ -254,9 +245,13 @@ def llm_usage_view() -> HTMLResponse:
       </table>
     </div>
 
-    <div class=\"panel\" id=\"rawPanel\" hidden>
-      <h2>Raw JSON</h2>
-      <pre id=\"rawJson\"></pre>
+    <div id=\"modalOverlay\" hidden style=\"position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:50;\"></div>
+    <div id=\"detailModal\" hidden style=\"position:fixed;inset:10%;background:#fff;color:#111827;padding:1rem;border-radius:10px;z-index:60;overflow:auto;max-height:80vh;box-shadow:0 20px 40px rgba(0,0,0,0.35);font-family:monospace;white-space:pre-wrap;word-break:break-word;\">
+      <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">
+        <h2 style=\"margin:0;font-size:1.1rem;\">詳細內容</h2>
+        <button id=\"modalClose\" style=\"background:#ef4444;color:#fff;border:none;border-radius:4px;padding:0.35rem 0.6rem;cursor:pointer;\">關閉</button>
+      </div>
+      <pre id=\"detailContent\" style=\"background:#111827;color:#f9fafb;padding:0.75rem;border-radius:6px;font-size:0.85rem;\"></pre>
     </div>
 
     <script>
@@ -295,7 +290,7 @@ def llm_usage_view() -> HTMLResponse:
         if (!items.length) {
           const tr = document.createElement('tr');
           const td = document.createElement('td');
-          td.colSpan = 11;
+          td.colSpan = 12;
           td.textContent = '尚無資料';
           tr.appendChild(td);
           tbody.appendChild(tr);
@@ -303,6 +298,8 @@ def llm_usage_view() -> HTMLResponse:
         }
         items.forEach((item, idx) => {
           const tr = document.createElement('tr');
+          tr.style.cursor = 'pointer';
+          tr.addEventListener('click', () => showDetail(item));
           const cells = [
             state.offset + idx + 1,
             isoToLocal(item.timestamp),
@@ -346,8 +343,6 @@ def llm_usage_view() -> HTMLResponse:
           state.lastData = data;
           renderSummary(data.summary);
           renderTable(data.items);
-          document.getElementById('rawJson').textContent = JSON.stringify(data, null, 2);
-          document.getElementById('rawPanel').hidden = false;
           statusEl.textContent = `載入完成，共 ${data.summary.count} 筆`;
           statusEl.className = 'status success';
         } catch (err) {
@@ -370,6 +365,20 @@ def llm_usage_view() -> HTMLResponse:
           limit: limit,
           offset: state.offset,
         };
+      }
+
+      function showDetail(item) {
+        const overlay = document.getElementById('modalOverlay');
+        const modal = document.getElementById('detailModal');
+        const content = document.getElementById('detailContent');
+        content.textContent = JSON.stringify(item, null, 2);
+        overlay.hidden = false;
+        modal.hidden = false;
+      }
+
+      function closeDetail() {
+        document.getElementById('modalOverlay').hidden = true;
+        document.getElementById('detailModal').hidden = true;
       }
 
       function init() {
@@ -413,6 +422,9 @@ def llm_usage_view() -> HTMLResponse:
           a.remove();
           URL.revokeObjectURL(url);
         });
+
+        document.getElementById('modalOverlay').addEventListener('click', closeDetail);
+        document.getElementById('modalClose').addEventListener('click', closeDetail);
 
         state.lastQuery = buildQueryFromForm(form);
         fetchUsage(state.lastQuery);
