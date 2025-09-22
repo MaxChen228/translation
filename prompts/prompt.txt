@@ -31,7 +31,7 @@
 5) 風格：中性美式；常見搭配優先（e.g., put in more effort, critical thinking skills, two‑thirds, along the way/in the process, everyone）。
 6) 錯誤物件的 hints：from 原文；before/after 取最小必要上下文（可空，≤6 字元）；occurrence 為第 n 次（1 起算，拿不準可 null）。
 7) 計分：100 起，依嚴重度每項約 −3~−6；四捨五入為整數；下限 60；無錯誤=100。
-8) 說明：explainZh 用繁中，精簡（≤25 字），指令式，避免冗長。
+8) 說明：explainZh 僅用繁中指令語氣，限 16 字以內，不給例句、不補背景，只寫錯因或修正重點。
 
 步驟
 - 閱讀 zh/en 理解語境
