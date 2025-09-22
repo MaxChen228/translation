@@ -436,8 +436,12 @@ def llm_usage_detail_view(usage_id: int) -> HTMLResponse:
         except Exception:
             return data
 
-    request_pretty = _pretty(record.request_payload)
-    response_pretty = _pretty(record.response_payload)
+    def _render(data: str) -> str:
+        text = _pretty(data)
+        return text.replace("\\n", "\n")
+
+    request_pretty = _render(record.request_payload)
+    response_pretty = _render(record.response_payload)
 
     html = f"""
 <!DOCTYPE html>
