@@ -1,0 +1,36 @@
+{
+  "id": "grammar-essentials",
+  "title": "Grammar Essentials",
+  "summary": "集中練習中高階句型與比較句式。",
+  "coverImage": "https://picsum.photos/seed/grammar-essentials/960/540",
+  "tags": ["grammar", "foundation"],
+  "books": [
+    {
+      "id": "grammar-chapter10",
+      "title": "Chapter 10・As Clauses",
+      "summary": "掌握 as 子句的多種寫法。",
+      "coverImage": "https://picsum.photos/seed/as-clause/720/400",
+      "tags": ["grammar", "as-clause"],
+      "difficulty": 3,
+      "source": { "type": "book", "id": "grammar-chapter10" }
+    },
+    {
+      "id": "grammar-chapter11",
+      "title": "Chapter 11・比較句型",
+      "summary": "強化比較級與最高級的句型應用。",
+      "coverImage": "https://picsum.photos/seed/comparative/720/400",
+      "tags": ["grammar", "comparative"],
+      "difficulty": 3,
+      "source": { "type": "book", "id": "grammar-chapter11" }
+    },
+    {
+      "id": "grammar-chapter12",
+      "title": "Chapter 12・條件句",
+      "summary": "條件句與假設語氣的整合練習。",
+      "coverImage": "https://picsum.photos/seed/conditional/720/400",
+      "tags": ["grammar", "conditional"],
+      "difficulty": 4,
+      "source": { "type": "book", "id": "grammar-chapter12" }
+    }
+  ]
+}

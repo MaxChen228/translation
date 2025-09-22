@@ -166,6 +166,48 @@ class CloudBookDetail(BaseModel):
     items: List["BankItem"]  # forward ref to BankItem
 
 
+class CourseBookSummary(BaseModel):
+    id: str
+    title: str
+    summary: Optional[str] = None
+    coverImage: Optional[str] = None
+    tags: List[str] = []
+    difficulty: Optional[int] = Field(default=None, ge=1, le=5)
+    itemCount: int
+
+
+class CourseBookDetail(CourseBookSummary):
+    items: List["BankItem"]
+
+
+class CloudCourseSummary(BaseModel):
+    id: str
+    title: str
+    summary: Optional[str] = None
+    coverImage: Optional[str] = None
+    tags: List[str] = []
+    bookCount: int
+
+
+class CloudCourseDetail(CloudCourseSummary):
+    books: List[CourseBookDetail]
+
+
+class CloudSearchCourseHit(CloudCourseSummary):
+    # Inherit fields directly; kept for explicit typing.
+    pass
+
+
+class CloudSearchBookHit(CourseBookSummary):
+    courseId: str
+
+
+class CloudSearchResponse(BaseModel):
+    query: str
+    courses: List[CloudSearchCourseHit]
+    books: List[CloudSearchBookHit]
+
+
 # ----- Progress (legacy/minimal) -----
 
 class ProgressRecord(BaseModel):
@@ -277,5 +319,7 @@ class DeckMakeResponse(BaseModel):
 # Resolve forward refs now that BankItem is defined
 try:
     CloudBookDetail.model_rebuild()
+    CourseBookDetail.model_rebuild()
+    CloudCourseDetail.model_rebuild()
 except Exception:
     pass
