@@ -94,15 +94,18 @@ class ContentStore:
       data/courses/<id>.json  -> { id, title, summary?, coverImage?, tags?, books:[{ id?, title?, summary?, coverImage?, tags?, difficulty?, source?:{id}, items?:[...] }] }
     """
 
-    def __init__(self) -> None:
-        settings = get_settings()
-        base_cfg = settings.CONTENT_DIR
-        if os.path.isabs(base_cfg):
-            self.base = base_cfg
+    def __init__(self, base_path: Optional[str] = None) -> None:
+        if base_path is not None:
+            self.base = base_path
         else:
-            here = os.path.dirname(__file__)
-            backend_dir = os.path.abspath(os.path.join(here, ".."))
-            self.base = os.path.abspath(os.path.join(backend_dir, base_cfg))
+            settings = get_settings()
+            base_cfg = settings.CONTENT_DIR
+            if os.path.isabs(base_cfg):
+                self.base = base_cfg
+            else:
+                here = os.path.dirname(__file__)
+                backend_dir = os.path.abspath(os.path.join(here, ".."))
+                self.base = os.path.abspath(os.path.join(backend_dir, base_cfg))
         self._decks_by_id: Dict[str, dict] = {}
         self._books_by_id: Dict[str, dict] = {}
         self._courses_by_id: Dict[str, dict] = {}
@@ -163,6 +166,22 @@ class ContentStore:
         self._load_books(self._json_files("books"))
         self._load_courses(self._json_files("courses"))
         self._loaded = True
+
+    def reload(self) -> None:
+        """Force reloading all cached content from disk."""
+        self._decks_by_id.clear()
+        self._books_by_id.clear()
+        self._courses_by_id.clear()
+        self._loaded = False
+        self.load()
+
+    def stats(self) -> dict:
+        self.load()
+        return {
+            "decks": len(self._decks_by_id),
+            "books": len(self._books_by_id),
+            "courses": len(self._courses_by_id),
+        }
 
     # ----- Loaders -----------------------------------------------------
     def _load_decks(self, deck_files: List[str]) -> None:
@@ -453,3 +472,13 @@ class ContentStore:
             **self._book_summary(book),
             "items": [dict(item) for item in book.get("items", [])],
         }
+
+
+_GLOBAL_STORE: Optional[ContentStore] = None
+
+
+def get_content_store() -> ContentStore:
+    global _GLOBAL_STORE
+    if _GLOBAL_STORE is None:
+        _GLOBAL_STORE = ContentStore()
+    return _GLOBAL_STORE

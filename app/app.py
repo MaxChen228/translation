@@ -8,6 +8,7 @@ from app.routers.cloud import router as cloud_router
 from app.routers.sys import router as sys_router
 from app.routers.chat import router as chat_router
 from app.usage.router import router as usage_router
+from app.routers.admin import router as admin_router
 
 
 def create_app() -> FastAPI:
@@ -25,4 +26,5 @@ def create_app() -> FastAPI:
     app.include_router(cloud_router)
     app.include_router(chat_router)
     app.include_router(usage_router)
+    app.include_router(admin_router)
     return app

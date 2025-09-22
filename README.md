@@ -6,7 +6,8 @@ Repo（GitHub）：https://github.com/MaxChen228/translation
 
 ## 功能總覽
 - 批改（`POST /correct`）：回傳修正版、分數與錯誤清單（使用 Gemini）。
-- 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*` 從 `data/` 提供精選題庫/卡片集。
+- 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*`、`/cloud/courses*` 與 `/cloud/search` 從 `data/` 提供精選題庫、卡片集、課程與全文檢索。
+- 錯誤合併（`POST /correct/merge`）：將多個錯誤合併為單一卡片，對應 iOS 捏合手勢流程。
 - 單字卡產生（`POST /make_deck`）：由 Saved JSON 彙整卡片，支援變體括號語法輸出。
 - 深入研究 chat 流程：`POST /chat/respond` 進行多輪確認、`POST /chat/research` 產出研究詞彙列表（term/explanation/context/type）。
 - 健康檢查（`GET /healthz`）。
@@ -86,8 +87,16 @@ cp .env.example .env
 }
 ```
 
+### GET /cloud/courses、GET /cloud/courses/{id}
+- 從 `data/courses/*.json` 提供課程清單與詳情，每個課程可包含多個題庫本。
+- 課程中的題庫可引用 `data/books/*.json` 或內嵌題目，回傳時會包含完整 `items` 以供預覽/下載。
+
+### POST /admin/content/reload
+- 重新載入 `CONTENT_DIR` 下的資料，讓課程/題庫更新即時生效。
+- 需在 `X-Content-Token` header 帶入 `CONTENT_ADMIN_TOKEN`，未設定 token 時表示允許任意呼叫（僅建議在本機開發）。
+
 ### GET /cloud/books、GET /cloud/books/{name}
-- 從 `data/books/*.json` 提供唯讀題庫本清單與內容。
+- 從 `data/books/*.json` 提供唯讀題庫本清單與內容（仍保留給舊版 App 使用）。
 - 注意：`items[].hints[].category` 僅允許五種值（morphological | syntactic | lexical | phonological | pragmatic）。
   若檔案中存在其他分類值，後端會拒絕載入該內容（於啟動時記錄錯誤並略過該書）。
 
@@ -230,3 +239,19 @@ cp .env.example .env
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。
 - 建議使用 `.env`（本地）與 Render/雲端平台的環境變數管理機制（雲端）。
+
+
+## 內容同步（本機 → 後端）
+本 repo 提供 `scripts/sync_content.py`，可將本機 `content/` 目錄的課程/題庫同步到後端並立即 reload：
+
+```bash
+# 假設在 translation-backend 目錄下
+./scripts/sync_content.py ../content --backend-url http://127.0.0.1:8080 --token $CONTENT_ADMIN_TOKEN
+```
+
+流程會：
+1. 檢查 `books/`、`courses/` 中的 JSON 是否為有效格式。
+2. 將檔案複製到後端的 `data/` 目錄（預設 `CONTENT_DIR`）。
+3. 呼叫 `/admin/content/reload` 讓更新即時生效。
+
+可依需求調整 `--source`、`--target`、`--backend-url` 等參數。請記得先設定 `CONTENT_ADMIN_TOKEN`，避免管理端點被濫用。

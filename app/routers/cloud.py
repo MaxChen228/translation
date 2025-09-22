@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from app.content_store import ContentStore
+from app.content_store import get_content_store
 from app.schemas import (
     BankItem,
     CloudCard,
@@ -18,7 +18,7 @@ from app.schemas import (
 
 
 router = APIRouter()
-_CONTENT = ContentStore()
+_CONTENT = get_content_store()
 
 
 @router.get("/cloud/decks", response_model=list[CloudDeckSummary])
