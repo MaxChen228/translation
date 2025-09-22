@@ -160,6 +160,12 @@ cp .env.example .env
 ### GET /healthz
 - 若設好金鑰且可存取模型，回傳 `{ status: "ok", provider: "gemini", model: "…" }`。
 
+### LLM Usage 監控
+- 所有 LLM 呼叫都會記錄在 SQLite（`USAGE_DB_PATH`，預設 `data/usage.db`），包含 tokens、延遲、成本與清洗後的 request/response JSON（圖片 `inline_data` 會以 `<inline_data omitted>` 取代，以避免儲存大量 base64 資料）。
+- `GET /usage/llm` 回傳 `{ summary, items[] }`，支援 `device_id`、`route`、`model`、`provider`、`since`、`until`、`limit`、`offset` 篩選。
+- `GET /usage/llm/view` 提供內建儀表板；表格中的「查看」連結會開啟 `/usage/llm/{id}/view` 顯示該筆完整 metadata 與 JSON。
+- 若要跨伺服器共享紀錄，請將 `USAGE_DB_PATH` 指向持久化磁碟或網路儲存位置，資料表會於啟動時自動建立。
+
 ## 部署（Render Blueprint）
 - 在 GitHub 建立 repo 並推送（本倉已對應 https://github.com/MaxChen228/translation）。
 - Render → New Blueprint → 選擇本 repo；使用以下設定（也可使用倉庫內的 `render.yaml`）：
