@@ -114,6 +114,27 @@ def _gen_config() -> Dict[str, object]:
     return get_settings().generation_config()
 
 
+def _sanitize_payload_for_storage(payload: Dict[str, object]) -> str:
+    try:
+        sanitized = json.loads(json.dumps(payload))
+        contents = sanitized.get("contents", [])
+        if isinstance(contents, list):
+            for content in contents:
+                parts = content.get("parts") if isinstance(content, dict) else None
+                if isinstance(parts, list):
+                    for part in parts:
+                        if isinstance(part, dict) and "inline_data" in part:
+                            inline = part.get("inline_data")
+                            if isinstance(inline, dict) and "data" in inline:
+                                new_inline = dict(inline)
+                                new_inline["data"] = "<inline_data omitted>"
+                                part["inline_data"] = new_inline
+        return json.dumps(sanitized, ensure_ascii=False)
+    except Exception:
+        try:
+            return json.dumps(payload, ensure_ascii=False)
+        except Exception:
+            return ""
 
 def call_gemini_json(
     system_prompt: str,
@@ -151,7 +172,6 @@ def call_gemini_json(
                     "direction": "input",
                     "model": chosen,
                     "endpoint": url,
-                    "payload": payload,
                 },
             )
         except Exception:
@@ -187,48 +207,41 @@ def call_gemini_json(
         content = data["candidates"][0]["content"]["parts"][0]["text"]
     except Exception:
         raise RuntimeError(f"gemini_invalid_response: {json.dumps(data)[:400]}")
-    parsed_obj: object | None = None
-    usage_metadata = data.get("usageMetadata") or {}
-    usage = LLMUsage(
-        timestamp=time.time(),
-        provider="gemini",
-        api_kind="generateContent",
-        model=chosen,
-        api_endpoint=url,
-        inline_parts=inline_count,
-        prompt_chars=len(user_content),
-        input_tokens=int(usage_metadata.get("promptTokenCount") or 0),
-        output_tokens=int(usage_metadata.get("candidatesTokenCount") or 0),
-        total_tokens=int(usage_metadata.get("totalTokenCount") or 0),
-        latency_ms=latency_ms,
-        status_code=r.status_code,
-    )
     try:
         parsed_obj = json.loads(content)
+        usage_metadata = data.get("usageMetadata") or {}
+        sanitized_payload = _sanitize_payload_for_storage(payload)
+        response_payload = json.dumps(parsed_obj, ensure_ascii=False)
+        usage = LLMUsage(
+            timestamp=time.time(),
+            provider="gemini",
+            api_kind="generateContent",
+            model=chosen,
+            api_endpoint=url,
+            inline_parts=inline_count,
+            prompt_chars=len(user_content),
+            input_tokens=int(usage_metadata.get("promptTokenCount") or 0),
+            output_tokens=int(usage_metadata.get("candidatesTokenCount") or 0),
+            total_tokens=int(usage_metadata.get("totalTokenCount") or 0),
+            latency_ms=latency_ms,
+            status_code=r.status_code,
+            request_payload=sanitized_payload,
+            response_payload=response_payload,
+        )
         return parsed_obj, usage
     except Exception as e:
         raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
     finally:
         if mode in ("output", "both"):
             try:
-                logged_obj: object = parsed_obj if parsed_obj is not None else {"raw": content}
-                extra = {
-                    "event": "llm_response",
-                    "direction": "output",
-                    "model": chosen,
-                    "endpoint": url,
-                    "response": logged_obj,
-                }
-                if isinstance(logged_obj, dict):
-                    state_value = logged_obj.get("state")
-                    if state_value is not None:
-                        extra["state"] = state_value
-                    checklist_value = logged_obj.get("checklist")
-                    if checklist_value is not None:
-                        extra["checklist"] = checklist_value
                 logger.info(
                     "Gemini response",
-                    extra=extra,
+                    extra={
+                        "event": "llm_response",
+                        "direction": "output",
+                        "model": chosen,
+                        "endpoint": url,
+                    },
                 )
             except Exception:
                 pass

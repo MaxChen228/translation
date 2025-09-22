@@ -47,14 +47,31 @@ class UsageStorage:
                     status_code INTEGER,
                     cost_input REAL NOT NULL,
                     cost_output REAL NOT NULL,
-                    cost_total REAL NOT NULL
+                    cost_total REAL NOT NULL,
+                    request_payload TEXT NOT NULL,
+                    response_payload TEXT NOT NULL
                 )
                 """
             )
             conn.execute("CREATE INDEX IF NOT EXISTS idx_usage_timestamp ON llm_usage(timestamp DESC)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_usage_device ON llm_usage(device_id)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_usage_route ON llm_usage(route)")
+            self._ensure_columns(conn)
             conn.commit()
+
+    def _ensure_columns(self, conn: sqlite3.Connection) -> None:
+        columns = {row[1] for row in conn.execute("PRAGMA table_info(llm_usage)")}
+        required = {
+            "cost_input": "ALTER TABLE llm_usage ADD COLUMN cost_input REAL NOT NULL DEFAULT 0",
+            "cost_output": "ALTER TABLE llm_usage ADD COLUMN cost_output REAL NOT NULL DEFAULT 0",
+            "cost_total": "ALTER TABLE llm_usage ADD COLUMN cost_total REAL NOT NULL DEFAULT 0",
+            "request_payload": "ALTER TABLE llm_usage ADD COLUMN request_payload TEXT NOT NULL DEFAULT ''",
+            "response_payload": "ALTER TABLE llm_usage ADD COLUMN response_payload TEXT NOT NULL DEFAULT ''",
+        }
+        for name, stmt in required.items():
+            if name not in columns:
+                conn.execute(stmt)
+        conn.commit()
 
     def record(self, usage: LLMUsage) -> None:
         with self._connect() as conn:
@@ -64,8 +81,9 @@ class UsageStorage:
                     timestamp, provider, api_kind, model, api_endpoint,
                     route, device_id, inline_parts, prompt_chars,
                     input_tokens, output_tokens, total_tokens,
-                    latency_ms, status_code, cost_input, cost_output, cost_total
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    latency_ms, status_code, cost_input, cost_output, cost_total,
+                    request_payload, response_payload
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     usage.timestamp,
@@ -85,6 +103,8 @@ class UsageStorage:
                     usage.cost_input,
                     usage.cost_output,
                     usage.cost_total,
+                    usage.request_payload,
+                    usage.response_payload,
                 ),
             )
             conn.commit()
@@ -145,7 +165,7 @@ class UsageStorage:
         sql = (
             "SELECT timestamp, provider, api_kind, model, api_endpoint, route, device_id, inline_parts, "
             "prompt_chars, input_tokens, output_tokens, total_tokens, latency_ms, status_code, "
-            "cost_input, cost_output, cost_total "
+            "cost_input, cost_output, cost_total, request_payload, response_payload "
             "FROM llm_usage"
             f"{where} ORDER BY timestamp DESC"
         )

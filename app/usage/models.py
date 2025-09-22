@@ -23,6 +23,8 @@ class LLMUsage(BaseModel):
     cost_input: float = 0.0
     cost_output: float = 0.0
     cost_total: float = 0.0
+    request_payload: str = ""
+    response_payload: str = ""
 
 
 class LLMUsageSummary(BaseModel):
