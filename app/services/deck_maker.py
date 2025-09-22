@@ -79,8 +79,7 @@ def make_deck_from_request(
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)
         raise
-    usage_with_context = usage.model_copy(update={"route": route, "device_id": device_id})
-    record_usage(usage_with_context)
+    usage_with_context = record_usage(usage, route=route, device_id=device_id)
     # Validate shape
     if not isinstance(obj, dict) or not isinstance(obj.get("cards"), list):
         debug_info.update({"parsed_obj_head": json.dumps(obj, ensure_ascii=False)[:800]})

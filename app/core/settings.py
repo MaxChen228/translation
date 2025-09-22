@@ -26,6 +26,7 @@ class Settings(BaseSettings):
 
     # Content/data
     CONTENT_DIR: str = "data"
+    USAGE_DB_PATH: str = "data/usage.db"
 
     # Prompts
     PROMPT_FILE: str = "prompts/prompt.txt"

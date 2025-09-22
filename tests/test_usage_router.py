@@ -1,4 +1,8 @@
+import os
+import tempfile
 import time
+
+os.environ.setdefault("USAGE_DB_PATH", os.path.join(tempfile.gettempdir(), "usage_test.sqlite"))
 
 from fastapi.testclient import TestClient
 
@@ -24,7 +28,7 @@ def test_usage_endpoint_returns_records():
         latency_ms=88.2,
         status_code=200,
     )
-    record_usage(usage)
+    record_usage(usage, route=usage.route, device_id=usage.device_id)
 
     client = TestClient(create_app())
     resp = client.get("/usage/llm")
@@ -32,6 +36,7 @@ def test_usage_endpoint_returns_records():
     data = resp.json()
     assert data["summary"]["count"] == 1
     assert data["summary"]["total_tokens"] == 75
+    assert data["summary"]["total_cost_usd"] > 0
     assert data["items"][0]["device_id"] == "device-123"
 
 
@@ -53,8 +58,9 @@ def test_usage_endpoint_filters():
         latency_ms=10.0,
         status_code=200,
     )
-    record_usage(base_usage)
-    record_usage(base_usage.model_copy(update={"device_id": "device-B", "route": "/make_deck"}))
+    record_usage(base_usage, route=base_usage.route, device_id=base_usage.device_id)
+    usage_b = base_usage.model_copy(update={"device_id": "device-B", "route": "/make_deck"})
+    record_usage(usage_b, route=usage_b.route, device_id=usage_b.device_id)
 
     client = TestClient(create_app())
     resp = client.get("/usage/llm", params={"device_id": "device-A"})

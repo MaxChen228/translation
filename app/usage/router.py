@@ -23,17 +23,25 @@ def get_llm_usage(
     limit: int = Query(default=100, ge=1, le=1000),
     offset: int = Query(default=0, ge=0),
 ) -> LLMUsageQueryResponse:
-    records = query_usage(
+    query_kwargs = {
+        "device_id": device_id,
+        "route": route,
+        "model": model,
+        "provider": provider,
+        "since": since,
+        "until": until,
+        "limit": limit,
+        "offset": offset,
+    }
+    records = query_usage(**query_kwargs)
+    summary = summarize_usage(
         device_id=device_id,
         route=route,
         model=model,
         provider=provider,
         since=since,
         until=until,
-        limit=limit,
-        offset=offset,
     )
-    summary = summarize_usage(records)
     return LLMUsageQueryResponse(summary=summary, items=records)
 
 
@@ -252,34 +260,12 @@ def llm_usage_view() -> HTMLResponse:
     </div>
 
     <script>
-      const pricingTable = {
-        'gemini-2.5-flash': { input: 0.3, output: 2.5 },
-        'gemini-2.5-flash-lite': { input: 0.10, output: 0.40 },
-        'gemini-2.5-pro': { input: 1.25, output: 10.0 },
-      };
-
       const state = {
         offset: 0,
         limit: 100,
         lastQuery: {},
         lastData: null,
       };
-
-      function computeCostUSD(item) {
-        const pricing = pricingTable[item.model];
-        if (!pricing) return 0;
-        const inputCost = (item.input_tokens * pricing.input) / 1_000_000;
-        const outputCost = (item.output_tokens * pricing.output) / 1_000_000;
-        return inputCost + outputCost;
-      }
-
-      function computeTotals(items) {
-        let totalCost = 0;
-        items.forEach((item) => {
-          totalCost += computeCostUSD(item);
-        });
-        return { totalCost };
-      }
 
       function isoToLocal(iso) {
         if (!iso) return '-';
@@ -294,13 +280,13 @@ def llm_usage_view() -> HTMLResponse:
         return Number.isNaN(ts) ? null : Math.floor(ts / 1000);
       }
 
-      function renderSummary(summary, totals) {
+      function renderSummary(summary) {
         document.getElementById('sumCount').textContent = summary.count.toLocaleString();
         document.getElementById('sumInput').textContent = summary.total_input_tokens.toLocaleString();
         document.getElementById('sumOutput').textContent = summary.total_output_tokens.toLocaleString();
         document.getElementById('sumTotal').textContent = summary.total_tokens.toLocaleString();
         document.getElementById('sumLatency').textContent = summary.avg_latency_ms.toFixed(2);
-        document.getElementById('sumCost').textContent = totals.totalCost.toFixed(6);
+        document.getElementById('sumCost').textContent = (summary.total_cost_usd ?? 0).toFixed(6);
       }
 
       function renderTable(items) {
@@ -328,7 +314,7 @@ def llm_usage_view() -> HTMLResponse:
             item.inline_parts,
             item.prompt_chars,
             item.status_code ?? '-',
-            computeCostUSD(item).toFixed(6),
+            (item.cost_total ?? 0).toFixed(6),
             item.api_endpoint,
           ];
           cells.forEach((value) => {
@@ -358,8 +344,7 @@ def llm_usage_view() -> HTMLResponse:
           }
           const data = await resp.json();
           state.lastData = data;
-          const totals = computeTotals(data.items);
-          renderSummary(data.summary, totals);
+          renderSummary(data.summary);
           renderTable(data.items);
           document.getElementById('rawJson').textContent = JSON.stringify(data, null, 2);
           document.getElementById('rawPanel').hidden = false;

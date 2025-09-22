@@ -1,8 +1,13 @@
+import os
+import tempfile
 import time
 import unittest
 
+os.environ.setdefault("USAGE_DB_PATH", os.path.join(tempfile.gettempdir(), "usage_test.sqlite"))
+
 from app.schemas import ChatMessage, ChatTurnRequest, ChatResearchRequest, ChatAttachment
 from app.services.chat import run_turn, run_research, _serialize_messages
+from app.usage import reset_usage
 from app.usage.models import LLMUsage
 
 
@@ -32,6 +37,9 @@ class StubProvider:
 
 
 class ChatServiceTests(unittest.TestCase):
+    def setUp(self) -> None:
+        reset_usage()
+
     def test_run_turn(self):
         provider = StubProvider({
             "reply": "好的，我會先確認結構。",

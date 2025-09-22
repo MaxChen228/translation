@@ -20,6 +20,9 @@ class LLMUsage(BaseModel):
     total_tokens: int = 0
     latency_ms: float = 0.0
     status_code: Optional[int] = None
+    cost_input: float = 0.0
+    cost_output: float = 0.0
+    cost_total: float = 0.0
 
 
 class LLMUsageSummary(BaseModel):
@@ -29,6 +32,9 @@ class LLMUsageSummary(BaseModel):
     total_tokens: int
     total_prompt_chars: int
     avg_latency_ms: float
+    total_input_cost_usd: float
+    total_output_cost_usd: float
+    total_cost_usd: float
 
 
 class LLMUsageQueryResponse(BaseModel):

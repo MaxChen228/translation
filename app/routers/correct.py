@@ -40,7 +40,7 @@ def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depen
             user_content=user_content,
             model=chosen_model,
         )
-        record_usage(usage.model_copy(update={"route": route, "device_id": device_id}))
+        record_usage(usage, route=route, device_id=device_id)
         resp = validate_correct_response(obj)
     except HTTPException as he:
         raise he

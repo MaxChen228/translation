@@ -155,7 +155,7 @@ def run_turn(req: ChatTurnRequest, provider: LLMProvider, *, device_id: str, rou
             model=req.model,
             inline_parts=inline_parts,
         )
-        record_usage(usage.model_copy(update={"route": route, "device_id": device_id}))
+        record_usage(usage, route=route, device_id=device_id)
     except HTTPException:
         raise
     except Exception as exc:  # pragma: no cover - passthrough to HTTP layer
@@ -201,7 +201,7 @@ def run_research(
             inline_parts=inline_parts,
             timeout=90,
         )
-        record_usage(usage.model_copy(update={"route": route, "device_id": device_id}))
+        record_usage(usage, route=route, device_id=device_id)
     except HTTPException:
         raise
     except Exception as exc:  # pragma: no cover
