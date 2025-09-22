@@ -434,14 +434,35 @@ def llm_usage_detail_view(usage_id: int) -> HTMLResponse:
     except Exception:
         yaml = None
 
+    def _normalize_newlines(obj):
+        if isinstance(obj, str):
+            return obj.replace('\\n', '\n')
+        if isinstance(obj, list):
+            return [_normalize_newlines(item) for item in obj]
+        if isinstance(obj, dict):
+            return {k: _normalize_newlines(v) for k, v in obj.items()}
+        return obj
+
+    def _dump_yaml(obj) -> str:
+        class _LiteralDumper(yaml.SafeDumper):
+            pass
+
+        def _str_representer(dumper, data):
+            style = '|' if '\n' in data else None
+            return dumper.represent_scalar('tag:yaml.org,2002:str', data, style=style)
+
+        _LiteralDumper.add_representer(str, _str_representer)
+        return yaml.dump(obj, Dumper=_LiteralDumper, allow_unicode=True, sort_keys=False)
+
     def _to_yaml(data: str) -> str:
         try:
             obj = json.loads(data)
+            obj = _normalize_newlines(obj)
         except Exception:
-            return data.replace("\\n", "\n")
+            return data.replace('\\n', '\n')
         if yaml is None:
-            return json.dumps(obj, ensure_ascii=False, indent=2).replace("\\n", "\n")
-        return yaml.safe_dump(obj, allow_unicode=True, sort_keys=False)
+            return json.dumps(obj, ensure_ascii=False, indent=2).replace('\\n', '\n')
+        return _dump_yaml(obj)
 
     request_pretty = _to_yaml(record.request_payload)
     response_pretty = _to_yaml(record.response_payload)
