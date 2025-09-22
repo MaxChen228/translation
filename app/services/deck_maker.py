@@ -11,6 +11,7 @@ from fastapi import HTTPException
 from app.llm import call_gemini_json
 from app.schemas import DeckMakeRequest, DeckMakeResponse, DeckCard
 from app.core.settings import get_settings
+from app.usage.recorder import record_usage
 
 
 def _deck_debug_enabled() -> bool:
@@ -34,7 +35,14 @@ def _deck_debug_write(payload: Dict):
         pass
 
 
-def make_deck_from_request(req: DeckMakeRequest, deck_prompt: str, chosen_model: str) -> DeckMakeResponse:
+def make_deck_from_request(
+    req: DeckMakeRequest,
+    deck_prompt: str,
+    chosen_model: str,
+    *,
+    device_id: str = "unknown",
+    route: str = "",
+) -> DeckMakeResponse:
     # Compact user JSON to save tokens
     items = []
     for it in req.items:
@@ -66,11 +74,13 @@ def make_deck_from_request(req: DeckMakeRequest, deck_prompt: str, chosen_model:
         "items_in": len(items),
     }
     try:
-        obj = call_gemini_json(deck_prompt, user_content, model=chosen_model)
+        obj, usage = call_gemini_json(deck_prompt, user_content, model=chosen_model)
     except Exception as e:
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)
         raise
+    usage_with_context = usage.model_copy(update={"route": route, "device_id": device_id})
+    record_usage(usage_with_context)
     # Validate shape
     if not isinstance(obj, dict) or not isinstance(obj.get("cards"), list):
         debug_info.update({"parsed_obj_head": json.dumps(obj, ensure_ascii=False)[:800]})
@@ -95,6 +105,7 @@ def make_deck_from_request(req: DeckMakeRequest, deck_prompt: str, chosen_model:
         "cards_parsed": len(cards),
         "cards_raw_len": len(cards_raw),
         "name_resolved": name,
+        "usage": usage_with_context.model_dump(),
     })
     _deck_debug_write(debug_info)
     if not cards:

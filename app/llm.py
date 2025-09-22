@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from typing import Optional, Dict, Sequence, Mapping
 
 import requests
 from app.core.settings import get_settings
 from app.core.logging import logger
+from app.usage.models import LLMUsage
 
 
 # Public constants
@@ -120,7 +122,7 @@ def call_gemini_json(
     model: Optional[str] = None,
     inline_parts: Optional[Sequence[Mapping[str, object]]] = None,
     timeout: int = 60,
-) -> dict:
+) -> tuple[dict, LLMUsage]:
     s = get_settings()
     api_key = s.GEMINI_API_KEY or s.GOOGLE_API_KEY
     if not api_key:
@@ -128,6 +130,7 @@ def call_gemini_json(
     chosen = (model or get_current_model()).strip()
     url = f"{GEMINI_BASE}/models/{chosen}:generateContent?key={api_key}"
     parts = [{"text": user_content}]
+    inline_count = len(list(inline_parts or []))
     if inline_parts:
         for part in inline_parts:
             if part:
@@ -153,18 +156,56 @@ def call_gemini_json(
             )
         except Exception:
             pass
+    started = time.perf_counter()
     r = requests.post(url, headers={"Content-Type": "application/json"}, json=payload, timeout=timeout)
-    if r.status_code // 100 != 2:
+    latency_ms = (time.perf_counter() - started) * 1000.0
+    success = r.status_code // 100 == 2
+    if not success:
+        logger.warning(
+            "Gemini call failed",
+            extra={
+                "event": "llm_call",
+                "provider": "gemini",
+                "model": chosen,
+                "status": r.status_code,
+                "latency_ms": latency_ms,
+            },
+        )
         raise RuntimeError(f"gemini_error status={r.status_code} body={r.text[:400]}")
+    logger.info(
+        "Gemini call ok",
+        extra={
+            "event": "llm_call",
+            "provider": "gemini",
+            "model": chosen,
+            "status": r.status_code,
+            "latency_ms": latency_ms,
+        },
+    )
     data = r.json()
     try:
         content = data["candidates"][0]["content"]["parts"][0]["text"]
     except Exception:
         raise RuntimeError(f"gemini_invalid_response: {json.dumps(data)[:400]}")
     parsed_obj: object | None = None
+    usage_metadata = data.get("usageMetadata") or {}
+    usage = LLMUsage(
+        timestamp=time.time(),
+        provider="gemini",
+        api_kind="generateContent",
+        model=chosen,
+        api_endpoint=url,
+        inline_parts=inline_count,
+        prompt_chars=len(user_content),
+        input_tokens=int(usage_metadata.get("promptTokenCount") or 0),
+        output_tokens=int(usage_metadata.get("candidatesTokenCount") or 0),
+        total_tokens=int(usage_metadata.get("totalTokenCount") or 0),
+        latency_ms=latency_ms,
+        status_code=r.status_code,
+    )
     try:
         parsed_obj = json.loads(content)
-        return parsed_obj
+        return parsed_obj, usage
     except Exception as e:
         raise RuntimeError(f"invalid_model_json: {e}\ncontent={content[:400]}")
     finally:

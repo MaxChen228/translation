@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Request
 
 from app.llm import load_deck_prompt
 from app.schemas import DeckMakeRequest, DeckMakeResponse
@@ -26,10 +26,18 @@ def _resolve_model(provider: LLMProvider, override: str | None) -> str:
 
 
 @router.post("/make_deck", response_model=DeckMakeResponse)
-def make_deck(req: DeckMakeRequest, provider: LLMProvider = Depends(get_provider)):
+def make_deck(req: DeckMakeRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
+    route = request.url.path
+    device_id = getattr(request.state, "device_id", "unknown")
     try:
         chosen_model = _resolve_model(provider, req.model)
-        return make_deck_from_request(req, DECK_PROMPT, chosen_model)
+        return make_deck_from_request(
+            req,
+            DECK_PROMPT,
+            chosen_model,
+            device_id=device_id,
+            route=route,
+        )
     except HTTPException as he:
         raise he
     except Exception as e:

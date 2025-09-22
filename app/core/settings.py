@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     def allowed_models_set(self) -> Set[str]:
         raw = (self.ALLOWED_MODELS or "").strip()
         if not raw:
-            return {"gemini-2.5-pro", "gemini-2.5-flash"}
+            return {"gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite"}
         return {m.strip() for m in raw.split(",") if m.strip()}
 
     def generation_config(self) -> Dict[str, object]:

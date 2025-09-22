@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Optional, Protocol, Sequence, Mapping
 
-from app.core.settings import get_settings
 from app.llm import call_gemini_json, resolve_model as llm_resolve_model
+from app.usage.models import LLMUsage
 
 
 class LLMProvider(Protocol):
@@ -17,7 +17,7 @@ class LLMProvider(Protocol):
         model: Optional[str] = None,
         inline_parts: Optional[Sequence[Mapping[str, object]]] = None,
         timeout: int = 60,
-    ) -> dict: ...
+    ) -> tuple[dict, LLMUsage]: ...
 
 
 class GeminiProvider:
@@ -33,7 +33,7 @@ class GeminiProvider:
         model: Optional[str] = None,
         inline_parts: Optional[Sequence[Mapping[str, object]]] = None,
         timeout: int = 60,
-    ) -> dict:
+    ) -> tuple[dict, LLMUsage]:
         return call_gemini_json(
             system_prompt,
             user_content,

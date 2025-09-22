@@ -33,7 +33,7 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 ## 環境變數
 - `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要，擇一即可）。
 - `GEMINI_MODEL`：預設模型名稱（預設 `gemini-2.5-flash`）。
-- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash`）。
+- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `PROMPT_FILE`：批改系統提示檔路徑（預設 `prompts/prompt.txt`）。
 - `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。

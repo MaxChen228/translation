@@ -18,6 +18,7 @@ from app.schemas import (
     ChatMessage,
 )
 from app.core.logging import logger
+from app.usage.recorder import record_usage
 
 TURN_PROMPT = load_chat_turn_prompt()
 RESEARCH_PROMPT = load_chat_research_prompt()
@@ -145,15 +146,16 @@ def _normalize_markdown_reply(reply: str) -> str:
     return stripped
 
 
-def run_turn(req: ChatTurnRequest, provider: LLMProvider) -> ChatTurnResponse:
+def run_turn(req: ChatTurnRequest, provider: LLMProvider, *, device_id: str, route: str) -> ChatTurnResponse:
     payload, inline_parts = _serialize_messages(req.messages)
     try:
-        data = provider.generate_json(
+        data, usage = provider.generate_json(
             system_prompt=TURN_PROMPT,
             user_content=payload,
             model=req.model,
             inline_parts=inline_parts,
         )
+        record_usage(usage.model_copy(update={"route": route, "device_id": device_id}))
     except HTTPException:
         raise
     except Exception as exc:  # pragma: no cover - passthrough to HTTP layer
@@ -183,16 +185,23 @@ def run_turn(req: ChatTurnRequest, provider: LLMProvider) -> ChatTurnResponse:
         raise HTTPException(status_code=500, detail=f"chat_invalid_turn_response:{exc}") from exc
 
 
-def run_research(req: ChatResearchRequest, provider: LLMProvider) -> ChatResearchResponse:
+def run_research(
+    req: ChatResearchRequest,
+    provider: LLMProvider,
+    *,
+    device_id: str,
+    route: str,
+) -> ChatResearchResponse:
     payload, inline_parts = _serialize_messages(req.messages)
     try:
-        data = provider.generate_json(
+        data, usage = provider.generate_json(
             system_prompt=RESEARCH_PROMPT,
             user_content=payload,
             model=req.model,
             inline_parts=inline_parts,
             timeout=90,
         )
+        record_usage(usage.model_copy(update={"route": route, "device_id": device_id}))
     except HTTPException:
         raise
     except Exception as exc:  # pragma: no cover

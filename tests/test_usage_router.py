@@ -1,0 +1,72 @@
+import time
+
+from fastapi.testclient import TestClient
+
+from app.app import create_app
+from app.usage import LLMUsage, record_usage, reset_usage
+
+
+def test_usage_endpoint_returns_records():
+    reset_usage()
+    usage = LLMUsage(
+        timestamp=time.time(),
+        provider="gemini",
+        api_kind="generateContent",
+        model="gemini-2.5-flash",
+        api_endpoint="https://example.com",
+        route="/chat/respond",
+        device_id="device-123",
+        inline_parts=1,
+        prompt_chars=120,
+        input_tokens=50,
+        output_tokens=25,
+        total_tokens=75,
+        latency_ms=88.2,
+        status_code=200,
+    )
+    record_usage(usage)
+
+    client = TestClient(create_app())
+    resp = client.get("/usage/llm")
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["summary"]["count"] == 1
+    assert data["summary"]["total_tokens"] == 75
+    assert data["items"][0]["device_id"] == "device-123"
+
+
+def test_usage_endpoint_filters():
+    reset_usage()
+    base_usage = LLMUsage(
+        timestamp=time.time(),
+        provider="gemini",
+        api_kind="generateContent",
+        model="gemini-2.5-flash",
+        api_endpoint="https://example.com",
+        route="/chat/respond",
+        device_id="device-A",
+        inline_parts=0,
+        prompt_chars=10,
+        input_tokens=5,
+        output_tokens=5,
+        total_tokens=10,
+        latency_ms=10.0,
+        status_code=200,
+    )
+    record_usage(base_usage)
+    record_usage(base_usage.model_copy(update={"device_id": "device-B", "route": "/make_deck"}))
+
+    client = TestClient(create_app())
+    resp = client.get("/usage/llm", params={"device_id": "device-A"})
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["summary"]["count"] == 1
+    assert data["items"][0]["device_id"] == "device-A"
+
+
+def test_usage_view_page_renders_html():
+    client = TestClient(create_app())
+    resp = client.get("/usage/llm/view")
+    assert resp.status_code == 200
+    assert "LLM Usage Dashboard" in resp.text
+    assert "<table" in resp.text

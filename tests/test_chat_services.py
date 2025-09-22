@@ -1,7 +1,9 @@
+import time
 import unittest
 
 from app.schemas import ChatMessage, ChatTurnRequest, ChatResearchRequest, ChatAttachment
 from app.services.chat import run_turn, run_research, _serialize_messages
+from app.usage.models import LLMUsage
 
 
 class StubProvider:
@@ -12,7 +14,21 @@ class StubProvider:
         return override or "stub"
 
     def generate_json(self, system_prompt, user_content, *, model=None, inline_parts=None, timeout=60):
-        return self.payload
+        usage = LLMUsage(
+            timestamp=time.time(),
+            provider="stub",
+            api_kind="generateContent",
+            model=self.resolve_model(model),
+            api_endpoint="https://example.com/models/stub:generateContent",
+            inline_parts=len(list(inline_parts or [])),
+            prompt_chars=len(user_content),
+            input_tokens=10,
+            output_tokens=5,
+            total_tokens=15,
+            latency_ms=12.5,
+            status_code=200,
+        )
+        return self.payload, usage
 
 
 class ChatServiceTests(unittest.TestCase):
@@ -23,25 +39,29 @@ class ChatServiceTests(unittest.TestCase):
             "checklist": ["確認主旨", "擬定摘要"],
         })
         req = ChatTurnRequest(messages=[ChatMessage(role="user", content="請幫我整理研究重點")])
-        resp = run_turn(req, provider)
-        self.assertEqual(resp.reply, "好的，我會先確認結構。")
+        resp = run_turn(req, provider, device_id="test-device", route="/chat/respond")
+        self.assertTrue(resp.reply.startswith("## 回覆摘要"))
         self.assertEqual(resp.state, "ready")
         self.assertEqual(resp.checklist, ["確認主旨", "擬定摘要"])
 
     def test_run_research(self):
         provider = StubProvider({
-            "summary": "整理使用者請求並給出正確用法說明。",
-            "en": "I want to study abroad to broaden my perspective." \
-                "\nThis clarifies the learner's motivation and uses the correct infinitive form.",
-            "focus": "不定詞 to study 用於動詞 want 後表達目的。",
-            "type": "morphological",
+            "items": [
+                {
+                    "term": "broaden my perspective",
+                    "explanation": "片語表示拓展視野。",
+                    "context": "I want to study abroad to broaden my perspective.",
+                    "type": "lexical",
+                }
+            ]
         })
         req = ChatResearchRequest(messages=[ChatMessage(role="user", content="幫我潤飾這段英文")])
-        resp = run_research(req, provider)
-        self.assertEqual(resp.summary, "整理使用者請求並給出正確用法說明。")
-        self.assertIn("I want to study abroad", resp.en)
-        self.assertEqual(resp.focus, "不定詞 to study 用於動詞 want 後表達目的。")
-        self.assertEqual(resp.type, "morphological")
+        resp = run_research(req, provider, device_id="test-device", route="/chat/research")
+        self.assertEqual(len(resp.items), 1)
+        first = resp.items[0]
+        self.assertEqual(first.term, "broaden my perspective")
+        self.assertEqual(first.type, "lexical")
+        self.assertIn("study abroad", first.context)
 
     def test_serialize_messages_with_image(self):
         attachment = ChatAttachment(type="image", mimeType="image/png", data="ZmFrZV9iYXNlNjQ=")

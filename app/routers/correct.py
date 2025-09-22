@@ -3,13 +3,14 @@ from __future__ import annotations
 import json
 from typing import Dict
 
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Request
 
 from app.llm import load_system_prompt
 from app.providers.llm import LLMProvider, get_provider
 from app.schemas import CorrectRequest, CorrectResponse
 from app.services.corrector import build_user_content, validate_correct_response
 from app.services.progress import update_after_correct
+from app.usage.recorder import record_usage
 
 
 router = APIRouter()
@@ -28,11 +29,18 @@ def _resolve_model(provider: LLMProvider, override: str | None) -> str:
 
 
 @router.post("/correct", response_model=CorrectResponse)
-def correct(req: CorrectRequest, provider: LLMProvider = Depends(get_provider)):
+def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
+    route = request.url.path
+    device_id = getattr(request.state, "device_id", "unknown")
     try:
         user_content = build_user_content(req)
         chosen_model = _resolve_model(provider, req.model)
-        obj = provider.generate_json(system_prompt=SYSTEM_PROMPT, user_content=user_content, model=chosen_model)
+        obj, usage = provider.generate_json(
+            system_prompt=SYSTEM_PROMPT,
+            user_content=user_content,
+            model=chosen_model,
+        )
+        record_usage(usage.model_copy(update={"route": route, "device_id": device_id}))
         resp = validate_correct_response(obj)
     except HTTPException as he:
         raise he
