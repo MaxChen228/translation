@@ -428,20 +428,23 @@ def llm_usage_detail_view(usage_id: int) -> HTMLResponse:
     if record is None:
         raise HTTPException(status_code=404, detail="usage_not_found")
 
-    def _pretty(data: str) -> str:
-        import json
+    import json
+    try:
+        import yaml
+    except Exception:
+        yaml = None
 
+    def _to_yaml(data: str) -> str:
         try:
-            return json.dumps(json.loads(data), ensure_ascii=False, indent=2)
+            obj = json.loads(data)
         except Exception:
-            return data
+            return data.replace("\\n", "\n")
+        if yaml is None:
+            return json.dumps(obj, ensure_ascii=False, indent=2).replace("\\n", "\n")
+        return yaml.safe_dump(obj, allow_unicode=True, sort_keys=False)
 
-    def _render(data: str) -> str:
-        text = _pretty(data)
-        return text.replace("\\n", "\n")
-
-    request_pretty = _render(record.request_payload)
-    response_pretty = _render(record.response_payload)
+    request_pretty = _to_yaml(record.request_payload)
+    response_pretty = _to_yaml(record.response_payload)
 
     html = f"""
 <!DOCTYPE html>
