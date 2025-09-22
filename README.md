@@ -40,6 +40,7 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。
 - `CHAT_TURN_PROMPT_FILE`：聊天回合提示檔路徑（預設 `prompts/prompt_chat_turn.txt`）。
 - `CHAT_RESEARCH_PROMPT_FILE`：聊天研究提示檔路徑（預設 `prompts/prompt_chat_research.txt`）。
+- `MERGE_PROMPT_FILE`：錯誤合併提示檔路徑（預設 `prompts/prompt_merge.txt`）。
 - `DECK_DEBUG_LOG`：控制是否輸出 `/make_deck` 呼叫摘要，預設 `1`（啟用）；設為 `0`/`false` 可停用。
 - `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1 / 0.1 / 1 / 8192）。
 - `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應（`off`｜`input`｜`output`｜`both`，預設 `both`）。
@@ -160,6 +161,45 @@ cp .env.example .env
 ### GET /healthz
 - 若設好金鑰且可存取模型，回傳 `{ status: "ok", provider: "gemini", model: "…" }`。
 
+- ### POST /correct/merge
+- 請求：
+  ```json
+  {
+    "zh": "中文原句",
+    "en": "原本英文",
+    "corrected": "修正版英文",
+    "errors": [
+      {
+        "span": "yell and jump",
+        "type": "morphological",
+        "explainZh": "動詞應為現在分詞形式",
+        "suggestion": "shouting and jumping"
+      },
+      {
+        "span": "joyfully",
+        "type": "lexical",
+        "explainZh": "更自然的搭配是 with joy",
+        "suggestion": "with joy"
+      }
+    ],
+    "rationale": "使用者捏合這兩個錯誤，希望合併成慣用語",
+    "model": "gemini-2.5-flash"
+  }
+  ```
+- 回應：
+  ```json
+  {
+    "error": {
+      "id": "uuid",
+      "span": "yell and jump joyfully",
+      "type": "lexical",
+      "explainZh": "將兩個動作與情緒整合為片語 shouting and jumping with joy，更符合習慣用法。",
+      "suggestion": "shouting and jumping with joy"
+    }
+  }
+  ```
+- 用途：當使用者在 iOS App 中以捏合手勢選擇兩張錯誤卡片時，呼叫此端點產生合併後的提示卡。成功呼叫會被 `/usage/llm/view` 紀錄，路徑顯示為 `/correct/merge`。
+
 ### LLM Usage 監控
 - 所有 LLM 呼叫都會記錄在 SQLite（`USAGE_DB_PATH`，預設 `data/usage.db`），包含 tokens、延遲、成本與清洗後的 request/response JSON（圖片 `inline_data` 會以 `<inline_data omitted>` 取代，以避免儲存大量 base64 資料）。
 - `GET /usage/llm` 回傳 `{ summary, items[] }`，支援 `device_id`、`route`、`model`、`provider`、`since`、`until`、`limit`、`offset` 篩選。
@@ -184,7 +224,7 @@ cp .env.example .env
 - LLM 請求監控：設定 `LLM_LOG_MODE=input`（或 `output`/`both`）即可在日誌中看到縮排後的請求/回應 JSON，若需關閉縮排可將 `LLM_LOG_PRETTY` 設為 `false`。
 
 ## 工具腳本
-- `scripts/smoke_test.py`：快速呼叫 `/healthz` 與 `/correct` 驗證部署環境。
+- `scripts/smoke_test.py`：快速呼叫 `/healthz`、`/correct`（可依需求擴充以覆蓋 `/correct/merge`）。
 - `scripts/test_gemini_key.py`：檢查環境金鑰是否有效，可在部署前先行測試。
 
 ## 安全

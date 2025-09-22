@@ -52,6 +52,27 @@ class CorrectRequest(BaseModel):
     model: Optional[str] = None
 
 
+class MergeErrorsRequest(BaseModel):
+    zh: str
+    en: str
+    corrected: str
+    errors: List[ErrorDTO]
+    rationale: Optional[str] = None
+    deviceId: Optional[str] = None
+    model: Optional[str] = None
+
+    @field_validator("errors")
+    @classmethod
+    def _ensure_two_errors(cls, errors: List[ErrorDTO]):
+        if len(errors) < 2:
+            raise ValueError("merge_requires_at_least_two_errors")
+        return errors
+
+
+class MergeErrorResponse(BaseModel):
+    error: ErrorDTO
+
+
 # ----- Chat workflow DTOs -----
 
 class ChatAttachment(BaseModel):

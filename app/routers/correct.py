@@ -5,16 +5,23 @@ from typing import Dict
 
 from fastapi import APIRouter, HTTPException, Depends, Request
 
-from app.llm import load_system_prompt
+from app.llm import load_system_prompt, load_merge_prompt
 from app.providers.llm import LLMProvider, get_provider
-from app.schemas import CorrectRequest, CorrectResponse
+from app.schemas import (
+    CorrectRequest,
+    CorrectResponse,
+    MergeErrorsRequest,
+    MergeErrorResponse,
+)
 from app.services.corrector import build_user_content, validate_correct_response
+from app.services.merge import build_merge_user_content, validate_merge_response
 from app.services.progress import update_after_correct
 from app.usage.recorder import record_usage
 
 
 router = APIRouter()
 SYSTEM_PROMPT = load_system_prompt()
+MERGE_PROMPT = load_merge_prompt()
 
 
 def _resolve_model(provider: LLMProvider, override: str | None) -> str:
@@ -54,4 +61,29 @@ def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depen
         update_after_correct(req.bankItemId, req.deviceId, resp.score)
     except Exception:
         pass
+    return resp
+
+
+@router.post("/correct/merge", response_model=MergeErrorResponse)
+def merge(req: MergeErrorsRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
+    route = request.url.path
+    device_id = getattr(request.state, "device_id", "unknown")
+    try:
+        user_content = build_merge_user_content(req)
+        chosen_model = _resolve_model(provider, req.model)
+        obj, usage = provider.generate_json(
+            system_prompt=MERGE_PROMPT,
+            user_content=user_content,
+            model=chosen_model,
+        )
+        record_usage(usage, route=route, device_id=device_id)
+        resp = validate_merge_response(obj)
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        msg = str(e)
+        status = 500
+        if "status=429" in msg:
+            status = 429
+        raise HTTPException(status_code=status, detail=msg)
     return resp

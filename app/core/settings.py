@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     DECK_PROMPT_FILE: str = "prompts/prompt_deck.txt"
     CHAT_TURN_PROMPT_FILE: str = "prompts/prompt_chat_turn.txt"
     CHAT_RESEARCH_PROMPT_FILE: str = "prompts/prompt_chat_research.txt"
+    MERGE_PROMPT_FILE: str = "prompts/prompt_merge.txt"
 
     # Debug / logging
     DECK_DEBUG_LOG: str = "1"

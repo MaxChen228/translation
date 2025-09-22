@@ -77,6 +77,11 @@ def load_chat_research_prompt() -> str:
     return _load_prompt(settings.CHAT_RESEARCH_PROMPT_FILE or "prompt_chat_research.txt", "prompt_chat_research.txt")
 
 
+def load_merge_prompt() -> str:
+    settings = get_settings()
+    return _load_prompt(getattr(settings, "MERGE_PROMPT_FILE", None) or "prompt_merge.txt", "prompt_merge.txt")
+
+
 def _env_model_defaults() -> tuple[str, set[str]]:
     settings = get_settings()
     gemini_model = settings.GEMINI_MODEL or "gemini-2.5-flash"
