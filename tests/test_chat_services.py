@@ -54,22 +54,25 @@ class ChatServiceTests(unittest.TestCase):
 
     def test_run_research(self):
         provider = StubProvider({
-            "items": [
+            "deckName": "Study Abroad Highlights",
+            "cards": [
                 {
-                    "term": "broaden my perspective",
-                    "explanation": "片語表示拓展視野。",
-                    "context": "I want to study abroad to broaden my perspective.",
-                    "type": "lexical",
+                    "front": "broaden my perspective",
+                    "back": "片語：拓展視野、開闊眼界。",
+                    "frontNote": "片語",
+                    "backNote": "用於描述主動尋求新體驗。",
                 }
-            ]
+            ],
         })
         req = ChatResearchRequest(messages=[ChatMessage(role="user", content="幫我潤飾這段英文")])
         resp = run_research(req, provider, device_id="test-device", route="/chat/research")
-        self.assertEqual(len(resp.items), 1)
-        first = resp.items[0]
-        self.assertEqual(first.term, "broaden my perspective")
-        self.assertEqual(first.type, "lexical")
-        self.assertIn("study abroad", first.context)
+        self.assertEqual(resp.deckName, "Study Abroad Highlights")
+        self.assertTrue(resp.generatedAt)
+        self.assertEqual(len(resp.cards), 1)
+        first = resp.cards[0]
+        self.assertEqual(first.front, "broaden my perspective")
+        self.assertIn("拓展視野", first.back)
+        self.assertEqual(first.frontNote, "片語")
 
     def test_serialize_messages_with_image(self):
         attachment = ChatAttachment(type="image", mimeType="image/png", data="ZmFrZV9iYXNlNjQ=")

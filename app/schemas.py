@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Optional, Literal
 from pydantic import BaseModel, Field, field_validator
 
@@ -103,15 +104,17 @@ class ChatResearchRequest(BaseModel):
     model: Optional[str] = None
 
 
-class ChatResearchItem(BaseModel):
-    term: str
-    explanation: str
-    context: str
-    type: Literal["morphological", "syntactic", "lexical", "phonological", "pragmatic"]
+class ChatResearchCard(BaseModel):
+    front: str
+    back: str
+    frontNote: Optional[str] = None
+    backNote: Optional[str] = None
 
 
 class ChatResearchResponse(BaseModel):
-    items: List[ChatResearchItem]
+    deckName: str
+    generatedAt: datetime
+    cards: List[ChatResearchCard]
 
 
 # ----- Cloud library DTOs (Decks/Books) -----

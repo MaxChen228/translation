@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from typing import Optional, List, Dict
 
 from fastapi import HTTPException
@@ -216,49 +217,69 @@ def run_research(
         )
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
-    items = data.get("items")
-    if not isinstance(items, list) or not items:
+    raw_name = data.get("deckName") or data.get("name")
+    if not isinstance(raw_name, str) or not raw_name.strip():
+        deck_name = "AI Generated Deck"
+    else:
+        deck_name = raw_name.strip()
+
+    cards = data.get("cards")
+    if not isinstance(cards, list) or not cards:
         logger.warning(
-            "chat_research_missing_items",
+            "chat_research_missing_cards",
             extra={"payload": _safe_dump(data)},
         )
-        raise HTTPException(status_code=500, detail="chat_invalid_research_response:items_empty")
+        raise HTTPException(status_code=500, detail="chat_invalid_research_response:cards_empty")
 
-    normalized: list[dict[str, str]] = []
-    for idx, raw in enumerate(items):
+    normalized_cards: list[dict[str, Optional[str]]] = []
+    for idx, raw in enumerate(cards):
         if not isinstance(raw, dict):  # pragma: no cover - defensive
             logger.warning(
-                "chat_research_item_not_object",
+                "chat_research_card_not_object",
                 extra={"index": idx, "payload": _safe_dump(data)},
             )
-            raise HTTPException(status_code=500, detail=f"chat_invalid_research_item:{idx}")
+            raise HTTPException(status_code=500, detail=f"chat_invalid_research_card:{idx}")
         try:
-            normalized.append(
+            front = _require_str(raw, "front")
+            back = _require_str(raw, "back")
+            front_note = raw.get("frontNote")
+            back_note = raw.get("backNote")
+            if front_note is not None and not isinstance(front_note, str):
+                raise ValueError("frontNote must be string")
+            if back_note is not None and not isinstance(back_note, str):
+                raise ValueError("backNote must be string")
+            normalized_cards.append(
                 {
-                    "term": _require_str(raw, "term"),
-                    "explanation": _require_str(raw, "explanation"),
-                    "context": _require_str(raw, "context"),
-                    "type": _require_str(raw, "type", allow_empty=False),
+                    "front": front.strip(),
+                    "back": back.strip(),
+                    "frontNote": front_note.strip() if isinstance(front_note, str) and front_note.strip() else None,
+                    "backNote": back_note.strip() if isinstance(back_note, str) and back_note.strip() else None,
                 }
             )
         except HTTPException:
             logger.warning(
-                "chat_research_item_missing_field",
-                extra={"index": idx, "item": _safe_dump(raw, limit=1000)},
+                "chat_research_card_missing_field",
+                extra={"index": idx, "card": _safe_dump(raw, limit=1000)},
             )
             raise
         except Exception as exc:  # pragma: no cover
             logger.warning(
-                "chat_research_item_error",
-                extra={"index": idx, "item": _safe_dump(raw, limit=1000), "error": str(exc)},
+                "chat_research_card_error",
+                extra={"index": idx, "card": _safe_dump(raw, limit=1000), "error": str(exc)},
             )
-            raise HTTPException(status_code=500, detail=f"chat_invalid_research_item:{idx}:{exc}") from exc
+            raise HTTPException(status_code=500, detail=f"chat_invalid_research_card:{idx}:{exc}") from exc
+
+    result_payload = {
+        "deckName": deck_name,
+        "generatedAt": datetime.now(timezone.utc),
+        "cards": normalized_cards,
+    }
 
     try:
-        return ChatResearchResponse.model_validate({"items": normalized})
+        return ChatResearchResponse.model_validate(result_payload)
     except Exception as exc:
         logger.warning(
             "chat_research_invalid_response",
-            extra={"normalized": _safe_dump(normalized), "error": str(exc)},
+            extra={"normalized": _safe_dump(result_payload), "error": str(exc)},
         )
         raise HTTPException(status_code=500, detail=f"chat_invalid_research_response:{exc}") from exc
