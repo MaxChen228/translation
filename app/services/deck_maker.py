@@ -44,24 +44,26 @@ def make_deck_from_request(
     route: str = "",
 ) -> DeckMakeResponse:
     # Compact user JSON to save tokens
-    items = []
+    items: list[Dict[str, object]] = []
     for it in req.items:
-        entry: Dict[str, object] = {"source": it.source}
-        if it.source == "correction" and it.correction:
-            payload = {
-                k: v
-                for k, v in it.correction.model_dump(exclude_none=True).items()
-                if v != ""
-            }
-            entry["correction"] = payload
-        elif it.source == "research" and it.research:
-            payload = {
-                k: v
-                for k, v in it.research.model_dump(exclude_none=True).items()
-                if v != ""
-            }
-            entry["research"] = payload
+        en = (it.en or "").strip()
+        explain = (it.explainZh or "").strip()
+        if not en or not explain:
+            continue
+        entry: Dict[str, object] = {
+            "en": en,
+            "explainZh": explain,
+        }
+        suggestion = (it.suggestion or "").strip()
+        note = (it.note or "").strip()
+        if suggestion:
+            entry["suggestion"] = suggestion
+        if note:
+            entry["note"] = note
         items.append(entry)
+    if not items:
+        raise HTTPException(status_code=422, detail="deck_items_empty")
+
     compact = {"name": req.name or "未命名", "items": items}
     user_content = json.dumps(compact, ensure_ascii=False)
 

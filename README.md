@@ -110,25 +110,10 @@ cp .env.example .env
   "name": "未命名",
   "items": [
     {
-      "source": "correction",
-      "correction": {
-        "zh": "中文原句",
-        "en": "使用者英文原文",
-        "corrected": "修正版英文",
-        "span": "錯誤片段",
-        "suggestion": "建議修正",
-        "explainZh": "中文解釋",
-        "type": "lexical"
-      }
-    },
-    {
-      "source": "research",
-      "research": {
-        "term": "關鍵詞彙",
-        "explanation": "深入研究說明",
-        "context": "完整英文語境",
-        "type": "lexical"
-      }
+      "en": "I went to school yesterday.",
+      "suggestion": "went",
+      "explainZh": "過去式需使用 went。",
+      "note": "lexical"
     }
   ],
   "model": "gemini-2.5-pro | gemini-2.5-flash"  // 可選，覆蓋預設模型

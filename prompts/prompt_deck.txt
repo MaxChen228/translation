@@ -26,22 +26,13 @@
 6) **backNote 豐富化**：包含使用提示、語感差異、搭配範例
 
 ## 輸入資料分析：
-JSON 格式：`{ "name": string, "items": [...] }`
+JSON 格式：`{ "name": string, "items": [ { "en": string, "suggestion"?: string, "explainZh": string, "note"?: string } ] }`
 
-**兩種資料來源：**
-1. **correction 來源**：語言錯誤修正
-   - `zh`：原中文（提取核心概念）
-   - `en`：原始英文（參考）
-   - `corrected`：修正英文（主要變體來源）
-   - `suggestion`：建議用詞（追加變體）
-   - `explainZh`：中文解釋（語感說明）
-   - `type`：錯誤類型（分類標籤）
-
-2. **research 來源**：詞彙語法研究
-   - `term`：核心詞彙/片語
-   - `explanation`：中文說明（語感分析）
-   - `context`：英文語境（句型參考）
-   - `type`：主題分類
+欄位說明：
+- `en`：修正後的英文句子／片語，作為主要示例
+- `suggestion`：核心關鍵詞或要強化的表達（可省略）
+- `explainZh`：中文解釋與語感說明
+- `note`：額外備註（語域、語法提醒等，可省略）
 
 ## 高品質製作原則：
 1. **專業分類**：必須提供精確的語域標籤（HR/組織、財經/投資、醫療/健康、grammar pattern 等）
