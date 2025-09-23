@@ -93,6 +93,7 @@ cp .env.example .env
 
 ### POST /admin/content/reload
 - 重新載入 `CONTENT_DIR` 下的資料，讓課程/題庫更新即時生效。
+- 同步清空 LLM 提示快取，更新 `prompts/` 檔案後無需重啟即可套用。
 - 需在 `X-Content-Token` header 帶入 `CONTENT_ADMIN_TOKEN`，未設定 token 時表示允許任意呼叫（僅建議在本機開發）。
 
 ### GET /cloud/books、GET /cloud/books/{name}

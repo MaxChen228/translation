@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, Header, HTTPException, status
 from app.content_store import get_content_store
 from app.core.settings import get_settings
 from app.core.logging import logger
+from app.llm import reload_prompts
 from app.services.content_manager import get_content_manager
 from app.schemas import (
     ContentUploadRequest,
@@ -30,6 +31,7 @@ def _verify_content_token(x_content_token: Optional[str] = Header(default=None))
 @router.post("/content/reload")
 def reload_content(_: None = Depends(_verify_content_token)):
     _CONTENT.reload()
+    reload_prompts()
     stats = _CONTENT.stats()
     logger.info("content_reloaded", extra=stats)
     return {"status": "ok", "stats": stats}
@@ -50,6 +52,7 @@ def upload_content(req: ContentUploadRequest, _: None = Depends(_verify_content_
     if result.success:
         try:
             _CONTENT.reload()
+            reload_prompts()
             logger.info("content_uploaded_and_reloaded", extra={
                 "upload_filename": req.filename,
                 "content_type": req.content_type
@@ -85,6 +88,7 @@ def upload_bulk_content(req: BulkUploadRequest, _: None = Depends(_verify_conten
     if success_count > 0 and req.reload_after_upload:
         try:
             _CONTENT.reload()
+            reload_prompts()
             logger.info("content_bulk_uploaded_and_reloaded", extra={
                 "total_files": len(req.files),
                 "success_count": success_count,

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from typing import Optional, Dict, Sequence, Mapping
+from typing import Optional, Dict, Sequence, Mapping, Callable
 
 import requests
 from app.core.settings import get_settings
@@ -14,6 +14,19 @@ from app.usage.models import LLMUsage
 # Public constants
 GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
 
+_PROMPT_CACHE: Dict[str, str] = {}
+
+
+def reload_prompts() -> None:
+    """Clear in-memory prompt cache so next access hits the filesystem."""
+    _PROMPT_CACHE.clear()
+
+
+def _cache_prompt(key: str, loader: Callable[[], str]) -> str:
+    if key not in _PROMPT_CACHE:
+        _PROMPT_CACHE[key] = loader()
+    return _PROMPT_CACHE[key]
+
 
 def _base_dir() -> str:
     # app/ -> backend directory
@@ -22,64 +35,83 @@ def _base_dir() -> str:
 
 
 def load_system_prompt() -> str:
-    settings = get_settings()
-    # Allow relative path (resolved against backend base), or absolute path
-    path = settings.PROMPT_FILE or "prompt.txt"
-    if not os.path.isabs(path):
-        path = os.path.join(_base_dir(), path)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-            if not content:
-                raise RuntimeError("prompt_file_empty")
-            return content
-    except Exception as e:
-        raise RuntimeError(f"prompt_file_error: {e}")
+    def _loader() -> str:
+        settings = get_settings()
+        path = settings.PROMPT_FILE or "prompt.txt"
+        if not os.path.isabs(path):
+            path = os.path.join(_base_dir(), path)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+        except Exception as e:
+            raise RuntimeError(f"prompt_file_error: {e}")
+        if not content:
+            raise RuntimeError("prompt_file_empty")
+        return content
+
+    return _cache_prompt("system_prompt", _loader)
 
 
 def load_deck_prompt() -> str:
-    settings = get_settings()
-    path = settings.DECK_PROMPT_FILE or "prompt_deck.txt"
-    if not os.path.isabs(path):
-        path = os.path.join(_base_dir(), path)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-            if not content:
-                raise RuntimeError("deck_prompt_file_empty")
-            return content
-    except Exception as e:
-        raise RuntimeError(f"deck_prompt_file_error: {e}")
+    def _loader() -> str:
+        settings = get_settings()
+        path = settings.DECK_PROMPT_FILE or "prompt_deck.txt"
+        if not os.path.isabs(path):
+            path = os.path.join(_base_dir(), path)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+        except Exception as e:
+            raise RuntimeError(f"deck_prompt_file_error: {e}")
+        if not content:
+            raise RuntimeError("deck_prompt_file_empty")
+        return content
+
+    return _cache_prompt("deck_prompt", _loader)
 
 
-def _load_prompt(path: str, default_filename: str) -> str:
-    if not path:
-        path = default_filename
-    if not os.path.isabs(path):
-        path = os.path.join(_base_dir(), path)
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-            if not content:
-                raise RuntimeError(f"prompt_file_empty:{default_filename}")
-            return content
-    except Exception as e:  # pragma: no cover - configuration error path
-        raise RuntimeError(f"prompt_file_error:{default_filename}:{e}")
+def _load_prompt(path: str, default_filename: str, *, cache_key: str) -> str:
+    def _loader() -> str:
+        resolved = path or default_filename
+        if not os.path.isabs(resolved):
+            resolved = os.path.join(_base_dir(), resolved)
+        try:
+            with open(resolved, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+        except Exception as e:  # pragma: no cover - configuration error path
+            raise RuntimeError(f"prompt_file_error:{default_filename}:{e}")
+        if not content:
+            raise RuntimeError(f"prompt_file_empty:{default_filename}")
+        return content
+
+    return _cache_prompt(cache_key, _loader)
 
 
 def load_chat_turn_prompt() -> str:
     settings = get_settings()
-    return _load_prompt(settings.CHAT_TURN_PROMPT_FILE or "prompt_chat_turn.txt", "prompt_chat_turn.txt")
+    return _load_prompt(
+        settings.CHAT_TURN_PROMPT_FILE or "prompt_chat_turn.txt",
+        "prompt_chat_turn.txt",
+        cache_key="chat_turn_prompt",
+    )
 
 
 def load_chat_research_prompt() -> str:
     settings = get_settings()
-    return _load_prompt(settings.CHAT_RESEARCH_PROMPT_FILE or "prompt_chat_research.txt", "prompt_chat_research.txt")
+    return _load_prompt(
+        settings.CHAT_RESEARCH_PROMPT_FILE or "prompt_chat_research.txt",
+        "prompt_chat_research.txt",
+        cache_key="chat_research_prompt",
+    )
 
 
 def load_merge_prompt() -> str:
     settings = get_settings()
-    return _load_prompt(getattr(settings, "MERGE_PROMPT_FILE", None) or "prompt_merge.txt", "prompt_merge.txt")
+    return _load_prompt(
+        getattr(settings, "MERGE_PROMPT_FILE", None) or "prompt_merge.txt",
+        "prompt_merge.txt",
+        cache_key="merge_prompt",
+    )
 
 
 def _env_model_defaults() -> tuple[str, set[str]]:

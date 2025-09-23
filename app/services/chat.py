@@ -21,10 +21,6 @@ from app.schemas import (
 from app.core.logging import logger
 from app.usage.recorder import record_usage
 
-TURN_PROMPT = load_chat_turn_prompt()
-RESEARCH_PROMPT = load_chat_research_prompt()
-
-
 def _safe_dump(value, limit: int = 2000) -> str:
     try:
         return json.dumps(value, ensure_ascii=False, default=str)[:limit]
@@ -150,8 +146,9 @@ def _normalize_markdown_reply(reply: str) -> str:
 def run_turn(req: ChatTurnRequest, provider: LLMProvider, *, device_id: str, route: str) -> ChatTurnResponse:
     payload, inline_parts = _serialize_messages(req.messages)
     try:
+        system_prompt = load_chat_turn_prompt()
         data, usage = provider.generate_json(
-            system_prompt=TURN_PROMPT,
+            system_prompt=system_prompt,
             user_content=payload,
             model=req.model,
             inline_parts=inline_parts,
@@ -195,8 +192,9 @@ def run_research(
 ) -> ChatResearchResponse:
     payload, inline_parts = _serialize_messages(req.messages)
     try:
+        system_prompt = load_chat_research_prompt()
         data, usage = provider.generate_json(
-            system_prompt=RESEARCH_PROMPT,
+            system_prompt=system_prompt,
             user_content=payload,
             model=req.model,
             inline_parts=inline_parts,

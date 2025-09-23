@@ -9,7 +9,6 @@ from app.providers.llm import LLMProvider, get_provider
 
 
 router = APIRouter()
-DECK_PROMPT = load_deck_prompt()
 
 
 def _resolve_model(provider: LLMProvider, override: str | None) -> str:
@@ -31,9 +30,10 @@ def make_deck(req: DeckMakeRequest, request: Request, provider: LLMProvider = De
     device_id = getattr(request.state, "device_id", "unknown")
     try:
         chosen_model = _resolve_model(provider, req.model)
+        deck_prompt = load_deck_prompt()
         return make_deck_from_request(
             req,
-            DECK_PROMPT,
+            deck_prompt,
             chosen_model,
             device_id=device_id,
             route=route,

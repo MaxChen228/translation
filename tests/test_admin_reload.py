@@ -9,13 +9,16 @@ from fastapi.testclient import TestClient
 from app.app import create_app
 from app.core.settings import get_settings
 from app import content_store as content_store_module
+from app.llm import reload_prompts
 
 
 @pytest.fixture(autouse=True)
 def reset_settings():
     get_settings.cache_clear()
+    reload_prompts()
     yield
     get_settings.cache_clear()
+    reload_prompts()
 
 def write_sample_content(root: Path, book_count: int = 1, alt: bool = False):
     books_dir = root / "books"
@@ -195,3 +198,33 @@ def test_upload_succeeds_and_reloads(tmp_path):
     payload_after = stats_after.json()
     assert payload_after["file_system"]["books"] == 2
     assert payload_after["loaded_in_memory"]["books"] == 2
+
+
+def test_reload_endpoint_refreshes_prompt_cache(tmp_path, monkeypatch):
+    prompt_dir = tmp_path / "prompts"
+    prompt_dir.mkdir()
+    prompt_file = prompt_dir / "prompt.txt"
+    prompt_file.write_text("first version", encoding="utf-8")
+
+    monkeypatch.setenv("PROMPT_FILE", str(prompt_file))
+    get_settings.cache_clear()
+    reload_prompts()
+
+    from app.llm import load_system_prompt
+
+    initial = load_system_prompt()
+    assert initial == "first version"
+
+    prompt_file.write_text("second version", encoding="utf-8")
+
+    # Cached value should still be the first version before reload endpoint is called
+    assert load_system_prompt() == "first version"
+
+    content_root = tmp_path / "content"
+    write_sample_content(content_root)
+    client = create_client(content_root, token=None)
+
+    resp = client.post("/admin/content/reload")
+    assert resp.status_code == 200
+
+    assert load_system_prompt() == "second version"
