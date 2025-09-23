@@ -6,62 +6,15 @@
 import json
 import glob
 import sys
+from pathlib import Path
 from typing import List, Dict, Set
 
-# 標準標籤列表 - 嚴格按照文檔定義
-VALID_TAGS = {
-    # 語法結構類 (Grammar Structures)
-    "subjunctive", "conditional", "cleft", "inversion", "emphasis",
-    "comparative", "superlative", "passive", "modal", "infinitive",
-    "gerund", "participle", "relative-clause", "noun-clause",
-    "adverb-clause", "as-clause", "complex-sentence", "grammar",
+# 確保可以匯入 app 套件（腳本通常位於 repo 根目錄）
+REPO_ROOT = Path(__file__).resolve().parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-    # 特定語法結構類 (Specific Structures)
-    "as-adjective-as", "as-soon-as", "as-long-as", "as-far-as",
-    "the-more-the-more", "would-rather", "had-better", "used-to",
-    "be-used-to", "too-to", "so-that", "such-that", "not-only-but-also",
-    "either-or", "neither-nor",
-
-    # 語法功能類 (Functions)
-    "advice", "warning", "request", "permission", "prohibition",
-    "suggestion", "offer", "invitation", "complaint", "apology",
-    "opinion", "preference", "regret", "possibility", "necessity",
-    "ability", "purpose", "result", "cause",
-
-    # 語意主題類 (Topics)
-    "family", "education", "career", "health", "money", "relationship",
-    "travel", "food", "sports", "entertainment", "technology",
-    "environment", "culture", "business", "academic", "personal",
-    "social", "daily-life",
-
-    # 時態語態類 (Tense/Aspect)
-    "present-simple", "present-continuous", "present-perfect",
-    "past-simple", "past-continuous", "past-perfect",
-    "future-simple", "future-perfect"
-}
-
-# 禁用標籤 - 不應該出現的標籤
-FORBIDDEN_TAGS = {
-    # 過於具體的詞彙
-    "barbecue", "beer", "coffee", "marathon", "smartphone",
-    "facebook", "instagram", "starbucks", "mcdonalds",
-    "covid", "trump", "biden", "brexit",
-
-    # 重複或冗餘的標籤
-    "verb-of", "verb-from", "verb-noun-conversion",
-    "hit-body-parts", "punch", "pat", "slap",
-    "sensory-verbs", "causative-verbs", "location-verbs",
-
-    # 過於細節的語法標籤
-    "that-substitution", "those-substitution",
-    "front-position", "back-position", "postposed",
-    "one-other", "some-others", "former-latter",
-
-    # 情境過度細化的標籤
-    "breakfast", "dinner", "lunch", "cooking",
-    "driving", "swimming", "cycling", "shopping",
-    "birthday", "wedding", "vacation", "party"
-}
+from app.core.tags import VALID_TAGS, FORBIDDEN_TAGS
 
 class TagValidator:
     def __init__(self):

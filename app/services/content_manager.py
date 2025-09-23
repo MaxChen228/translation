@@ -11,39 +11,7 @@ from pathlib import Path
 from app.core.settings import get_settings
 from app.core.logging import logger
 from app.schemas import BankHint, BankItem, BankSuggestion, ContentUploadResult
-
-
-# 標準標籤列表 - 與 TAG_VALIDATION_SCRIPT.py 保持一致
-VALID_TAGS = {
-    # 語法結構類 (Grammar Structures)
-    "subjunctive", "conditional", "cleft", "inversion", "emphasis",
-    "comparative", "superlative", "passive", "modal", "infinitive",
-    "gerund", "participle", "relative-clause", "noun-clause",
-    "adverb-clause", "as-clause", "complex-sentence", "grammar",
-
-    # 特定語法結構類 (Specific Structures)
-    "as-adjective-as", "as-soon-as", "as-long-as", "as-far-as",
-    "the-more-the-more", "would-rather", "had-better", "used-to",
-    "be-used-to", "too-to", "so-that", "such-that", "not-only-but-also",
-    "either-or", "neither-nor",
-
-    # 語法功能類 (Functions)
-    "advice", "warning", "request", "permission", "prohibition",
-    "suggestion", "offer", "invitation", "complaint", "apology",
-    "opinion", "preference", "regret", "possibility", "necessity",
-    "ability", "purpose", "result", "cause",
-
-    # 語意主題類 (Semantic Themes)
-    "family", "education", "career", "health", "money", "relationship",
-    "travel", "food", "sports", "entertainment", "technology",
-    "environment", "culture", "business", "academic", "personal",
-    "social", "daily-life",
-
-    # 時態語態類 (Tenses)
-    "present-simple", "present-continuous", "present-perfect",
-    "past-simple", "past-continuous", "past-perfect",
-    "future-simple", "future-perfect"
-}
+from app.core.tags import VALID_TAGS
 
 
 class ContentManager:
