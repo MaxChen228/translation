@@ -208,6 +208,38 @@ class CloudSearchResponse(BaseModel):
     books: List[CloudSearchBookHit]
 
 
+# ----- Content Upload DTOs -----
+
+class ContentUploadRequest(BaseModel):
+    filename: str
+    content: dict  # JSON content of the book or course
+    content_type: Literal["book", "course"]
+
+
+class ContentUploadResult(BaseModel):
+    filename: str
+    success: bool
+    message: str
+    content_type: str
+
+
+class ContentUploadResponse(BaseModel):
+    results: List[ContentUploadResult]
+    success_count: int
+    error_count: int
+
+
+class BulkUploadFile(BaseModel):
+    filename: str
+    content: dict
+    content_type: Literal["book", "course"]
+
+
+class BulkUploadRequest(BaseModel):
+    files: List[BulkUploadFile]
+    reload_after_upload: bool = True
+
+
 # ----- Progress (legacy/minimal) -----
 
 class ProgressRecord(BaseModel):

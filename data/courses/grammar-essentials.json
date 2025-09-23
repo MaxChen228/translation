@@ -3,115 +3,178 @@
   "title": "Grammar Essentials",
   "summary": "集中練習中高階句型與比較句式。",
   "coverImage": "https://picsum.photos/seed/grammar-essentials/960/540",
-  "tags": ["grammar", "foundation"],
+  "tags": [
+    "grammar",
+    "foundation"
+  ],
   "books": [
     {
       "id": "grammar-chapter3",
       "title": "Chapter 3・強調結構",
       "summary": "掌握 not only...but also、倒裝等強調句型。",
       "coverImage": "https://picsum.photos/seed/emphasis/720/400",
-      "tags": ["grammar", "emphasis"],
+      "tags": [
+        "grammar",
+        "emphasis"
+      ],
       "difficulty": 3,
-      "source": { "id": "grammar-chapter3" }
+      "source": {
+        "id": "grammar-chapter3"
+      }
     },
     {
       "id": "grammar-chapter4",
       "title": "Chapter 4・關係子句",
       "summary": "限定、非限定關係子句的關鍵用法。",
       "coverImage": "https://picsum.photos/seed/relative/720/400",
-      "tags": ["grammar", "relative-clause"],
+      "tags": [
+        "grammar",
+        "relative-clause"
+      ],
       "difficulty": 3,
-      "source": { "id": "grammar-chapter4" }
+      "source": {
+        "id": "grammar-chapter4"
+      }
     },
     {
       "id": "grammar-chapter5",
       "title": "Chapter 5・名詞、名詞子句",
       "summary": "熟悉主詞補語與 that- 子句結構。",
       "coverImage": "https://picsum.photos/seed/noun-clause/720/400",
-      "tags": ["grammar", "noun-clause"],
+      "tags": [
+        "grammar",
+        "noun-clause"
+      ],
       "difficulty": 2,
-      "source": { "id": "grammar-chapter5" }
+      "source": {
+        "id": "grammar-chapter5"
+      }
     },
     {
       "id": "grammar-chapter6",
       "title": "Chapter 6・副詞子句",
       "summary": "時間、條件、原因等副詞子句。",
       "coverImage": "https://picsum.photos/seed/adverb-clause/720/400",
-      "tags": ["grammar", "adverb-clause"],
+      "tags": [
+        "grammar",
+        "adverb-clause"
+      ],
       "difficulty": 3,
-      "source": { "id": "grammar-chapter6" }
+      "source": {
+        "id": "grammar-chapter6"
+      }
     },
     {
       "id": "grammar-chapter7",
       "title": "Chapter 7・完成式",
       "summary": "現在完成式與過去完成式的時態差異。",
       "coverImage": "https://picsum.photos/seed/perfect-tense/720/400",
-      "tags": ["grammar", "present-perfect"],
+      "tags": [
+        "grammar",
+        "present-perfect"
+      ],
       "difficulty": 2,
-      "source": { "id": "grammar-chapter7" }
+      "source": {
+        "id": "grammar-chapter7"
+      }
     },
     {
       "id": "grammar-chapter8",
       "title": "Chapter 8・動詞片語",
       "summary": "掌握常見動詞片語與語意延伸。",
       "coverImage": "https://picsum.photos/seed/phrasal-verb/720/400",
-      "tags": ["grammar", "lexical"],
+      "tags": [
+        "grammar",
+        "lexical"
+      ],
       "difficulty": 3,
-      "source": { "id": "grammar-chapter8" }
+      "source": {
+        "id": "grammar-chapter8"
+      }
     },
     {
       "id": "grammar-chapter9",
       "title": "Chapter 9・假設語氣",
       "summary": "if 子句與 should/would 的替代寫法。",
       "coverImage": "https://picsum.photos/seed/subjunctive/720/400",
-      "tags": ["grammar", "subjunctive"],
+      "tags": [
+        "grammar",
+        "subjunctive"
+      ],
       "difficulty": 4,
-      "source": { "id": "grammar-chapter9" }
+      "source": {
+        "id": "grammar-chapter9"
+      }
     },
     {
       "id": "grammar-chapter10",
       "title": "Chapter 10・As Clauses",
       "summary": "掌握 as 子句的多種寫法。",
       "coverImage": "https://picsum.photos/seed/as-clause/720/400",
-      "tags": ["grammar", "as-clause"],
+      "tags": [
+        "grammar",
+        "as-clause"
+      ],
       "difficulty": 3,
-      "source": { "id": "grammar-chapter10" }
+      "source": {
+        "id": "grammar-chapter10"
+      }
     },
     {
       "id": "grammar-chapter11",
       "title": "Chapter 11・比較句型",
       "summary": "強化比較級與最高級的句型應用。",
       "coverImage": "https://picsum.photos/seed/comparative/720/400",
-      "tags": ["grammar", "comparative"],
+      "tags": [
+        "grammar",
+        "comparative"
+      ],
       "difficulty": 3,
-      "source": { "id": "grammar-chapter11" }
+      "source": {
+        "id": "grammar-chapter11"
+      }
     },
     {
       "id": "grammar-chapter12",
       "title": "Chapter 12・條件句",
       "summary": "條件句與假設語氣的整合練習。",
       "coverImage": "https://picsum.photos/seed/conditional/720/400",
-      "tags": ["grammar", "conditional"],
+      "tags": [
+        "grammar",
+        "conditional"
+      ],
       "difficulty": 4,
-      "source": { "id": "grammar-chapter12" }
+      "source": {
+        "id": "grammar-chapter12"
+      }
     },
     {
       "id": "grammar-emphasis",
       "title": "進階・強調寫作技巧",
       "summary": "集合倒裝、獨立分詞等強調技巧。",
       "coverImage": "https://picsum.photos/seed/emphasis-adv/720/400",
-      "tags": ["grammar", "emphasis"],
+      "tags": [
+        "grammar",
+        "emphasis"
+      ],
       "difficulty": 4,
-      "source": { "id": "grammar-emphasis" }
+      "source": {
+        "id": "grammar-emphasis"
+      }
     },
     {
       "id": "grammar-inversion",
       "title": "進階・倒裝句",
       "summary": "深入 once/never/not until… 等倒裝用法。",
       "coverImage": "https://picsum.photos/seed/inversion/720/400",
-      "tags": ["grammar", "inversion"],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
       "difficulty": 4,
-      "source": { "id": "grammar-inversion" }
+      "source": {
+        "id": "grammar-inversion"
+      }
     }
   ]
 }
