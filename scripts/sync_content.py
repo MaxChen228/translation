@@ -9,6 +9,7 @@ import os
 import sys
 import urllib.request
 import urllib.parse
+import urllib.error
 from pathlib import Path
 from typing import List, Dict, Tuple
 

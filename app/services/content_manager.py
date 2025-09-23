@@ -5,7 +5,8 @@ import os
 import shutil
 import uuid
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
+from pathlib import Path
 
 from app.core.settings import get_settings
 from app.core.logging import logger
@@ -51,16 +52,16 @@ class ContentManager:
     def __init__(self):
         settings = get_settings()
         if os.path.isabs(settings.CONTENT_DIR):
-            self.base_dir = settings.CONTENT_DIR
+            self.base_dir = Path(settings.CONTENT_DIR)
         else:
-            here = os.path.dirname(__file__)
-            backend_dir = os.path.abspath(os.path.join(here, "..", ".."))
-            self.base_dir = os.path.abspath(os.path.join(backend_dir, settings.CONTENT_DIR))
+            here = Path(__file__).resolve().parent
+            backend_dir = here.parent.parent
+            self.base_dir = (backend_dir / settings.CONTENT_DIR).resolve()
 
         # 確保目錄存在
-        os.makedirs(os.path.join(self.base_dir, "books"), exist_ok=True)
-        os.makedirs(os.path.join(self.base_dir, "courses"), exist_ok=True)
-        os.makedirs(os.path.join(self.base_dir, "decks"), exist_ok=True)
+        (self.base_dir / "books").mkdir(parents=True, exist_ok=True)
+        (self.base_dir / "courses").mkdir(parents=True, exist_ok=True)
+        (self.base_dir / "decks").mkdir(parents=True, exist_ok=True)
 
     def upload_content(self, filename: str, content: dict, content_type: str) -> ContentUploadResult:
         """上傳單個內容文件"""
@@ -78,7 +79,7 @@ class ContentManager:
             # 備份現有文件（如果存在）
             target_path = self._get_target_path(filename, content_type)
             backup_path = None
-            if os.path.exists(target_path):
+            if target_path.exists():
                 backup_path = self._create_backup(target_path)
 
             try:
@@ -88,7 +89,7 @@ class ContentManager:
                 logger.info("content_uploaded", extra={
                     "upload_filename": filename,
                     "content_type": content_type,
-                    "target_path": target_path
+                    "target_path": str(target_path)
                 })
 
                 return ContentUploadResult(
@@ -100,8 +101,8 @@ class ContentManager:
 
             except Exception as e:
                 # 如果寫入失敗，恢復備份
-                if backup_path and os.path.exists(backup_path):
-                    shutil.move(backup_path, target_path)
+                if backup_path and backup_path.exists():
+                    shutil.move(str(backup_path), str(target_path))
                 raise e
 
         except Exception as e:
@@ -217,51 +218,68 @@ class ContentManager:
 
         return None
 
-    def _get_target_path(self, filename: str, content_type: str) -> str:
-        """獲取目標文件路徑"""
-        if content_type == "book":
-            subdir = "books"
-        elif content_type == "course":
-            subdir = "courses"
-        else:
+    def _get_target_path(self, filename: str, content_type: str) -> Path:
+        """獲取目標文件路徑，並確保不會跳出指定目錄"""
+        if not filename or not filename.strip():
+            raise ValueError("檔名不可為空")
+
+        clean_name = filename.strip()
+        separators = [os.path.sep]
+        if os.path.altsep:
+            separators.append(os.path.altsep)
+        if any(sep in clean_name for sep in separators):
+            raise ValueError("檔名不可包含路徑")
+
+        if clean_name in {".", ".."}:
+            raise ValueError("檔名不可為保留字")
+
+        if not clean_name.endswith(".json"):
+            clean_name += ".json"
+
+        target_dir = {
+            "book": self.base_dir / "books",
+            "course": self.base_dir / "courses",
+        }.get(content_type)
+
+        if target_dir is None:
             raise ValueError(f"不支援的內容類型: {content_type}")
 
-        # 確保文件名以 .json 結尾
-        if not filename.endswith(".json"):
-            filename += ".json"
+        target_dir.mkdir(parents=True, exist_ok=True)
 
-        return os.path.join(self.base_dir, subdir, filename)
+        target_path = (target_dir / clean_name).resolve()
+        if target_dir.resolve() not in target_path.parents:
+            raise ValueError("檔名解析結果不合法")
 
-    def _create_backup(self, file_path: str) -> str:
+        return target_path
+
+    def _create_backup(self, file_path: Path) -> Path:
         """創建文件備份"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        backup_path = f"{file_path}.backup_{timestamp}"
-        shutil.copy2(file_path, backup_path)
+        backup_path = file_path.with_suffix(file_path.suffix + f".backup_{timestamp}")
+        shutil.copy2(str(file_path), str(backup_path))
         return backup_path
 
-    def _write_content_file(self, file_path: str, content: dict) -> None:
+    def _write_content_file(self, file_path: Path, content: dict) -> None:
         """寫入內容文件"""
-        # 確保目錄存在
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        file_path.parent.mkdir(parents=True, exist_ok=True)
 
         # 寫入文件
-        with open(file_path, "w", encoding="utf-8") as f:
+        with file_path.open("w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False, indent=2)
 
     def list_content_files(self, content_type: str) -> List[str]:
         """列出指定類型的內容文件"""
         if content_type == "book":
-            subdir = "books"
+            subdir = self.base_dir / "books"
         elif content_type == "course":
-            subdir = "courses"
+            subdir = self.base_dir / "courses"
         else:
             return []
 
-        dir_path = os.path.join(self.base_dir, subdir)
-        if not os.path.exists(dir_path):
+        if not subdir.exists():
             return []
 
-        return [f for f in os.listdir(dir_path) if f.endswith(".json")]
+        return [f.name for f in subdir.iterdir() if f.suffix == ".json"]
 
     def get_content_stats(self) -> Dict[str, int]:
         """獲取內容統計信息"""

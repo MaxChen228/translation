@@ -57,6 +57,26 @@ def write_sample_content(root: Path, book_count: int = 1, alt: bool = False):
     (courses_dir / "demo-course.json").write_text(json.dumps(course, ensure_ascii=False), encoding="utf-8")
 
 
+def build_book_payload(book_id: str = "uploaded-book") -> dict:
+    return {
+        "id": book_id,
+        "name": f"Book {book_id}",
+        "summary": "上傳測試題庫",
+        "items": [
+            {
+                "id": f"{book_id}-item-1",
+                "zh": "This is a sample sentence.",
+                "hints": [
+                    {"category": "lexical", "text": "sample"}
+                ],
+                "suggestions": [],
+                "tags": ["grammar"],
+                "difficulty": 2,
+            }
+        ],
+    }
+
+
 def create_client(tmp_path: Path, token: Optional[str]) -> TestClient:
     os.environ["CONTENT_DIR"] = str(tmp_path)
     if token is not None:
@@ -111,3 +131,67 @@ def test_reload_endpoint_allows_when_token_unset(tmp_path):
     resp = client.post("/admin/content/reload")
     assert resp.status_code == 200
     assert resp.json()["status"] == "ok"
+
+
+def test_upload_rejects_path_traversal(tmp_path):
+    write_sample_content(tmp_path)
+    client = create_client(tmp_path, token="secret")
+
+    payload = {
+        "filename": "../evil-book",
+        "content": build_book_payload(),
+        "content_type": "book",
+    }
+
+    resp = client.post(
+        "/admin/content/upload",
+        headers={"X-Content-Token": "secret"},
+        json=payload,
+    )
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["results"][0]["success"] is False
+    assert "檔名" in data["results"][0]["message"]
+    assert not (tmp_path / "books" / "evil-book.json").exists()
+
+
+def test_upload_succeeds_and_reloads(tmp_path):
+    write_sample_content(tmp_path, book_count=1)
+    client = create_client(tmp_path, token="secret")
+
+    stats_before = client.get(
+        "/admin/content/stats",
+        headers={"X-Content-Token": "secret"},
+    )
+    assert stats_before.status_code == 200
+    assert stats_before.json()["file_system"]["books"] == 1
+
+    payload = {
+        "filename": "new-uploaded-book.json",
+        "content": build_book_payload("new-uploaded-book"),
+        "content_type": "book",
+    }
+
+    resp = client.post(
+        "/admin/content/upload",
+        headers={"X-Content-Token": "secret"},
+        json=payload,
+    )
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["success_count"] == 1
+    assert data["results"][0]["success"] is True
+
+    stored_file = tmp_path / "books" / "new-uploaded-book.json"
+    assert stored_file.exists()
+
+    stats_after = client.get(
+        "/admin/content/stats",
+        headers={"X-Content-Token": "secret"},
+    )
+    assert stats_after.status_code == 200
+    payload_after = stats_after.json()
+    assert payload_after["file_system"]["books"] == 2
+    assert payload_after["loaded_in_memory"]["books"] == 2

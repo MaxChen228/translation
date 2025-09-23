@@ -51,7 +51,7 @@ def upload_content(req: ContentUploadRequest, _: None = Depends(_verify_content_
         try:
             _CONTENT.reload()
             logger.info("content_uploaded_and_reloaded", extra={
-                "filename": req.filename,
+                "upload_filename": req.filename,
                 "content_type": req.content_type
             })
         except Exception as e:
@@ -88,7 +88,8 @@ def upload_bulk_content(req: BulkUploadRequest, _: None = Depends(_verify_conten
             logger.info("content_bulk_uploaded_and_reloaded", extra={
                 "total_files": len(req.files),
                 "success_count": success_count,
-                "error_count": error_count
+                "error_count": error_count,
+                "upload_filenames": [f.filename for f in req.files],
             })
         except Exception as e:
             logger.warning("content_reload_after_bulk_upload_failed", extra={"error": str(e)})
