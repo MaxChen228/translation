@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 from app.app import create_app
 from app.core.settings import get_settings
 from app import content_store as content_store_module
-from app.llm import reload_prompts
+from app.llm import reload_prompts, load_system_prompt
 
 
 @pytest.fixture(autouse=True)
@@ -86,6 +86,22 @@ def create_client(tmp_path: Path, token: Optional[str]) -> TestClient:
         os.environ["CONTENT_ADMIN_TOKEN"] = token
     else:
         os.environ.pop("CONTENT_ADMIN_TOKEN", None)
+
+    prompt_dir = tmp_path / "prompts"
+    prompt_dir.mkdir(parents=True, exist_ok=True)
+    prompt_files = {
+        "PROMPT_FILE": "prompt.txt",
+        "DECK_PROMPT_FILE": "prompt_deck.txt",
+        "CHAT_TURN_PROMPT_FILE": "prompt_chat_turn.txt",
+        "CHAT_RESEARCH_PROMPT_FILE": "prompt_chat_research.txt",
+        "MERGE_PROMPT_FILE": "prompt_merge.txt",
+        "FLASHCARD_COMPLETION_PROMPT_FILE": "prompt_flashcard_completion.txt",
+    }
+    for env_key, filename in prompt_files.items():
+        path = prompt_dir / filename
+        os.environ[env_key] = str(path)
+        if not path.exists():
+            path.write_text(f"{env_key} placeholder", encoding="utf-8")
 
     get_settings.cache_clear()
     content_store_module._GLOBAL_STORE = content_store_module.ContentStore(base_path=str(tmp_path))
@@ -200,6 +216,62 @@ def test_upload_succeeds_and_reloads(tmp_path):
     assert payload_after["loaded_in_memory"]["books"] == 2
 
 
+def test_prompt_list_and_upload(tmp_path):
+    client = create_client(tmp_path, token="secret")
+    headers = {"X-Content-Token": "secret"}
+
+    # Prime cache with existing prompt content
+    first_read = load_system_prompt()
+    assert "PROMPT_FILE" in first_read
+
+    list_resp = client.get("/admin/prompts", headers=headers)
+    assert list_resp.status_code == 200
+    listed = list_resp.json()
+    assert any(item["promptId"] == "system" for item in listed["prompts"])
+
+    new_content = "Updated system prompt"
+    upload_resp = client.post(
+        "/admin/prompts/upload",
+        headers=headers,
+        json={"promptId": "system", "content": new_content},
+    )
+    assert upload_resp.status_code == 200
+    payload = upload_resp.json()["result"]
+    assert payload["promptId"] == "system"
+    assert payload["bytesWritten"] == len((new_content + "\n").encode("utf-8"))
+    assert payload["backupPath"] is not None
+
+    written_path = Path(payload["path"])
+    assert written_path.exists()
+    assert written_path.read_text(encoding="utf-8") == new_content + "\n"
+
+    # Cache should have been cleared; new read returns updated content
+    updated = load_system_prompt()
+    assert updated == new_content
+
+
+def test_prompt_upload_rejects_unknown_id(tmp_path):
+    client = create_client(tmp_path, token="secret")
+    headers = {"X-Content-Token": "secret"}
+
+    resp = client.post(
+        "/admin/prompts/upload",
+        headers=headers,
+        json={"promptId": "unknown", "content": "bad"},
+    )
+    assert resp.status_code == 422
+
+
+def test_prompt_upload_requires_token(tmp_path):
+    client = create_client(tmp_path, token="secret")
+
+    resp = client.post(
+        "/admin/prompts/upload",
+        json={"promptId": "system", "content": "new"},
+    )
+    assert resp.status_code == 401
+
+
 def test_reload_endpoint_refreshes_prompt_cache(tmp_path, monkeypatch):
     prompt_dir = tmp_path / "prompts"
     prompt_dir.mkdir()
@@ -220,7 +292,7 @@ def test_reload_endpoint_refreshes_prompt_cache(tmp_path, monkeypatch):
     # Cached value should still be the first version before reload endpoint is called
     assert load_system_prompt() == "first version"
 
-    content_root = tmp_path / "content"
+    content_root = tmp_path
     write_sample_content(content_root)
     client = create_client(content_root, token=None)
 

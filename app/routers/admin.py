@@ -9,10 +9,16 @@ from app.core.settings import get_settings
 from app.core.logging import logger
 from app.llm import reload_prompts
 from app.services.content_manager import get_content_manager
+from app.services.prompt_manager import list_prompts, write_prompt
 from app.schemas import (
     ContentUploadRequest,
     ContentUploadResponse,
     BulkUploadRequest,
+    PromptUploadRequest,
+    PromptUploadResponse,
+    PromptUploadResult,
+    PromptListResponse,
+    PromptInfo,
 )
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -117,3 +123,35 @@ def get_content_stats(_: None = Depends(_verify_content_token)):
         "file_system": manager_stats,
         "loaded_in_memory": store_stats
     }
+
+
+@router.get("/prompts", response_model=PromptListResponse)
+def get_prompts(_: None = Depends(_verify_content_token)):
+    summaries = list_prompts()
+    items = [PromptInfo(promptId=pid, path=info["path"]) for pid, info in summaries.items()]
+    return PromptListResponse(prompts=items)
+
+
+@router.post("/prompts/upload", response_model=PromptUploadResponse)
+def upload_prompt(req: PromptUploadRequest, _: None = Depends(_verify_content_token)):
+    try:
+        result = write_prompt(req.promptId, req.content)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc)) from exc
+    except Exception as exc:
+        logger.error("prompt_write_error", extra={"prompt_id": req.promptId, "error": str(exc)})
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="prompt_write_failed") from exc
+
+    reload_prompts()
+    logger.info(
+        "prompt_updated",
+        extra={"prompt_id": req.promptId, "path": result["path"], "backup_path": result["backup_path"]},
+    )
+    written_content = (req.content.rstrip() + "\n").encode("utf-8")
+    payload = PromptUploadResult(
+        promptId=req.promptId,
+        path=result["path"],
+        backupPath=result.get("backup_path"),
+        bytesWritten=len(written_content),
+    )
+    return PromptUploadResponse(result=payload)

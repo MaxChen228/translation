@@ -95,6 +95,15 @@ cp .env.example .env
 - 重新載入 `CONTENT_DIR` 下的資料，讓課程/題庫更新即時生效。
 - 同步清空 LLM 提示快取，更新 `prompts/` 檔案後無需重啟即可套用。
 - 需在 `X-Content-Token` header 帶入 `CONTENT_ADMIN_TOKEN`，未設定 token 時表示允許任意呼叫（僅建議在本機開發）。
+- `GET /admin/prompts`：回傳所有可熱更新的提示檔路徑（system、deck、chat_turn、chat_research、merge、flashcard_completion）。
+- `POST /admin/prompts/upload`：以 JSON 上傳並覆寫指定提示檔，請求格式：
+  ```json
+  {
+    "promptId": "system | deck | chat_turn | chat_research | merge | flashcard_completion",
+    "content": "新的提示內容"
+  }
+  ```
+  成功後會建立 `.backup_YYYYMMDD_HHMMSS` 備份（如原檔存在）、回傳實際寫入位元數並自動刷新快取。
 
 ### GET /cloud/books、GET /cloud/books/{name}
 - 從 `data/books/*.json` 提供唯讀題庫本清單與內容（仍保留給舊版 App 使用）。

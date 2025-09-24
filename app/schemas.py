@@ -243,6 +243,43 @@ class BulkUploadRequest(BaseModel):
     reload_after_upload: bool = True
 
 
+# ----- Prompt management -----
+
+PromptId = Literal[
+    "system",
+    "deck",
+    "chat_turn",
+    "chat_research",
+    "merge",
+    "flashcard_completion",
+]
+
+
+class PromptUploadRequest(BaseModel):
+    promptId: PromptId
+    content: str
+
+
+class PromptUploadResult(BaseModel):
+    promptId: PromptId
+    path: str
+    backupPath: Optional[str] = None
+    bytesWritten: int
+
+
+class PromptUploadResponse(BaseModel):
+    result: PromptUploadResult
+
+
+class PromptInfo(BaseModel):
+    promptId: PromptId
+    path: str
+
+
+class PromptListResponse(BaseModel):
+    prompts: List[PromptInfo]
+
+
 # ----- Progress (legacy/minimal) -----
 
 class ProgressRecord(BaseModel):

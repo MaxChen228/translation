@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 import json
-import os
 import time
 from typing import Optional, Dict, Sequence, Mapping, Callable
 
 import requests
 from app.core.settings import get_settings
 from app.core.logging import logger
+from app.services.prompt_manager import get_prompt_config, read_prompt
 from app.usage.models import LLMUsage
 
 
@@ -28,99 +28,33 @@ def _cache_prompt(key: str, loader: Callable[[], str]) -> str:
     return _PROMPT_CACHE[key]
 
 
-def _base_dir() -> str:
-    # app/ -> backend directory
-    here = os.path.dirname(__file__)
-    return os.path.abspath(os.path.join(here, ".."))
+def _load_prompt_by_id(prompt_id: str) -> str:
+    config = get_prompt_config(prompt_id)
+    return _cache_prompt(config.cache_key, lambda: read_prompt(prompt_id))
 
 
 def load_system_prompt() -> str:
-    def _loader() -> str:
-        settings = get_settings()
-        path = settings.PROMPT_FILE or "prompt.txt"
-        if not os.path.isabs(path):
-            path = os.path.join(_base_dir(), path)
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                content = f.read().strip()
-        except Exception as e:
-            raise RuntimeError(f"prompt_file_error: {e}")
-        if not content:
-            raise RuntimeError("prompt_file_empty")
-        return content
-
-    return _cache_prompt("system_prompt", _loader)
+    return _load_prompt_by_id("system")
 
 
 def load_deck_prompt() -> str:
-    def _loader() -> str:
-        settings = get_settings()
-        path = settings.DECK_PROMPT_FILE or "prompt_deck.txt"
-        if not os.path.isabs(path):
-            path = os.path.join(_base_dir(), path)
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                content = f.read().strip()
-        except Exception as e:
-            raise RuntimeError(f"deck_prompt_file_error: {e}")
-        if not content:
-            raise RuntimeError("deck_prompt_file_empty")
-        return content
-
-    return _cache_prompt("deck_prompt", _loader)
-
-
-def _load_prompt(path: str, default_filename: str, *, cache_key: str) -> str:
-    def _loader() -> str:
-        resolved = path or default_filename
-        if not os.path.isabs(resolved):
-            resolved = os.path.join(_base_dir(), resolved)
-        try:
-            with open(resolved, "r", encoding="utf-8") as f:
-                content = f.read().strip()
-        except Exception as e:  # pragma: no cover - configuration error path
-            raise RuntimeError(f"prompt_file_error:{default_filename}:{e}")
-        if not content:
-            raise RuntimeError(f"prompt_file_empty:{default_filename}")
-        return content
-
-    return _cache_prompt(cache_key, _loader)
+    return _load_prompt_by_id("deck")
 
 
 def load_chat_turn_prompt() -> str:
-    settings = get_settings()
-    return _load_prompt(
-        settings.CHAT_TURN_PROMPT_FILE or "prompt_chat_turn.txt",
-        "prompt_chat_turn.txt",
-        cache_key="chat_turn_prompt",
-    )
+    return _load_prompt_by_id("chat_turn")
 
 
 def load_chat_research_prompt() -> str:
-    settings = get_settings()
-    return _load_prompt(
-        settings.CHAT_RESEARCH_PROMPT_FILE or "prompt_chat_research.txt",
-        "prompt_chat_research.txt",
-        cache_key="chat_research_prompt",
-    )
+    return _load_prompt_by_id("chat_research")
 
 
 def load_merge_prompt() -> str:
-    settings = get_settings()
-    return _load_prompt(
-        getattr(settings, "MERGE_PROMPT_FILE", None) or "prompt_merge.txt",
-        "prompt_merge.txt",
-        cache_key="merge_prompt",
-    )
+    return _load_prompt_by_id("merge")
 
 
 def load_flashcard_completion_prompt() -> str:
-    settings = get_settings()
-    return _load_prompt(
-        settings.FLASHCARD_COMPLETION_PROMPT_FILE or "prompts/prompt_flashcard_completion.txt",
-        "prompts/prompt_flashcard_completion.txt",
-        cache_key="flashcard_completion_prompt",
-    )
+    return _load_prompt_by_id("flashcard_completion")
 
 
 def _env_model_defaults() -> tuple[str, set[str]]:
