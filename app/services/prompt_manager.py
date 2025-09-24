@@ -11,7 +11,8 @@ from app.core.settings import get_settings
 
 def _backend_root() -> str:
     here = os.path.dirname(__file__)
-    return os.path.abspath(os.path.join(here, ".."))
+    # Return repository root (same base used by legacy prompt loader)
+    return os.path.abspath(os.path.join(here, "..", ".."))
 
 
 @dataclass(frozen=True)
