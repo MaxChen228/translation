@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from typing import Dict
 
 from fastapi import APIRouter, HTTPException, Depends, Request
 
@@ -15,7 +14,6 @@ from app.schemas import (
 )
 from app.services.corrector import build_user_content, validate_correct_response
 from app.services.merge import build_merge_user_content, validate_merge_response
-from app.services.progress import update_after_correct
 from app.usage.recorder import record_usage
 
 
@@ -56,10 +54,6 @@ def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depen
         if "status=429" in msg:
             status = 429
         raise HTTPException(status_code=status, detail=msg)
-    try:
-        update_after_correct(req.bankItemId, req.deviceId, resp.score)
-    except Exception:
-        pass
     return resp
 
 
