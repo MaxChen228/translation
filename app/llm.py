@@ -114,6 +114,15 @@ def load_merge_prompt() -> str:
     )
 
 
+def load_flashcard_completion_prompt() -> str:
+    settings = get_settings()
+    return _load_prompt(
+        settings.FLASHCARD_COMPLETION_PROMPT_FILE or "prompts/prompt_flashcard_completion.txt",
+        "prompts/prompt_flashcard_completion.txt",
+        cache_key="flashcard_completion_prompt",
+    )
+
+
 def _env_model_defaults() -> tuple[str, set[str]]:
     settings = get_settings()
     gemini_model = settings.GEMINI_MODEL or "gemini-2.5-flash"

@@ -140,18 +140,20 @@ cp .env.example .env
 - 回應：
   ```json
   {
-    "items": [
+    "deckName": "Academic phrases",
+    "generatedAt": "2025-09-24T11:30:00Z",
+    "cards": [
       {
-        "term": "片語",
-        "explanation": "研究重點說明",
-        "context": "帶前後文的英文段落",
-        "type": "lexical"
+        "front": "片語",
+        "back": "研究重點說明",
+        "frontNote": "(optional)",
+        "backNote": "(optional example)"
       }
     ]
   }
   ```
-- `type` 僅允許：`morphological`、`syntactic`、`lexical`、`phonological`、`pragmatic`。
-- 若 LLM 回傳空陣列，後端會回傳 500 以提示前端需要補充更多上下文。
+- `cards[].front`/`back` 為必填欄位，`frontNote`、`backNote` 為選填；`ChatResearchResponse` 會維持 ISO8601 `generatedAt` 以利前端顯示。
+- 若 LLM 回傳空陣列或缺乏 deckName，後端會以 500 提醒需要補充更多上下文。
 
 ### GET /healthz
 - 若設好金鑰且可存取模型，回傳 `{ status: "ok", provider: "gemini", model: "…" }`。

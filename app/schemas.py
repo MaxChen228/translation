@@ -309,6 +309,27 @@ class DeckMakeResponse(BaseModel):
     cards: List[DeckCard]
 
 
+class FlashcardCompletionCard(BaseModel):
+    front: str
+    frontNote: Optional[str] = None
+    back: str
+    backNote: Optional[str] = None
+
+
+class FlashcardCompletionRequest(BaseModel):
+    card: FlashcardCompletionCard
+    instruction: Optional[str] = None
+    deckName: Optional[str] = None
+    model: Optional[str] = None
+
+
+class FlashcardCompletionResponse(BaseModel):
+    front: str
+    frontNote: Optional[str] = None
+    back: str
+    backNote: Optional[str] = None
+
+
 # Resolve forward refs now that BankItem is defined
 try:
     CloudBookDetail.model_rebuild()

@@ -35,6 +35,7 @@ class Settings(BaseSettings):
     CHAT_TURN_PROMPT_FILE: str = "prompts/prompt_chat_turn.txt"
     CHAT_RESEARCH_PROMPT_FILE: str = "prompts/prompt_chat_research.txt"
     MERGE_PROMPT_FILE: str = "prompts/prompt_merge.txt"
+    FLASHCARD_COMPLETION_PROMPT_FILE: str = "prompts/prompt_flashcard_completion.txt"
 
     # Debug / logging
     DECK_DEBUG_LOG: str = "1"
