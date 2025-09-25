@@ -35,7 +35,7 @@ def _deck_debug_write(payload: Dict):
         pass
 
 
-def make_deck_from_request(
+async def make_deck_from_request(
     req: DeckMakeRequest,
     deck_prompt: str,
     chosen_model: str,
@@ -76,7 +76,7 @@ def make_deck_from_request(
         "items_in": len(items),
     }
     try:
-        obj, usage = call_gemini_json(deck_prompt, user_content, model=chosen_model)
+        obj, usage = await call_gemini_json(deck_prompt, user_content, model=chosen_model)
     except Exception as e:
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)

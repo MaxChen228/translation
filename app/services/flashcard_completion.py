@@ -48,7 +48,7 @@ def _normalize_card(payload: Dict[str, Any]) -> FlashcardCompletionCard:
     )
 
 
-def complete_flashcard(
+async def complete_flashcard(
     req: FlashcardCompletionRequest,
     *,
     provider: LLMProvider,
@@ -84,7 +84,7 @@ def complete_flashcard(
     }
 
     try:
-        raw, usage = provider.generate_json(system_prompt, user_content, model=chosen_model)
+        raw, usage = await provider.generate_json(system_prompt, user_content, model=chosen_model)
     except Exception as exc:  # pragma: no cover - provider errors already covered elsewhere
         debug_info["error"] = str(exc)
         raise HTTPException(status_code=500, detail="llm_call_failed") from exc

@@ -25,13 +25,13 @@ def _resolve_model(provider: LLMProvider, override: str | None) -> str:
 
 
 @router.post("/make_deck", response_model=DeckMakeResponse)
-def make_deck(req: DeckMakeRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
+async def make_deck(req: DeckMakeRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
     try:
         chosen_model = _resolve_model(provider, req.model)
         deck_prompt = load_deck_prompt()
-        return make_deck_from_request(
+        return await make_deck_from_request(
             req,
             deck_prompt,
             chosen_model,

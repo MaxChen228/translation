@@ -1,3 +1,4 @@
+import asyncio
 import os
 import tempfile
 import time
@@ -18,7 +19,7 @@ class StubProvider:
     def resolve_model(self, override):
         return override or "stub"
 
-    def generate_json(self, system_prompt, user_content, *, model=None, inline_parts=None, timeout=60):
+    async def generate_json(self, system_prompt, user_content, *, model=None, inline_parts=None, timeout=60):
         usage = LLMUsage(
             timestamp=time.time(),
             provider="stub",
@@ -47,7 +48,7 @@ class ChatServiceTests(unittest.TestCase):
             "checklist": ["確認主旨", "擬定摘要"],
         })
         req = ChatTurnRequest(messages=[ChatMessage(role="user", content="請幫我整理研究重點")])
-        resp = run_turn(req, provider, device_id="test-device", route="/chat/respond")
+        resp = asyncio.run(run_turn(req, provider, device_id="test-device", route="/chat/respond"))
         self.assertTrue(resp.reply.startswith("## 回覆摘要"))
         self.assertEqual(resp.state, "ready")
         self.assertEqual(resp.checklist, ["確認主旨", "擬定摘要"])
@@ -65,7 +66,7 @@ class ChatServiceTests(unittest.TestCase):
             ],
         })
         req = ChatResearchRequest(messages=[ChatMessage(role="user", content="幫我潤飾這段英文")])
-        resp = run_research(req, provider, device_id="test-device", route="/chat/research")
+        resp = asyncio.run(run_research(req, provider, device_id="test-device", route="/chat/research"))
         self.assertEqual(resp.deckName, "Study Abroad Highlights")
         self.assertTrue(resp.generatedAt)
         self.assertEqual(len(resp.cards), 1)

@@ -143,11 +143,11 @@ def _normalize_markdown_reply(reply: str) -> str:
     return stripped
 
 
-def run_turn(req: ChatTurnRequest, provider: LLMProvider, *, device_id: str, route: str) -> ChatTurnResponse:
+async def run_turn(req: ChatTurnRequest, provider: LLMProvider, *, device_id: str, route: str) -> ChatTurnResponse:
     payload, inline_parts = _serialize_messages(req.messages)
     try:
         system_prompt = load_chat_turn_prompt()
-        data, usage = provider.generate_json(
+        data, usage = await provider.generate_json(
             system_prompt=system_prompt,
             user_content=payload,
             model=req.model,
@@ -183,7 +183,7 @@ def run_turn(req: ChatTurnRequest, provider: LLMProvider, *, device_id: str, rou
         raise HTTPException(status_code=500, detail=f"chat_invalid_turn_response:{exc}") from exc
 
 
-def run_research(
+async def run_research(
     req: ChatResearchRequest,
     provider: LLMProvider,
     *,
@@ -193,7 +193,7 @@ def run_research(
     payload, inline_parts = _serialize_messages(req.messages)
     try:
         system_prompt = load_chat_research_prompt()
-        data, usage = provider.generate_json(
+        data, usage = await provider.generate_json(
             system_prompt=system_prompt,
             user_content=payload,
             model=req.model,

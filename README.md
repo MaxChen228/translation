@@ -223,7 +223,8 @@ cp .env.example .env
 部署完成後取得 `https://<service>.onrender.com`，在 iOS App 的 Info 或 Build Settings 設定 `BACKEND_URL` 使用。
 
 ## 開發說明
-- 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `requests` 直呼 API）。
+- 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `httpx` 非同步呼叫 API）。
+- LLM 呼叫改為 `httpx.AsyncClient` + retry/backoff，確保 FastAPI handlers 不被同步請求阻塞。
 - 內容來源：`data/` 下 JSON；可透過 `CONTENT_DIR` 指向自定資料夾。
 - 除錯：`DECK_DEBUG_LOG` 預設為啟用（`1`），會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）；若希望停用請設定 `0`/`false`。
 - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。

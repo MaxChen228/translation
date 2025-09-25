@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 
 from app.routers.correct import router as correct_router
@@ -10,10 +12,19 @@ from app.routers.sys import router as sys_router
 from app.routers.chat import router as chat_router
 from app.usage.router import router as usage_router
 from app.routers.admin import router as admin_router
+from app.core.http_client import init_http_client, close_http_client
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="Local Correct Backend", version="0.4.3")
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        await init_http_client()
+        try:
+            yield
+        finally:
+            await close_http_client()
+
+    app = FastAPI(title="Local Correct Backend", version="0.4.3", lifespan=lifespan)
 
     @app.middleware("http")
     async def attach_device_id(request: Request, call_next):

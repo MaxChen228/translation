@@ -15,22 +15,22 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 
 
 @router.post("/respond", response_model=ChatTurnResponse)
-def chat_respond(
+async def chat_respond(
     req: ChatTurnRequest,
     request: Request,
     provider: LLMProvider = Depends(get_provider),
 ) -> ChatTurnResponse:
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
-    return run_turn(req, provider, device_id=device_id, route=route)
+    return await run_turn(req, provider, device_id=device_id, route=route)
 
 
 @router.post("/research", response_model=ChatResearchResponse)
-def chat_research(
+async def chat_research(
     req: ChatResearchRequest,
     request: Request,
     provider: LLMProvider = Depends(get_provider),
 ) -> ChatResearchResponse:
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
-    return run_research(req, provider, device_id=device_id, route=route)
+    return await run_research(req, provider, device_id=device_id, route=route)

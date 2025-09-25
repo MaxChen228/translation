@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import os
 import tempfile
 
@@ -29,7 +30,7 @@ class DummyProvider(LLMProvider):
     def resolve_model(self, override: str | None) -> str:
         return "gemini-2.5-flash"
 
-    def generate_json(self, system_prompt: str, user_content: str, *, model: str | None = None, inline_parts=None, timeout: int = 60):
+    async def generate_json(self, system_prompt: str, user_content: str, *, model: str | None = None, inline_parts=None, timeout: int = 60):
         usage = LLMUsage(
             id=None,
             provider="gemini",
@@ -71,12 +72,14 @@ def test_complete_flashcard_success():
         }
     })
     req = make_request()
-    resp = complete_flashcard(
-        req,
-        provider=provider,
-        chosen_model="gemini-2.5-flash",
-        device_id="unit-test",
-        route="/flashcards/complete",
+    resp = asyncio.run(
+        complete_flashcard(
+            req,
+            provider=provider,
+            chosen_model="gemini-2.5-flash",
+            device_id="unit-test",
+            route="/flashcards/complete",
+        )
     )
     assert resp.front == "新聞媒體"
     assert resp.back == "news media"
@@ -87,12 +90,14 @@ def test_complete_flashcard_requires_front():
     provider = DummyProvider({"card": {"front": "新聞媒體", "back": "news media"}})
     req = make_request(front="   ")
     with pytest.raises(HTTPException) as exc:
-        complete_flashcard(
-            req,
-            provider=provider,
-            chosen_model="gemini-2.5-flash",
-            device_id="unit-test",
-            route="/flashcards/complete",
+        asyncio.run(
+            complete_flashcard(
+                req,
+                provider=provider,
+                chosen_model="gemini-2.5-flash",
+                device_id="unit-test",
+                route="/flashcards/complete",
+            )
         )
     assert exc.value.status_code == 422
     assert exc.value.detail == "front_empty"
@@ -102,11 +107,13 @@ def test_complete_flashcard_invalid_shape():
     provider = DummyProvider({"foo": "bar"})
     req = make_request()
     with pytest.raises(HTTPException) as exc:
-        complete_flashcard(
-            req,
-            provider=provider,
-            chosen_model="gemini-2.5-flash",
-            device_id="unit-test",
-            route="/flashcards/complete",
+        asyncio.run(
+            complete_flashcard(
+                req,
+                provider=provider,
+                chosen_model="gemini-2.5-flash",
+                device_id="unit-test",
+                route="/flashcards/complete",
+            )
         )
     assert exc.value.status_code == 422

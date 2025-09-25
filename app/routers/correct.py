@@ -32,14 +32,14 @@ def _resolve_model(provider: LLMProvider, override: str | None) -> str:
 
 
 @router.post("/correct", response_model=CorrectResponse)
-def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
+async def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
     try:
         system_prompt = load_system_prompt()
         user_content = build_user_content(req)
         chosen_model = _resolve_model(provider, req.model)
-        obj, usage = provider.generate_json(
+        obj, usage = await provider.generate_json(
             system_prompt=system_prompt,
             user_content=user_content,
             model=chosen_model,
@@ -58,14 +58,14 @@ def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depen
 
 
 @router.post("/correct/merge", response_model=MergeErrorResponse)
-def merge(req: MergeErrorsRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
+async def merge(req: MergeErrorsRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
     try:
         merge_prompt = load_merge_prompt()
         user_content = build_merge_user_content(req)
         chosen_model = _resolve_model(provider, req.model)
-        obj, usage = provider.generate_json(
+        obj, usage = await provider.generate_json(
             system_prompt=merge_prompt,
             user_content=user_content,
             model=chosen_model,

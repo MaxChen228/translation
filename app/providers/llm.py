@@ -9,7 +9,7 @@ from app.usage.models import LLMUsage
 class LLMProvider(Protocol):
     def resolve_model(self, override: Optional[str]) -> str: ...
 
-    def generate_json(
+    async def generate_json(
         self,
         system_prompt: str,
         user_content: str,
@@ -25,7 +25,7 @@ class GeminiProvider:
         # Delegate to existing resolver which respects env allow-list
         return llm_resolve_model(override)
 
-    def generate_json(
+    async def generate_json(
         self,
         system_prompt: str,
         user_content: str,
@@ -34,7 +34,7 @@ class GeminiProvider:
         inline_parts: Optional[Sequence[Mapping[str, object]]] = None,
         timeout: int = 60,
     ) -> tuple[dict, LLMUsage]:
-        return call_gemini_json(
+        return await call_gemini_json(
             system_prompt,
             user_content,
             model=model,

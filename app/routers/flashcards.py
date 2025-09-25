@@ -20,7 +20,7 @@ async def flashcard_complete(
     route = request.url.path
     try:
         chosen_model = _resolve_model(provider, req.model)
-        return complete_flashcard(
+        return await complete_flashcard(
             req,
             provider=provider,
             chosen_model=chosen_model,
