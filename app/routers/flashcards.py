@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Request
 from app.providers.llm import LLMProvider, get_provider
 from app.schemas import FlashcardCompletionRequest, FlashcardCompletionResponse
 from app.services.flashcard_completion import complete_flashcard
-from app.routers.deck import _resolve_model
+from app.routers.model_utils import resolve_model_or_422
 
 router = APIRouter()
 
@@ -19,7 +19,7 @@ async def flashcard_complete(
     device_id = getattr(request.state, "device_id", "unknown")
     route = request.url.path
     try:
-        chosen_model = _resolve_model(provider, req.model)
+        chosen_model = resolve_model_or_422(provider, req.model)
         return await complete_flashcard(
             req,
             provider=provider,

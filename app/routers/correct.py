@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import json
-
 from fastapi import APIRouter, HTTPException, Depends, Request
 
 from app.llm import load_system_prompt, load_merge_prompt
 from app.providers.llm import LLMProvider, get_provider
+from app.routers.model_utils import resolve_model_or_422
 from app.schemas import (
     CorrectRequest,
     CorrectResponse,
@@ -19,18 +18,6 @@ from app.usage.recorder import record_usage
 
 router = APIRouter()
 
-
-def _resolve_model(provider: LLMProvider, override: str | None) -> str:
-    try:
-        return provider.resolve_model(override)
-    except ValueError as e:
-        try:
-            detail = json.loads(e.args[0])
-        except Exception:
-            detail = {"invalid_model": str(override)}
-        raise HTTPException(status_code=422, detail=detail)
-
-
 @router.post("/correct", response_model=CorrectResponse)
 async def correct(req: CorrectRequest, request: Request, provider: LLMProvider = Depends(get_provider)):
     route = request.url.path
@@ -38,7 +25,7 @@ async def correct(req: CorrectRequest, request: Request, provider: LLMProvider =
     try:
         system_prompt = load_system_prompt()
         user_content = build_user_content(req)
-        chosen_model = _resolve_model(provider, req.model)
+        chosen_model = resolve_model_or_422(provider, req.model)
         obj, usage = await provider.generate_json(
             system_prompt=system_prompt,
             user_content=user_content,
@@ -64,7 +51,7 @@ async def merge(req: MergeErrorsRequest, request: Request, provider: LLMProvider
     try:
         merge_prompt = load_merge_prompt()
         user_content = build_merge_user_content(req)
-        chosen_model = _resolve_model(provider, req.model)
+        chosen_model = resolve_model_or_422(provider, req.model)
         obj, usage = await provider.generate_json(
             system_prompt=merge_prompt,
             user_content=user_content,

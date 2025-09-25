@@ -6,22 +6,10 @@ from app.llm import load_deck_prompt
 from app.schemas import DeckMakeRequest, DeckMakeResponse
 from app.services.deck_maker import make_deck_from_request
 from app.providers.llm import LLMProvider, get_provider
+from app.routers.model_utils import resolve_model_or_422
 
 
 router = APIRouter()
-
-
-def _resolve_model(provider: LLMProvider, override: str | None) -> str:
-    try:
-        return provider.resolve_model(override)
-    except ValueError as e:
-        from json import loads
-
-        try:
-            detail = loads(e.args[0])
-        except Exception:
-            detail = {"invalid_model": str(override)}
-        raise HTTPException(status_code=422, detail=detail)
 
 
 @router.post("/make_deck", response_model=DeckMakeResponse)
@@ -29,7 +17,7 @@ async def make_deck(req: DeckMakeRequest, request: Request, provider: LLMProvide
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
     try:
-        chosen_model = _resolve_model(provider, req.model)
+        chosen_model = resolve_model_or_422(provider, req.model)
         deck_prompt = load_deck_prompt()
         return await make_deck_from_request(
             req,
