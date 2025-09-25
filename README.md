@@ -230,6 +230,31 @@ cp .env.example .env
 - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
 - LLM 請求監控：設定 `LLM_LOG_MODE=input`（或 `output`/`both`）即可在日誌中看到縮排後的請求/回應 JSON，若需關閉縮排可將 `LLM_LOG_PRETTY` 設為 `false`。
 
+### 非同步 LLM 呼叫小抄
+- FastAPI 會在 lifespan 中呼叫 `app/core/http_client.py` 的 `init_http_client()`，共用單一 `httpx.AsyncClient` 連線池並於關閉時自動釋放。
+- 若你寫額外腳本（例如資料匯入、一次性工具）需要直接呼叫 `call_gemini_json` 或服務層函式，記得自行管理事件迴圈，範例如下：
+
+  ```python
+  import asyncio
+
+  from app.core.http_client import init_http_client, close_http_client
+  from app.llm import call_gemini_json, load_system_prompt
+
+
+  async def main() -> None:
+      await init_http_client()
+      try:
+          payload, usage = await call_gemini_json(load_system_prompt(), "{\"messages\": []}")
+          print(payload)
+      finally:
+          await close_http_client()
+
+
+  if __name__ == "__main__":
+      asyncio.run(main())
+  ```
+- 測試或 CLI 背景任務若忘記 `await` 函式會得到 coroutine，務必使用 `asyncio.run(...)` 或既有的事件迴圈整合。
+
 ## 工具腳本
 - `scripts/smoke_test.py`：快速呼叫 `/healthz`、`/correct`（可依需求擴充以覆蓋 `/correct/merge`）。
 - `scripts/test_gemini_key.py`：檢查環境金鑰是否有效，可在部署前先行測試。
