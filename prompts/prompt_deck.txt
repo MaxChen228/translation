@@ -26,13 +26,30 @@
 6) **backNote 豐富化**：包含使用提示、語感差異、搭配範例
 
 ## 輸入資料分析：
-JSON 格式：`{ "name": string, "items": [ { "en": string, "suggestion"?: string, "explainZh": string, "note"?: string } ] }`
+JSON 格式：
+```
+{
+  "name": string,
+  "items": [
+    {
+      "index": number,
+      "title"?: string,        // 知識點主題，常為中文概念
+      "explanation"?: string,  // 中文解說、語用提示或背景
+      "example"?: string,      // 範例句／核心英文表達，可為中英混雜
+      "note"?: string,         // 其他補充（語域、語感、搭配等）
+      "source"?: string,       // 來源標籤：hint / error / knowledge 等
+      "tags"?: string[],
+      "raw"?: object           // 原始資料快照，含 legacy 欄位（en, explainZh, suggestion 等）
+    }
+  ]
+}
+```
 
-欄位說明：
-- `en`：修正後的英文句子／片語，作為主要示例
-- `suggestion`：核心關鍵詞或要強化的表達（可省略）
-- `explainZh`：中文解釋與語感說明
-- `note`：額外備註（語域、語法提醒等，可省略）
+重點：
+- 每個 `items[i]` 為一個獨立知識點，無論資料是否齊全都要生成對應卡片。
+- 欄位可能缺漏或混用中英文，需綜合 `title`、`explanation`、`example`、`note` 以及 `raw` 內的資訊來理解意義。
+- `raw` 會保留舊欄位（如 `en`, `suggestion`, `explainZh`）與原始描述，可用於補齊資訊。
+- 輸出卡片數量必須等於輸入知識點數量，嚴禁遺漏或合併。
 
 ## 高品質製作原則：
 1. **專業分類**：必須提供精確的語域標籤（HR/組織、財經/投資、醫療/健康、grammar pattern 等）
@@ -44,6 +61,7 @@ JSON 格式：`{ "name": string, "items": [ { "en": string, "suggestion"?: strin
    - 語域適用性
 4. **一對一原則**：每個有價值的概念生成一張卡片
 5. **語法模式**：語法類別需標註 `frontNote: "grammar"` 並提供模式化表達
+6. **資料推理**：若缺少範例或說明，需從其他欄位（例如 raw.explainZh、raw.en）推理補足，使卡片依然完整實用
 
 ## 品質標準：
 - front：純中文概念（如：`寫感恩日記`、`留住人才`）

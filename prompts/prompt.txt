@@ -15,7 +15,8 @@
       "suggestion": string | null,
       "hints": { "before": string | null, "after": string | null, "occurrence": number | null }
     }
-  ]
+  ],
+  "commentary": string
 }
 
 規則
@@ -32,6 +33,7 @@
 6) 錯誤物件的 hints：from 原文；before/after 取最小必要上下文（可空，≤6 字元）；occurrence 為第 n 次（1 起算，拿不準可 null）。
 7) 計分：100 起，依嚴重度每項約 −3~−6；四捨五入為整數；下限 60；無錯誤=100。
 8) 說明：explainZh 僅用繁中指令語氣，限 16 字以內，不給例句、不補背景，只寫錯因或修正重點。
+9) commentary：批改後的總結，使用繁中 1 句概述整體表現與建議，≤18 字，不重複 errors 的內容，可鼓勵或提醒重點。
 
 步驟
 - 閱讀 zh/en 理解語境
@@ -57,7 +59,8 @@ Output
   "errors": [
     {"span":"work","type":"morphological","explainZh":"昨天表過去，動詞用過去式。","suggestion":"worked","hints":{"before":"I ","after":" late","occurrence":1}},
     {"span":"go there for a meeting","type":"lexical","explainZh":"常用 have a meeting。","suggestion":"had a meeting there","hints":{"before":"and this morning I ","after":".","occurrence":1}}
-  ]
+  ],
+  "commentary": "整體穩定，注意動詞時態。"
 }
 
 Input
@@ -81,5 +84,6 @@ Output
     {"span":"show","type":"morphological","explainZh":"關係子句主詞單數。","suggestion":"shows","hints":{"before":"which ","after":" that","occurrence":1}},
     {"span":"emphasize","type":"morphological","explainZh":"education 為三單。","suggestion":"emphasizes","hints":{"before":"education ","after":" ","occurrence":1}},
     {"span":"city skills","type":"lexical","explainZh":"語體更自然。","suggestion":"urban skills","hints":{"before":"emphasizes ","after":".","occurrence":1}}
-  ]
+  ],
+  "commentary": "觀念清楚，語法細節再加強。"
 }

@@ -1,0 +1,362 @@
+{
+  "id": "daily-0926",
+  "title": "難題集萃2",
+  "summary": "高階翻譯挑戰集萃第 2 集，涵蓋跨領域實務情境。",
+  "coverImage": "https://picsum.photos/seed/daily-0926/720/400",
+  "tags": [
+    "complex-sentence",
+    "social"
+  ],
+  "difficulty": 4,
+  "items": [
+    {
+      "id": "daily-0926-001",
+      "zh": "雖然新的資料隱私法尚未正式施行，公司仍應立即調整蒐集流程，以免在稽核時被判定違規。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Even though/Although + S + V 表讓步條件"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句用 should/ought to + VR 表建議立即行動"
+        },
+        {
+          "category": "lexical",
+          "text": "\"data privacy law\" 指資料隱私法"
+        },
+        {
+          "category": "lexical",
+          "text": "\"be found in violation\" 表被認定違規"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加入 before it comes into force 說明時間點",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "modal",
+        "technology",
+        "warning"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-002",
+      "zh": "在啟動臨床試驗之前，研究團隊已透過雙盲程序確認受試者分組的隨機性，以避免統計偏差。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Before/By the time + past simple 描述啟動前狀態"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句用 had + p.p. 表示事先完成"
+        },
+        {
+          "category": "lexical",
+          "text": "\"double-blind protocol\" 指雙盲程序"
+        },
+        {
+          "category": "lexical",
+          "text": "\"randomization\" 表隨機化分組"
+        },
+        {
+          "category": "lexical",
+          "text": "\"statistical bias\" 表統計偏差"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 thereby preventing sampling bias 交代結果",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "past-perfect",
+        "health",
+        "purpose"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-003",
+      "zh": "我們建議將培訓課程設計成模組化，以便各地分公司可以依照需求重新組合內容。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "We recommend that + S + base verb 表正式建議"
+        },
+        {
+          "category": "syntactic",
+          "text": "so that + S + can 說明模組化的目的"
+        },
+        {
+          "category": "lexical",
+          "text": "\"modular training\" 指模組化培訓"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reconfigure the content\" 表重新組合內容"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 tailor the modules to local needs 強化目的",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "complex-sentence",
+        "suggestion",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "daily-0926-004",
+      "zh": "未經主管核准，客服代表不得向客戶承諾延長保固，即使對方威脅取消訂單也不例外。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Unless/Without approval 引導限制條件"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句用 may not + VR 表明禁止"
+        },
+        {
+          "category": "lexical",
+          "text": "\"authorize an extended warranty\" 表同意延長保固"
+        },
+        {
+          "category": "lexical",
+          "text": "\"threaten to cancel an order\" 表威脅取消訂單"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 regardless of any pressure to emphasize 無例外",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "prohibition",
+        "business",
+        "necessity"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-005",
+      "zh": "透過穿插描繪城市變遷的長鏡頭，紀錄片讓觀眾在短時間內理解不同居民的生活脈絡。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在分詞片語如 Intercutting... 可作句首主詞"
+        },
+        {
+          "category": "syntactic",
+          "text": "allows viewers to + VR 引出效果"
+        },
+        {
+          "category": "lexical",
+          "text": "\"long takes\" 指長鏡頭"
+        },
+        {
+          "category": "lexical",
+          "text": "\"grasp the lived context\" 表理解生活脈絡"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 within a brief runtime 表示時間限制",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "participle",
+        "entertainment",
+        "culture"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-006",
+      "zh": "只要供應端維持透明的交貨預估，我們就能在三週內完成所有訂單履約。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "As long as + S + V 表條件成立"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句用 can/will + VR 說明結果"
+        },
+        {
+          "category": "lexical",
+          "text": "\"delivery forecasts\" 指交貨預估"
+        },
+        {
+          "category": "lexical",
+          "text": "\"fulfill orders\" 表履行訂單"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 within three weeks to specify timeline",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "as-long-as",
+        "business",
+        "result"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "daily-0926-007",
+      "zh": "那份由外部審查員撰寫的報告，點出三個導致成本膨脹的流程瓶頸。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "The report that was drafted by... 引導關係子句"
+        },
+        {
+          "category": "lexical",
+          "text": "\"external reviewer\" 指外部審查員"
+        },
+        {
+          "category": "lexical",
+          "text": "\"cost overruns\" 表成本膨脹"
+        },
+        {
+          "category": "lexical",
+          "text": "\"process bottlenecks\" 表流程瓶頸"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 highlights instead of points out 以提升正式度",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "relative-clause",
+        "business",
+        "cause"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-008",
+      "zh": "持續追蹤使用者留存率並即時調整推播策略，是這款產品得以維持成長的關鍵。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "動名詞片語 Tracking... and adjusting... 作主詞"
+        },
+        {
+          "category": "syntactic",
+          "text": "is key to + 名詞 表示關鍵"
+        },
+        {
+          "category": "lexical",
+          "text": "\"user retention\" 指使用者留存"
+        },
+        {
+          "category": "lexical",
+          "text": "\"push notification strategy\" 表推播策略"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 is what allows the product to sustain growth 強化結構",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "technology",
+        "result"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-009",
+      "zh": "若依目前建設進度推估，這項再生能源專案將可在年底前完工並併入主電網。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "By the end of the year + future perfect 描述完成時點"
+        },
+        {
+          "category": "syntactic",
+          "text": "will have been completed 表預期完成"
+        },
+        {
+          "category": "lexical",
+          "text": "\"renewable energy project\" 指再生能源專案"
+        },
+        {
+          "category": "lexical",
+          "text": "\"feed into the main grid\" 表併入主電網"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 assuming the current schedule holds 作為前置條件",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "future-perfect",
+        "environment",
+        "result"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0926-010",
+      "zh": "正是因為跨部門合作緊密，這次產品上線才得以在縮短的時程內完成。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "It was because... that... 結構凸顯原因"
+        },
+        {
+          "category": "syntactic",
+          "text": "that 子句描述成果如 the launch was completed"
+        },
+        {
+          "category": "lexical",
+          "text": "\"cross-functional collaboration\" 指跨部門合作"
+        },
+        {
+          "category": "lexical",
+          "text": "\"compressed timeline\" 表縮短時程"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 ahead of schedule 或 within a compressed timeline",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "cleft",
+        "business",
+        "result"
+      ],
+      "difficulty": 3
+    }
+  ]
+}

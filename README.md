@@ -74,6 +74,7 @@ cp .env.example .env
 {
   "corrected": "修正版英文",
   "score": 92,
+  "commentary": "整體良好，注意時態轉換。",
   "errors": [
     {
       "id": "uuid",
@@ -90,6 +91,7 @@ cp .env.example .env
 ### GET /cloud/courses、GET /cloud/courses/{id}
 - 從 `data/courses/*.json` 提供課程清單與詳情，每個課程可包含多個題庫本。
 - 課程中的題庫可引用 `data/books/*.json` 或內嵌題目，回傳時會包含完整 `items` 以供預覽/下載。
+- 課程 JSON 撰寫細節請參考 [`../content/docs/course-authoring.md`](../content/docs/course-authoring.md)。
 
 ### POST /admin/content/reload
 - 重新載入 `CONTENT_DIR` 下的資料，讓課程/題庫更新即時生效。

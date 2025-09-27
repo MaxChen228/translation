@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Optional, Literal
-from pydantic import BaseModel, Field, field_validator
+from typing import Any, List, Optional, Literal
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 # ----- Correct endpoint DTOs -----
@@ -41,6 +41,7 @@ class CorrectResponse(BaseModel):
     corrected: str
     score: int
     errors: List[ErrorDTO]
+    commentary: Optional[str] = None
 
 
 class CorrectRequest(BaseModel):
@@ -322,10 +323,30 @@ class ImportResponse(BaseModel):
 # ----- Deck (flashcards) -----
 
 class DeckKnowledgeItem(BaseModel):
-    en: str = Field(..., description="Corrected sentence or phrase")
-    suggestion: Optional[str] = Field(default=None, description="Key phrase or lexical focus")
-    explainZh: str = Field(..., description="Chinese explanation / rationale")
+    # New flexible fields for knowledge-point based deck generation
+    title: Optional[str] = Field(default=None, description="Primary concept or headline (usually Chinese)")
+    explanation: Optional[str] = Field(default=None, description="Detailed rationale or description")
+    example: Optional[str] = Field(default=None, description="Representative sentence or phrase")
     note: Optional[str] = Field(default=None, description="Optional usage note")
+    source: Optional[str] = Field(default=None, description="Data source tag (e.g. error, hint)")
+    tags: Optional[List[str]] = Field(default=None, description="Additional category or topic tags")
+    raw: Optional[dict[str, Any]] = Field(default=None, description="Original payload snapshot for reference")
+
+    # Legacy fields kept for backward compatibility with older clients
+    en: Optional[str] = Field(default=None, description="Legacy: corrected sentence or phrase")
+    suggestion: Optional[str] = Field(default=None, description="Legacy: key phrase or lexical focus")
+    explainZh: Optional[str] = Field(default=None, description="Legacy: Chinese explanation / rationale")
+
+    @model_validator(mode="after")
+    def _backfill_from_legacy(self):
+        """Populate new flexible fields when only legacy values are provided."""
+        if not self.title and self.suggestion:
+            self.title = self.suggestion
+        if not self.explanation and self.explainZh:
+            self.explanation = self.explainZh
+        if not self.example and self.en:
+            self.example = self.en
+        return self
 
 
 class DeckMakeRequest(BaseModel):

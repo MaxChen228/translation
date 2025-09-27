@@ -43,28 +43,56 @@ async def make_deck_from_request(
     device_id: str = "unknown",
     route: str = "",
 ) -> DeckMakeResponse:
-    # Compact user JSON to save tokens
-    items: list[Dict[str, object]] = []
-    for it in req.items:
-        en = (it.en or "").strip()
-        explain = (it.explainZh or "").strip()
-        if not en or not explain:
-            continue
+    # Compact user JSON to save tokens but retain all knowledge points
+    def _clean_str(value: object | None) -> str | None:
+        if value is None:
+            return None
+        if isinstance(value, str):
+            stripped = value.strip()
+            return stripped or None
+        stripped = str(value).strip()
+        return stripped or None
+
+    knowledge_points: list[Dict[str, object]] = []
+    for idx, it in enumerate(req.items):
+        data = it.model_dump(mode="json", exclude_none=True)
         entry: Dict[str, object] = {
-            "en": en,
-            "explainZh": explain,
+            "index": idx + 1,
         }
-        suggestion = (it.suggestion or "").strip()
-        note = (it.note or "").strip()
-        if suggestion:
-            entry["suggestion"] = suggestion
+
+        title = _clean_str(getattr(it, "title", None)) or _clean_str(getattr(it, "suggestion", None))
+        explanation = _clean_str(getattr(it, "explanation", None)) or _clean_str(getattr(it, "explainZh", None))
+        example = _clean_str(getattr(it, "example", None)) or _clean_str(getattr(it, "en", None))
+        note = _clean_str(getattr(it, "note", None))
+        source = _clean_str(getattr(it, "source", None))
+
+        if title:
+            entry["title"] = title
+        if explanation:
+            entry["explanation"] = explanation
+        if example:
+            entry["example"] = example
         if note:
             entry["note"] = note
-        items.append(entry)
-    if not items:
+        if source:
+            entry["source"] = source
+
+        tags = getattr(it, "tags", None)
+        if tags:
+            entry["tags"] = tags
+
+        if data:
+            entry["raw"] = data
+
+        # Even if some fields are missing, keep the knowledge point so LLM sees everything
+        if len(entry) == 1:  # only index present and nothing else meaningful
+            continue
+        knowledge_points.append(entry)
+
+    if not knowledge_points:
         raise HTTPException(status_code=422, detail="deck_items_empty")
 
-    compact = {"name": req.name or "未命名", "items": items}
+    compact = {"name": req.name or "未命名", "items": knowledge_points}
     user_content = json.dumps(compact, ensure_ascii=False)
 
     debug_info: Dict[str, object] = {
@@ -73,7 +101,8 @@ async def make_deck_from_request(
         "model": chosen_model,
         "system_prompt": deck_prompt,
         "user_content": user_content,
-        "items_in": len(items),
+        "items_in": len(req.items),
+        "items_compacted": len(knowledge_points),
     }
     try:
         obj, usage = await call_gemini_json(deck_prompt, user_content, model=chosen_model)
