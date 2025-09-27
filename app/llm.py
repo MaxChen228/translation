@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import time
-from typing import Callable, Dict, Mapping, Optional, Sequence
+from typing import Callable, Dict, Mapping, Optional, Sequence, Union
 
 import httpx
 
@@ -123,7 +123,7 @@ async def call_gemini_json(
     *,
     model: Optional[str] = None,
     inline_parts: Optional[Sequence[Mapping[str, object]]] = None,
-    timeout: int = 60,
+    timeout: Optional[Union[int, float]] = 60,
     max_retries: int = 2,
 ) -> tuple[dict, LLMUsage]:
     settings = get_settings()
@@ -170,11 +170,15 @@ async def call_gemini_json(
     while attempt <= max_retries:
         started = time.perf_counter()
         try:
+            request_timeout = timeout
+            if timeout is None:
+                request_timeout = httpx.Timeout(connect=10.0, read=None, write=None, pool=None)
+
             response = await client.post(
                 url,
                 headers={"Content-Type": "application/json"},
                 json=payload,
-                timeout=timeout,
+                timeout=request_timeout,
             )
             latency_ms = (time.perf_counter() - started) * 1000.0
         except (httpx.TimeoutException, httpx.TransportError) as exc:

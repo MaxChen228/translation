@@ -105,7 +105,12 @@ async def make_deck_from_request(
         "items_compacted": len(knowledge_points),
     }
     try:
-        obj, usage = await call_gemini_json(deck_prompt, user_content, model=chosen_model)
+        obj, usage = await call_gemini_json(
+            deck_prompt,
+            user_content,
+            model=chosen_model,
+            timeout=None,
+        )
     except Exception as e:
         debug_info.update({"json_error": str(e)})
         _deck_debug_write(debug_info)
