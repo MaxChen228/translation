@@ -1,0 +1,635 @@
+{
+  "id": "grammar-inversion",
+  "name": "Chapter 2",
+  "items": [
+    {
+      "id": "ch02-2-1-locative-001",
+      "zh": "我家附近有一家超市。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "地方副詞/片語 + be/動詞 + 主語（Locative inversion）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 Near my house is a supermarket.；一般語序亦可，倒裝更有文體效果。",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-1-locative-002",
+      "zh": "安靜點，老師來了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Here/There + comes/goes + 主語（提示/出場句）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "自然表達：Here comes the teacher.；口語前可加 Be quiet. 作情境鋪陳。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch02-2-1-locative-003",
+      "zh": "他和叔叔一起住在高雄。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "地點副詞前置 + 過去式（In Kaohsiung lived…）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "中性敘述可用一般語序；倒裝可用於書面強調地點。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-1-locative-004",
+      "zh": "莉莎跳進水裡。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Into + 地點 + jumped + 主語（動向倒裝）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "強調動作方向：Into the water jumped Lisa.；一般語序亦可。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-1-locative-005",
+      "zh": "這群鳥飛走了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Away + flew + 主語（方向副詞前置）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Away flew the flock of birds.；適合書面敘事/描寫文。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch02-2-1-locative-006",
+      "zh": "當她把盒子打開時，一隻青蛙跳了出來。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "When 子句 + out + leaped + 主語（事件出現）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "When she opened the box, out leaped a frog.；亦可用一般語序。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-1-presentative-007",
+      "zh": "你看！這是我新養的寵物狗的照片。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Here it is. + 陳述句（提示/指示）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "自然搭配：Here it is. This is the photo of my new pet dog.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch02-2-1-presentative-008",
+      "zh": "你在這！我一直找你呢！",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "There you are! + 現在完成進行/完成式補充情境"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "自然語用：There you are! I've been looking for you.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch02-2-1-locative-009",
+      "zh": "然後，科技的時代來臨了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Then + came + 主語（主題前置以敘事）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Then came the age of science and technology.；用於書面敘事開展。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-2-negative-001",
+      "zh": "他從沒想過出國留學。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "否定副詞前置 + 助動詞 + 主語 + 動詞（Never had he thought…）"
+        },
+        {
+          "category": "morphological",
+          "text": "過去完成式：had + p.p."
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "正式書面語可用倒裝；口語常見一般語序 He had never thought…",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-2-negative-002",
+      "zh": "我幾乎不可能當面見到我最喜愛的電影明星。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Hardly/Scarcely + is/does + 主語 + 補語/動詞…"
+        },
+        {
+          "category": "lexical",
+          "text": "in person（親自/當面）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Hardly is it possible for me… 亦可用 It is hardly possible…（非倒裝）",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-2-negative-003",
+      "zh": "天上這麼大的滿月很罕見。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Rarely + can + 主語 + 動詞…（頻度副詞前置倒裝）"
+        },
+        {
+          "category": "lexical",
+          "text": "a big full moon in the sky"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Rarely can we see…；注意語域偏正式。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-3-by-no-means-001",
+      "zh": "沒有我的允許，你絕對不能閱讀我的信件。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "By no means + 助動詞 + 主語 + 動詞…/ On no account / Under no circumstances"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "By no means can you read my letter without my permission.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-3-by-no-means-002",
+      "zh": "美樂蒂絕對不是能舉起這麼重的箱子的女孩。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "By no means + be + 主語 + 表補語…（強烈否定）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "By no means was Melody a girl who could lift such a heavy box.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-4-so-such-that-001",
+      "zh": "傑克的提案如此之好，以至於被他的老闆所採用。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "So + adj. + be + 主語 + that… / Such + be + 主語 + that…（結果倒裝）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "So great was Jack's proposal that…；一般語序亦可。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "inversion",
+        "result"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-4-so-such-that-002",
+      "zh": "我父親如此憤怒，將所有的東西橫掃到桌下。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Such + be + 主語 + that…（主詞前置強調）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Such was my father's anger that…；注意語體正式度。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "inversion",
+        "result"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-4-fronting-003",
+      "zh": "你努力用功固然很好，但是保持身體健康也很重要。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "表語/形容詞短語前置：Also important is that…"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Also important is that you have to stay healthy.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-4-fronting-004",
+      "zh": "我們的隊伍贏了比賽，真令人興奮。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "名詞/分詞前置作主語：Exciting is the fact that…"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Exciting is the fact that our team won the game.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-4-fronting-005",
+      "zh": "那些願意協助需要幫助的人有福了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "形容詞/分詞前置：Blessed are + 主語（文體/聖經式）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Blessed are those who are willing to help people in need.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-6-no-sooner-001",
+      "zh": "他一喝到發酸的牛奶就全部吐了出來。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "No sooner + had + 主語 + p.p. + than + 過去式"
+        },
+        {
+          "category": "morphological",
+          "text": "過去完成式 + 過去式 的時間先後"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "No sooner had he drunk the sour milk than he threw it all out.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-6-hardly-when-002",
+      "zh": "我爸爸太累了，以至於他一閉上眼睛就睡著了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "hardly/scarcely + had + S + p.p. + when/before + 過去式（或 so…that 改寫）"
+        },
+        {
+          "category": "morphological",
+          "text": "完成式/過去式時序對齊"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 not…when / hardly…when 變化寫法；注意時態搭配。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-7-not-until-001",
+      "zh": "直到他告訴我這個故事，我才瞭解他發生了什麼事。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Not until + 子句/時間 + 助動詞 + 主語 + 動詞"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Not until he told me the story did I realize what had happened to him.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-7-not-until-002",
+      "zh": "直到今年六月，新大樓的興建才完成。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Not until + 時間副詞 + be + 主語 + p.p."
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Not until this June was the construction of the new building completed.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-7-not-until-003",
+      "zh": "直到昨天他才知道真相。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Not until + 時間 + did + 主語 + V（一般動詞）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Not until yesterday did he know the truth.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch02-2-7-not-until-004",
+      "zh": "直到午夜，我女兒才願意上床睡覺。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Not until + 時間 + is/was + 主語 + 補語/不定詞"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Not until midnight is my daughter willing to go to bed.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-8-only-when-001",
+      "zh": "只有在他失去了健康之後，他才知道健康的重要性。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Only + 副詞子句/片語 + 助動詞/be + 主語 + 動詞（限定語前置倒裝）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Only when he has lost his health does he realize its importance.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-8-only-after-002",
+      "zh": "只有在孩子犯錯之後，父母才意識到溝通的重要。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Only after + N/動名詞片語 + 助動詞 + 主語 + 動詞"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "示例：Only after their children make mistakes do parents realize the importance of communication.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch02-2-5-saying-001",
+      "zh": "俗話說得好，「有志者事竟成」。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Well goes a saying that… / As a saying goes,…（書面/固定句框）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "較少見但正確，語域正式；也可用 There is a saying that…（不倒裝）。",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "culture",
+        "inversion"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": "ch02-2-3-under-no-003",
+      "zh": "你絕對不能在考試時作弊。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Under no circumstances + 助動詞 + 主語 + 動詞…（強烈禁令）"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Under no circumstances can you cheat in the exams.",
+          "category": "pragmatic"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "inversion"
+      ],
+      "difficulty": 3
+    }
+  ]
+}

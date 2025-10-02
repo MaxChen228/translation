@@ -1,0 +1,82 @@
+{
+  "id": "daily-practice-collection",
+  "title": "每日練習",
+  "summary": "一般難度的每日翻譯練習，依日期收錄最新題組。",
+  "coverImage": "https://picsum.photos/seed/daily-practice-collection/960/540",
+  "tags": [
+    "daily",
+    "general"
+  ],
+  "books": [
+    {
+      "id": "daily-09-26",
+      "title": "9/26・每日練習",
+      "source": {
+        "id": "daily-09-26"
+      }
+    },
+    {
+      "id": "daily-09-28",
+      "title": "9/28・每日練習",
+      "source": {
+        "id": "daily-09-28"
+      }
+    },
+    {
+      "id": "daily-09-29",
+      "title": "9/29・每日練習",
+      "source": {
+        "id": "daily-09-29"
+      }
+    },
+    {
+      "id": "daily-09-30",
+      "title": "9/30・每日練習",
+      "source": {
+        "id": "daily-09-30"
+      }
+    },
+    {
+      "id": "daily-10-01",
+      "title": "10/01・每日練習",
+      "source": {
+        "id": "daily-10-01"
+      }
+    },
+    {
+      "id": "daily-10-02",
+      "title": "10/02・每日練習",
+      "source": {
+        "id": "daily-10-02"
+      }
+    },
+    {
+      "id": "daily-10-03",
+      "title": "10/03・每日練習",
+      "source": {
+        "id": "daily-10-03"
+      }
+    },
+    {
+      "id": "daily-10-04",
+      "title": "10/04・每日練習",
+      "source": {
+        "id": "daily-10-04"
+      }
+    },
+    {
+      "id": "daily-10-05",
+      "title": "10/05・每日練習",
+      "source": {
+        "id": "daily-10-05"
+      }
+    },
+    {
+      "id": "daily-10-06",
+      "title": "10/06・每日練習",
+      "source": {
+        "id": "daily-10-06"
+      }
+    }
+  ]
+}

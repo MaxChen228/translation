@@ -93,7 +93,7 @@ cp .env.example .env
 - 從 `data/courses/*.json` 提供課程清單與詳情，每個課程透過 `books[].source.id` 引用既有題庫本。
 - 課程 JSON 已禁用內嵌題目，所有題目需先建成 `data/books/*.json`，再於課程中以題庫本組合。
 - 回傳時仍會包含每本題庫的完整 `items` 內容，方便前端預覽或匯出。
-- 課程 JSON 撰寫細節請參考 [`../content/docs/course-authoring.md`](../content/docs/course-authoring.md)。
+- 課程 JSON 撰寫細節請參考 [`content/docs/course-authoring.md`](content/docs/course-authoring.md)。
 
 ### POST /admin/content/reload
 - 重新載入 `CONTENT_DIR` 下的資料，讓課程/題庫更新即時生效。
@@ -273,7 +273,7 @@ cp .env.example .env
 
 ```bash
 # 假設在 translation-backend 目錄下
-./scripts/sync_content.py ../content --backend-url http://127.0.0.1:8080 --token $CONTENT_ADMIN_TOKEN
+./scripts/sync_content.py content --backend-url http://127.0.0.1:8080 --token $CONTENT_ADMIN_TOKEN
 ```
 
 流程會：

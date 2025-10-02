@@ -1,0 +1,462 @@
+{
+  "id": "daily-10-04",
+  "title": "10/04・每日練習",
+  "summary": "十五題一般難度翻譯，聚焦協作會議與生活安排的實用語句。",
+  "coverImage": "https://picsum.photos/seed/daily-10-04/720/400",
+  "tags": [
+    "present-simple",
+    "daily-life"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-1004-001",
+      "zh": "請在週五前把專案計畫書更新到最新版本，以便我們提交審核。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please update..."
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so we can submit it"
+        },
+        {
+          "category": "lexical",
+          "text": "\"project proposal\" 表計畫書"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 by Friday to keep the review on schedule",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-002",
+      "zh": "如果你無法參加例行進度會，請提前在群組內告知。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "提前告知可用 let the team know in advance"
+        },
+        {
+          "category": "lexical",
+          "text": "\"stand-up meeting\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so we can reassign your update",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-003",
+      "zh": "這份教學簡報包含逐步操作畫面，方便新手跟著練習。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述特色"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so beginners can follow along"
+        },
+        {
+          "category": "lexical",
+          "text": "\"step-by-step screenshots\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 without feeling lost",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-004",
+      "zh": "客服建議先重新整理頁面，再嘗試送出表單。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "建議句可用 Support recommends that you + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "再嘗試可用 then try submitting again"
+        },
+        {
+          "category": "lexical",
+          "text": "\"refresh the page\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 to clear cached data",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "subjunctive",
+        "suggestion",
+        "technology",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-005",
+      "zh": "我們正在測試新的即時通知，想蒐集你這週的使用心得。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be + V-ing 表示正在測試"
+        },
+        {
+          "category": "syntactic",
+          "text": "想蒐集心得可用 we'd like to gather"
+        },
+        {
+          "category": "lexical",
+          "text": "\"real-time alerts\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 your experience by Friday",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-continuous",
+        "technology",
+        "business"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-006",
+      "zh": "請在每份連署表上加上頁碼，避免收集時混亂。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please add page numbers"
+        },
+        {
+          "category": "syntactic",
+          "text": "避免混亂可用 to prevent confusion during collection"
+        },
+        {
+          "category": "lexical",
+          "text": "\"petition forms\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 before turning them in",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "social",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-007",
+      "zh": "若天氣突然轉涼，活動將改在室內進行。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, S + will + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"move the event indoors\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to keep everyone comfortable",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "daily-life",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-008",
+      "zh": "新到職的夥伴會在第一週接受資安訓練，確保帳號設定正確。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述流程"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to make sure their accounts are set up"
+        },
+        {
+          "category": "lexical",
+          "text": "\"security onboarding\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 properly on day one",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "purpose",
+        "business",
+        "technology"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-009",
+      "zh": "開會前請把茶水補滿，並準備幾份紙本筆記。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句串聯可用 Please refill... and prepare..."
+        },
+        {
+          "category": "syntactic",
+          "text": "開會前可寫 before the meeting"
+        },
+        {
+          "category": "lexical",
+          "text": "\"printed handouts\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 for anyone who prefers writing notes",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-010",
+      "zh": "社區花圃每週三由志工澆水，維持公園整潔。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "every Wednesday + present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to keep the park tidy"
+        },
+        {
+          "category": "lexical",
+          "text": "\"community garden beds\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 and the plants healthy",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "environment",
+        "daily-life"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1004-011",
+      "zh": "請在公告中附上聯絡人資訊，讓家長知道遇到問題要找誰。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please include"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 so parents know who to contact"
+        },
+        {
+          "category": "lexical",
+          "text": "\"point of contact\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 for any follow-up questions",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-012",
+      "zh": "他習慣在每篇專欄完成後，把參考資料列表同步到資料庫。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "完成後可用 once he finishes each column"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reference list\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to keep the archive searchable",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-013",
+      "zh": "旅行社提供線上行程講座，讓旅客在報名前先了解內容。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so travelers know what to expect"
+        },
+        {
+          "category": "lexical",
+          "text": "\"webinar\" 表線上講座"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before they sign up",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "travel",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-014",
+      "zh": "請在課程開始前十五分鐘到教室，協助測試投影設備。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Before class, please arrive..."
+        },
+        {
+          "category": "syntactic",
+          "text": "協助測試可用 help test the projector"
+        },
+        {
+          "category": "lexical",
+          "text": "\"projector setup\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to avoid delays when we start",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "education",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1004-015",
+      "zh": "活動結束後的照片會上傳到共用相簿，方便大家下載。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "After the event, the photos will be uploaded"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so everyone can download"
+        },
+        {
+          "category": "lexical",
+          "text": "\"shared album\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 in high resolution",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "social",
+        "purpose"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

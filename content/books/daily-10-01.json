@@ -1,0 +1,463 @@
+{
+  "id": "daily-10-01",
+  "title": "10/01・每日練習",
+  "summary": "十月開頭的 15 題翻譯練習，結合職場、社群與生活場景。",
+  "coverImage": "https://picsum.photos/seed/daily-10-01/720/400",
+  "tags": [
+    "present-simple",
+    "daily-life"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-1001-001",
+      "zh": "我們已經把週會提前到上午九點，請調整你的行程。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：have moved 提示已完成調整"
+        },
+        {
+          "category": "syntactic",
+          "text": "請求句可用 Please adjust your schedule"
+        },
+        {
+          "category": "lexical",
+          "text": "\"weekly meeting\" 表週會"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 accordingly 突顯調整",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-002",
+      "zh": "如果你想參加午休讀書會，請在今天下午三點前報名。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, S + should + VR 表建議"
+        },
+        {
+          "category": "syntactic",
+          "text": "截止時間可用 by 3 p.m. today"
+        },
+        {
+          "category": "lexical",
+          "text": "\"sign up\" 表報名"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so we can prepare enough copies",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "education",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-003",
+      "zh": "發佈會直播會提供即時字幕，方便聽障觀眾追上進度。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述安排"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so viewers can + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"live captions\" 表即時字幕"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 keep up with the presentation",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "technology",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-004",
+      "zh": "請將你負責的專案進度更新到共享白板上。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please update..."
+        },
+        {
+          "category": "lexical",
+          "text": "\"shared whiteboard\" 表共享白板"
+        },
+        {
+          "category": "lexical",
+          "text": "\"project status\" 表專案進度"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 by the end of the day",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "business",
+        "technology"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-005",
+      "zh": "團隊正在測試新的問卷流程，請給我們一週的試運行時間。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be + V-ing 描述正在進行的測試"
+        },
+        {
+          "category": "syntactic",
+          "text": "請求可用 Please give us + 時間"
+        },
+        {
+          "category": "lexical",
+          "text": "\"trial period\" 表試運行"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 to iron out any issues",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-continuous",
+        "business",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-006",
+      "zh": "學校提醒家長填寫線上健康聲明，以便安排校外教學。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "提醒句可用 The school is reminding parents to + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so they can organize the trip"
+        },
+        {
+          "category": "lexical",
+          "text": "\"health declaration form\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before the field trip",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-007",
+      "zh": "新版本的應用會在背景自動備份資料，減少手動操作。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述功能"
+        },
+        {
+          "category": "syntactic",
+          "text": "結果子句可用 so users don't have to + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"automatic background backup\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 reduce manual steps",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "technology",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-008",
+      "zh": "社區中心提供免費烹飪課程，幫助長者學習健康飲食。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述服務"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 to help seniors + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"healthy cooking\" 表健康飲食"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 plan balanced meals",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "daily-life",
+        "health"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-009",
+      "zh": "我們想把新員工的介紹文章在今天傍晚前上架。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "want to + VR 表示希望"
+        },
+        {
+          "category": "syntactic",
+          "text": "時間限制可用 by the end of the day"
+        },
+        {
+          "category": "lexical",
+          "text": "\"publish the profile\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to welcome them publicly",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-010",
+      "zh": "客服建議你先清除瀏覽器快取，再重新登入帳號。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "建議句可用 Support suggests that you + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "再...可用 and then + 動詞"
+        },
+        {
+          "category": "lexical",
+          "text": "\"clear the browser cache\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before trying again",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "suggestion",
+        "technology",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-011",
+      "zh": "請把這份文件翻譯成英文，並在檔名附上日期。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please translate..."
+        },
+        {
+          "category": "syntactic",
+          "text": "附上日期可用 add the date to the filename"
+        },
+        {
+          "category": "lexical",
+          "text": "\"filename\" 表檔名"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 for version control",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-012",
+      "zh": "公園在夜間會調暗燈光，避免打擾附近住戶。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 表常規"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to avoid disturbing"
+        },
+        {
+          "category": "lexical",
+          "text": "\"dim the lights\" 表調暗燈光"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 nearby residents",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "environment",
+        "daily-life"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1001-013",
+      "zh": "他每天下午三點都會進行十分鐘伸展，讓久坐的身體放鬆。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "every afternoon + present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to loosen up after sitting"
+        },
+        {
+          "category": "lexical",
+          "text": "\"stretching break\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to keep his back from getting stiff",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "health",
+        "daily-life"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1001-014",
+      "zh": "活動結束後請把麥克風歸還到櫃檯，以免遺失。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "After the event, please return..."
+        },
+        {
+          "category": "syntactic",
+          "text": "避免遺失可用 to prevent it from getting lost"
+        },
+        {
+          "category": "lexical",
+          "text": "\"front desk\" 表櫃檯"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 so the next group can use it",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1001-015",
+      "zh": "我們會在午餐時間透過社群公告抽獎名單，請準時關注。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "未來安排可用 We will announce"
+        },
+        {
+          "category": "syntactic",
+          "text": "請求關注可用 please tune in"
+        },
+        {
+          "category": "lexical",
+          "text": "\"raffle winners\" 表抽獎名單"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 on our social channels",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "entertainment",
+        "daily-life"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

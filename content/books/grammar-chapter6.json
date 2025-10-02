@@ -1,0 +1,1040 @@
+{
+  "id": "grammar-chapter6",
+  "name": "Chapter 6",
+  "items": [
+    {
+      "id": "ch06-1-despite-001",
+      "zh": "儘管不斷的努力，這個發明家還是失敗了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Despite + N/V-ing, S + V（介系詞後接名詞或動名詞）"
+        },
+        {
+          "category": "lexical",
+          "text": "make continuous efforts; continuous vs. continual"
+        },
+        {
+          "category": "pragmatic",
+          "text": "despite表讓步語氣，常與fail/succeed等結果動詞搭配"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "despite和in spite of完全同義，可交替使用；注意後接動名詞形式",
+          "category": "usage"
+        },
+        {
+          "text": "避免誤寫*Despite of，介系詞despite不需要of",
+          "category": "pitfall"
+        }
+      ],
+      "tags": [
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-1-despite-002",
+      "zh": "他雖然是身障，但仍然參加馬拉松比賽。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "In spite of + N, S + V（讓步語氣）"
+        },
+        {
+          "category": "lexical",
+          "text": "physical challenges/disabilities; take part in vs. participate in"
+        },
+        {
+          "category": "pragmatic",
+          "text": "身障者用語要注意政治正確性"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "physical challenges比disabilities更委婉適切",
+          "category": "style"
+        },
+        {
+          "text": "可與although子句互換：Although he has physical challenges, he...",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "sports"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-1-despite-003",
+      "zh": "儘管富有，這個億萬富翁是不快樂。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Despite/For all/In spite of + N, S + V"
+        },
+        {
+          "category": "lexical",
+          "text": "wealth作抽象名詞；billionaire的正確使用"
+        },
+        {
+          "category": "morphological",
+          "text": "注意unhappy vs. not happy的語氣差異"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "For all可增加語言變化，意思相同",
+          "category": "style"
+        },
+        {
+          "text": "unhappy比not happy更直接強烈",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "money"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-1-regardless-004",
+      "zh": "不顧/儘管雙親反對，她還是嫁了個窮小子。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Regardless of + N, S + V（不顧、無論）"
+        },
+        {
+          "category": "lexical",
+          "text": "parents' disapproval; marry vs. get married to"
+        },
+        {
+          "category": "pragmatic",
+          "text": "poor guy語氣較輕鬆，formal語境可用man of modest means"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "regardless of比despite語氣更強，表示完全不考慮",
+          "category": "usage"
+        },
+        {
+          "text": "注意marry是及物動詞，get married to需要介系詞",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-2-instead-001",
+      "zh": "他沒有告知我發生了什麼事，而是選擇將我蒙在鼓裡。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Instead of + V-ing, S + V（而不是...反而...）"
+        },
+        {
+          "category": "lexical",
+          "text": "inform sb of sth; keep sb in the dark（慣用語）"
+        },
+        {
+          "category": "pragmatic",
+          "text": "chose to強調主觀選擇"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "keep sb in the dark是固定慣用語，表示故意隱瞞訊息",
+          "category": "style"
+        },
+        {
+          "text": "instead of後接動名詞形式informing",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "culture",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-2-instead-002",
+      "zh": "現今大部分臺灣人吃愈來愈多的麵條和漢堡，而不是米飯。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + V + more and more + N + instead of + N"
+        },
+        {
+          "category": "lexical",
+          "text": "nowadays; noodles and hamburgers vs. rice"
+        },
+        {
+          "category": "morphological",
+          "text": "more and more表漸進增加"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "instead of可放句末，語氣較自然",
+          "category": "style"
+        },
+        {
+          "text": "rice為不可數名詞，不加s",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "comparative",
+        "culture",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-2-rather-than-003",
+      "zh": "至於飲料，我女友選了珍珠奶茶而非冰咖啡。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "As for + N, S + V + N + rather than + N"
+        },
+        {
+          "category": "lexical",
+          "text": "pearl milk tea/bubble tea; iced coffee"
+        },
+        {
+          "category": "pragmatic",
+          "text": "rather than比instead of語氣較正式"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "pearl milk tea或bubble tea都是珍珠奶茶的英文說法",
+          "category": "usage"
+        },
+        {
+          "text": "rather than常用於正式比較，instead of較口語",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "comparative",
+        "grammar",
+        "preference"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-3-besides-001",
+      "zh": "除了做運動外，他也聽音樂來放鬆。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Besides + V-ing, S + also + V（除了...之外還...）"
+        },
+        {
+          "category": "lexical",
+          "text": "take exercise vs. do exercise; for relaxation"
+        },
+        {
+          "category": "pragmatic",
+          "text": "besides表追加，不是排除"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "besides表包含在內的額外項目，與except不同",
+          "category": "usage"
+        },
+        {
+          "text": "take exercise和do exercise都可以，但take較常見",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-3-addition-002",
+      "zh": "除了平板電腦外，智慧型手機也是最受年輕人歡迎的現代電子產品。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "In addition to + N, S + be also + N"
+        },
+        {
+          "category": "lexical",
+          "text": "tablet computers; smartphones; modern gadgets"
+        },
+        {
+          "category": "morphological",
+          "text": "最高級the most popular"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "gadgets比products更精確指電子裝置",
+          "category": "usage"
+        },
+        {
+          "text": "among young people作範圍限定",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "social",
+        "technology"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-3-except-003",
+      "zh": "這裡的每個人都受到邀請，只有我例外。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Everyone + was invited + except + 代詞受格"
+        },
+        {
+          "category": "lexical",
+          "text": "be invited vs. receive an invitation"
+        },
+        {
+          "category": "morphological",
+          "text": "except後用受格me，非主格I"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "except表排除，與besides/in addition to語意相反",
+          "category": "usage"
+        },
+        {
+          "text": "注意代詞格變：except me（受格）",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "invitation"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch06-4-with-view-001",
+      "zh": "他打工是為了自己負擔學費完成大學學業。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + V + with a view to + V-ing（為了目的）"
+        },
+        {
+          "category": "lexical",
+          "text": "work part-time; pay one's way through college"
+        },
+        {
+          "category": "pragmatic",
+          "text": "pay one's way是慣用表達"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "with a view to後接動名詞paying，不是不定詞",
+          "category": "grammar"
+        },
+        {
+          "text": "pay one's way through college是固定說法",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "career",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-4-with-eye-002",
+      "zh": "為了省錢買新房子，這對夫妻減少日常開銷。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "With an eye to + V-ing, S + V（著眼於）"
+        },
+        {
+          "category": "lexical",
+          "text": "save money; cut down on expenses"
+        },
+        {
+          "category": "pragmatic",
+          "text": "this couple作主詞，動詞用複數"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "cut down on比reduce更口語自然",
+          "category": "style"
+        },
+        {
+          "text": "couple作集合名詞，通常視為複數",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "money",
+        "purpose"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-4-intention-003",
+      "zh": "老闆要求員工準時，目的是要提昇效率。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + V + with the intention of + V-ing"
+        },
+        {
+          "category": "lexical",
+          "text": "demand that; be on time; increase efficiency"
+        },
+        {
+          "category": "morphological",
+          "text": "虛擬語氣：demand that workers (should) be"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "demand後可接that子句用虛擬語氣",
+          "category": "grammar"
+        },
+        {
+          "text": "be on time比be punctual更常用",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "career",
+        "purpose"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-5-because-of-001",
+      "zh": "由於文化差異，世界各地的人對於時間的概念，各有不同的看法。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Because of + N, S + V（因果關係）"
+        },
+        {
+          "category": "lexical",
+          "text": "cultural differences; concept of time; different opinions"
+        },
+        {
+          "category": "pragmatic",
+          "text": "in different parts of the world作地點範圍"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "concept of time是抽象概念，用the concept",
+          "category": "usage"
+        },
+        {
+          "text": "people in different parts of the world比people around the world更精確",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "academic",
+        "culture",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-5-owing-to-002",
+      "zh": "由於大雨的緣故，我們的露營延期了，大家都覺得很失望。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Owing to + N, S + V + and + S + V"
+        },
+        {
+          "category": "lexical",
+          "text": "heavy rain; camping was postponed; feel disappointed"
+        },
+        {
+          "category": "morphological",
+          "text": "被動語態：was postponed"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "owing to比because of稍正式，可交替使用",
+          "category": "style"
+        },
+        {
+          "text": "注意並列句的時態保持一致",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "cause",
+        "environment",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-5-due-to-003",
+      "zh": "這次墜機是由於人為疏失。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + be + due to + N（歸因於）"
+        },
+        {
+          "category": "lexical",
+          "text": "plane crash; human error"
+        },
+        {
+          "category": "pragmatic",
+          "text": "due to常用於正式場合說明原因"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "due to作表語時較正式，新聞報導常見",
+          "category": "style"
+        },
+        {
+          "text": "human error是標準用語，比human mistake正式",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "cause",
+        "health",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-6-result-in-001",
+      "zh": "經濟蕭條導致失業率上升，而失業率上升接著又帶來更多社會問題。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + result in + N, which in turn + brings about + N"
+        },
+        {
+          "category": "lexical",
+          "text": "economic depression; unemployment rate; social problems"
+        },
+        {
+          "category": "pragmatic",
+          "text": "which in turn表因果連鎖關係"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "result in強調直接後果，bring about強調間接引起",
+          "category": "usage"
+        },
+        {
+          "text": "which in turn是很好的轉接語，表示連鎖效應",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "business",
+        "cause",
+        "result"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": "ch06-6-contribute-to-002",
+      "zh": "吸菸會導致肺癌是個已知的事實。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "It is a known fact that + S + contribute to + N"
+        },
+        {
+          "category": "lexical",
+          "text": "smoking contributes to lung cancer"
+        },
+        {
+          "category": "morphological",
+          "text": "contribute to比cause語氣較溫和"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "contribute to表示促成因素，比cause語氣較醫學中性",
+          "category": "usage"
+        },
+        {
+          "text": "It is a known fact that...是正式表達方式",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "cause",
+        "health"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-6-give-rise-to-003",
+      "zh": "這位政治人物的突然辭世引發許多諸傳，其中一個便是他涉及這樁醜聞。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + give rise to + N, one of which + be + that子句"
+        },
+        {
+          "category": "lexical",
+          "text": "sudden death; several rumors; be involved in scandal"
+        },
+        {
+          "category": "pragmatic",
+          "text": "give rise to較正式，常用於嚴肅話題"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "give rise to比cause more formal，常見於新聞報導",
+          "category": "style"
+        },
+        {
+          "text": "one of which引導非限定關係子句",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "cause",
+        "social"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": "ch06-7-to-surprise-001",
+      "zh": "令我驚訝的是，這條睡著的狗突然醒來對我吠叫。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "To one's + 情緒名詞, S + V（令人...的是）"
+        },
+        {
+          "category": "lexical",
+          "text": "to my surprise; sleeping dog; bark at"
+        },
+        {
+          "category": "morphological",
+          "text": "過去分詞sleeping作定語修飾dog"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "to my surprise是常用開頭語，表達意外",
+          "category": "usage"
+        },
+        {
+          "text": "wake和awake都可以，awake較正式",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "environment",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-7-to-relief-002",
+      "zh": "令大家鬆了一口氣的是，走失的登山客終於安然無恙歸來。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "To everyone's relief, S + V"
+        },
+        {
+          "category": "lexical",
+          "text": "missing mountain climber; safe and sound"
+        },
+        {
+          "category": "pragmatic",
+          "text": "safe and sound是固定搭配"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "safe and sound是慣用語，表示安全無恙",
+          "category": "usage"
+        },
+        {
+          "text": "mountain climber比hiker更精確",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "health",
+        "personal"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-7-to-disappointment-003",
+      "zh": "令他大失所望的是，在中國的所有投資最終失敗收場。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "To one's great disappointment, S + turn out to be + N"
+        },
+        {
+          "category": "lexical",
+          "text": "all investment; turn out to be a failure"
+        },
+        {
+          "category": "pragmatic",
+          "text": "turn out表示結果與預期不符"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "turn out to be強調結果出乎意料",
+          "category": "usage"
+        },
+        {
+          "text": "great disappointment比big disappointment更自然",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "business",
+        "personal"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-8-of-abstract-001",
+      "zh": "別把這些箱子丟掉，我確信有朝一日它們會派上用場的。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be of + 抽象名詞 = be + 形容詞（be of use = be useful）"
+        },
+        {
+          "category": "lexical",
+          "text": "throw away; be of use; someday"
+        },
+        {
+          "category": "pragmatic",
+          "text": "be of use比be useful較正式"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "be of use是正式表達，等於be useful",
+          "category": "style"
+        },
+        {
+          "text": "someday作副詞，some day作名詞片語",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "opinion"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-8-with-abstract-002",
+      "zh": "這個問題一點都不難，你可以很容易地想出答案的。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "with + 抽象名詞 = 副詞（with ease = easily）"
+        },
+        {
+          "category": "lexical",
+          "text": "not difficult at all; figure out; with ease"
+        },
+        {
+          "category": "morphological",
+          "text": "figure out是片語動詞"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "with ease比easily稍正式，兩者可互換",
+          "category": "style"
+        },
+        {
+          "text": "figure out比find out更適合解題情境",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "academic",
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-8-with-patience-003",
+      "zh": "她是個好老師，總是耐心地教導學生。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + always + V + with + 抽象名詞"
+        },
+        {
+          "category": "lexical",
+          "text": "good teacher; teach with patience"
+        },
+        {
+          "category": "pragmatic",
+          "text": "with patience比patiently強調品質"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "teach students而非teach to students",
+          "category": "grammar"
+        },
+        {
+          "text": "with patience突出教師品格特質",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "education",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-9-under-construction-001",
+      "zh": "這個城市的捷運系統仍在施工中。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + be + under + 抽象名詞（表進行狀態）"
+        },
+        {
+          "category": "lexical",
+          "text": "Mass Rapid Transit system; under construction"
+        },
+        {
+          "category": "pragmatic",
+          "text": "MRT是台灣常用縮寫"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "under construction是標準說法，表示建設中",
+          "category": "usage"
+        },
+        {
+          "text": "Mass Rapid Transit可簡稱MRT",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "career",
+        "daily-life",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-9-on-business-002",
+      "zh": "身為一間國際公司的總執行長，他常到世界各地洽公。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "As + N, S + V + on + 抽象名詞"
+        },
+        {
+          "category": "lexical",
+          "text": "CEO of international company; on business"
+        },
+        {
+          "category": "pragmatic",
+          "text": "travel on business vs. travel for business"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "on business是固定搭配，表示因公出差",
+          "category": "usage"
+        },
+        {
+          "text": "CEO可全寫為Chief Executive Officer",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "business",
+        "travel"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-9-on-rise-003",
+      "zh": "由於經濟惡化，失業率正不斷上升。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Because of + N, S + be + on the rise"
+        },
+        {
+          "category": "lexical",
+          "text": "worsening economy; unemployment rate; on the rise"
+        },
+        {
+          "category": "morphological",
+          "text": "on the rise = rising/increasing"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "on the rise比rising更生動形象",
+          "category": "style"
+        },
+        {
+          "text": "worsening economy比bad economy更精確",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "business",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-10-nothing-but-001",
+      "zh": "這個計畫只會導致更多金錢的浪費。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + V + nothing but + N（nothing but = only）"
+        },
+        {
+          "category": "lexical",
+          "text": "bring about; waste of money"
+        },
+        {
+          "category": "pragmatic",
+          "text": "nothing but強調唯一結果"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "nothing but比only語氣更強烈，略帶負面",
+          "category": "usage"
+        },
+        {
+          "text": "waste of money比money waste更自然",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "result"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch06-10-anything-but-002",
+      "zh": "這間購物商場賣的商品價位一點也不便宜。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + be + anything but + adj（anything but = not...at all）"
+        },
+        {
+          "category": "lexical",
+          "text": "commodities; shopping mall; cheap"
+        },
+        {
+          "category": "pragmatic",
+          "text": "anything but表強烈否定"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "anything but比not...at all更強調否定",
+          "category": "usage"
+        },
+        {
+          "text": "commodities比goods更正式商業",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "daily-life",
+        "grammar",
+        "money"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch06-10-all-but-003",
+      "zh": "天氣惡劣，這些登山客幾乎無法攻上這座山的山頂。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "S + be + all but + adj（all but = almost）"
+        },
+        {
+          "category": "lexical",
+          "text": "terrible weather; reach the summit; climbers"
+        },
+        {
+          "category": "morphological",
+          "text": "it was all but impossible結構"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "all but impossible = almost impossible",
+          "category": "usage"
+        },
+        {
+          "text": "reach the summit比climb to the top更專業",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "personal",
+        "sports"
+      ],
+      "difficulty": 5
+    }
+  ]
+}

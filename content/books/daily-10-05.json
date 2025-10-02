@@ -1,0 +1,466 @@
+{
+  "id": "daily-10-05",
+  "title": "10/05・每日練習",
+  "summary": "十五題中等難度翻譯，涵蓋遠端協作、學習任務與日常提醒。",
+  "coverImage": "https://picsum.photos/seed/daily-10-05/720/400",
+  "tags": [
+    "present-simple",
+    "general"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-1005-001",
+      "zh": "若要加入今天的線上會議，請先完成雙重驗證。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If you want to join..., please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "雙重驗證可用 complete two-factor authentication"
+        },
+        {
+          "category": "lexical",
+          "text": "\"online meeting\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before clicking the link",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "technology",
+        "business"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-002",
+      "zh": "請在提交報告時附上數據來源的超連結，方便查驗。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please include"
+        },
+        {
+          "category": "syntactic",
+          "text": "方便查驗可用 so we can verify"
+        },
+        {
+          "category": "lexical",
+          "text": "\"source links\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 quickly",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-003",
+      "zh": "社群小編每天早上會檢視留言並回覆常見問題。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "every morning + present simple 描述例行"
+        },
+        {
+          "category": "syntactic",
+          "text": "並回覆可用 and respond to"
+        },
+        {
+          "category": "lexical",
+          "text": "\"community manager\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 frequently asked questions",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1005-004",
+      "zh": "新的學習平台支援離線下載，方便學員搭車時閱讀。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述功能"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so learners can study"
+        },
+        {
+          "category": "lexical",
+          "text": "\"offline downloads\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 while commuting",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "education",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-005",
+      "zh": "會議主持人會在前一晚寄出提醒信，附上議程草稿。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple"
+        },
+        {
+          "category": "syntactic",
+          "text": "附上可用 with the draft agenda"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reminder email\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so participants can prepare questions",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-006",
+      "zh": "若專案進度落後，請立即標記負責人並說明需求。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If the project is slipping, please tag..."
+        },
+        {
+          "category": "syntactic",
+          "text": "並說明需求可用 and outline what you need"
+        },
+        {
+          "category": "lexical",
+          "text": "\"assign the owner\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 in the update thread",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "necessity"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-007",
+      "zh": "請把聯絡方式寫在投影片最後一頁，方便有興趣的人追問。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please place your contact info"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so interested people can follow up"
+        },
+        {
+          "category": "lexical",
+          "text": "\"final slide\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 with any questions",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-008",
+      "zh": "這份研究摘要已經過語言編輯，等候審稿委員覆核。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式被動：has been edited"
+        },
+        {
+          "category": "syntactic",
+          "text": "等候覆核可用 and is awaiting review"
+        },
+        {
+          "category": "lexical",
+          "text": "\"research abstract\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 by the committee",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "academic",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-009",
+      "zh": "他會在每次會議後更新動作項目，並寄給相關人員。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "並寄給可用 and send them"
+        },
+        {
+          "category": "lexical",
+          "text": "\"action items\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to keep everyone on track",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-010",
+      "zh": "公民團體建立了線上意見板，邀請居民提出建議。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present perfect：have set up"
+        },
+        {
+          "category": "syntactic",
+          "text": "邀請可用 to invite residents"
+        },
+        {
+          "category": "lexical",
+          "text": "\"feedback board\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 on local policies",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "social",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-011",
+      "zh": "請把錄音檔上傳到共享雲端，讓翻譯同事前置作業。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please upload the audio file"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so the translators can prep"
+        },
+        {
+          "category": "lexical",
+          "text": "\"shared drive\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 by this evening",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-012",
+      "zh": "活動志工會在結束後整理場地，恢復原本的動線。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "After the event, volunteers will tidy up"
+        },
+        {
+          "category": "syntactic",
+          "text": "恢復動線可用 restore the original layout"
+        },
+        {
+          "category": "lexical",
+          "text": "\"traffic flow\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before the venue closes",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "social",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-013",
+      "zh": "圖書館推出延長借閱方案，讓週末有更多時間閱讀。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present perfect：has introduced"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so patrons have more time"
+        },
+        {
+          "category": "lexical",
+          "text": "\"extended loan program\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 over the weekend",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "daily-life",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-014",
+      "zh": "在寄出邀請函之前，請再次確認收件名單沒有遺漏。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Before sending... please double-check"
+        },
+        {
+          "category": "syntactic",
+          "text": "沒有遺漏可用 to make sure no one is missing"
+        },
+        {
+          "category": "lexical",
+          "text": "\"invitee list\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 especially key stakeholders",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1005-015",
+      "zh": "這款旅遊 App 提供離線地圖，讓旅客在沒有網路時也能導航。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述功能"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so travelers can navigate"
+        },
+        {
+          "category": "lexical",
+          "text": "\"offline maps\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 even in remote areas",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "travel",
+        "daily-life"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

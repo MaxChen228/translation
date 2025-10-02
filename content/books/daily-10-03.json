@@ -1,0 +1,463 @@
+{
+  "id": "daily-10-03",
+  "title": "10/03・每日練習",
+  "summary": "十月初第三日，15 題聚焦專案收尾與生活協調的翻譯練習。",
+  "coverImage": "https://picsum.photos/seed/daily-10-03/720/400",
+  "tags": [
+    "present-perfect",
+    "daily-life"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-1003-001",
+      "zh": "我們已經把所有簽核流程搬到線上，縮短內部等待時間。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：have moved"
+        },
+        {
+          "category": "syntactic",
+          "text": "結果可用 to shorten internal wait times"
+        },
+        {
+          "category": "lexical",
+          "text": "\"approval workflow\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 entirely online 強調全面數位化",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-002",
+      "zh": "如果線上表單無法送出，請截圖錯誤訊息並寄給我們。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 send us the screenshot"
+        },
+        {
+          "category": "lexical",
+          "text": "\"error message\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 so we can escalate it",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "technology",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-003",
+      "zh": "他正在整理專題影片的片頭動畫，明天會提供初稿。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be + V-ing 描述正在進行"
+        },
+        {
+          "category": "syntactic",
+          "text": "未來安排可用 will share a first draft"
+        },
+        {
+          "category": "lexical",
+          "text": "\"intro animation\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 tomorrow afternoon",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-continuous",
+        "entertainment",
+        "business"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-004",
+      "zh": "請在專案結束前，把所有參考資料上傳到共享資料庫。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Before the project wraps, please upload..."
+        },
+        {
+          "category": "syntactic",
+          "text": "使用 to the shared repository 指明位置"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reference materials\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so the next team can reuse them",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-005",
+      "zh": "新的社群指南包含圖片尺寸與標籤建議，請先閱讀。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述內容"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 please read it first"
+        },
+        {
+          "category": "lexical",
+          "text": "\"image dimensions\" 與 \"hashtag tips\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 before you schedule posts",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "business",
+        "technology"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-006",
+      "zh": "她每週會預留一小時檢查系統權限，避免冗餘帳號。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "every week + present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to prevent redundant accounts"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reserve an hour\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 in the admin console",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "technology",
+        "necessity"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-007",
+      "zh": "客戶已經回傳簽署檔案，請協助建檔並通知營運。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式被動：has been returned"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 please file it and let operations know"
+        },
+        {
+          "category": "lexical",
+          "text": "\"signed document\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 for record keeping",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-008",
+      "zh": "如果研討會報到排隊過長，請協助引導到旁邊的自助機台。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If the line gets long, please direct..."
+        },
+        {
+          "category": "syntactic",
+          "text": "自助機台可用 self-check-in kiosks"
+        },
+        {
+          "category": "lexical",
+          "text": "\"guide attendees\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 to speed things up",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-009",
+      "zh": "他會在旅行前設定自動回覆，並標註緊急聯絡窗口。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "並標註可用 and note"
+        },
+        {
+          "category": "lexical",
+          "text": "\"out-of-office auto reply\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 emergency point of contact",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1003-010",
+      "zh": "活動後的問卷會在 24 小時內寄出，請協助宣傳。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "will be sent within 24 hours 描述未來"
+        },
+        {
+          "category": "syntactic",
+          "text": "請求可用 please help spread the word"
+        },
+        {
+          "category": "lexical",
+          "text": "\"post-event survey\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 so we can gather feedback",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-011",
+      "zh": "請確認攝影棚的燈光已關閉，避免耗電。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please make sure"
+        },
+        {
+          "category": "syntactic",
+          "text": "避免耗電可用 so we don't waste power"
+        },
+        {
+          "category": "lexical",
+          "text": "\"studio lights\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 before you lock up",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "environment",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-012",
+      "zh": "我們在知識庫新增了故障排除指南，供新人參考。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：have added"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 for new teammates to consult"
+        },
+        {
+          "category": "lexical",
+          "text": "\"troubleshooting guide\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 whenever issues pop up",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "technology",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-013",
+      "zh": "這份研究簡報包含原始數據連結，方便審稿者驗證。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so reviewers can verify"
+        },
+        {
+          "category": "lexical",
+          "text": "\"raw data links\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 in the appendix",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "academic",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-014",
+      "zh": "社團公告新增了投票連結，請提醒成員投票。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：has added"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 please remind members"
+        },
+        {
+          "category": "lexical",
+          "text": "\"ballot link\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before Friday",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "social",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1003-015",
+      "zh": "請在公告裡附上客服時段，讓民眾知道何時可打電話。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please include"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so people know when to call"
+        },
+        {
+          "category": "lexical",
+          "text": "\"service hours\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 in the notice",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

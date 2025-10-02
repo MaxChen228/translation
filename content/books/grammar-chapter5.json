@@ -1,0 +1,865 @@
+{
+  "id": "grammar-chapter5",
+  "name": "Chapter 5",
+  "items": [
+    {
+      "id": "ch05-1-1-practice-001",
+      "zh": "為了有最好的演出，啦啦隊隊員每天努力練習跳舞。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "practice + V-ing 後接動名詞"
+        },
+        {
+          "category": "pragmatic",
+          "text": "to give the best performance 表目的"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "練習 practice 後直接接動名詞，不需要 to 不定詞",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch05-1-1-regret-002",
+      "zh": "他後悔在他們需要援助時背棄他們。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "regret having + p.p. 表示後悔已發生的事"
+        },
+        {
+          "category": "lexical",
+          "text": "desert sb 背棄某人；in need of help 需要幫助"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "regret + V-ing 後悔做過的事，regret + to V 很遺憾要做某事",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "regret"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-1-1-mind-003",
+      "zh": "你介意別在這兒吸菸嗎？",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Would you mind not + V-ing 否定形式"
+        },
+        {
+          "category": "pragmatic",
+          "text": "禮貌詢問用 Would you mind"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "mind 後接 not + V-ing 表示否定，語氣比直接禁止更委婉",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch05-1-1-enjoy-004",
+      "zh": "沒有人喜歡被別人看輕。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "enjoy being + p.p. 被動動名詞"
+        },
+        {
+          "category": "lexical",
+          "text": "look down upon 看不起"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "動名詞的被動形式：being + p.p.，表示被動的動作或狀態",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "passive"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-1-1-imagine-005",
+      "zh": "我無法想像被禁足一星期（的滋味）！",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "can't imagine + V-ing 無法想像"
+        },
+        {
+          "category": "lexical",
+          "text": "be grounded 被禁足"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "imagine 後接動名詞，可搭配被動形式 being + p.p.",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "gerund",
+        "passive"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-2-1-need-001",
+      "zh": "我們的房子在颱風中受損，屋頂需要修補。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "need + V-ing 被動意義，等於 need to be + p.p."
+        },
+        {
+          "category": "lexical",
+          "text": "get damaged 受損；typhoon 颱風"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "need/want/require + V-ing 具有被動意義，相當於 need to be done",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "passive"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-2-1-want-002",
+      "zh": "你的靴子又髒又沾泥濘，它們真的需要清洗了。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "want + V-ing 被動意義"
+        },
+        {
+          "category": "lexical",
+          "text": "wet and muddy 又濕又髒"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "want cleaning = want to be cleaned，動名詞形式更簡潔",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "passive"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-2-1-require-003",
+      "zh": "這件事情需要你小心謹慎處理。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "require + sb's/sb + V-ing 需要某人做某事"
+        },
+        {
+          "category": "pragmatic",
+          "text": "careful handling 小心處理"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "require 可接所有格 + 動名詞或受詞 + 動名詞",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch05-3-1-worth-001",
+      "zh": "凡是值得做的事就值得做到最好。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be worth + V-ing 值得做某事"
+        },
+        {
+          "category": "pragmatic",
+          "text": "Whatever is worth doing... 經典格言"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "worth 後只能接動名詞，不可接不定詞",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "culture",
+        "gerund",
+        "opinion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-3-1-worth-002",
+      "zh": "這個古蹟以文藝復興時期的建築風格聞名，值得一遊。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be worth + N 值得某事物"
+        },
+        {
+          "category": "lexical",
+          "text": "Renaissance architecture 文藝復興建築；historic site 古蹟"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "worth 可接名詞 (a visit) 或動名詞 (visiting)",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "culture",
+        "gerund",
+        "opinion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-3-1-worthy-003",
+      "zh": "他是名符其實的英雄。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be worthy of + N 值得的"
+        },
+        {
+          "category": "pragmatic",
+          "text": "worthy of the name 名符其實"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "worthy of 接名詞，worth 接動名詞或名詞",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "culture",
+        "gerund",
+        "opinion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-4-1-fun-001",
+      "zh": "我們的外國朋友在臺灣各地旅遊並品嚐當地美食，玩得很愉快。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "have a good time + V-ing 做某事很愉快"
+        },
+        {
+          "category": "lexical",
+          "text": "tour around 四處旅遊；sample delicacies 品嚐美食"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "have fun/a good time 後接動名詞表示從事某活動很愉快",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "entertainment",
+        "gerund",
+        "travel"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch05-4-1-difficulty-002",
+      "zh": "我在與安娜的溝通上遇到很大的困難，因為我不會說她的語言。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "have difficulty + V-ing 做某事有困難"
+        },
+        {
+          "category": "lexical",
+          "text": "communicate with sb 與某人溝通"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "difficulty/trouble/problems 後接動名詞，可用 in + V-ing",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "personal",
+        "social"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-4-1-problems-003",
+      "zh": "這名轉學生毫無困難地融入新班級。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "have no problems + V-ing 做某事沒困難"
+        },
+        {
+          "category": "lexical",
+          "text": "transfer student 轉學生；fit in 融入"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "no problems/difficulty 表示沒有困難，語氣比較輕鬆",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "education",
+        "gerund",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-4-1-hardtime-004",
+      "zh": "他錯過了許多課，進度趕得很辛苦。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "Having missed... 分詞構句表原因"
+        },
+        {
+          "category": "syntactic",
+          "text": "have a hard time (in) + V-ing 做某事很辛苦"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "分詞構句可表達因果關係，in 可省略",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "participle",
+        "personal"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch05-5-1-help-001",
+      "zh": "女孩一得知她的狗受困在火場中死了，就忍不住哭了出來。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "can't help + V-ing 忍不住做某事"
+        },
+        {
+          "category": "lexical",
+          "text": "on learning 一得知；be trapped 受困"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "can't help 表示無法控制的情緒反應，語氣強烈",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-5-1-help-002",
+      "zh": "被欺侮的男孩忍不住揮拳回擊保衛自己。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "can't help + V-ing 忍不住"
+        },
+        {
+          "category": "lexical",
+          "text": "bullied boy 被霸凌的男孩；shake one's fist 揮拳；fight back 反擊"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "fight back to defend oneself 為了自衛而反擊",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "social"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-5-1-canthelp-003",
+      "zh": "我深深懊悔發了脾氣，但我就是控制不了自己。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "can't help it 控制不了"
+        },
+        {
+          "category": "lexical",
+          "text": "lose one's temper 發脾氣"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "can't help it 單獨使用表示無法控制情況",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-5-1-choice-004",
+      "zh": "被槍匪以槍指著，店員別無選擇只好把所有錢交出來。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "have no choice but to + V 別無選擇只好"
+        },
+        {
+          "category": "lexical",
+          "text": "be pointed at with a gun 被槍指著；surrender 交出"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "have no choice but to 是固定搭配，but 後接不定詞",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "health",
+        "preference"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch05-6-1-denying-001",
+      "zh": "不可否認的，網際網路已成為我們生活中一項不可或缺的便利工具。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "There is no + V-ing 無法做某事"
+        },
+        {
+          "category": "lexical",
+          "text": "indispensable convenience 不可或缺的便利"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "There is no denying that... 是常用句型，表示不可否認",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "technology"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-6-1-knowing-002",
+      "zh": "由於競爭激烈，最後誰會贏得冠軍還無從得知。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "There is no knowing... 無從得知"
+        },
+        {
+          "category": "lexical",
+          "text": "harsh competition 激烈競爭"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "There is no knowing 表示無法預知，常用於不確定的情況",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "sports"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-6-1-accounting-003",
+      "zh": "喜好是無法解釋的。（即：人各有所好）",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "There is no accounting for taste 固定片語"
+        },
+        {
+          "category": "pragmatic",
+          "text": "表示個人喜好無法用理性解釋"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "這是英語慣用語，意思是個人品味難以解釋",
+          "category": "idiom"
+        }
+      ],
+      "tags": [
+        "culture",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch05-7-1-cooking-001",
+      "zh": "他們達成協議：她煮飯，他採買。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "do the + V-ing 做某事"
+        },
+        {
+          "category": "lexical",
+          "text": "make a deal 達成協議；do the shopping 購物"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "do the cooking/shopping 等是固定搭配，表示家務分工",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "daily-life",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch05-7-1-dancing-002",
+      "zh": "蜜蜂藉著跳舞傳遞食物來源的訊息。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "by doing + V-ing 藉由做某事"
+        },
+        {
+          "category": "lexical",
+          "text": "transmit information 傳遞訊息；food source 食物來源"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "by + V-ing 表示方法或手段",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "environment",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-7-1-skiing-003",
+      "zh": "瑞士是人們滑雪的好去處。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "go + V-ing 從事某項活動"
+        },
+        {
+          "category": "lexical",
+          "text": "ideal place 理想地點"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "go skiing/swimming/shopping 等表示從事運動或活動",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "sports"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch05-8-1-stop-001",
+      "zh": "得到一支棒棒糖後，小孩不哭了。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "Given... 分詞構句表條件"
+        },
+        {
+          "category": "syntactic",
+          "text": "stop + V-ing 停止正在做的事"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "stop crying 停止哭泣，stop to cry 停下來去哭",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-8-1-stop-to-002",
+      "zh": "那孩子停下來看天上的飛機飛過。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "stop to + V 停下來去做另一件事"
+        },
+        {
+          "category": "lexical",
+          "text": "look up 抬頭看；pass by 經過"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "stop to do 表示停下原本的事去做新的事",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-8-1-try-003",
+      "zh": "她試著用藍色系裝潢房間。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "try + V-ing 嘗試做某事"
+        },
+        {
+          "category": "lexical",
+          "text": "decorate in blue 用藍色裝潢"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "try doing 嘗試某方法，try to do 努力去做",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "daily-life",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-8-1-forget-004",
+      "zh": "蒂娜忘記已經結過帳了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "forget + V-ing 忘記已做過的事"
+        },
+        {
+          "category": "lexical",
+          "text": "pay the bill 付帳"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "forget doing 忘記做過某事，forget to do 忘記要做某事",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "money",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-9-1-on-learning-001",
+      "zh": "一獲知球隊贏得冠軍，所有的球迷高興得又叫又跳。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "On + V-ing 一...就..."
+        },
+        {
+          "category": "lexical",
+          "text": "shout and jump with joy 高興得又叫又跳"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "On + V-ing 表示時間的立即性，一...就...",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "gerund",
+        "grammar",
+        "sports"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-9-1-in-learning-002",
+      "zh": "學習語言時，我們也學習到它的文化。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "In + V-ing 在做某事的時候"
+        },
+        {
+          "category": "pragmatic",
+          "text": "learn about culture 學習文化"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "In + V-ing 表示在進行某動作的過程中",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "culture",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch05-9-1-on-returning-003",
+      "zh": "吳教授一回國，就出任物理系系主任的職務。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "On + V-ing 一...就..."
+        },
+        {
+          "category": "lexical",
+          "text": "take up the post 出任職務；head of department 系主任"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "take up 表示開始承擔職務或責任",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "academic",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch05-9-1-in-facing-004",
+      "zh": "面對生命中的種種挑戰時，她一直保有對上帝的信仰，從不放棄。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "In + V-ing 在做某事的時候"
+        },
+        {
+          "category": "morphological",
+          "text": "had always kept 過去完成進行式表持續狀態"
+        },
+        {
+          "category": "lexical",
+          "text": "keep one's faith 保持信仰；challenges in life 人生挑戰"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "face challenges 面對挑戰，keep faith 保持信仰",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "culture",
+        "gerund",
+        "grammar"
+      ],
+      "difficulty": 4
+    }
+  ]
+}

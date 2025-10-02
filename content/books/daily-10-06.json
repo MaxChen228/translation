@@ -1,0 +1,467 @@
+{
+  "id": "daily-10-06",
+  "title": "10/06・每日練習",
+  "summary": "十五題日常與職場兼具的翻譯練習，聚焦溝通安排與後勤支援。",
+  "coverImage": "https://picsum.photos/seed/daily-10-06/720/400",
+  "tags": [
+    "present-simple",
+    "daily-life"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-1006-001",
+      "zh": "我們已將培訓影片上傳到內部平台，請在週內完成觀看。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：have uploaded"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please finish watching"
+        },
+        {
+          "category": "lexical",
+          "text": "internal portal 表公司內部平台"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 by the end of the week",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-002",
+      "zh": "如果訂餐人數有變動，請至少提前一天通知行政。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If the headcount changes, please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "提前告知可用 at least a day in advance"
+        },
+        {
+          "category": "lexical",
+          "text": "catering order 表訂餐"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so we can adjust the delivery",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-003",
+      "zh": "這份簡訊提醒會在門診前一晚寄出，避免忘記預約。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述安排"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 to keep patients from forgetting"
+        },
+        {
+          "category": "lexical",
+          "text": "text reminder 表簡訊提醒"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 for tomorrow's appointment",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "health",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-004",
+      "zh": "請在會議紀錄中標註負責人與期限，方便追蹤。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please mark"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so follow-up stays clear"
+        },
+        {
+          "category": "lexical",
+          "text": "owner 標示負責人"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 for each action item",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-005",
+      "zh": "行銷團隊正與設計師協作調整海報版面，今晚會給新版。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be + V-ing 描述正在進行"
+        },
+        {
+          "category": "syntactic",
+          "text": "未來安排可用 will share a new draft tonight"
+        },
+        {
+          "category": "lexical",
+          "text": "layout tweaks 表版面調整"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 once it passes QA",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-continuous",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-006",
+      "zh": "請把備品清單放在櫃台，讓夜班同事能快速補貨。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please leave the supply list"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so the night shift can restock"
+        },
+        {
+          "category": "lexical",
+          "text": "front counter 表櫃台"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 without calling you",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "daily-life",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-007",
+      "zh": "若社群貼文被排程到錯誤時段，請立即調整回原設定。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If a post goes live at the wrong time, please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "調整可用 switch it back to the intended slot"
+        },
+        {
+          "category": "lexical",
+          "text": "reschedule 表重新安排"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 and notify the lead",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-008",
+      "zh": "語言中心推出線上會話角，讓學員在家練習。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：has launched"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so learners can practice from home"
+        },
+        {
+          "category": "lexical",
+          "text": "conversation corner 表會話角"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 with peers every week",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-009",
+      "zh": "他每天午休會散步十五分鐘，舒緩久坐的疲勞。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "every lunch break + present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to ease the strain of sitting"
+        },
+        {
+          "category": "lexical",
+          "text": "brisk walk 表快步行走"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 around the block",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "health",
+        "daily-life"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1006-010",
+      "zh": "客服腳本已更新常見退貨情境，請下載最新版。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式被動：has been updated"
+        },
+        {
+          "category": "syntactic",
+          "text": "請求可用 Please download the latest version"
+        },
+        {
+          "category": "lexical",
+          "text": "return scenarios 表退貨情境"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 before your next shift",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "business"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-011",
+      "zh": "活動當天請記得攜帶工作證，方便進入後台。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please remember to bring"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so you can access backstage"
+        },
+        {
+          "category": "lexical",
+          "text": "staff badge 表工作證"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 without delays",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "entertainment",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-012",
+      "zh": "我們會在週末整理課程問答，並將摘要寄給講師。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "未來安排可用 We will compile"
+        },
+        {
+          "category": "syntactic",
+          "text": "並寄給可用 and send a summary"
+        },
+        {
+          "category": "lexical",
+          "text": "Q&A recap 表問答摘要"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so they can adjust next week's content",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "education",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-013",
+      "zh": "請把攝影器材歸回原位，避免其他人找不到。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please return the equipment"
+        },
+        {
+          "category": "syntactic",
+          "text": "避免...可用 to keep others from wasting time"
+        },
+        {
+          "category": "lexical",
+          "text": "equipment locker 表器材櫃"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 before you leave",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "request",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-014",
+      "zh": "家長會設立了線上報名表，讓大家選擇志工時段。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：have set up"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so families can pick volunteer slots"
+        },
+        {
+          "category": "lexical",
+          "text": "signup form 表報名表"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 without calling the office",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1006-015",
+      "zh": "若臨時需要延長場地使用時間，請先向總務確認。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If you need to extend the venue time, please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "確認可用 check with the facilities team"
+        },
+        {
+          "category": "lexical",
+          "text": "extra hours 表額外時段"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可補 so we can adjust staffing",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

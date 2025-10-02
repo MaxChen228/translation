@@ -1,0 +1,313 @@
+{
+  "id": "daily-09-30",
+  "title": "9/30・每日練習",
+  "summary": "聚焦月底收尾與生活安排的一般難度翻譯練習。",
+  "coverImage": "https://picsum.photos/seed/daily-09-30/720/400",
+  "tags": [
+    "present-perfect",
+    "business"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-0930-001",
+      "zh": "財務團隊已經彙整好支出明細，等著你最後確認。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式被動：has been compiled"
+        },
+        {
+          "category": "syntactic",
+          "text": "等待確認可用 is waiting for your final approval"
+        },
+        {
+          "category": "lexical",
+          "text": "\"expense breakdown\" 表支出明細"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 the finance team has already compiled the expense breakdown",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-002",
+      "zh": "我們會在公告寄出後，於官網同步更新常見問題。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "After + 子句 表示公告寄出後"
+        },
+        {
+          "category": "syntactic",
+          "text": "未來計畫可用 will update"
+        },
+        {
+          "category": "lexical",
+          "text": "\"FAQ section\" 表常見問題頁"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 once the announcement goes out, we'll update the FAQ",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "technology",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-003",
+      "zh": "如果月底報表有缺項，請立即在共享試算表上補齊。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, S + should + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 update the shared spreadsheet"
+        },
+        {
+          "category": "lexical",
+          "text": "\"missing entries\" 表缺項"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 right away 強調立即",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-004",
+      "zh": "她已經向顧問預約明天的線上諮詢，以釐清合約問題。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：has scheduled"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 to clarify the contract issues"
+        },
+        {
+          "category": "lexical",
+          "text": "\"online consultation\" 表線上諮詢"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "也可用 booked an online session with the consultant",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-005",
+      "zh": "行銷部希望在月初前拍好新品照片，方便排程社群貼文。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "hope + to + VR 表達期望"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 so they can schedule social posts"
+        },
+        {
+          "category": "lexical",
+          "text": "\"product shots\" 表新品照片"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 before the new month begins 說明時間",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-006",
+      "zh": "月度會議記錄整理好後，請發一份給研究團隊參考。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "After + 名詞/子句 表示整理完成後"
+        },
+        {
+          "category": "syntactic",
+          "text": "祈使句可用 please send a copy"
+        },
+        {
+          "category": "lexical",
+          "text": "\"meeting minutes\" 表會議記錄"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可接 so they can stay in the loop",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "academic",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-007",
+      "zh": "這份問卷結果會與合作單位共享，讓他們調整下季方案。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 will be shared 描述未來安排"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so they can adjust next season's plan"
+        },
+        {
+          "category": "lexical",
+          "text": "\"partner organizations\" 表合作單位"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 survey results will be shared with our partners",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "passive",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-008",
+      "zh": "月底健檢提醒已寄出，請員工登入系統完成預約。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式被動：has been sent out"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 log into the system"
+        },
+        {
+          "category": "lexical",
+          "text": "\"annual health check reminder\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 to finish their booking",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "health",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-009",
+      "zh": "為了避免月底塞車，我們建議提前一天寄出貨物。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "為了...可用 To avoid"
+        },
+        {
+          "category": "syntactic",
+          "text": "建議句可用 we recommend + V-ing"
+        },
+        {
+          "category": "lexical",
+          "text": "\"ship the goods a day early\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "也可用 so the packages won't get stuck",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "suggestion",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0930-010",
+      "zh": "月底聚餐需要提前預約座位，避免臨時沒有空位。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "need to + VR 表示必要"
+        },
+        {
+          "category": "syntactic",
+          "text": "避免臨時狀況可用 to avoid finding no seats at the last minute"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reserve a table\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 for the end-of-month dinner",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "daily-life",
+        "warning"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

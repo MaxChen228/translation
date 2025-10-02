@@ -1,0 +1,981 @@
+{
+  "id": "grammar-chapter4",
+  "name": "Chapter 4",
+  "items": [
+    {
+      "id": "ch04-1-1-growing-001",
+      "zh": "公司提高產量以迎合市場日益增大的需求。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "現在分詞作形容詞：growing demand（逐漸增加的需求）"
+        },
+        {
+          "category": "syntactic",
+          "text": "不定詞表目的：to satisfy（為了滿足）"
+        },
+        {
+          "category": "lexical",
+          "text": "satisfy/meet the demand 固定搭配"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "現在分詞 growing 表示「正在進行的變化」，比 increasing 更生動。",
+          "category": "style"
+        },
+        {
+          "text": "注意 demand 通常與 satisfy 或 meet 搭配使用。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "participle"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-1-1-falling-002",
+      "zh": "遊客被提醒在小徑上要當心落石。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "現在分詞作形容詞：falling rocks（正在掉落的石頭）"
+        },
+        {
+          "category": "syntactic",
+          "text": "被動語態：be reminded to + V"
+        },
+        {
+          "category": "pragmatic",
+          "text": "watch out for 意為「小心、注意」"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "falling rocks 強調「正在掉落的動作」，與 fallen rocks（已掉落的）語意不同。",
+          "category": "grammar"
+        },
+        {
+          "text": "remind sb to do sth 是常見的提醒表達方式。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "participle",
+        "passive",
+        "warning"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-1-1-covered-003",
+      "zh": "廚師為了使肉質更柔軟，把肉浸泡在一碗加了蓋的啤酒裡一整夜。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "過去分詞作形容詞：covered bowl（有蓋的碗）"
+        },
+        {
+          "category": "syntactic",
+          "text": "不定詞表目的：to make it softer"
+        },
+        {
+          "category": "pragmatic",
+          "text": "overnight 可當副詞使用"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "covered 表示「被覆蓋的狀態」，注意與 covering（正在覆蓋的）區別。",
+          "category": "grammar"
+        },
+        {
+          "text": "overnight 作副詞比 for a whole night 更簡潔自然。",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "participle",
+        "purpose"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-1-1-fallen-004",
+      "zh": "每天早上學生們在校園內清掃落葉維護環境清潔。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "過去分詞作形容詞：fallen leaves（已掉落的葉子）"
+        },
+        {
+          "category": "syntactic",
+          "text": "不定詞表目的：to keep the environment clean"
+        },
+        {
+          "category": "pragmatic",
+          "text": "sweep 與 clean up 意義相近"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "fallen leaves 指「已落下的葉子」，與 falling leaves（正在掉落的）不同。",
+          "category": "grammar"
+        },
+        {
+          "text": "keep + 受詞 + 形容詞 是常見的使役動詞結構。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "daily-life",
+        "environment",
+        "participle"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "ch04-1-1-worrying-005",
+      "zh": "這會議是為了討論令人擔憂的溫室效應問題而舉行。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "現在分詞作形容詞：worrying problem（令人擔憂的問題）"
+        },
+        {
+          "category": "syntactic",
+          "text": "被動語態：was held to discuss"
+        },
+        {
+          "category": "lexical",
+          "text": "greenhouse effect 溫室效應的正確說法"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "worrying 強調「令人擔憂的特質」，worried 則表示「感到擔憂的狀態」。",
+          "category": "grammar"
+        },
+        {
+          "text": "環保議題用詞要準確：greenhouse effect vs. global warming。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "academic",
+        "environment",
+        "participle"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-2-1-drifting-001",
+      "zh": "夏日午後有朵朵白雲飄過綠油油的田野。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "現在分詞作後位修飾：clouds drifting（正在飄動的雲）"
+        },
+        {
+          "category": "syntactic",
+          "text": "There be 句型表存在"
+        },
+        {
+          "category": "pragmatic",
+          "text": "above 比 over 更適合表示雲朵位置"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "後位修飾的分詞更強調動作的進行性和生動感。",
+          "category": "style"
+        },
+        {
+          "text": "green fields 比 green farmland 更詩意自然。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "environment",
+        "grammar",
+        "participle"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-2-1-held-002",
+      "zh": "許多名人出席那場為孤兒籌募基金而舉行的慈善音樂會。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "過去分詞作後位修飾：concert held to...（為了...而舉行的音樂會）"
+        },
+        {
+          "category": "syntactic",
+          "text": "不定詞表目的：to raise funds"
+        },
+        {
+          "category": "lexical",
+          "text": "attend 與 participate in 的區別"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "held 表示被動概念，音樂會是「被舉行的」。",
+          "category": "grammar"
+        },
+        {
+          "text": "raise funds for 是募款的標準表達方式。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "entertainment",
+        "participle",
+        "social"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-2-1-broken-003",
+      "zh": "她把那些頑皮孩子玩耍時所打破的花瓶給丟了。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "過去分詞片語作後位修飾：vase broken by..."
+        },
+        {
+          "category": "syntactic",
+          "text": "介系詞片語：by those naughty kids at play"
+        },
+        {
+          "category": "pragmatic",
+          "text": "at play 表示「在玩耍時」"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "broken by 明確表示被動關係和動作執行者。",
+          "category": "grammar"
+        },
+        {
+          "text": "throw away 比 discard 更口語自然。",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "participle",
+        "passive"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-3-1-rapidly-moving-001",
+      "zh": "雷達偵測到一個快速移動的不明物體。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "複合形容詞：rapidly-moving（快速移動的）"
+        },
+        {
+          "category": "syntactic",
+          "text": "副詞 + 現在分詞構成複合形容詞"
+        },
+        {
+          "category": "pragmatic",
+          "text": "unknown object 與 UFO 概念相關"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "複合形容詞通常用連字號連接，使語義更清晰。",
+          "category": "grammar"
+        },
+        {
+          "text": "detect 比 find 更適合科技設備的發現動作。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "technology"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-3-1-freshly-baked-002",
+      "zh": "很多人排隊買剛出爐的蛋黃酥。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "複合形容詞：freshly-baked（剛烘焙的）"
+        },
+        {
+          "category": "syntactic",
+          "text": "副詞 + 過去分詞構成複合形容詞"
+        },
+        {
+          "category": "lexical",
+          "text": "wait in line 美式；queue up 英式"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "freshly 強調「剛剛」的時間概念，比 just baked 更精確。",
+          "category": "style"
+        },
+        {
+          "text": "egg yolk pastries 是蛋黃酥的正確翻譯。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "opinion"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-4-1-time-consuming-001",
+      "zh": "傳統釀製啤酒的方法很費時。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "複合形容詞：time-consuming（耗時的）"
+        },
+        {
+          "category": "syntactic",
+          "text": "名詞 + 現在分詞構成複合形容詞"
+        },
+        {
+          "category": "pragmatic",
+          "text": "brewing 專指釀酒過程"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "time-consuming 是固定複合詞，表示「耗費時間的」特性。",
+          "category": "grammar"
+        },
+        {
+          "text": "traditional way of doing 是常見的表達方式結構。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "culture",
+        "grammar"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-4-1-hand-made-002",
+      "zh": "這個手工娃娃成為我湖區之旅的最佳紀念品。",
+      "hints": [
+        {
+          "category": "morphological",
+          "text": "複合形容詞：hand-made（手工製作的）"
+        },
+        {
+          "category": "syntactic",
+          "text": "serve as 表示「作為、充當」"
+        },
+        {
+          "category": "pragmatic",
+          "text": "Lake District 是英國著名景點"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "hand-made 強調手工製作的價值和獨特性。",
+          "category": "style"
+        },
+        {
+          "text": "serve as 比 become 更正式，適合紀念品語境。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "culture",
+        "grammar",
+        "travel"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-5-1-tumbling-001",
+      "zh": "車子一路翻滾跌谷。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "感官動詞 go + 現在分詞表動作方式"
+        },
+        {
+          "category": "pragmatic",
+          "text": "tumbling down 表示翻滾墜落"
+        },
+        {
+          "category": "lexical",
+          "text": "gorge 指深谷、峽谷"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "go + V-ing 表示進入某種動作狀態，很生動。",
+          "category": "style"
+        },
+        {
+          "text": "down 加強了向下墜落的方向感。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "health"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-5-1-pouring-002",
+      "zh": "每年冬天大量的遷徙性蝴蝶湧入茂林。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "感官動詞 come + 現在分詞表動作方式"
+        },
+        {
+          "category": "morphological",
+          "text": "pouring through 表示大量湧入"
+        },
+        {
+          "category": "pragmatic",
+          "text": "migrant butterflies 遷徙蝴蝶"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "come pouring 形象地描述蝴蝶大量湧入的景象。",
+          "category": "style"
+        },
+        {
+          "text": "a flood of 是表示「大量」的生動比喻。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "environment",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-5-1-surrounded-003",
+      "zh": "那位名人站著，四周圍著一群急切的記者。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "感官動詞 stand + 過去分詞表被動狀態"
+        },
+        {
+          "category": "morphological",
+          "text": "surrounded by 表示「被包圍」"
+        },
+        {
+          "category": "pragmatic",
+          "text": "eager journalists 急切的記者"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "stand + 過去分詞描述主語所處的被動狀態。",
+          "category": "grammar"
+        },
+        {
+          "text": "eager 比 anxious 更適合形容記者的積極態度。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "entertainment",
+        "grammar",
+        "passive"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-6-1-waiting-001",
+      "zh": "很抱歉讓你久等了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "keep + 受詞 + 現在分詞表持續狀態"
+        },
+        {
+          "category": "pragmatic",
+          "text": "I am sorry to have done 表示對已發生事情的歉意"
+        },
+        {
+          "category": "morphological",
+          "text": "完成不定詞：to have kept"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "keep sb waiting 是讓某人等待的標準表達。",
+          "category": "usage"
+        },
+        {
+          "text": "完成不定詞表示動作先於主要動詞發生。",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "apology",
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-6-1-stolen-002",
+      "zh": "當大衛要付錢時，他發現皮夾被偷了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "find + 受詞 + 過去分詞表發現某物處於某狀態"
+        },
+        {
+          "category": "morphological",
+          "text": "was about to 表示「正要」"
+        },
+        {
+          "category": "pragmatic",
+          "text": "wallet stolen 皮夾被偷的狀態"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "find + 受詞 + 過去分詞是感知某物被動狀態的常見結構。",
+          "category": "grammar"
+        },
+        {
+          "text": "was about to pay 比 wanted to pay 更精確表示即將的動作。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "academic",
+        "grammar",
+        "social"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-6-1-cheating-003",
+      "zh": "老師當場逮到史蒂夫考試作弊。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "catch + 受詞 + 現在分詞表當場發現正在進行的動作"
+        },
+        {
+          "category": "pragmatic",
+          "text": "in the exam 考試中"
+        },
+        {
+          "category": "morphological",
+          "text": "cheat 作動詞使用"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "catch sb doing sth 強調當場發現不當行為。",
+          "category": "usage"
+        },
+        {
+          "text": "cheat in the exam 是作弊的標準表達方式。",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "education",
+        "grammar",
+        "social"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-7-1-blowing-001",
+      "zh": "莎莉很喜歡騎著腳踏車，頭髮在空中飄揚。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "with + 受詞 + 現在分詞表伴隨狀況"
+        },
+        {
+          "category": "pragmatic",
+          "text": "in the wind 在風中"
+        },
+        {
+          "category": "morphological",
+          "text": "enjoy doing sth 喜歡做某事"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "with + 受詞 + 分詞是描述伴隨狀況的有效結構。",
+          "category": "style"
+        },
+        {
+          "text": "blowing in the wind 生動描述頭髮飄動的畫面。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "personal",
+        "sports"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-7-1-attached-002",
+      "zh": "傑森寄了一封夾帶附加檔案的電子郵件給我。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "with + 受詞 + 過去分詞表附帶狀態"
+        },
+        {
+          "category": "morphological",
+          "text": "attached to 表示附加、依附"
+        },
+        {
+          "category": "pragmatic",
+          "text": "e-mail 電子郵件的標準拼法"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "with a file attached 清楚表達檔案附加的狀態。",
+          "category": "grammar"
+        },
+        {
+          "text": "send sb sth 是寄送的基本句型。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "relationship",
+        "technology"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "ch04-8-1-knowing-001",
+      "zh": "雖然知道他伯父住哪裡，他從不前來探望過他。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "分詞構句表讓步：Knowing = Although he knew"
+        },
+        {
+          "category": "morphological",
+          "text": "現在分詞表主動關係"
+        },
+        {
+          "category": "pragmatic",
+          "text": "come to visit 前來拜訪"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "分詞構句可替代副詞子句，使句子更簡潔。",
+          "category": "style"
+        },
+        {
+          "text": "never came 比 didn't come 語氣更強。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "participle"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-8-1-seen-002",
+      "zh": "從摩天輪頂端放眼望去，這城市的夜景很美。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "分詞構句表條件：Seen from = When/If seen from"
+        },
+        {
+          "category": "morphological",
+          "text": "過去分詞表被動關係"
+        },
+        {
+          "category": "pragmatic",
+          "text": "at night 在夜晚"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Seen from 表示從某個角度被觀看，符合被動邏輯。",
+          "category": "grammar"
+        },
+        {
+          "text": "ferris wheel 摩天輪的正確拼法。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "environment",
+        "participle",
+        "passive"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-8-1-heated-003",
+      "zh": "某些化學物質加熱時可能會釋放出有害健康的有毒氣體。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "分詞構句表時間：(When) heated = When they are heated"
+        },
+        {
+          "category": "morphological",
+          "text": "過去分詞表被動"
+        },
+        {
+          "category": "pragmatic",
+          "text": "release poisonous gases 釋放有毒氣體"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "When 可省略，heated 直接作時間狀語。",
+          "category": "style"
+        },
+        {
+          "text": "that harm people's health 定語從句修飾 gases。",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "academic",
+        "health",
+        "participle"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-9-1-drifting-001",
+      "zh": "安德魯陷入沉思，眼神飄忽地望著書桌。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "獨立分詞構句：his eyes drifting（主語不同）"
+        },
+        {
+          "category": "morphological",
+          "text": "現在分詞表主動進行"
+        },
+        {
+          "category": "pragmatic",
+          "text": "get lost in thought 陷入沉思"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "獨立分詞構句有自己的主語，與主句主語不同。",
+          "category": "grammar"
+        },
+        {
+          "text": "drifting over 生動描述眼神游移的狀態。",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "grammar",
+        "personal"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": "ch04-9-1-there-being-002",
+      "zh": "夜裡沒有公車行駛，我們決定搭計程車回家。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "There being 獨立分詞構句表原因"
+        },
+        {
+          "category": "morphological",
+          "text": "being 是 be 動詞的現在分詞"
+        },
+        {
+          "category": "pragmatic",
+          "text": "at night 在夜間"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "There being 是 There be 句型的分詞構句形式。",
+          "category": "grammar"
+        },
+        {
+          "text": "take a taxi 搭計程車的常見表達。",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "daily-life",
+        "grammar"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": "ch04-9-1-weather-permitting-003",
+      "zh": "天氣許可的話，我們明天要在河邊烤肉。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Weather permitting 獨立分詞構句表條件"
+        },
+        {
+          "category": "morphological",
+          "text": "現在分詞表主動"
+        },
+        {
+          "category": "pragmatic",
+          "text": "have a barbecue 烤肉"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Weather permitting 是常見的條件表達方式。",
+          "category": "usage"
+        },
+        {
+          "text": "on the riverbank 在河岸邊的正確介系詞搭配。",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "environment",
+        "grammar"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-10-1-strictly-speaking-001",
+      "zh": "嚴格來說，與其說他是個記者，不如說他是個小說家。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Strictly speaking 分詞慣用語"
+        },
+        {
+          "category": "pragmatic",
+          "text": "more of A than B 與其說是B不如說是A"
+        },
+        {
+          "category": "morphological",
+          "text": "副詞 + 現在分詞構成慣用語"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Strictly speaking 是固定慣用語，表示「嚴格來說」。",
+          "category": "usage"
+        },
+        {
+          "text": "more of... than... 是比較偏向的常見結構。",
+          "category": "grammar"
+        }
+      ],
+      "tags": [
+        "career",
+        "comparative",
+        "culture"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-10-1-judging-from-002",
+      "zh": "從他的言行來判斷，他是個值得信賴的工作夥伴。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Judging from 分詞慣用語表根據"
+        },
+        {
+          "category": "pragmatic",
+          "text": "trustworthy partner 值得信賴的夥伴"
+        },
+        {
+          "category": "lexical",
+          "text": "words and actions 言行"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Judging from 是「根據...判斷」的固定表達。",
+          "category": "usage"
+        },
+        {
+          "text": "trustworthy 比 reliable 更強調可信賴的品格。",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "culture",
+        "opinion",
+        "relationship"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "ch04-10-1-given-that-003",
+      "zh": "如果考慮到他們只有一星期的時間做這個作業的話，他們已經做得很好了。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Given that 分詞慣用語表考慮到"
+        },
+        {
+          "category": "pragmatic",
+          "text": "work on the project 進行專案"
+        },
+        {
+          "category": "morphological",
+          "text": "marvelous job 出色的工作"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "Given that 表示「考慮到...情況下」，常用於評價語境。",
+          "category": "usage"
+        },
+        {
+          "text": "do a marvelous job 是稱讚工作表現的固定搭配。",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "culture",
+        "opinion"
+      ],
+      "difficulty": 4
+    }
+  ]
+}

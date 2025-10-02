@@ -1,0 +1,362 @@
+{
+  "id": "daily-0927",
+  "title": "難題集萃3",
+  "summary": "高階翻譯挑戰集萃第 3 集，聚焦政策與公共議題。",
+  "coverImage": "https://picsum.photos/seed/daily-0927/720/400",
+  "tags": [
+    "complex-sentence",
+    "business"
+  ],
+  "difficulty": 4,
+  "items": [
+    {
+      "id": "daily-0927-001",
+      "zh": "這個跨校研究聯盟已經建立了一個共用資料庫，讓各實驗室可以即時比對最新的測試結果。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式 has/have + p.p. 表示動作已完成"
+        },
+        {
+          "category": "syntactic",
+          "text": "so that + S + can 說明建置目的"
+        },
+        {
+          "category": "lexical",
+          "text": "\"shared repository\" 指共用資料庫"
+        },
+        {
+          "category": "lexical",
+          "text": "\"cross-check\" 表交叉比對"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 so that each lab can instantly cross-check recent findings",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "complex-sentence",
+        "present-perfect",
+        "academic",
+        "result"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "daily-0927-002",
+      "zh": "因為海外倉儲仍卡在清關程序，我們不得不調整整個區域的配送時程，以避免觸發違約罰款。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Because/Since + S + V 引導原因"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句用 had to/were forced to + VR 表不得不應對"
+        },
+        {
+          "category": "lexical",
+          "text": "\"customs clearance\" 指清關程序"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reschedule regional deliveries\" 表調整配送時程"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加入 to stave off breach penalties 強化語氣",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "cause"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0927-003",
+      "zh": "我們要麼重新談判授權條件，要麼暫停推出該系列產品，沒有第三種選擇。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Either ... or ... 結構呈現二擇一選項"
+        },
+        {
+          "category": "pragmatic",
+          "text": "加入 There is no third option 強調決斷"
+        },
+        {
+          "category": "lexical",
+          "text": "\"renegotiate licensing terms\" 表重新談判授權條件"
+        },
+        {
+          "category": "lexical",
+          "text": "\"shelve the product line\" 表暫停推出系列產品"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 there is no third option 突顯決斷",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "complex-sentence",
+        "either-or",
+        "business",
+        "necessity"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0927-004",
+      "zh": "一得知工程師已排除安全漏洞，產品經理就立刻通知合作夥伴準備恢復上線。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Once/As soon as + S + had + p.p. 描述先完成的動作"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句搭配 immediately/at once + V 表立即通知"
+        },
+        {
+          "category": "lexical",
+          "text": "\"patch the security vulnerability\" 指排除安全漏洞"
+        },
+        {
+          "category": "lexical",
+          "text": "\"resume the rollout\" 表恢復上線"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 prompt the partners to prepare for relaunch",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "complex-sentence",
+        "as-soon-as",
+        "technology",
+        "result"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0927-005",
+      "zh": "所有受污染的河段將在監測報告確認後被納入限期整治計畫，並由地方政府負責執行。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "時間子句可用 Once/After the monitoring report confirms..."
+        },
+        {
+          "category": "syntactic",
+          "text": "will be + p.p. 描述未來被動"
+        },
+        {
+          "category": "lexical",
+          "text": "\"contaminated river sections\" 指受污染河段"
+        },
+        {
+          "category": "lexical",
+          "text": "\"remediation program\" 指限期整治計畫"
+        },
+        {
+          "category": "lexical",
+          "text": "\"local authorities\" 指地方政府"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補充 within a mandated timeframe 表示期限",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "passive",
+        "environment",
+        "future-simple"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0927-006",
+      "zh": "新的壓縮演算法比現行方案快上兩倍，讓數據分析團隊得以在半夜前完成報告。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "比較結構可用 twice as + 形容詞 + as"
+        },
+        {
+          "category": "syntactic",
+          "text": "分詞片語 enabling/allowing 描述結果"
+        },
+        {
+          "category": "lexical",
+          "text": "\"compression algorithm\" 指壓縮演算法"
+        },
+        {
+          "category": "lexical",
+          "text": "\"wrap up the report\" 表完成報告"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 enabling the team to deliver before midnight",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "comparative",
+        "technology",
+        "result"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "daily-0927-007",
+      "zh": "請在二十四小時內回覆是否同意調整審稿時程，好讓編輯部能及時安排下一輪評審。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "祈使句常以 Please/Kindly + VR 開頭"
+        },
+        {
+          "category": "syntactic",
+          "text": "so that + S + can 說明請求目的"
+        },
+        {
+          "category": "lexical",
+          "text": "\"respond within twenty-four hours\" 表 24 小時內回覆"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reschedule the review cycle\" 表調整審稿時程"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 kindly confirm within 24 hours 維持專業禮貌",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "complex-sentence",
+        "request",
+        "academic",
+        "purpose"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "daily-0927-008",
+      "zh": "監管要求越嚴格，金融機構就越需要即時揭露風險指標，才能維持投資人信任。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "The + 比較級..., the + 比較級... 構成比較倒裝"
+        },
+        {
+          "category": "syntactic",
+          "text": "兩個子句都需 the + comparative + S + V 保持平行"
+        },
+        {
+          "category": "lexical",
+          "text": "\"disclose risk metrics\" 表揭露風險指標"
+        },
+        {
+          "category": "lexical",
+          "text": "\"sustain investor confidence\" 表維持投資人信心"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 to retain investor confidence 作結",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "comparative",
+        "the-more-the-more",
+        "business",
+        "result"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0927-009",
+      "zh": "衛生主管機關建議，除非新藥的安全數據達到預設門檻，臨床醫師不應開立使用。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "The authority recommends that + S + base verb 屬虛擬語氣"
+        },
+        {
+          "category": "morphological",
+          "text": "虛擬語氣可省略 should，動詞保持原形"
+        },
+        {
+          "category": "lexical",
+          "text": "\"safety dataset\" 指安全數據"
+        },
+        {
+          "category": "lexical",
+          "text": "\"predefined threshold\" 表預設門檻"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 unless the safety data meets the predefined threshold",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "subjunctive",
+        "health",
+        "necessity"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "daily-0927-010",
+      "zh": "若旅客拒絕遵守隔離規定，航空公司將立即取消後續航段，並通報主管機關。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple 引導條件"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句用 will + VR 表預期反應"
+        },
+        {
+          "category": "lexical",
+          "text": "\"cancel onward segments\" 表取消後續航段"
+        },
+        {
+          "category": "lexical",
+          "text": "\"notify the authorities\" 表通知主管機關"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可加 without reimbursement to表達警告",
+          "category": "style"
+        }
+      ],
+      "tags": [
+        "warning",
+        "travel",
+        "conditional"
+      ],
+      "difficulty": 4
+    }
+  ]
+}

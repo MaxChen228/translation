@@ -1,0 +1,313 @@
+{
+  "id": "daily-09-28",
+  "title": "9/28・每日練習",
+  "summary": "一般難度翻譯題，涵蓋工作協作、生活與學習情境。",
+  "coverImage": "https://picsum.photos/seed/daily-09-28/720/400",
+  "tags": [
+    "present-simple",
+    "daily-life"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-0928-001",
+      "zh": "主管請我在週末前整理好這次會議紀錄，方便下週追蹤進度。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "ask + 受詞 + to + VR 表示要求"
+        },
+        {
+          "category": "syntactic",
+          "text": "時間限制可用 by the end of the week"
+        },
+        {
+          "category": "lexical",
+          "text": "\"follow up on the progress\" 表示追蹤進度"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 so we can follow up next week",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-002",
+      "zh": "為了響應節能政策，辦公室在非必要時段都會自動調低冷氣溫度。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "為了...可用 To comply with / In order to"
+        },
+        {
+          "category": "syntactic",
+          "text": "主句採 present simple 描述例行措施"
+        },
+        {
+          "category": "lexical",
+          "text": "\"turn down the air conditioning\" 表調低冷氣"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 during off-peak hours 說明非必要時段",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "business",
+        "environment"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-003",
+      "zh": "如果你需要延長專案截稿時間，請先跟我確認理由。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, S + should + VR 建議行動"
+        },
+        {
+          "category": "syntactic",
+          "text": "祈使句可用 Please talk to me first"
+        },
+        {
+          "category": "lexical",
+          "text": "\"extend the project deadline\" 表延長截稿"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so I can note it properly",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-004",
+      "zh": "這份調查表格採匿名制，讓回覆者可以坦率提供意見。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述事實"
+        },
+        {
+          "category": "syntactic",
+          "text": "結果子句可用 so respondents can + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"anonymous survey\" 表匿名調查"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 give frank feedback 形容坦率意見",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-005",
+      "zh": "她在申請信中附上了作品集，讓面試官快速了解她的風格。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "使用過去完成或過去式描述已完成的附件"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so the interviewer can + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"portfolio\" 表作品集"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "也可用 to give the interviewer a quick sense of her style",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "career",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-006",
+      "zh": "我們正在整理新的常見問題頁面，讓使用者不用再寄信詢問。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be + V-ing 描述目前正在進行的工作"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 so users don't have to + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"FAQ page\" 表常見問題頁"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 reach out via email 表寄信詢問",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-continuous",
+        "technology",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-007",
+      "zh": "他每天下班前都會檢查一次儀表板，確保系統沒有警示訊號。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "every day + present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 to make sure + 子句"
+        },
+        {
+          "category": "lexical",
+          "text": "\"dashboard\" 表儀表板"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 there are no alert messages",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "technology",
+        "warning"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-0928-008",
+      "zh": "這位講師擅長把理論拆成簡單步驟，讓學生更容易吸收。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be good at + V-ing 表擅長"
+        },
+        {
+          "category": "syntactic",
+          "text": "結果可用 so students can + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"break complex theories into simple steps\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 making it easier for students to absorb the ideas",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "education",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-009",
+      "zh": "提醒客戶若要改時間，至少提前一天通知櫃台。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please remind customers to + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "時間限制可用 at least one day in advance"
+        },
+        {
+          "category": "lexical",
+          "text": "\"reschedule\" 表改時間"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 the front desk",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "business",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-0928-010",
+      "zh": "這家咖啡店提供自帶杯折扣，鼓勵大家減少一次性垃圾。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述政策"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 to encourage customers to + VR"
+        },
+        {
+          "category": "lexical",
+          "text": "\"single-use waste\" 表一次性垃圾"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 offers a discount for bringing your own cup",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "daily-life",
+        "environment"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

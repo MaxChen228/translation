@@ -1,0 +1,463 @@
+{
+  "id": "daily-10-02",
+  "title": "10/02・每日練習",
+  "summary": "持續 15 題一般難度翻譯，聚焦協作、溝通與生活應用。",
+  "coverImage": "https://picsum.photos/seed/daily-10-02/720/400",
+  "tags": [
+    "present-simple",
+    "general"
+  ],
+  "difficulty": 2,
+  "items": [
+    {
+      "id": "gen-1002-001",
+      "zh": "請把最新的採購清單同步到雲端資料夾，方便大家即時查看。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please sync..."
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so everyone can check it"
+        },
+        {
+          "category": "lexical",
+          "text": "\"cloud folder\" 表雲端資料夾"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 in real time 突顯即時",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "business",
+        "technology"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-002",
+      "zh": "會前資料已寄給合作夥伴，請確認他們是否成功下載。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：has been sent"
+        },
+        {
+          "category": "syntactic",
+          "text": "請求可用 Please confirm"
+        },
+        {
+          "category": "lexical",
+          "text": "\"download the files\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 on their end",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-003",
+      "zh": "如果你有額外的統計圖表，請在會議前十分鐘上傳。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If + present simple, S + can/should + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "時間限制可用 ten minutes before the meeting"
+        },
+        {
+          "category": "lexical",
+          "text": "\"upload\" 表上傳"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so we can slot them in",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-004",
+      "zh": "研究助理會在訪談後立刻整理逐字稿，避免遺漏細節。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述流程"
+        },
+        {
+          "category": "syntactic",
+          "text": "原因可用 to avoid missing details"
+        },
+        {
+          "category": "lexical",
+          "text": "\"transcript\" 表逐字稿"
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可用 right after each interview",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "academic",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-005",
+      "zh": "客戶反映首頁載入速度變慢，我們需要儘快查明原因。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present perfect 表目前狀態：has slowed down"
+        },
+        {
+          "category": "syntactic",
+          "text": "必要性可用 we need to find out why"
+        },
+        {
+          "category": "lexical",
+          "text": "\"homepage load time\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 as soon as possible",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "technology",
+        "necessity"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-006",
+      "zh": "在你提交發票前，請確認金額與編號無誤。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "Before + V-ing 描述提交前事項"
+        },
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please make sure"
+        },
+        {
+          "category": "lexical",
+          "text": "\"invoice number\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 match the receipts on file",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "adverb-clause",
+        "business",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-007",
+      "zh": "這個線上課程提供練習題下載，讓學員課後反覆練習。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述功能"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so learners can practice"
+        },
+        {
+          "category": "lexical",
+          "text": "\"downloadable exercises\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 on their own time",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "so-that",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-008",
+      "zh": "她習慣在週末為下週的餐點先做簡單備料。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "習慣可用 She usually preps"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的可用 so next week's meals are easier"
+        },
+        {
+          "category": "lexical",
+          "text": "\"batch cooking\" 或 \"meal prep\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 to save time on busy evenings",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "daily-life",
+        "purpose"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "gen-1002-009",
+      "zh": "我們正在測試新的客服腳本，想聽聽你接線後的回饋。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "be + V-ing 表示正在測試"
+        },
+        {
+          "category": "syntactic",
+          "text": "想聽回饋可用 we'd love to hear"
+        },
+        {
+          "category": "lexical",
+          "text": "\"call script\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 after your next shift",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-continuous",
+        "business",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-010",
+      "zh": "若需要借用會議室的電視投影，請提前向行政部門預約。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "If you need to..., please + VR"
+        },
+        {
+          "category": "syntactic",
+          "text": "提前預約可用 book in advance"
+        },
+        {
+          "category": "lexical",
+          "text": "\"administrative team\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so we can arrange the remote",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "conditional",
+        "business",
+        "request"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-011",
+      "zh": "志工團隊會在演出前一天彩排，確保流程順暢。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述習慣"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 to keep everything running smoothly"
+        },
+        {
+          "category": "lexical",
+          "text": "\"dress rehearsal\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 with the volunteer crew",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "purpose",
+        "entertainment",
+        "social"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-012",
+      "zh": "我們已經把所有教材存成可編輯格式，方便老師自行調整。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "現在完成式：have converted"
+        },
+        {
+          "category": "syntactic",
+          "text": "目的子句可用 so teachers can tweak them"
+        },
+        {
+          "category": "lexical",
+          "text": "\"editable format\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 for their classes",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "education",
+        "purpose"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-013",
+      "zh": "請提醒同學攜帶學生證，才可以在交流會換取資料。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "命令句可用 Please remind classmates"
+        },
+        {
+          "category": "syntactic",
+          "text": "條件句可用 they need their student IDs to"
+        },
+        {
+          "category": "lexical",
+          "text": "\"collect the materials\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 at the networking session",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "request",
+        "education",
+        "warning"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-014",
+      "zh": "這款健身應用會根據你的睡眠時間調整提醒。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "主句用 present simple 描述功能"
+        },
+        {
+          "category": "syntactic",
+          "text": "根據...可用 based on"
+        },
+        {
+          "category": "lexical",
+          "text": "\"sleep schedule\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "句尾可加 so the nudges feel natural",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "present-simple",
+        "technology",
+        "daily-life"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "gen-1002-015",
+      "zh": "會議結束後，主持人會寄出簡短總結與行動項目。",
+      "hints": [
+        {
+          "category": "syntactic",
+          "text": "After the meeting, the host will send..."
+        },
+        {
+          "category": "syntactic",
+          "text": "行動項目可用 action items"
+        },
+        {
+          "category": "lexical",
+          "text": "\"summary email\""
+        }
+      ],
+      "suggestions": [
+        {
+          "text": "可補 so everyone stays aligned",
+          "category": "usage"
+        }
+      ],
+      "tags": [
+        "future-simple",
+        "business",
+        "result"
+      ],
+      "difficulty": 2
+    }
+  ]
+}

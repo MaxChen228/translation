@@ -162,7 +162,7 @@ def print_upload_results(response: Dict) -> None:
 
 def main(argv: list[str]) -> None:
     parser = argparse.ArgumentParser(description="Sync content to backend via HTTP API.")
-    parser.add_argument("source", nargs="?", default="../content", help="Path to local content directory")
+    parser.add_argument("source", nargs="?", default="content", help="Path to local content directory")
     parser.add_argument("--backend-url", default="http://127.0.0.1:8080", help="Backend base URL")
     parser.add_argument("--token", default=os.environ.get("CONTENT_ADMIN_TOKEN"), help="Admin token")
     parser.add_argument("--single", action="store_true", help="Upload files one by one instead of bulk upload")
