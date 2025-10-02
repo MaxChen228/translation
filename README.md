@@ -37,6 +37,7 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `USAGE_DB_PATH`：LLM 用量統計的 SQLite 檔案路徑（預設 `data/usage.db`）。
+- `USAGE_DB_URL`：可選的 Postgres 連線字串；設定後會改寫 `/usage/llm*` 紀錄至該資料庫，`USAGE_DB_PATH` 仍保留作為本機備援。
 - `PROMPT_FILE`：批改系統提示檔路徑（預設 `prompts/prompt.txt`）。
 - `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。
 - `CHAT_TURN_PROMPT_FILE`：聊天回合提示檔路徑（預設 `prompts/prompt_chat_turn.txt`）。

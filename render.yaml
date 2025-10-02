@@ -12,4 +12,6 @@ services:
         sync: false
       - key: GEMINI_MODEL
         value: gemini-2.5-flash
-    plan: free
+      - key: USAGE_DB_URL
+        sync: false
+    plan: starter

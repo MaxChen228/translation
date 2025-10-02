@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     # Content/data
     CONTENT_DIR: str = "data"
     USAGE_DB_PATH: str = "data/usage.db"
+    USAGE_DB_URL: Optional[str] = None
     CONTENT_ADMIN_TOKEN: Optional[str] = None
 
     # Prompts
