@@ -6,7 +6,7 @@ Repo（GitHub）：https://github.com/MaxChen228/translation
 
 ## 功能總覽
 - 批改（`POST /correct`）：回傳修正版、分數與錯誤清單（使用 Gemini）。
-- 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*`、`/cloud/courses*` 與 `/cloud/search` 從 `data/` 提供精選題庫、卡片集、課程與全文檢索。
+- 雲端資料（唯讀）：`/cloud/books*`、`/cloud/decks*`、`/cloud/courses*` 與 `/cloud/search` 從 `content/`（或 `CONTENT_DIR` 指定路徑）載入題庫、課程與卡片。
 - 錯誤合併（`POST /correct/merge`）：將多個錯誤合併為單一卡片，對應 iOS 捏合手勢流程。
 - 單字卡產生（`POST /make_deck`）：由 Saved JSON 彙整卡片，支援變體括號語法輸出。
 - 深入研究 chat 流程：`POST /chat/respond` 進行多輪確認、`POST /chat/research` 產出研究詞彙列表（term/explanation/context/type）。
@@ -36,7 +36,7 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `GEMINI_MODEL`：預設模型名稱（預設 `gemini-2.5-flash`）。
 - `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
-- `USAGE_DB_PATH`：LLM 用量統計的 SQLite 檔案路徑（預設 `data/usage.db`）。
+- `USAGE_DB_PATH`：LLM 用量統計的 SQLite 檔案路徑（預設 `data/usage.db`，若只使用 Postgres 可忽略）。
 - `USAGE_DB_URL`：可選的 Postgres 連線字串；設定後會改寫 `/usage/llm*` 紀錄至該資料庫，`USAGE_DB_PATH` 仍保留作為本機備援。
 - `PROMPT_FILE`：批改系統提示檔路徑（預設 `prompts/prompt.txt`）。
 - `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。
@@ -90,8 +90,8 @@ cp .env.example .env
 ```
 
 ### GET /cloud/courses、GET /cloud/courses/{id}
-- 從 `data/courses/*.json` 提供課程清單與詳情，每個課程透過 `books[].source.id` 引用既有題庫本。
-- 課程 JSON 已禁用內嵌題目，所有題目需先建成 `data/books/*.json`，再於課程中以題庫本組合。
+- 從 `content/courses/*.json` 提供課程清單與詳情，每個課程透過 `books[].source.id` 引用既有題庫本。
+- 課程 JSON 已禁用內嵌題目，所有題目需先建成 `content/books/*.json`，再於課程中以題庫本組合。
 - 回傳時仍會包含每本題庫的完整 `items` 內容，方便前端預覽或匯出。
 - 課程 JSON 撰寫細節請參考 [`content/docs/course-authoring.md`](content/docs/course-authoring.md)。
 
@@ -110,12 +110,12 @@ cp .env.example .env
   成功後會建立 `.backup_YYYYMMDD_HHMMSS` 備份（如原檔存在）、回傳實際寫入位元數並自動刷新快取。
 
 ### GET /cloud/books、GET /cloud/books/{name}
-- 從 `data/books/*.json` 提供唯讀題庫本清單與內容（仍保留給舊版 App 使用）。
+- 從 `content/books/*.json` 提供唯讀題庫本清單與內容。
 - 注意：`items[].hints[].category` 僅允許五種值（morphological | syntactic | lexical | phonological | pragmatic）。
   若檔案中存在其他分類值，後端會拒絕載入該內容（於啟動時記錄錯誤並略過該書）。
 
 ### GET /cloud/decks、GET /cloud/decks/{id}
-- 從 `data/decks/*.json` 提供唯讀卡片集清單與內容。
+- 從 `content/decks/*.json` 提供唯讀卡片集清單與內容。
 
 ### POST /make_deck
 請求（JSON）：
@@ -229,7 +229,7 @@ cp .env.example .env
 ## 開發說明
 - 架構：FastAPI + Pydantic v2；LLM 供應商為 Gemini（以 `httpx` 非同步呼叫 API）。
 - LLM 呼叫改為 `httpx.AsyncClient` + retry/backoff，確保 FastAPI handlers 不被同步請求阻塞。
-- 內容來源：`data/` 下 JSON；可透過 `CONTENT_DIR` 指向自定資料夾。
+- 內容來源：預設為 `content/`；可透過 `CONTENT_DIR` 指向自定資料夾。
 - 除錯：`DECK_DEBUG_LOG` 預設為啟用（`1`），會在 `_test_logs/` 輸出 `/make_deck` 呼叫摘要（不含金鑰）；若希望停用請設定 `0`/`false`。
 - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
 - LLM 請求監控：設定 `LLM_LOG_MODE=input`（或 `output`/`both`）即可在日誌中看到縮排後的請求/回應 JSON，若需關閉縮排可將 `LLM_LOG_PRETTY` 設為 `false`。
@@ -278,7 +278,7 @@ cp .env.example .env
 
 流程會：
 1. 檢查 `books/`、`courses/` 中的 JSON 是否為有效格式。
-2. 將檔案複製到後端的 `data/` 目錄（預設 `CONTENT_DIR`）。
+2. 將檔案複製到後端的 `content/` 目錄（預設 `CONTENT_DIR`）。
 3. 呼叫 `/admin/content/reload` 讓更新即時生效。
 
 可依需求調整 `--source`、`--target`、`--backend-url` 等參數。請記得先設定 `CONTENT_ADMIN_TOKEN`，避免管理端點被濫用。
