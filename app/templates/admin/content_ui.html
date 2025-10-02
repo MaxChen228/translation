@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>雲端課程內容管理</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: #f8f9fb; color: #1f2933; }
+    h1 { font-size: 28px; margin-bottom: 12px; }
+    section { background: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+    h2 { font-size: 20px; margin-top: 0; }
+    label { display: block; font-weight: 600; margin: 8px 0 4px; }
+    input[type="text"], input[type="url"], textarea, select { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #cbd2d9; border-radius: 6px; font-size: 14px; }
+    textarea { min-height: 160px; font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
+    button { background: #2563eb; border: none; color: white; padding: 10px 18px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+    button:disabled { background: #a8b1c1; cursor: not-allowed; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .row > div { flex: 1; min-width: 220px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #e4e7eb; padding: 6px 8px; font-size: 14px; }
+    th { background: #f1f5f9; text-align: left; }
+    .muted { color: #667085; font-size: 13px; }
+    .status { margin-top: 8px; font-size: 14px; }
+    .pill { display: inline-block; padding: 2px 8px; background: #e0ecff; color: #1d4ed8; border-radius: 9999px; font-size: 12px; margin-right: 4px; }
+  </style>
+</head>
+<body>
+  <h1>雲端課程內容管理</h1>
+
+  <section>
+    <h2>步驟 0｜設定管理 Token</h2>
+    <p class="muted">{{ '已在環境變數設定 Token，可直接使用。' if has_token else '後端未設定 CONTENT_ADMIN_TOKEN，任何人皆可操作。' }}</p>
+    <label for="token-field">X-Content-Token</label>
+    <input id="token-field" type="text" placeholder="輸入管理 token" />
+    <button id="save-token-btn" style="margin-top:8px;">儲存 Token</button>
+    <div id="token-status" class="status"></div>
+  </section>
+
+  <section>
+    <h2>步驟 1｜編寫並上傳題庫本 (book)</h2>
+    <p class="muted">先匯入 JSON 檔或直接在下方編輯，再送出上傳。</p>
+    <div class="row">
+      <div>
+        <label for="book-file">匯入 JSON 檔 (選填)</label>
+        <input id="book-file" type="file" accept="application/json" />
+      </div>
+      <div>
+        <label for="book-filename">檔名 (不含副檔名)</label>
+        <input id="book-filename" type="text" placeholder="例如 grammar-chapter1" />
+      </div>
+    </div>
+    <label for="book-json">題庫本 JSON 內容</label>
+    <textarea id="book-json" placeholder='{
+  "id": "grammar-chapter1",
+  "name": "Grammar Chapter 1",
+  "items": [...]
+}'></textarea>
+    <button id="upload-book-btn" style="margin-top:10px;">上傳題庫本</button>
+    <div id="book-status" class="status"></div>
+  </section>
+
+  <section>
+    <h2>步驟 2｜組成課程 (course)</h2>
+    <p class="muted">從右側題庫清單挑選並加入課程，可依需求覆蓋標題或標籤。</p>
+    <form id="course-form">
+      <label for="course-id">課程 ID</label>
+      <input id="course-id" type="text" required placeholder="例如 grammar-essentials" />
+
+      <label for="course-title">課程標題</label>
+      <input id="course-title" type="text" required placeholder="顯示於 App 的標題" />
+
+      <div class="row">
+        <div>
+          <label for="course-summary">課程摘要</label>
+          <textarea id="course-summary" placeholder="課程簡介 (選填)" style="min-height:100px;"></textarea>
+        </div>
+        <div>
+          <label for="course-cover">封面圖片 URL (選填)</label>
+          <input id="course-cover" type="url" placeholder="https://..." />
+          <label for="course-tags" style="margin-top:12px;">標籤 (以逗號分隔，可空白)</label>
+          <input id="course-tags" type="text" placeholder="grammar, advanced" />
+          <label for="book-catalog" style="margin-top:12px;">加入課程的題庫本</label>
+          <select id="book-catalog"></select>
+          <button type="button" id="add-book-btn" style="margin-top:8px;">加入課程書籍</button>
+        </div>
+      </div>
+
+      <table id="selected-books-table" style="display:none;">
+        <thead>
+          <tr>
+            <th style="width:180px;">課程書籍 ID</th>
+            <th>來源題庫本</th>
+            <th>顯示標題 (選填)</th>
+            <th style="width:140px;">難度</th>
+            <th style="width:120px;">操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <button type="submit" style="margin-top:16px;">儲存課程並發佈</button>
+    </form>
+    <div id="course-status" class="status"></div>
+  </section>
+
+  <section>
+    <h2>現有課程與題庫概覽</h2>
+    <div class="row">
+      <div>
+        <h3>題庫本 (<span id="book-count">{{ books_count }}</span>)</h3>
+        <div id="book-summary-list"></div>
+      </div>
+      <div>
+        <h3>課程 (<span id="course-count">{{ courses_count }}</span>)</h3>
+        <div id="course-summary-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const INITIAL_BOOKS = {{ books | tojson }};
+    const INITIAL_COURSES = {{ courses | tojson }};
+
+    const state = {
+      token: localStorage.getItem('content-token') || '',
+      books: INITIAL_BOOKS,
+      courses: INITIAL_COURSES,
+      selectedBooks: []
+    };
+
+    const tokenField = document.getElementById('token-field');
+    const tokenStatus = document.getElementById('token-status');
+    const bookCatalog = document.getElementById('book-catalog');
+    const bookSummaryList = document.getElementById('book-summary-list');
+    const courseSummaryList = document.getElementById('course-summary-list');
+    const selectedTable = document.getElementById('selected-books-table');
+
+    function renderSummaries() {
+      document.getElementById('book-count').textContent = state.books.length;
+      document.getElementById('course-count').textContent = state.courses.length;
+      bookSummaryList.innerHTML = state.books.map(b => `<div><strong>${b.id}</strong> — ${b.title || ''}<br/><span class="muted">題數：${b.itemCount}</span></div>`).join('');
+      courseSummaryList.innerHTML = state.courses.map(c => `<div><strong>${c.id}</strong> — ${c.title || ''}<br/><span class="muted">書籍數：${c.bookCount}</span></div>`).join('');
+      bookCatalog.innerHTML = state.books.map(b => `<option value="${b.id}">${b.id}｜${b.title || ''}</option>`).join('');
+    }
+
+    function saveToken() {
+      state.token = tokenField.value.trim();
+      localStorage.setItem('content-token', state.token);
+      tokenStatus.textContent = state.token ? 'Token 已儲存。' : '已清除 Token，若後端啟用驗證將無法送出請求。';
+    }
+
+    function apiFetch(path, options = {}) {
+      const headers = options.headers ? {...options.headers} : {};
+      headers['Content-Type'] = 'application/json';
+      if (state.token) {
+        headers['X-Content-Token'] = state.token;
+      }
+      return fetch(path, {...options, headers});
+    }
+
+    function renderSelectedBooks() {
+      const tbody = selectedTable.querySelector('tbody');
+      if (!state.selectedBooks.length) {
+        selectedTable.style.display = 'none';
+        tbody.innerHTML = '';
+        return;
+      }
+      selectedTable.style.display = '';
+      tbody.innerHTML = state.selectedBooks.map((entry, idx) => {
+        const source = state.books.find(b => b.id === entry.bookId);
+        const title = entry.title || (source ? source.title : '');
+        const difficulty = entry.difficulty ?? (source ? source.difficulty ?? '' : '');
+        return `<tr>
+          <td><input data-idx="${idx}" data-field="aliasId" type="text" value="${entry.aliasId || entry.bookId}" /></td>
+          <td>${entry.bookId}</td>
+          <td><input data-idx="${idx}" data-field="title" type="text" value="${title || ''}" /></td>
+          <td><input data-idx="${idx}" data-field="difficulty" type="number" min="1" max="5" value="${difficulty || ''}" /></td>
+          <td><button type="button" data-remove="${idx}">移除</button></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function addBookToCourse() {
+      const bookId = bookCatalog.value;
+      if (!bookId) {
+        return;
+      }
+      if (state.selectedBooks.some(b => b.bookId === bookId)) {
+        alert('此題庫已加入課程。');
+        return;
+      }
+      state.selectedBooks.push({ bookId, aliasId: bookId });
+      renderSelectedBooks();
+    }
+
+    function removeSelected(index) {
+      state.selectedBooks.splice(index, 1);
+      renderSelectedBooks();
+    }
+
+    function updateSelectedValue(idx, field, value) {
+      const entry = state.selectedBooks[idx];
+      if (!entry) return;
+      if (field === 'difficulty') {
+        entry.difficulty = value ? Number(value) : null;
+      } else if (field === 'aliasId') {
+        entry.aliasId = value.trim();
+      } else {
+        entry[field] = value.trim();
+      }
+    }
+
+    async function refreshData() {
+      const resp = await apiFetch('/admin/content/ui/data');
+      if (!resp.ok) {
+        throw new Error('無法更新資料');
+      }
+      const data = await resp.json();
+      state.books = data.books;
+      state.courses = data.courses;
+      renderSummaries();
+    }
+
+    document.getElementById('save-token-btn').addEventListener('click', saveToken);
+    tokenField.value = state.token;
+    renderSummaries();
+    renderSelectedBooks();
+
+    document.getElementById('book-file').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById('book-json').value = reader.result;
+        if (!document.getElementById('book-filename').value) {
+          const base = file.name.replace(/\.json$/i, '');
+          document.getElementById('book-filename').value = base;
+        }
+      };
+      reader.readAsText(file, 'utf-8');
+    });
+
+    document.getElementById('upload-book-btn').addEventListener('click', async () => {
+      const filename = document.getElementById('book-filename').value.trim();
+      const raw = document.getElementById('book-json').value.trim();
+      const statusEl = document.getElementById('book-status');
+      if (!filename || !raw) {
+        statusEl.textContent = '請輸入檔名與 JSON 內容。';
+        return;
+      }
+      try {
+        const content = JSON.parse(raw);
+        const resp = await apiFetch('/admin/content/upload', {
+          method: 'POST',
+          body: JSON.stringify({ filename, content, content_type: 'book' })
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data.success_count) {
+          const message = data.results && data.results[0] ? data.results[0].message : (data.detail || '上傳失敗');
+          statusEl.textContent = `❌ ${message}`;
+        } else {
+          statusEl.textContent = '✅ 題庫上傳成功';
+          await refreshData();
+        }
+      } catch (err) {
+        statusEl.textContent = `❌ ${err.message || err}`;
+      }
+    });
+
+    document.getElementById('add-book-btn').addEventListener('click', addBookToCourse);
+
+    selectedTable.addEventListener('click', (event) => {
+      if (event.target.dataset.remove !== undefined) {
+        removeSelected(Number(event.target.dataset.remove));
+      }
+    });
+
+    selectedTable.addEventListener('input', (event) => {
+      const idx = Number(event.target.dataset.idx);
+      const field = event.target.dataset.field;
+      if (Number.isNaN(idx) || !field) return;
+      updateSelectedValue(idx, field, event.target.value);
+    });
+
+    document.getElementById('course-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const statusEl = document.getElementById('course-status');
+      if (!state.selectedBooks.length) {
+        statusEl.textContent = '請至少加入一個題庫本。';
+        return;
+      }
+      const payload = {
+        courseId: document.getElementById('course-id').value.trim(),
+        title: document.getElementById('course-title').value.trim(),
+        summary: document.getElementById('course-summary').value.trim() || null,
+        coverImage: document.getElementById('course-cover').value.trim() || null,
+        tags: document.getElementById('course-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+        books: state.selectedBooks.map(entry => ({
+          bookId: entry.bookId,
+          aliasId: (entry.aliasId || entry.bookId).trim(),
+          title: entry.title || null,
+          difficulty: entry.difficulty ? Number(entry.difficulty) : null
+        }))
+      };
+      try {
+        const resp = await apiFetch('/admin/content/ui/course', {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        if (!resp.ok) {
+          const err = await resp.json();
+          statusEl.textContent = `❌ ${err.detail || '建立課程失敗'}`;
+          return;
+        }
+        statusEl.textContent = '✅ 課程已儲存並重新載入';
+        state.selectedBooks = [];
+        renderSelectedBooks();
+        await refreshData();
+      } catch (err) {
+        statusEl.textContent = `❌ ${err.message || err}`;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -90,8 +90,9 @@ cp .env.example .env
 ```
 
 ### GET /cloud/courses、GET /cloud/courses/{id}
-- 從 `data/courses/*.json` 提供課程清單與詳情，每個課程可包含多個題庫本。
-- 課程中的題庫可引用 `data/books/*.json` 或內嵌題目，回傳時會包含完整 `items` 以供預覽/下載。
+- 從 `data/courses/*.json` 提供課程清單與詳情，每個課程透過 `books[].source.id` 引用既有題庫本。
+- 課程 JSON 已禁用內嵌題目，所有題目需先建成 `data/books/*.json`，再於課程中以題庫本組合。
+- 回傳時仍會包含每本題庫的完整 `items` 內容，方便前端預覽或匯出。
 - 課程 JSON 撰寫細節請參考 [`../content/docs/course-authoring.md`](../content/docs/course-authoring.md)。
 
 ### POST /admin/content/reload
@@ -281,3 +282,9 @@ cp .env.example .env
 3. 呼叫 `/admin/content/reload` 讓更新即時生效。
 
 可依需求調整 `--source`、`--target`、`--backend-url` 等參數。請記得先設定 `CONTENT_ADMIN_TOKEN`，避免管理端點被濫用。
+
+### 瀏覽器管理介面
+- 造訪 `/admin/content/ui` 可在瀏覽器中完成題庫本上傳與課程組合；若後端設定了 `CONTENT_ADMIN_TOKEN`，請在頁面上輸入同一組 token。
+- 題庫作業流程：匯入或編輯 JSON 後，點擊「上傳題庫本」即可呼叫 `/admin/content/upload` 並立即重新載入。
+- 課程作業流程：從現有題庫清單挑選書籍加入課程，系統會自動產出符合「僅引用題庫本、不內嵌題目」規範的 JSON，並透過 `/admin/content/ui/course` 寫入檔案；成功後會同步觸發 `/admin/content/reload`。
+- 面板亦提供題庫與課程統計，便於撰寫者核對已發佈內容。

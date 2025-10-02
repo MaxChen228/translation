@@ -283,10 +283,7 @@ class ContentStore:
         cover = data.get("coverImage") or book.get("coverImage")
         tags = data.get("tags") or book.get("tags", [])
         difficulty = data.get("difficulty")
-        if data.get("items") is not None:
-            clone_items = [dict(item) for item in data.get("items", [])]
-        else:
-            clone_items = [dict(item) for item in book.get("items", [])]
+        items = [dict(item) for item in book.get("items", [])]
         return {
             "id": data.get("id") or book.get("id"),
             "title": title,
@@ -294,8 +291,8 @@ class ContentStore:
             "coverImage": cover,
             "tags": tags,
             "difficulty": difficulty,
-            "items": clone_items,
-            "itemCount": len(clone_items),
+            "items": items,
+            "itemCount": len(items),
         }
 
     def _build_course_books(self, course_id: str, raw_books: List[dict]) -> List[dict]:
@@ -325,14 +322,14 @@ class ContentStore:
 
     def _resolve_course_book(self, entry: dict) -> Optional[dict]:
         source_info = entry.get("source") or {}
-        source_id = source_info.get("id") or entry.get("sourceId") or entry.get("id")
-        base = self._books_by_id.get(source_id) if source_id else None
+        source_id = source_info.get("id") or entry.get("sourceId")
+        if not source_id:
+            raise ValueError("course book requires source.id")
         if entry.get("items"):
-            items = self._normalize_bank_items(entry.get("items", []))
-        elif base is not None:
-            items = [dict(item) for item in base.get("items", [])]
-        else:
-            return None
+            raise ValueError("inline course book items are no longer supported")
+        base = self._books_by_id.get(source_id)
+        if base is None:
+            raise ValueError(f"course book references missing book: {source_id}")
         overrides = {
             "id": entry.get("id"),
             "title": entry.get("title"),
@@ -341,23 +338,16 @@ class ContentStore:
             "tags": entry.get("tags"),
             "difficulty": entry.get("difficulty"),
         }
-        if base is None:
-            # allow inline-only definitions
-            temp_book = {
-                "id": overrides.get("id") or str(uuid.uuid4()),
-                "name": overrides.get("title") or overrides.get("id") or "book",
-                "summary": overrides.get("summary"),
-                "coverImage": overrides.get("coverImage"),
-                "tags": overrides.get("tags", []),
-                "items": items,
-            }
-            return self._book_to_course_entry(temp_book, overrides)
-        return self._book_to_course_entry(base, {**overrides, "items": items})
+        return self._book_to_course_entry(base, overrides)
 
     # ----- Public accessors -------------------------------------------
     def list_decks(self) -> List[dict]:
         self.load()
         return list(self._decks_by_id.values())
+
+    def list_books(self) -> List[dict]:
+        self.load()
+        return [self._book_summary(book) for book in self._books_by_id.values()]
 
     def get_deck(self, deck_id: str) -> Optional[dict]:
         self.load()
@@ -397,6 +387,7 @@ class ContentStore:
         seen_courses: set[str] = set()
         seen_books: set[tuple[str, str]] = set()
         for course in self._courses_by_id.values():
+            course_id = course.get("id")
             haystack = " ".join(
                 filter(
                     None,
@@ -407,11 +398,9 @@ class ContentStore:
                     ],
                 )
             ).lower()
-            if term in haystack and course["id"] not in seen_courses:
-                seen_courses.add(course["id"])
-                course_hits.append(self._course_summary(course))
+            course_match = term in haystack
             for book in course.get("books", []):
-                book_key = (course["id"], book.get("id"))
+                book_key = (course_id, book.get("id"))
                 if book_key in seen_books:
                     continue
                 book_text = " ".join(
@@ -433,6 +422,10 @@ class ContentStore:
                 if matched:
                     seen_books.add(book_key)
                     book_hits.append((course["id"], self._book_summary(book)))
+                    course_match = True
+            if course_match and course_id not in seen_courses:
+                seen_courses.add(course_id)
+                course_hits.append(self._course_summary(course))
         return {
             "courses": course_hits,
             "books": [

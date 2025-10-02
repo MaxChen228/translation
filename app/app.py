@@ -12,6 +12,7 @@ from app.routers.sys import router as sys_router
 from app.routers.chat import router as chat_router
 from app.usage.router import router as usage_router
 from app.routers.admin import router as admin_router
+from app.routers.content_ui import router as content_ui_router
 from app.core.http_client import init_http_client, close_http_client
 
 
@@ -40,4 +41,5 @@ def create_app() -> FastAPI:
     app.include_router(chat_router)
     app.include_router(usage_router)
     app.include_router(admin_router)
+    app.include_router(content_ui_router)
     return app

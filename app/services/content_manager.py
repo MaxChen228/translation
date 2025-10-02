@@ -172,19 +172,32 @@ class ContentManager:
             if not isinstance(book, dict):
                 return f"書籍 {i} 必須是物件"
 
-            # 檢查必要字段
-            required_book_fields = ["id", "title"]
-            for field in required_book_fields:
-                if field not in book:
-                    return f"書籍 {i} 缺少必要字段: {field}"
+            if "items" in book:
+                return f"書籍 {i} 不可直接內嵌題目，請改為引用題庫本"
 
-            # 如果有 source 字段，檢查格式
-            if "source" in book:
-                source = book["source"]
-                if not isinstance(source, dict) or "id" not in source:
-                    return f"書籍 {i} 的 source 格式無效"
+            source = book.get("source")
+            if not isinstance(source, dict) or not source.get("id"):
+                return f"書籍 {i} 缺少 source.id，課程只允許引用既有題庫本"
+
+            source_id = source["id"].strip()
+            if not source_id:
+                return f"書籍 {i} 的 source.id 不可為空"
+
+            if not self._book_exists(source_id):
+                return f"書籍 {i} 引用的題庫本不存在: {source_id}"
+
+            alias_id = book.get("id", source_id)
+            if alias_id and alias_id.strip() == "":
+                return f"書籍 {i} 的 id 不可為空字串"
+
+            if alias_id and alias_id.strip() != source_id and not book.get("title"):
+                return f"書籍 {i} 若使用別名 id，請提供 title 以利識別"
 
         return None
+
+    def _book_exists(self, book_id: str) -> bool:
+        candidate = self.base_dir / "books" / (book_id if book_id.endswith(".json") else f"{book_id}.json")
+        return candidate.exists()
 
     def _get_target_path(self, filename: str, content_type: str) -> Path:
         """獲取目標文件路徑，並確保不會跳出指定目錄"""

@@ -216,6 +216,44 @@ def test_upload_succeeds_and_reloads(tmp_path):
     assert payload_after["loaded_in_memory"]["books"] == 2
 
 
+def test_upload_course_rejects_inline_items(tmp_path):
+    write_sample_content(tmp_path)
+    client = create_client(tmp_path, token="secret")
+
+    course_payload = {
+        "filename": "inline-course",
+        "content_type": "course",
+        "content": {
+            "id": "inline-course",
+            "title": "Inline Course",
+            "books": [
+                {
+                    "id": "inline-book",
+                    "source": {"id": "book-0"},
+                    "items": [
+                        {
+                            "id": "inline-1",
+                            "zh": "內嵌題目",
+                            "hints": [],
+                            "suggestions": [],
+                        }
+                    ],
+                }
+            ],
+        },
+    }
+
+    resp = client.post(
+        "/admin/content/upload",
+        headers={"X-Content-Token": "secret"},
+        json=course_payload,
+    )
+    assert resp.status_code == 200
+    result = resp.json()["results"][0]
+    assert result["success"] is False
+    assert "不可直接內嵌題目" in result["message"]
+
+
 def test_prompt_list_and_upload(tmp_path):
     client = create_client(tmp_path, token="secret")
     headers = {"X-Content-Token": "secret"}
