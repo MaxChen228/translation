@@ -4,23 +4,38 @@
   <meta charset="utf-8" />
   <title>雲端課程內容管理</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: #f8f9fb; color: #1f2933; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px 32px 80px; background: #f8f9fb; color: #1f2933; }
     h1 { font-size: 28px; margin-bottom: 12px; }
-    section { background: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+    section { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
     h2 { font-size: 20px; margin-top: 0; }
     label { display: block; font-weight: 600; margin: 8px 0 4px; }
-    input[type="text"], input[type="url"], textarea, select { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #cbd2d9; border-radius: 6px; font-size: 14px; }
+    input[type="text"], input[type="url"], textarea, select { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #cbd2d9; border-radius: 8px; font-size: 14px; background: #fff; }
     textarea { min-height: 160px; font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
-    button { background: #2563eb; border: none; color: white; padding: 10px 18px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+    button { background: #2563eb; border: none; color: white; padding: 10px 18px; border-radius: 8px; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #1d4ed8; }
     button:disabled { background: #a8b1c1; cursor: not-allowed; }
-    .row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .row > div { flex: 1; min-width: 220px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-    th, td { border: 1px solid #e4e7eb; padding: 6px 8px; font-size: 14px; }
-    th { background: #f1f5f9; text-align: left; }
+    .row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .row > div { flex: 1; min-width: 240px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,0.08); }
+    th, td { border-bottom: 1px solid #e4e7eb; padding: 10px 12px; font-size: 13px; background: #fff; }
+    th { background: #eff4fb; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #475569; }
+    tr:last-child td { border-bottom: none; }
     .muted { color: #667085; font-size: 13px; }
     .status { margin-top: 8px; font-size: 14px; }
-    .pill { display: inline-block; padding: 2px 8px; background: #e0ecff; color: #1d4ed8; border-radius: 9999px; font-size: 12px; margin-right: 4px; }
+    .pill { display: inline-block; padding: 2px 8px; background: #e0ecff; color: #1d4ed8; border-radius: 9999px; font-size: 12px; margin: 2px 4px 2px 0; }
+    .badge { display: inline-block; background: #e2e8f0; padding: 2px 6px; border-radius: 999px; font-size: 12px; margin-right: 6px; color: #334155; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12); display: flex; flex-direction: column; gap: 6px; }
+    .card h4 { margin: 0; font-size: 15px; color: #0f172a; }
+    .card .subtitle { font-size: 13px; color: #475569; }
+    .card footer { margin-top: 4px; font-size: 12px; color: #64748b; display: flex; justify-content: space-between; align-items: center; }
+    .table-wrapper { overflow-x: auto; border-radius: 10px; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08); }
+    .table-actions button { background: transparent; border: none; color: #2563eb; padding: 0; cursor: pointer; font-size: 12px; }
+    .table-actions button:hover { text-decoration: underline; }
+    .search-bar { display: flex; gap: 12px; margin-bottom: 14px; }
+    .search-bar input { max-width: 260px; }
+    .tag-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .tag-filter button { background: #e0f2fe; color: #0369a1; padding: 6px 12px; border-radius: 999px; border: none; font-size: 12px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -104,14 +119,31 @@
 
   <section>
     <h2>現有課程與題庫概覽</h2>
+    <div class="search-bar">
+      <input id="book-search" type="text" placeholder="搜尋題庫 ID 或標題" />
+      <input id="course-search" type="text" placeholder="搜尋課程 ID 或標題" />
+    </div>
     <div class="row">
       <div>
         <h3>題庫本 (<span id="book-count">{{ books_count }}</span>)</h3>
-        <div id="book-summary-list"></div>
+        <div class="card-grid" id="book-summary-list"></div>
       </div>
       <div>
         <h3>課程 (<span id="course-count">{{ courses_count }}</span>)</h3>
-        <div id="course-summary-list"></div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>課程 ID</th>
+                <th>標題</th>
+                <th>書籍數</th>
+                <th>標籤</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="course-summary-list"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -137,8 +169,48 @@
     function renderSummaries() {
       document.getElementById('book-count').textContent = state.books.length;
       document.getElementById('course-count').textContent = state.courses.length;
-      bookSummaryList.innerHTML = state.books.map(b => `<div><strong>${b.id}</strong> — ${b.title || ''}<br/><span class="muted">題數：${b.itemCount}</span></div>`).join('');
-      courseSummaryList.innerHTML = state.courses.map(c => `<div><strong>${c.id}</strong> — ${c.title || ''}<br/><span class="muted">書籍數：${c.bookCount}</span></div>`).join('');
+      const bookKeyword = document.getElementById('book-search').value.trim().toLowerCase();
+      const courseKeyword = document.getElementById('course-search').value.trim().toLowerCase();
+
+      const filteredBooks = state.books.filter(b => {
+        const haystack = `${b.id} ${b.title || ''} ${(b.tags || []).join(' ')}`.toLowerCase();
+        return haystack.includes(bookKeyword);
+      });
+      const filteredCourses = state.courses.filter(c => {
+        const haystack = `${c.id} ${c.title || ''} ${(c.tags || []).join(' ')}`.toLowerCase();
+        return haystack.includes(courseKeyword);
+      });
+
+      document.getElementById('book-count').textContent = filteredBooks.length;
+      document.getElementById('course-count').textContent = filteredCourses.length;
+
+      bookSummaryList.innerHTML = filteredBooks.map(b => `
+        <div class="card">
+          <h4>${b.id}</h4>
+          <div class="subtitle">${b.title || '—'}</div>
+          <div class="muted">題數：${b.itemCount}</div>
+          ${b.tags && b.tags.length ? `<div>${b.tags.map(t => `<span class="badge">${t}</span>`).join('')}</div>` : ''}
+          <footer>
+            <span>難度：${b.difficulty ?? '—'}</span>
+            <button class="table-actions" data-copy="${b.id}" data-type="book">複製 ID</button>
+          </footer>
+        </div>
+      `).join('');
+
+      courseSummaryList.innerHTML = filteredCourses.map(c => {
+        const tags = c.tags && c.tags.length ? c.tags.map(t => `<span class="badge">${t}</span>`).join('') : '—';
+        return `<tr>
+          <td>${c.id}</td>
+          <td>${c.title || '—'}</td>
+          <td>${c.bookCount}</td>
+          <td>${tags}</td>
+          <td class="table-actions">
+            <button data-view="${c.id}">查看</button>
+            <button data-copy="${c.id}" data-type="course">複製 ID</button>
+          </td>
+        </tr>`;
+      }).join('');
+
       bookCatalog.innerHTML = state.books.map(b => `<option value="${b.id}">${b.id}｜${b.title || ''}</option>`).join('');
     }
 
@@ -224,6 +296,9 @@
     tokenField.value = state.token;
     renderSummaries();
     renderSelectedBooks();
+
+    document.getElementById('book-search').addEventListener('input', renderSummaries);
+    document.getElementById('course-search').addEventListener('input', renderSummaries);
 
     document.getElementById('book-file').addEventListener('change', (event) => {
       const file = event.target.files[0];
@@ -316,7 +391,31 @@
         renderSelectedBooks();
         await refreshData();
       } catch (err) {
-        statusEl.textContent = `❌ ${err.message || err}`;
+          statusEl.textContent = `❌ ${err.message || err}`;
+      }
+    });
+
+    bookSummaryList.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target.dataset && target.dataset.copy) {
+        navigator.clipboard.writeText(target.dataset.copy).then(() => {
+          target.textContent = '已複製';
+          setTimeout(() => (target.textContent = '複製 ID'), 1200);
+        });
+      }
+    });
+
+    courseSummaryList.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!target.dataset) return;
+      if (target.dataset.copy) {
+        navigator.clipboard.writeText(target.dataset.copy).then(() => {
+          target.textContent = '已複製';
+          setTimeout(() => (target.textContent = '複製 ID'), 1200);
+        });
+      }
+      if (target.dataset.view) {
+        window.open(`/cloud/courses/${target.dataset.view}`, '_blank');
       }
     });
   </script>
