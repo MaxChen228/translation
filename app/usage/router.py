@@ -178,7 +178,18 @@ def llm_usage_view() -> HTMLResponse:
       <form id=\"filters\">
         <label>Device ID<input type=\"text\" name=\"device_id\" placeholder=\"device-123\" /></label>
         <label>Route<input type=\"text\" name=\"route\" placeholder=\"/correct\" /></label>
-        <label>Model<input type=\"text\" name=\"model\" placeholder=\"gemini-2.5-flash\" /></label>
+        <label>Model
+          <select name=\"model\">
+            <option value=\"\">全部</option>
+            <option value=\"gemini-2.5-pro\">gemini-2.5-pro</option>
+            <option value=\"gemini-2.5-flash\">gemini-2.5-flash</option>
+            <option value=\"gemini-2.5-flash-preview-09-2025\">gemini-2.5-flash-preview-09-2025</option>
+            <option value=\"gemini-flash-latest\">gemini-flash-latest</option>
+            <option value=\"gemini-2.5-flash-lite\">gemini-2.5-flash-lite</option>
+            <option value=\"gemini-2.5-flash-lite-preview-09-2025\">gemini-2.5-flash-lite-preview-09-2025</option>
+            <option value=\"gemini-flash-lite-latest\">gemini-flash-lite-latest</option>
+          </select>
+        </label>
         <label>Provider<input type=\"text\" name=\"provider\" placeholder=\"gemini\" /></label>
         <label>Since<input type=\"datetime-local\" name=\"since\" /></label>
         <label>Until<input type=\"datetime-local\" name=\"until\" /></label>
