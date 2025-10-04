@@ -1,0 +1,62 @@
+[
+  {
+    "name": "永續能源政策聽證會摘要",
+    "tags": ["environment", "result"],
+    "description": "回顧國會對再生能源配額與補助的討論"
+  },
+  {
+    "name": "新創公司 A 輪募資簡報片段",
+    "tags": ["business", "purpose"],
+    "description": "說服投資人產品如何擴張與獲利"
+  },
+  {
+    "name": "生技新藥臨床試驗週報",
+    "tags": ["health", "academic"],
+    "description": "向醫療監管單位回報第二期試驗進度"
+  },
+  {
+    "name": "跨國遠端團隊季度績效檢討",
+    "tags": ["career", "result"],
+    "description": "主管追蹤專案里程碑並分配後續任務"
+  },
+  {
+    "name": "文化觀光節宣傳策略會議",
+    "tags": ["culture", "travel"],
+    "description": "提出吸引國際旅客的活動亮點"
+  },
+  {
+    "name": "AI 模型倫理審查委員會報告",
+    "tags": ["technology", "cause"],
+    "description": "說明資料偏誤風險與緩解措施"
+  },
+  {
+    "name": "社會企業募資直播口播稿",
+    "tags": ["social", "purpose"],
+    "description": "向大眾說明專案影響力與捐款用途"
+  },
+  {
+    "name": "極端氣候災害應變簡報",
+    "tags": ["environment", "warning"],
+    "description": "提出城市洪水的緊急動員方案"
+  },
+  {
+    "name": "產品使用者體驗調查報告",
+    "tags": ["business", "personal"],
+    "description": "匯整消費者痛點並提出優先改善項目"
+  },
+  {
+    "name": "國際學術研討會開幕致詞",
+    "tags": ["academic", "opinion"],
+    "description": "設定論壇主題並感謝合作夥伴"
+  },
+  {
+    "name": "智慧農業合作備忘錄草案",
+    "tags": ["technology", "business"],
+    "description": "描述跨國農業科技導入的合作條款"
+  },
+  {
+    "name": "城市交通轉型政策白皮書摘要",
+    "tags": ["environment", "necessity"],
+    "description": "提出公共運輸與減碳的長期規畫"
+  }
+]

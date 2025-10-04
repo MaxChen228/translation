@@ -38,11 +38,14 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `USAGE_DB_PATH`：LLM 用量統計的 SQLite 檔案路徑（預設 `data/usage.db`，若只使用 Postgres 可忽略）。
 - `USAGE_DB_URL`：可選的 Postgres 連線字串；設定後會改寫 `/usage/llm*` 紀錄至該資料庫，`USAGE_DB_PATH` 仍保留作為本機備援。
+- `QUESTION_DB_PATH`：每日題目生成結果的 SQLite 檔案路徑（預設 `data/questions.sqlite`）。
+- `QUESTION_DB_URL`：可選的 Postgres 連線字串；設定後每日題目資料改寫入該資料庫。
 - `PROMPT_FILE`：批改系統提示檔路徑（預設 `prompts/prompt.txt`）。
 - `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。
 - `CHAT_TURN_PROMPT_FILE`：聊天回合提示檔路徑（預設 `prompts/prompt_chat_turn.txt`）。
 - `CHAT_RESEARCH_PROMPT_FILE`：聊天研究提示檔路徑（預設 `prompts/prompt_chat_research.txt`）。
 - `MERGE_PROMPT_FILE`：錯誤合併提示檔路徑（預設 `prompts/prompt_merge.txt`）。
+- `QUESTION_PROMPT_FILE`：每日題目生成提示檔路徑（預設 `prompts/prompt_generate_questions.txt`）。
 - `DECK_DEBUG_LOG`：控制是否輸出 `/make_deck` 呼叫摘要，預設 `1`（啟用）；設為 `0`/`false` 可停用。
 - `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1 / 0.1 / 1 / 8192）。
 - `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應（`off`｜`input`｜`output`｜`both`，預設 `both`）。
@@ -262,6 +265,9 @@ cp .env.example .env
 ## 工具腳本
 - `scripts/smoke_test.py`：快速呼叫 `/healthz`、`/correct`（可依需求擴充以覆蓋 `/correct/merge`）。
 - `scripts/test_gemini_key.py`：檢查環境金鑰是否有效，可在部署前先行測試。
+- `python -m scripts.generate_daily_questions --count 6 --topics technology,business`：使用 Gemini 產生每日翻譯題並寫入 `generated_questions` 資料表；支援 `--dry-run` 預覽與 `--model` 覆寫模型。
+  - 預設會從 `prompts/pools/topics_pool.json` 與 `prompts/pools/structures_pool.json` 隨機挑選主題與句構；可用 `--topic-count` / `--structure-count` 調整數量，或用 `--topics`、`--structures` 逗號分隔指定內容。
+  - 若需自訂池子，修改上述 JSON 檔或以 `--topic-pool`、`--structure-pool` 改指向新的路徑即可。
 
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "第一型條件句",
+    "pattern": "If + present simple, 主句 will/should/can + V",
+    "focus": "描述真實可能的條件與結果",
+    "tags": ["conditional", "result"],
+    "hint": "主句選用適當助動詞，逗號置於條件子句後"
+  },
+  {
+    "name": "被動語態搭配情態動詞",
+    "pattern": "Modal + be + past participle",
+    "focus": "強調外部規範或必要性",
+    "tags": ["passive", "modal"],
+    "hint": "確保動詞保持原形 + be + p.p. 的結構"
+  },
+  {
+    "name": "讓步子句倒裝",
+    "pattern": "Although/Even though + 子句，主句...",
+    "focus": "突顯對比或意外的結果",
+    "tags": ["complex-sentence", "result"],
+    "hint": "主句可搭配 nevertheless, still 等銜接詞"
+  },
+  {
+    "name": "分詞構句開頭",
+    "pattern": "Present/Past participle + 名詞/子句",
+    "focus": "壓縮資訊、連結動作或原因",
+    "tags": ["participle", "complex-sentence"],
+    "hint": "需與主句主詞一致，避免懸垂分詞"
+  },
+  {
+    "name": "名詞子句報告引述",
+    "pattern": "It is reported/announced that ...",
+    "focus": "傳達官方或媒體訊息",
+    "tags": ["noun-clause", "passive"],
+    "hint": "that 子句中動詞時態需符合事實時間"
+  },
+  {
+    "name": "比較級結果句",
+    "pattern": "The more ... , the more ...",
+    "focus": "描述變化的連動關係",
+    "tags": ["comparative", "result"],
+    "hint": "兩部分均需使用 the + 比較級"
+  },
+  {
+    "name": "目的副詞子句",
+    "pattern": "So that / In order that + S + can/may + V",
+    "focus": "說明行動目的與預期效果",
+    "tags": ["purpose", "so-that"],
+    "hint": "目的子句常搭配情態動詞"
+  },
+  {
+    "name": "虛擬語氣過去完成",
+    "pattern": "If + had + p.p., would have + p.p.",
+    "focus": "談論與事實相反的過去情境",
+    "tags": ["subjunctive", "past-perfect"],
+    "hint": "記得省略 if 時採 Had + S + p.p. 倒裝"
+  }
+]

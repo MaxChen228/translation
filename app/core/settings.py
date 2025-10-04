@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     CONTENT_DIR: str = "data"
     USAGE_DB_PATH: str = "data/usage.db"
     USAGE_DB_URL: Optional[str] = None
+    QUESTION_DB_PATH: str = "data/questions.sqlite"
+    QUESTION_DB_URL: Optional[str] = None
     CONTENT_ADMIN_TOKEN: Optional[str] = None
 
     # Prompts
@@ -43,6 +45,8 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     LLM_LOG_MODE: str = "both"  # off | input | output | both
     LLM_LOG_PRETTY: bool = True
+    QUESTION_PROMPT_FILE: str = "prompts/prompt_generate_questions.txt"
+    GENERATOR_DEFAULT_COUNT: int = 8
 
     def allowed_models_set(self) -> Set[str]:
         raw = (self.ALLOWED_MODELS or "").strip()

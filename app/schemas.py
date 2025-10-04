@@ -253,6 +253,7 @@ PromptId = Literal[
     "chat_research",
     "merge",
     "flashcard_completion",
+    "generate_questions",
 ]
 
 

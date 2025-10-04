@@ -74,6 +74,13 @@ _PROMPT_CONFIGS: Dict[str, PromptConfig] = {
         cache_key="flashcard_completion_prompt",
         error_token="prompt_flashcard_completion.txt",
     ),
+    "generate_questions": PromptConfig(
+        prompt_id="generate_questions",
+        setting_name="QUESTION_PROMPT_FILE",
+        default_path="prompts/prompt_generate_questions.txt",
+        cache_key="generate_questions_prompt",
+        error_token="prompt_generate_questions.txt",
+    ),
 }
 
 
