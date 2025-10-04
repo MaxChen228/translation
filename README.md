@@ -113,6 +113,22 @@ cp .env.example .env
   ```
   成功後會建立 `.backup_YYYYMMDD_HHMMSS` 備份（如原檔存在）、回傳實際寫入位元數並自動刷新快取。
 
+### 控制中心 `/admin/control-center`
+- 以單一頁面整合 LLM 使用情況、Prompt 管理、內容統計、每日題庫，以及常見維運操作。
+- 所有請求皆沿用 `CONTENT_ADMIN_TOKEN`，請在頁面右上角輸入 Token 儲存後再互動。
+- 主要功能：
+  - 總覽卡片：24 小時／累積 LLM 呼叫、每日題庫最新狀態、內容庫載入量與健康檢查。
+  - LLM 監控：快速瀏覽最近 10 筆使用紀錄，並可跳轉舊儀表板。
+  - Prompt 管理：下拉選擇 prompt、直接編輯並熱更新檔案，會自動備份原檔並刷新快取。
+  - 內容概覽：即時顯示 `content/` 載入量，提供重載按鈕與連結至完整內容管理頁。
+  - 每日題庫：顯示最近 7 天生成與派送數量，目前提供指令提示（間接呼叫 `scripts/generate_daily_questions.py`）。
+  - 系統操作：快捷檢查 `/healthz`、重新載入 prompts，以及提示檢視 `uvicorn.log`。
+- 後端新增自訂 API：
+  - `GET /admin/control-center/overview`：彙整健康狀態、使用量、內容統計與每日題庫摘要。
+  - `GET /admin/control-center/daily-summary`、`POST /admin/control-center/daily/generate`：每日題庫資訊與指令提示。
+  - `GET /admin/control-center/prompts`、`GET /admin/control-center/prompts/{id}`、`POST /admin/control-center/prompts`、`POST /admin/control-center/prompts/reload`：Prompt 清單、內容檢視與熱更新。
+  - `GET /admin/control-center/content/stats`、`POST /admin/control-center/content/reload`：內容庫統計與重載。
+
 ### GET /cloud/books、GET /cloud/books/{name}
 - 從 `content/books/*.json` 提供唯讀題庫本清單與內容。
 - 注意：`items[].hints[].category` 僅允許五種值（morphological | syntactic | lexical | phonological | pragmatic）。

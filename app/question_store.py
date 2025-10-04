@@ -316,6 +316,49 @@ class QuestionStore:
         row = cursor.fetchone()
         return int(row[0]) if row else 0
 
+    def recent_summary(self, limit: int = 7) -> list[dict]:
+        limit = max(1, limit)
+        if self._backend == "postgres":
+            query = (
+                "SELECT g.question_date, COUNT(*) AS question_count, "
+                "COUNT(DISTINCT d.device_id) AS delivered_devices "
+                "FROM generated_questions AS g "
+                "LEFT JOIN generated_question_deliveries AS d ON g.id = d.question_id "
+                "GROUP BY g.question_date "
+                "ORDER BY g.question_date DESC "
+                "LIMIT %s"
+            )
+            with self._conn.cursor() as cur:
+                cur.execute(query, (limit,))
+                rows = cur.fetchall()
+        else:
+            query = (
+                "SELECT g.question_date, COUNT(*) AS question_count, "
+                "COUNT(DISTINCT d.device_id) AS delivered_devices "
+                "FROM generated_questions AS g "
+                "LEFT JOIN generated_question_deliveries AS d ON g.id = d.question_id "
+                "GROUP BY g.question_date "
+                "ORDER BY g.question_date DESC "
+                "LIMIT ?"
+            )
+            cursor = self._conn.cursor()
+            cursor.execute(query, (limit,))
+            rows = cursor.fetchall()
+
+        summary: list[dict] = []
+        for row in rows:
+            question_date, question_count, delivered_devices = row
+            if isinstance(question_date, str):
+                question_date = dt.date.fromisoformat(question_date)
+            summary.append(
+                {
+                    "question_date": question_date,
+                    "question_count": int(question_count or 0),
+                    "delivered_devices": int(delivered_devices or 0),
+                }
+            )
+        return summary
+
     def _row_to_record(self, row: tuple) -> QuestionRecord:
         if self._backend == "postgres":
             (

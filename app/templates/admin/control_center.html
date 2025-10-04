@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <title>Translation 控制中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --surface: #ffffff;
+        --surface-subtle: #f5f7fb;
+        --border: rgba(148, 163, 184, 0.4);
+        --border-strong: rgba(71, 85, 105, 0.6);
+        --text: #0f172a;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-strong: #1d4ed8;
+        --success: #047857;
+        --danger: #dc2626;
+        --warning: #b45309;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--surface-subtle);
+        color: var(--text);
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      a {
+        color: var(--accent);
+      }
+      .top-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      .token-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px 18px;
+        flex: 1 1 260px;
+        display: grid;
+        gap: 12px;
+      }
+      label {
+        font-weight: 600;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 4px;
+      }
+      input[type="text"], textarea, select {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #fff;
+        font-size: 14px;
+        color: inherit;
+      }
+      textarea {
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        min-height: 200px;
+      }
+      button {
+        border: none;
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      button.primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      button.primary:hover {
+        background: var(--accent-strong);
+      }
+      button.secondary {
+        background: rgba(148, 163, 184, 0.2);
+        color: var(--text);
+      }
+      button.secondary:hover {
+        background: rgba(148, 163, 184, 0.35);
+      }
+      button.danger {
+        background: rgba(220, 38, 38, 0.12);
+        color: var(--danger);
+      }
+      button.danger:hover {
+        background: rgba(220, 38, 38, 0.2);
+      }
+      .status-text {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .status-text[data-state="error"] {
+        color: var(--danger);
+      }
+      .status-text[data-state="success"] {
+        color: var(--success);
+      }
+      .summary-grid {
+        display: grid;
+        gap: 16px;
+        margin: 24px 0;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .summary-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      }
+      .summary-card h3 {
+        margin: 0;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+      .summary-card .value {
+        margin-top: 6px;
+        font-size: 28px;
+        font-weight: 600;
+      }
+      .summary-card .subvalue {
+        margin-top: 6px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 18px;
+        align-items: stretch;
+      }
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 0;
+      }
+      .panel header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .panel header h2 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .panel .toolbar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      th, td {
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+        text-align: left;
+      }
+      th {
+        text-transform: uppercase;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+        background: rgba(148, 163, 184, 0.12);
+      }
+      tbody tr:hover {
+        background: rgba(37, 99, 235, 0.08);
+      }
+      .table-scroll {
+        overflow-x: auto;
+      }
+      .two-column {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .muted-text {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.12);
+        color: var(--accent-strong);
+        font-size: 12px;
+      }
+      ul.plain {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .log-area {
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 12px;
+        background: rgba(15, 23, 42, 0.05);
+        border-radius: 10px;
+        padding: 12px;
+        max-height: 160px;
+        overflow-y: auto;
+        line-height: 1.4;
+      }
+      .flex-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.16);
+        font-size: 12px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --surface: rgba(15, 23, 42, 0.92);
+          --surface-subtle: #0f172a;
+          --border: rgba(71, 85, 105, 0.6);
+          --text: #f8fafc;
+          --muted: #94a3b8;
+        }
+        body {
+          background: var(--surface-subtle);
+          color: var(--text);
+        }
+        input[type="text"], textarea, select {
+          background: rgba(15, 23, 42, 0.8);
+          color: inherit;
+        }
+        th {
+          background: rgba(148, 163, 184, 0.1);
+        }
+        .log-area {
+          background: rgba(15, 23, 42, 0.6);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top-row">
+      <div>
+        <h1>Translation 控制中心</h1>
+        <div id="global-status" class="status-text">載入中...</div>
+      </div>
+      <div class="token-card">
+        <div>
+          <label for="admin-token">X-Content-Token</label>
+          <input id="admin-token" type="text" placeholder="輸入管理 token" autocomplete="off" />
+        </div>
+        <div class="flex-row">
+          <button id="save-token" class="primary">儲存 Token</button>
+          <button id="clear-token" class="secondary">清除</button>
+        </div>
+        <div id="token-status" class="status-text"></div>
+      </div>
+    </header>
+
+    <section class="summary-grid" id="summary-grid">
+      <!-- Filled by control-center.js -->
+    </section>
+
+    <section class="dashboard-grid">
+      <section class="panel" id="llm-panel">
+        <header>
+          <h2>LLM 使用監控</h2>
+          <div class="toolbar">
+            <button id="refresh-usage" class="secondary">重新整理</button>
+            <a href="/usage/llm/view" target="_blank" rel="noopener">查看完整儀表板</a>
+          </div>
+        </header>
+        <div class="status-text" id="usage-status">尚未載入。</div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>時間</th>
+                <th>Route</th>
+                <th>Model</th>
+                <th>Latency</th>
+                <th>Tokens</th>
+                <th>狀態</th>
+              </tr>
+            </thead>
+            <tbody id="usage-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="daily-panel">
+        <header>
+          <h2>每日題庫</h2>
+          <div class="toolbar">
+            <button id="refresh-daily" class="secondary">重新整理</button>
+            <button id="generate-daily" class="primary">產生今日題庫</button>
+          </div>
+        </header>
+        <div class="status-text" id="daily-status">載入中...</div>
+        <div class="daily-summary" id="daily-latest"></div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>題目數</th>
+                <th>派送裝置</th>
+              </tr>
+            </thead>
+            <tbody id="daily-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="two-column">
+      <section class="panel" id="prompt-panel">
+        <header>
+          <h2>Prompt 管理</h2>
+          <div class="toolbar">
+            <button id="refresh-prompts" class="secondary">重新載入清單</button>
+          </div>
+        </header>
+        <label for="prompt-select">選擇 Prompt</label>
+        <select id="prompt-select"></select>
+        <div class="muted-text" id="prompt-meta"></div>
+        <textarea id="prompt-editor" placeholder="載入中..." disabled></textarea>
+        <div class="toolbar">
+          <button id="save-prompt" class="primary" disabled>儲存變更</button>
+          <button id="reset-prompt" class="secondary" disabled>還原</button>
+        </div>
+        <div id="prompt-status" class="status-text"></div>
+      </section>
+
+      <section class="panel" id="content-panel">
+        <header>
+          <h2>內容庫概況</h2>
+          <div class="toolbar">
+            <button id="refresh-content" class="secondary">重新整理</button>
+            <button id="reload-content" class="primary">重載 Content</button>
+          </div>
+        </header>
+        <div id="content-stats" class="muted-text">載入中...</div>
+        <ul class="plain">
+          <li>完整介面：<a href="/admin/content/ui" target="_blank" rel="noopener">開啟內容管理 UI</a></li>
+          <li>提示：上傳後請記得在 Git 提交更新的 JSON 檔案。</li>
+        </ul>
+        <div id="content-status" class="status-text"></div>
+      </section>
+    </section>
+
+    <section class="panel" id="system-panel" style="margin-top: 18px;">
+      <header>
+        <h2>系統操作</h2>
+      </header>
+      <div class="toolbar">
+        <button id="check-health" class="secondary">檢查 Gemini Health</button>
+        <button id="reload-prompts" class="secondary">重載 Prompts</button>
+        <button id="open-logs" class="secondary">查看 uvicorn.log</button>
+      </div>
+      <div id="system-status" class="status-text">尚未執行操作。</div>
+      <div class="log-area" id="system-log"></div>
+    </section>
+
+    <script type="module">
+      import { initControlCenter } from '/static/js/control-center.js';
+      initControlCenter();
+    </script>
+  </body>
+</html>
