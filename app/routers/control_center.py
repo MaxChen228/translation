@@ -50,7 +50,7 @@ def _load_daily_summary(limit: int, settings) -> List[dict]:
 
 
 @router.get("", response_class=HTMLResponse)
-def render_control_center(request: Request, _: None = Depends(_verify_content_token)) -> HTMLResponse:
+def render_control_center(request: Request) -> HTMLResponse:
     return _templates.TemplateResponse("admin/control_center.html", {"request": request})
 
 
