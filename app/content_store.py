@@ -5,7 +5,7 @@ import os
 import uuid
 from typing import Dict, List, Optional
 
-from app.schemas import BankHint, BankItem, BankSuggestion
+from app.schemas import BankHint, BankItem
 from app.core.settings import get_settings
 from app.core.logging import logger
 
@@ -145,12 +145,19 @@ class ContentStore:
         for entry in raw_items:
             try:
                 hint_objs = [BankHint(**hint) for hint in entry.get("hints", [])]
-                sugg_objs = [BankSuggestion(**sugg) for sugg in entry.get("suggestions", [])]
+                review_note = entry.get("reviewNote") or entry.get("suggestion")
+                if not review_note:
+                    suggestion_items = entry.get("suggestions") or []
+                    review_note = "\n".join(
+                        str(sugg.get("text", "")).strip()
+                        for sugg in suggestion_items
+                        if str(sugg.get("text", "")).strip()
+                    ) or None
                 bank_item = BankItem(
                     id=entry.get("id") or str(uuid.uuid4()),
                     zh=entry.get("zh", ""),
                     hints=hint_objs,
-                    suggestions=sugg_objs,
+                    reviewNote=review_note,
                     tags=entry.get("tags", []),
                     difficulty=int(entry.get("difficulty", 1)),
                 )

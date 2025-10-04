@@ -40,7 +40,7 @@
 - `id`：kebab-case 或章節化命名（例如 `ch03-1-conditional-001`）。
 - `zh`：中文原句或指令，描述需完整。
 - `hints[]`：至少 1 個，`category` 必須為 `morphological`、`syntactic`、`lexical`、`phonological`、`pragmatic` 之一；`text` 精煉說明公式、語意或情境。
-- `suggestions[]`：可空，提供寫作策略、常犯錯或語域提醒，`category` 可為自由文字。
+- `reviewNote`：可空，單段文字描述批改要點（常見錯誤、用法提醒、得分參考），供批改者參考，不直接顯示給學生。舊有資料若仍使用 `suggestions[]` 陣列，後端會自動合併轉成 `reviewNote`。
 - `tags[]`：至少 2 個，遵守標籤系統規範。
 - `difficulty`：1–5 的整數，依句型複雜度與詞彙難度評估。
 

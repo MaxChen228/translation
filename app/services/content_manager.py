@@ -10,7 +10,7 @@ from pathlib import Path
 
 from app.core.settings import get_settings
 from app.core.logging import logger
-from app.schemas import BankHint, BankItem, BankSuggestion, ContentUploadResult
+from app.schemas import BankHint, BankItem, ContentUploadResult
 from app.core.tags import VALID_TAGS
 
 
@@ -141,12 +141,19 @@ class ContentManager:
             # 嘗試創建 BankItem 來驗證格式
             try:
                 hint_objs = [BankHint(**hint) for hint in hints]
-                sugg_objs = [BankSuggestion(**sugg) for sugg in item.get("suggestions", [])]
+                review_note = item.get("reviewNote") or item.get("suggestion")
+                if not review_note:
+                    suggestion_items = item.get("suggestions") or []
+                    review_note = "\n".join(
+                        str(sugg.get("text", "")).strip()
+                        for sugg in suggestion_items
+                        if str(sugg.get("text", "")).strip()
+                    ) or None
                 BankItem(
                     id=item.get("id") or str(uuid.uuid4()),
                     zh=item.get("zh", ""),
                     hints=hint_objs,
-                    suggestions=sugg_objs,
+                    reviewNote=review_note,
                     tags=tags,
                     difficulty=difficulty,
                 )

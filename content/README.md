@@ -31,6 +31,7 @@ content/
 
 ## 常見注意事項
 - 題庫 `items[].hints[].category` 必須是 `morphological|syntactic|lexical|phonological|pragmatic` 其中之一。
+- 題庫可使用 `reviewNote` 字段為批改者提供備註（單段文字）；若仍使用舊版 `suggestions[]` 陣列，後端會自動合併轉換。
 - 課程若引用既有題庫，請在 `source.id` 填入對應的 book `id`。
 - 若需要專屬於課程的題目，可在課程 JSON 內直接放 `items`，格式與書本一致。
 - 建議同步前先備份：`rsync -a content/ backup/content-$(date +%Y%m%d%H%M)/`。

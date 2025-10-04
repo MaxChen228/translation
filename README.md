@@ -70,7 +70,7 @@ cp .env.example .env
   "bankItemId": "可選",
   "deviceId": "可選",
   "hints": [ { "category": "morphological", "text": "過去式" } ],
-  "suggestion": "（教師建議/期待寫法，供批改者參考）",
+  "reviewNote": "（批改者提示，描述得分重點或常見錯誤）",
   "model": "gemini-2.5-pro | gemini-2.5-flash"  // 可選，覆蓋預設模型
 }
 ```
@@ -201,8 +201,7 @@ cp .env.example .env
         "id": "daily-2025-10-04-001",
         "zh": "...",
         "hints": [ { "category": "lexical", "text": "..." } ],
-        "suggestions": [],
-        "suggestion": "教師提示",
+        "reviewNote": "批改時提醒重點或常見錯誤",
         "tags": ["daily-life", "grammar"],
         "difficulty": 3,
         "referenceEn": "Reference sentence"

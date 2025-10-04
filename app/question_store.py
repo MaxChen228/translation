@@ -25,11 +25,11 @@ class QuestionRecord:
     difficulty: int
     tags: Sequence[str]
     hints: Sequence[dict]
-    suggestions: Sequence[dict]
     raw: dict
     model: str
     prompt_hash: str
     created_at: dt.datetime
+    review_note: Optional[str] = None
 
     @classmethod
     def from_payload(
@@ -51,11 +51,11 @@ class QuestionRecord:
             difficulty=int(item.get("difficulty", 1)),
             tags=list(item.get("tags", [])),
             hints=list(item.get("hints", [])),
-            suggestions=list(item.get("suggestions", [])),
             raw=item,
             model=model,
             prompt_hash=prompt_hash,
             created_at=created_at,
+            review_note=_extract_review_note(item),
         )
 
 
@@ -63,6 +63,23 @@ class QuestionRecord:
 class SaveSummary:
     inserted: int = 0
     duplicates: int = 0
+
+
+def _extract_review_note(item: dict) -> Optional[str]:
+    note = item.get("reviewNote") or item.get("suggestion")
+    if isinstance(note, str):
+        stripped = note.strip()
+        if stripped:
+            return stripped
+    suggestion_items = item.get("suggestions") or []
+    if suggestion_items:
+        joined = "\n".join(
+            str(sugg.get("text", "")).strip()
+            for sugg in suggestion_items
+            if str(sugg.get("text", "")).strip()
+        ).strip()
+        return joined or None
+    return None
 
 
 class QuestionStore:
@@ -110,11 +127,13 @@ class QuestionStore:
             model TEXT NOT NULL,
             prompt_hash TEXT NOT NULL,
             created_at TEXT NOT NULL,
+            review_note TEXT,
             UNIQUE(question_date, zh)
         );
         """
         self._conn.execute(ddl)
         self._conn.commit()
+        self._ensure_sqlite_column("generated_questions", "review_note", "TEXT")
 
     def _init_postgres(self) -> None:
         ddl = """
@@ -126,16 +145,29 @@ class QuestionStore:
             difficulty INTEGER NOT NULL,
             tags JSONB NOT NULL,
             hints JSONB NOT NULL,
-            suggestions JSONB NOT NULL,
             raw JSONB NOT NULL,
             model TEXT NOT NULL,
             prompt_hash TEXT NOT NULL,
             created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            review_note TEXT,
             UNIQUE(question_date, zh)
         );
         """
         with self._conn.cursor() as cur:
             cur.execute(ddl)
+            cur.execute(
+                """
+                ALTER TABLE generated_questions
+                ADD COLUMN IF NOT EXISTS review_note TEXT
+                """
+            )
+
+    def _ensure_sqlite_column(self, table: str, column: str, definition: str) -> None:
+        cursor = self._conn.execute(f"PRAGMA table_info({table})")
+        existing = {row[1] for row in cursor.fetchall()}
+        if column not in existing:
+            self._conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+            self._conn.commit()
 
     def _init_delivery_tables(self) -> None:
         if self._backend == "postgres":
@@ -175,8 +207,8 @@ class QuestionStore:
                     cur.execute(
                         """
                         INSERT INTO generated_questions
-                        (id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, model, prompt_hash, created_at)
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                        (id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, review_note, model, prompt_hash, created_at)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                         ON CONFLICT (question_date, zh) DO NOTHING
                         """,
                         (
@@ -187,8 +219,9 @@ class QuestionStore:
                             rec.difficulty,
                             Json(list(rec.tags)),
                             Json(list(rec.hints)),
-                            Json(list(rec.suggestions)),
+                            Json([]),
                             Json(rec.raw),
+                            rec.review_note,
                             rec.model,
                             rec.prompt_hash,
                             rec.created_at,
@@ -201,15 +234,14 @@ class QuestionStore:
         else:
             sql = """
             INSERT INTO generated_questions
-            (id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, model, prompt_hash, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, review_note, model, prompt_hash, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(question_date, zh) DO NOTHING
             """
             cursor = self._conn.cursor()
             for rec in records:
                 tags_json = json.dumps(list(rec.tags), ensure_ascii=False)
                 hints_json = json.dumps(list(rec.hints), ensure_ascii=False)
-                sugg_json = json.dumps(list(rec.suggestions), ensure_ascii=False)
                 raw_json = json.dumps(rec.raw, ensure_ascii=False)
                 cursor.execute(
                     sql,
@@ -221,8 +253,9 @@ class QuestionStore:
                         rec.difficulty,
                         tags_json,
                         hints_json,
-                        sugg_json,
+                        json.dumps([], ensure_ascii=False),
                         raw_json,
+                        rec.review_note,
                         rec.model,
                         rec.prompt_hash,
                         rec.created_at.isoformat(),
@@ -247,7 +280,7 @@ class QuestionStore:
 
         if self._backend == "postgres":
             query = (
-                "SELECT id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, model, prompt_hash, created_at "
+                "SELECT id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, review_note, model, prompt_hash, created_at "
                 "FROM generated_questions "
                 "WHERE question_date = %s "
                 "AND id NOT IN (SELECT question_id FROM generated_question_deliveries WHERE device_id = %s) "
@@ -271,7 +304,7 @@ class QuestionStore:
             return records
 
         query = (
-            "SELECT id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, model, prompt_hash, created_at "
+            "SELECT id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, review_note, model, prompt_hash, created_at "
             "FROM generated_questions "
             "WHERE question_date = ? "
             "AND id NOT IN (SELECT question_id FROM generated_question_deliveries WHERE device_id = ?) "
@@ -371,6 +404,7 @@ class QuestionStore:
                 hints,
                 suggestions,
                 raw,
+                review_note,
                 model,
                 prompt_hash,
                 created_at,
@@ -386,6 +420,7 @@ class QuestionStore:
                 hints,
                 suggestions,
                 raw,
+                review_note,
                 model,
                 prompt_hash,
                 created_at,
@@ -408,6 +443,11 @@ class QuestionStore:
             raw = json.loads(raw)
         if isinstance(created_at, str):
             created_at = dt.datetime.fromisoformat(created_at)
+        if isinstance(review_note, bytes):
+            review_note = review_note.decode("utf-8")
+        if isinstance(review_note, str) and not review_note.strip():
+            review_note = None
+        derived_note = review_note or _extract_review_note(raw or {})
 
         return QuestionRecord(
             id=str(qid),
@@ -417,11 +457,11 @@ class QuestionStore:
             difficulty=int(difficulty),
             tags=list(tags) if tags is not None else [],
             hints=list(hints) if hints is not None else [],
-            suggestions=list(suggestions) if suggestions is not None else [],
             raw=dict(raw) if raw is not None else {},
             model=model,
             prompt_hash=prompt_hash,
             created_at=created_at if isinstance(created_at, dt.datetime) else dt.datetime.fromisoformat(str(created_at)),
+            review_note=derived_note,
         )
 
 

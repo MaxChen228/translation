@@ -31,7 +31,7 @@ def write_sample_content(root: Path, book_count: int = 1, alt: bool = False):
             "id": "item-1",
             "zh": "示範句子",
             "hints": [{"category": "lexical", "text": "詞彙提示"}],
-            "suggestions": [],
+            "reviewNote": "示範批改重點",
             "tags": ["lexical"],
             "difficulty": 2,
         }
@@ -72,7 +72,7 @@ def build_book_payload(book_id: str = "uploaded-book") -> dict:
                 "hints": [
                     {"category": "lexical", "text": "sample"}
                 ],
-                "suggestions": [],
+                "reviewNote": "示範批改重點",
                 "tags": ["grammar"],
                 "difficulty": 2,
             }
@@ -235,7 +235,7 @@ def test_upload_course_rejects_inline_items(tmp_path):
                             "id": "inline-1",
                             "zh": "內嵌題目",
                             "hints": [],
-                            "suggestions": [],
+                            "reviewNote": "示範批改重點",
                         }
                     ],
                 }

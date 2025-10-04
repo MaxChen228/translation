@@ -141,7 +141,7 @@ def main() -> int:
                 {"category": "morphological", "text": "過去式"},
                 {"category": "lexical", "text": "shop vs store; fruit 不可數"}
             ],
-            "suggestion": "使用過去式、常見搭配",
+            "reviewNote": "使用過去式、常見搭配",
         }
         if args.model:
             body["model"] = args.model
@@ -189,4 +189,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

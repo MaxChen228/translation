@@ -30,7 +30,7 @@ from app.core.settings import get_settings  # noqa: E402
 from app.core.tags import VALID_TAGS  # noqa: E402
 from app.llm import call_gemini_json  # noqa: E402
 from app.question_store import QuestionRecord, QuestionStore  # noqa: E402
-from app.schemas import BankHint, BankItem, BankSuggestion  # noqa: E402
+from app.schemas import BankHint, BankItem  # noqa: E402
 from app.services.prompt_manager import read_prompt  # noqa: E402
 
 ALLOWED_HINT_CATEGORIES = {"morphological", "syntactic", "lexical", "phonological", "pragmatic"}
@@ -131,7 +131,7 @@ class GeneratedQuestion(BaseModel):
     zh: str
     referenceEn: str = Field(alias="referenceEn")
     hints: List[BankHint]
-    suggestions: List[BankSuggestion] = []
+    reviewNote: Optional[str] = None
     tags: List[str]
     difficulty: int = Field(ge=1, le=5)
 
@@ -145,7 +145,7 @@ class GeneratedQuestion(BaseModel):
             id=self.id,
             zh=self.zh.strip(),
             hints=self.hints,
-            suggestions=self.suggestions,
+            reviewNote=(self.reviewNote or None),
             tags=[t.strip() for t in self.tags],
             difficulty=self.difficulty,
         )
@@ -191,7 +191,7 @@ async def _request_questions(
             "zh",
             "referenceEn",
             "hints",
-            "suggestions",
+            "reviewNote",
             "tags",
             "difficulty",
         ],

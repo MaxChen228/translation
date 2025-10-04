@@ -53,8 +53,9 @@ def build_user_content(req: CorrectRequest) -> str:
         payload["deviceId"] = req.deviceId
     if req.hints:
         payload["hints"] = [h.model_dump() if hasattr(h, "model_dump") else dict(h) for h in req.hints]
-    if req.suggestion:
-        payload["suggestion"] = req.suggestion
+    if req.reviewNote:
+        payload["reviewNote"] = req.reviewNote
+        payload["suggestion"] = req.reviewNote  # backward compat for existing prompts
     return json.dumps(payload, ensure_ascii=False)
 
 

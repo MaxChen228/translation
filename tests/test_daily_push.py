@@ -27,7 +27,7 @@ def _create_question(question_date: date) -> QuestionRecord:
         "hints": [
             {"category": "lexical", "text": "使用 present perfect"},
         ],
-        "suggestions": [],
+        "reviewNote": "強調現在完成式的使用情境",
         "tags": ["daily-life", "grammar"],
         "difficulty": 2,
         "referenceEn": "This is a test daily push question."
@@ -78,3 +78,14 @@ def test_daily_push_pull_creates_delivery(monkeypatch):
     assert resp3.status_code == 200
     data3 = resp3.json()
     assert data3["delivered"] == 1
+
+
+def test_daily_push_requires_non_empty_device():
+    client = TestClient(create_app())
+    today = date.today().isoformat()
+    resp = client.post(
+        "/daily_push/pull",
+        json={"deviceId": "   ", "date": today, "count": 1},
+    )
+    assert resp.status_code == 422
+    assert resp.json()["detail"] == "deviceId_required"

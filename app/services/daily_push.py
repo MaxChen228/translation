@@ -5,7 +5,7 @@ from typing import List
 
 from app.core.settings import get_settings
 from app.question_store import QuestionStore
-from app.schemas import DailyPushQuestion, BankHint, BankSuggestion
+from app.schemas import DailyPushQuestion, BankHint
 
 
 def fetch_daily_push_questions(
@@ -34,16 +34,14 @@ def fetch_daily_push_questions(
     for record in records:
         raw = dict(record.raw)
         hints = [BankHint(**hint) for hint in record.hints]
-        suggestions = [BankSuggestion(**sugg) for sugg in record.suggestions]
         tags = list(raw.get("tags", record.tags)) if raw.get("tags") is not None else list(record.tags)
-        suggestion_text = raw.get("suggestion") or record.raw.get("suggestion") or record.reference_en
+        review_note = raw.get("reviewNote") or record.raw.get("reviewNote") or record.review_note
         questions.append(
             DailyPushQuestion(
                 id=record.id,
                 zh=record.zh,
                 hints=hints,
-                suggestions=suggestions,
-                suggestion=suggestion_text,
+                reviewNote=review_note,
                 tags=tags,
                 difficulty=record.difficulty,
                 referenceEn=record.reference_en,

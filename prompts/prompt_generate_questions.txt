@@ -6,7 +6,7 @@
 4. 中文原文（`zh`）：語句需完整、具備翻譯挑戰，避免模糊或片段式文字。
 5. 英文參考答案（`referenceEn`）：提供自然、正式且涵蓋關鍵語意的英文寫法，可含 1–2 句，但需精煉。
 6. `hints`：至少給 2 個，`category` 僅能使用 $HINT_CATEGORIES，文字需提供具體語法或用字指引。
-7. `suggestions`：可選，提供語氣、風格或延伸策略；若提供請含 `text` 與可選 `category`。
+7. `reviewNote`：以 1 段文字寫給批改者，描述重要得分重點、常見錯誤或用法提醒，長度不限但需聚焦批改觀察（不直接提供學生答案敘述）。
 8. `tags`：至少 2 個，必須全部落在以下清單：$VALID_TAGS；至少包含 1 個語法相關標籤（如 conditional、modal 等）。
 9. `difficulty`：1–5 之間的整數，4/5 僅用於結構或詞彙明顯困難的題目。
 10. 輸出格式必須為可解析的 JSON 陣列，每個題目的欄位僅限：
@@ -18,9 +18,7 @@
         {"category": "syntactic", "text": "..."},
         {"category": "lexical", "text": "..."}
       ],
-      "suggestions": [
-        {"text": "...", "category": "style"}
-      ],
+      "reviewNote": "重申句構或搭配要點……",
       "tags": ["conditional", "business"],
       "difficulty": 3
     }

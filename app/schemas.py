@@ -51,7 +51,7 @@ class CorrectRequest(BaseModel):
     bankItemId: Optional[str] = None
     deviceId: Optional[str] = None
     hints: Optional[List[InputHintDTO]] = None
-    suggestion: Optional[str] = None
+    reviewNote: Optional[str] = None
     model: Optional[str] = None
 
 
@@ -152,16 +152,11 @@ class BankHint(BaseModel):
     text: str
 
 
-class BankSuggestion(BaseModel):
-    text: str
-    category: Optional[str] = None
-
-
 class BankItem(BaseModel):
     id: str
     zh: str
     hints: List[BankHint] = []
-    suggestions: List[BankSuggestion] = []
+    reviewNote: Optional[str] = None
     tags: List[str] = []
     difficulty: int = Field(ge=1, le=5)
 
@@ -289,8 +284,7 @@ class DailyPushQuestion(BaseModel):
     id: str
     zh: str
     hints: List[BankHint]
-    suggestions: List[BankSuggestion] = []
-    suggestion: Optional[str] = None
+    reviewNote: Optional[str] = None
     tags: List[str] = []
     difficulty: int
     referenceEn: str

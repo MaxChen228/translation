@@ -28,7 +28,7 @@ def client(tmp_path, monkeypatch) -> TestClient:
                 "id": "item-1",
                 "zh": "這是一句測試句子。",
                 "hints": [{"category": "lexical", "text": "注意字彙搭配"}],
-                "suggestions": [{"text": "可加入更多細節", "category": "style"}],
+                "reviewNote": "可提醒學生補充細節並維持語氣一致",
                 "tags": ["lexical"],
                 "difficulty": 2,
             }

@@ -77,5 +77,40 @@ def test_usage_view_page_renders_html():
     client = TestClient(create_app())
     resp = client.get("/usage/llm/view")
     assert resp.status_code == 200
-    assert "LLM Usage Dashboard" in resp.text
+    assert ("LLM Usage Dashboard" in resp.text) or ("LLM 使用量儀表板" in resp.text)
     assert "<table" in resp.text
+
+
+def test_usage_detail_formats_payloads_and_handles_missing():
+    reset_usage()
+    payload = {
+        "timestamp": time.time(),
+        "provider": "gemini",
+        "api_kind": "generateContent",
+        "model": "gemini-2.5-flash",
+        "api_endpoint": "https://example.com",
+        "route": "/chat/respond",
+        "device_id": "dev-999",
+        "inline_parts": 0,
+        "prompt_chars": 5,
+        "input_tokens": 3,
+        "output_tokens": 4,
+        "total_tokens": 7,
+        "latency_ms": 12.5,
+        "status_code": 200,
+        "request_payload": '{"foo": "bar\\nbaz"}',
+        "response_payload": '{"lines": ["first", "second"]}',
+    }
+    usage = LLMUsage(**payload)
+    saved = record_usage(usage, route=usage.route, device_id=usage.device_id)
+
+    client = TestClient(create_app())
+    detail = client.get(f"/usage/llm/{saved.id}/view")
+    assert detail.status_code == 200
+    assert "foo: |-" in detail.text
+    assert "bar\n  baz" in detail.text
+    assert "first" in detail.text and "second" in detail.text
+
+    missing = client.get(f"/usage/llm/{saved.id + 999}/view")
+    assert missing.status_code == 404
+    assert missing.json()["detail"] == "usage_not_found"
