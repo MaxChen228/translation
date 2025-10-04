@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from string import Template
 from typing import Iterable, List, Optional, Sequence
+import uuid
 
 from pydantic import BaseModel, Field, ValidationError
 
@@ -402,6 +403,8 @@ def _filter_questions(
 ) -> GenerationOutcome:
     accepted: List[QuestionRecord] = []
     rejected: List[str] = list(extra_errors)
+    sequence = 0
+    generated_ids: set[str] = set()
 
     for question in questions:
         if question.difficulty != target_difficulty:
@@ -428,7 +431,17 @@ def _filter_questions(
         if not question.referenceEn.strip():
             rejected.append(f"題目 {item.id} 缺少 referenceEn")
             continue
+        sequence += 1
+        base_id = f"daily-{question_date.isoformat()}-d{target_difficulty}-{sequence:03d}"
+        suffix = f"-{prompt_hash[:4]}" if prompt_hash else ""
+        candidate_id = f"{base_id}{suffix}"
+        while candidate_id in generated_ids:
+            candidate_id = f"{base_id}-{uuid.uuid4().hex[:4]}"
+        generated_ids.add(candidate_id)
+        item.id = candidate_id
+
         item_payload = item.model_dump()
+        item_payload["id"] = candidate_id
         item_payload["referenceEn"] = question.referenceEn.strip()
         record = QuestionRecord.from_payload(
             question_date=question_date,
