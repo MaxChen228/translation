@@ -15,6 +15,7 @@ venv/
 # Logs / artifacts
 _test_logs/
 app/data/usage.db
+data/
 
 # OS files
 .DS_Store
