@@ -10,6 +10,7 @@ from app.routers.flashcards import router as flashcards_router
 from app.routers.cloud import router as cloud_router
 from app.routers.sys import router as sys_router
 from app.routers.chat import router as chat_router
+from app.routers.daily_push import router as daily_push_router
 from app.usage.router import router as usage_router
 from app.routers.admin import router as admin_router
 from app.routers.content_ui import router as content_ui_router
@@ -25,7 +26,7 @@ def create_app() -> FastAPI:
         finally:
             await close_http_client()
 
-    app = FastAPI(title="Local Correct Backend", version="0.4.3", lifespan=lifespan)
+    app = FastAPI(title="Local Correct Backend", version="0.5.0", lifespan=lifespan)
 
     @app.middleware("http")
     async def attach_device_id(request: Request, call_next):
@@ -39,6 +40,7 @@ def create_app() -> FastAPI:
     app.include_router(flashcards_router)
     app.include_router(cloud_router)
     app.include_router(chat_router)
+    app.include_router(daily_push_router)
     app.include_router(usage_router)
     app.include_router(admin_router)
     app.include_router(content_ui_router)

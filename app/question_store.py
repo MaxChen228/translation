@@ -86,6 +86,7 @@ class QuestionStore:
             self._conn.execute("PRAGMA journal_mode=WAL;")
             self._conn.execute("PRAGMA foreign_keys=ON;")
             self._init_sqlite()
+        self._init_delivery_tables()
 
     def close(self) -> None:
         try:
@@ -135,6 +136,34 @@ class QuestionStore:
         """
         with self._conn.cursor() as cur:
             cur.execute(ddl)
+
+    def _init_delivery_tables(self) -> None:
+        if self._backend == "postgres":
+            ddl = """
+            CREATE TABLE IF NOT EXISTS generated_question_deliveries (
+                id SERIAL PRIMARY KEY,
+                question_id UUID NOT NULL REFERENCES generated_questions(id) ON DELETE CASCADE,
+                device_id TEXT NOT NULL,
+                delivered_date DATE NOT NULL,
+                delivered_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                UNIQUE(question_id, device_id)
+            );
+            """
+            with self._conn.cursor() as cur:
+                cur.execute(ddl)
+        else:
+            ddl = """
+            CREATE TABLE IF NOT EXISTS generated_question_deliveries (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                question_id TEXT NOT NULL,
+                device_id TEXT NOT NULL,
+                delivered_date TEXT NOT NULL,
+                delivered_at TEXT NOT NULL,
+                UNIQUE(question_id, device_id)
+            );
+            """
+            self._conn.execute(ddl)
+            self._conn.commit()
 
     # --- Persistence ---
     def save_many(self, records: Iterable[QuestionRecord]) -> SaveSummary:
@@ -205,6 +234,152 @@ class QuestionStore:
                     inserted += 1
             self._conn.commit()
         return SaveSummary(inserted=inserted, duplicates=duplicates)
+
+    def reserve_questions_for_delivery(
+        self,
+        *,
+        question_date: dt.date,
+        count: int,
+        device_id: str,
+    ) -> list[QuestionRecord]:
+        if count <= 0:
+            return []
+
+        if self._backend == "postgres":
+            query = (
+                "SELECT id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, model, prompt_hash, created_at "
+                "FROM generated_questions "
+                "WHERE question_date = %s "
+                "AND id NOT IN (SELECT question_id FROM generated_question_deliveries WHERE device_id = %s) "
+                "ORDER BY created_at ASC LIMIT %s"
+            )
+            with self._conn.cursor() as cur:
+                cur.execute(query, (question_date, device_id, count))
+                rows = cur.fetchall()
+                records = [self._row_to_record(row) for row in rows]
+                if records:
+                    delivered_at = dt.datetime.utcnow()
+                    insert_sql = (
+                        "INSERT INTO generated_question_deliveries (question_id, device_id, delivered_date, delivered_at) "
+                        "VALUES (%s, %s, %s, %s) ON CONFLICT (question_id, device_id) DO NOTHING"
+                    )
+                    payload = [
+                        (rec.id, device_id, question_date, delivered_at)
+                        for rec in records
+                    ]
+                    cur.executemany(insert_sql, payload)
+            return records
+
+        query = (
+            "SELECT id, question_date, zh, reference_en, difficulty, tags, hints, suggestions, raw, model, prompt_hash, created_at "
+            "FROM generated_questions "
+            "WHERE question_date = ? "
+            "AND id NOT IN (SELECT question_id FROM generated_question_deliveries WHERE device_id = ?) "
+            "ORDER BY datetime(created_at) ASC LIMIT ?"
+        )
+        cursor = self._conn.cursor()
+        cursor.execute(query, (question_date.isoformat(), device_id, count))
+        rows = cursor.fetchall()
+        records = [self._row_to_record(row) for row in rows]
+        if records:
+            delivered_at = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat()
+            insert_sql = (
+                "INSERT OR IGNORE INTO generated_question_deliveries (question_id, device_id, delivered_date, delivered_at) "
+                "VALUES (?, ?, ?, ?)"
+            )
+            payload = [
+                (rec.id, device_id, question_date.isoformat(), delivered_at)
+                for rec in records
+            ]
+            cursor.executemany(insert_sql, payload)
+            self._conn.commit()
+        return records
+
+    def remaining_questions_for_date(self, *, question_date: dt.date, device_id: str) -> int:
+        if self._backend == "postgres":
+            query = (
+                "SELECT COUNT(*) FROM generated_questions "
+                "WHERE question_date = %s "
+                "AND id NOT IN (SELECT question_id FROM generated_question_deliveries WHERE device_id = %s)"
+            )
+            with self._conn.cursor() as cur:
+                cur.execute(query, (question_date, device_id))
+                row = cur.fetchone()
+                return int(row[0]) if row else 0
+        query = (
+            "SELECT COUNT(*) FROM generated_questions "
+            "WHERE question_date = ? "
+            "AND id NOT IN (SELECT question_id FROM generated_question_deliveries WHERE device_id = ?)"
+        )
+        cursor = self._conn.cursor()
+        cursor.execute(query, (question_date.isoformat(), device_id))
+        row = cursor.fetchone()
+        return int(row[0]) if row else 0
+
+    def _row_to_record(self, row: tuple) -> QuestionRecord:
+        if self._backend == "postgres":
+            (
+                qid,
+                question_date,
+                zh,
+                reference_en,
+                difficulty,
+                tags,
+                hints,
+                suggestions,
+                raw,
+                model,
+                prompt_hash,
+                created_at,
+            ) = row
+        else:
+            (
+                qid,
+                question_date,
+                zh,
+                reference_en,
+                difficulty,
+                tags,
+                hints,
+                suggestions,
+                raw,
+                model,
+                prompt_hash,
+                created_at,
+            ) = row
+            question_date = dt.date.fromisoformat(question_date)
+            if isinstance(created_at, str):
+                created_at = dt.datetime.fromisoformat(created_at)
+            tags = json.loads(tags) if isinstance(tags, str) else tags
+            hints = json.loads(hints) if isinstance(hints, str) else hints
+            suggestions = json.loads(suggestions) if isinstance(suggestions, str) else suggestions
+            raw = json.loads(raw) if isinstance(raw, str) else raw
+
+        if isinstance(tags, str):
+            tags = json.loads(tags)
+        if isinstance(hints, str):
+            hints = json.loads(hints)
+        if isinstance(suggestions, str):
+            suggestions = json.loads(suggestions)
+        if isinstance(raw, str):
+            raw = json.loads(raw)
+        if isinstance(created_at, str):
+            created_at = dt.datetime.fromisoformat(created_at)
+
+        return QuestionRecord(
+            id=str(qid),
+            question_date=question_date,
+            zh=zh,
+            reference_en=reference_en,
+            difficulty=int(difficulty),
+            tags=list(tags) if tags is not None else [],
+            hints=list(hints) if hints is not None else [],
+            suggestions=list(suggestions) if suggestions is not None else [],
+            raw=dict(raw) if raw is not None else {},
+            model=model,
+            prompt_hash=prompt_hash,
+            created_at=created_at if isinstance(created_at, dt.datetime) else dt.datetime.fromisoformat(str(created_at)),
+        )
 
 
 __all__ = ["QuestionStore", "QuestionRecord", "SaveSummary"]

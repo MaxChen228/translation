@@ -170,6 +170,31 @@ cp .env.example .env
   }
   ```
 - `cards[].front`/`back` 為必填欄位，`frontNote`、`backNote` 為選填；`ChatResearchResponse` 會維持 ISO8601 `generatedAt` 以利前端顯示。
+
+### POST /daily_push/pull
+- 依訂閱裝置與日期取得每日推送題目，並標記為已配送。
+- 輸入：`{ "deviceId": "...", "date": "2025-10-04", "count": 10 }`。
+- 回應：
+  ```json
+  {
+    "requested": 10,
+    "delivered": 10,
+    "remaining": 0,
+    "questions": [
+      {
+        "id": "daily-2025-10-04-001",
+        "zh": "...",
+        "hints": [ { "category": "lexical", "text": "..." } ],
+        "suggestions": [],
+        "suggestion": "教師提示",
+        "tags": ["daily-life", "grammar"],
+        "difficulty": 3,
+        "referenceEn": "Reference sentence"
+      }
+    ]
+  }
+  ```
+- 同一裝置同一天的題目不會重複取出；不同裝置可獨立拉取。
 - 若 LLM 回傳空陣列或缺乏 deckName，後端會以 500 提醒需要補充更多上下文。
 
 ### GET /healthz

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+import datetime as dt
 from typing import List, Optional, Literal
 from pydantic import BaseModel, Field, field_validator
 
@@ -280,6 +281,32 @@ class PromptInfo(BaseModel):
 
 class PromptListResponse(BaseModel):
     prompts: List[PromptInfo]
+
+
+# ----- Daily push -----
+
+class DailyPushQuestion(BaseModel):
+    id: str
+    zh: str
+    hints: List[BankHint]
+    suggestions: List[BankSuggestion] = []
+    suggestion: Optional[str] = None
+    tags: List[str] = []
+    difficulty: int
+    referenceEn: str
+
+
+class DailyPushPullRequest(BaseModel):
+    deviceId: str
+    date: dt.date
+    count: int = Field(ge=1, le=50)
+
+
+class DailyPushPullResponse(BaseModel):
+    requested: int
+    delivered: int
+    remaining: int
+    questions: List[DailyPushQuestion]
 
 
 # ----- Progress (legacy/minimal) -----
