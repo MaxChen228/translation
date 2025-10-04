@@ -308,7 +308,9 @@ cp .env.example .env
 - `scripts/test_gemini_key.py`：檢查環境金鑰是否有效，可在部署前先行測試。
 - `python -m scripts.generate_daily_questions --count 6 --topics technology,business`：使用 Gemini 產生每日翻譯題並寫入 `generated_questions` 資料表；支援 `--dry-run` 預覽與 `--model` 覆寫模型。
   - 預設會從 `prompts/pools/topics_pool.json` 與 `prompts/pools/structures_pool.json` 隨機挑選主題與句構；可用 `--topic-count` / `--structure-count` 調整數量，或用 `--topics`、`--structures` 逗號分隔指定內容。
-  - 若需自訂池子，修改上述 JSON 檔或以 `--topic-pool`、`--structure-pool` 改指向新的路徑即可。
+  - 新增 `--difficulty`（1–5，預設 3）可指定單一難度的題目；腳本會載入 `prompts/difficulty/` 下對應的 prompt 與 few-shot 範例。
+  - `--content-pool` 可改用自訂題材靈感池（預設 `prompts/pools/content_pool.json`），並透過 `--content-count` 控制每次抽樣數。
+  - 若需自訂主題/句構池路徑，仍可使用 `--topic-pool`、`--structure-pool` 覆蓋預設檔案。
 
 ## 安全
 - 請勿提交任何金鑰或私密資訊到版本控制。

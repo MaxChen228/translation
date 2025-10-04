@@ -1,0 +1,134 @@
+[
+  {
+    "name": "永續能源政策公聽會紀要",
+    "description": "整理國會討論再生能源配額與補助的重點摘要",
+    "tags": ["environment", "result"],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "討論政策建議與條件句",
+    "exampleZh": "說明若能提高離岸風電補助，預期將帶來哪些投資。",
+    "exampleEn": "The report explains that, if the offshore wind subsidy increases, investors are more willing to commit long-term capital.",
+    "hint": "可練習 conditional 或被動語態"
+  },
+  {
+    "name": "高中國際交流活動邀請函",
+    "description": "邀請姊妹校參與暑期科學營與文化體驗",
+    "tags": ["education", "invitation"],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "友善語氣與簡單句",
+    "exampleZh": "邀請學生於七月到本校參與共同設計的 STEAM 課程。",
+    "exampleEn": "We sincerely invite your students to join our STEAM workshop this July and experience the local family stay.",
+    "hint": "注意禮貌用語與未來式"
+  },
+  {
+    "name": "金融科技新創 A 輪投資簡報",
+    "description": "說服投資人理解產品優勢與市場規模",
+    "tags": ["business", "purpose"],
+    "minDifficulty": 3,
+    "maxDifficulty": 5,
+    "focus": "說服式語氣與數據描述",
+    "exampleZh": "若我們能在六個月內取得 5% 市佔，就可於亞洲擴張。",
+    "exampleEn": "If we secure five percent of the domestic market within six months, the revenue stream will support expansion across Asia.",
+    "hint": "強調條件句與未來式"
+  },
+  {
+    "name": "醫院臨床試驗週報",
+    "description": "向監管單位回報新藥第二期試驗進度",
+    "tags": ["health", "result"],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "專業術語與被動語態",
+    "exampleZh": "整理不良反應統計，並說明後續追蹤計畫。",
+    "exampleEn": "The weekly report summarizes adverse events and specifies the monitoring protocol for the next patient cohort.",
+    "hint": "善用被動語態與名詞化結構"
+  },
+  {
+    "name": "初創團隊晨會紀錄",
+    "description": "記錄軟體開發進度及阻礙，設定下一步行動",
+    "tags": ["technology", "result"],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "簡潔陳述與任務分配",
+    "exampleZh": "確認新的 App 版本在本週完成測試並準備上架。",
+    "exampleEn": "We confirmed the new app build will finish testing this week and be ready for release.",
+    "hint": "側重現在進行式與未來簡單式"
+  },
+  {
+    "name": "市政交通轉型政策白皮書",
+    "description": "提出公共運輸改善與減碳目標的長期規畫",
+    "tags": ["environment", "necessity"],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "正式語氣與名詞子句",
+    "exampleZh": "報告要求在 2030 年前將公車電動化比率提升至八成。",
+    "exampleEn": "The white paper demands that the city raise the electrification rate of buses to eighty percent by 2030.",
+    "hint": "多用名詞子句與被動語態"
+  },
+  {
+    "name": "旅遊部落客合作提案",
+    "description": "提議與觀光局合作推出永續旅遊行程並撰寫專欄",
+    "tags": ["travel", "offer"],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "說服語氣與條列亮點",
+    "exampleZh": "強調行程結合在地手作體驗與環境教育。",
+    "exampleEn": "The proposal highlights itineraries that combine local craft workshops with environmental education.",
+    "hint": "注意形容詞子句與現在分詞"
+  },
+  {
+    "name": "企業永續報告 CEO 前言",
+    "description": "宣示公司 ESG 目標與成果，回應利害關係人關切",
+    "tags": ["business", "opinion"],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "正式語氣與過去成就",
+    "exampleZh": "說明過去一年如何降低供應鏈碳足跡並引用數據。",
+    "exampleEn": "The CEO underscores how the company cut supply-chain emissions by twelve percent last year and references third-party audits.",
+    "hint": "適合使用過去完成式與被動語態"
+  },
+  {
+    "name": "高中科展成果簡報",
+    "description": "學生向評審介紹研究動機、方法與結論",
+    "tags": ["academic", "result"],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "邏輯清楚並強調過程",
+    "exampleZh": "說明在控制變因後，植物生長速度提升的結果。",
+    "exampleEn": "The presentation explains that, after controlling the variables, the plants grew twenty percent faster.",
+    "hint": "強調因果與比較級"
+  },
+  {
+    "name": "公司內部衝突調解備忘錄",
+    "description": "人資部彙整衝突背景、會議結論與後續跟進計畫",
+    "tags": ["career", "result"],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "客觀描述與義務性語氣",
+    "exampleZh": "列出雙方同意的行動與後續監督機制。",
+    "exampleEn": "The memo lists the actions both parties agreed to and clarifies the follow-up monitoring process.",
+    "hint": "適合使用被動語態與情態動詞"
+  },
+  {
+    "name": "地方社區防災演練通知",
+    "description": "通知居民參與颱風防災演練與所需準備事項",
+    "tags": ["social", "warning"],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "指示語氣與清楚步驟",
+    "exampleZh": "提醒居民攜帶雨衣並於上午九點集合。",
+    "exampleEn": "Residents are reminded to bring rain gear and assemble at nine o'clock in the morning.",
+    "hint": "重視祈使句與清楚動詞"
+  },
+  {
+    "name": "大學研究倫理聲明",
+    "description": "研究團隊向審查委員會說明倫理審查與數據保護措施",
+    "tags": ["academic", "necessity"],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "正式語氣與條款式句型",
+    "exampleZh": "強調資料將匿名化並限制授權人員存取。",
+    "exampleEn": "The statement emphasizes that all data will be anonymized and accessible only to authorized personnel.",
+    "hint": "適合使用被動語態與情態動詞"
+  }
+]
