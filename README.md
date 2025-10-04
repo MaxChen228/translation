@@ -33,8 +33,8 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 
 ## 環境變數
 - `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要，擇一即可）。
-- `GEMINI_MODEL`：預設模型名稱（預設 `gemini-2.5-flash`）。
-- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設為 `gemini-2.5-pro, gemini-2.5-flash, gemini-2.5-flash-lite`）。
+- `GEMINI_MODEL`：預設模型名稱（預設 `gemini-2.5-flash-preview-09-2025`）。可使用 `-latest` 別名自動使用最新版本（如 `gemini-flash-latest`、`gemini-flash-lite-latest`）。
+- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設包含 `gemini-2.5-pro`、`gemini-2.5-flash`、`gemini-2.5-flash-preview-09-2025`、`gemini-flash-latest`、`gemini-2.5-flash-lite`、`gemini-2.5-flash-lite-preview-09-2025`、`gemini-flash-lite-latest`）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
 - `USAGE_DB_PATH`：LLM 用量統計的 SQLite 檔案路徑（預設 `data/usage.db`，若只使用 Postgres 可忽略）。
 - `USAGE_DB_URL`：可選的 Postgres 連線字串；設定後會改寫 `/usage/llm*` 紀錄至該資料庫，`USAGE_DB_PATH` 仍保留作為本機備援。

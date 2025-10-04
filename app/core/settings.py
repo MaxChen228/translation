@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     GOOGLE_API_KEY: Optional[str] = None
 
     # Model selection
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    GEMINI_MODEL: str = "gemini-2.5-flash-preview-09-2025"
     ALLOWED_MODELS: Optional[str] = Field(default=None, description="Comma separated allow-list")
 
     # Generation configuration
@@ -51,7 +51,15 @@ class Settings(BaseSettings):
     def allowed_models_set(self) -> Set[str]:
         raw = (self.ALLOWED_MODELS or "").strip()
         if not raw:
-            return {"gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite"}
+            return {
+                "gemini-2.5-pro",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-preview-09-2025",
+                "gemini-flash-latest",
+                "gemini-2.5-flash-lite",
+                "gemini-2.5-flash-lite-preview-09-2025",
+                "gemini-flash-lite-latest",
+            }
         return {m.strip() for m in raw.split(",") if m.strip()}
 
     def generation_config(self) -> Dict[str, object]:
