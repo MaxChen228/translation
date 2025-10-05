@@ -1,62 +1,2015 @@
 [
   {
     "name": "永續能源政策聽證會摘要",
-    "tags": ["environment", "result"],
+    "tags": [
+      "environment",
+      "result"
+    ],
     "description": "回顧國會對再生能源配額與補助的討論"
   },
   {
     "name": "新創公司 A 輪募資簡報片段",
-    "tags": ["business", "purpose"],
+    "tags": [
+      "business",
+      "purpose"
+    ],
     "description": "說服投資人產品如何擴張與獲利"
   },
   {
     "name": "生技新藥臨床試驗週報",
-    "tags": ["health", "academic"],
+    "tags": [
+      "health",
+      "academic"
+    ],
     "description": "向醫療監管單位回報第二期試驗進度"
   },
   {
     "name": "跨國遠端團隊季度績效檢討",
-    "tags": ["career", "result"],
+    "tags": [
+      "career",
+      "result"
+    ],
     "description": "主管追蹤專案里程碑並分配後續任務"
   },
   {
     "name": "文化觀光節宣傳策略會議",
-    "tags": ["culture", "travel"],
+    "tags": [
+      "culture",
+      "travel"
+    ],
     "description": "提出吸引國際旅客的活動亮點"
   },
   {
     "name": "AI 模型倫理審查委員會報告",
-    "tags": ["technology", "cause"],
+    "tags": [
+      "technology",
+      "cause"
+    ],
     "description": "說明資料偏誤風險與緩解措施"
   },
   {
     "name": "社會企業募資直播口播稿",
-    "tags": ["social", "purpose"],
+    "tags": [
+      "social",
+      "purpose"
+    ],
     "description": "向大眾說明專案影響力與捐款用途"
   },
   {
     "name": "極端氣候災害應變簡報",
-    "tags": ["environment", "warning"],
+    "tags": [
+      "environment",
+      "warning"
+    ],
     "description": "提出城市洪水的緊急動員方案"
   },
   {
     "name": "產品使用者體驗調查報告",
-    "tags": ["business", "personal"],
+    "tags": [
+      "business",
+      "personal"
+    ],
     "description": "匯整消費者痛點並提出優先改善項目"
   },
   {
     "name": "國際學術研討會開幕致詞",
-    "tags": ["academic", "opinion"],
+    "tags": [
+      "academic",
+      "opinion"
+    ],
     "description": "設定論壇主題並感謝合作夥伴"
   },
   {
     "name": "智慧農業合作備忘錄草案",
-    "tags": ["technology", "business"],
+    "tags": [
+      "technology",
+      "business"
+    ],
     "description": "描述跨國農業科技導入的合作條款"
   },
   {
     "name": "城市交通轉型政策白皮書摘要",
-    "tags": ["environment", "necessity"],
+    "tags": [
+      "environment",
+      "necessity"
+    ],
     "description": "提出公共運輸與減碳的長期規畫"
+  },
+  {
+    "name": "遠端事故協調會議紀要",
+    "tags": [
+      "technology",
+      "business",
+      "result"
+    ],
+    "description": "跨時區團隊同步線上服務異常的診斷、決策與追蹤事項。"
+  },
+  {
+    "name": "臨床試驗風險監測週報",
+    "tags": [
+      "health",
+      "academic",
+      "necessity"
+    ],
+    "description": "彙整臨床研究的指標、潛在不良反應與後續試驗調整建議。"
+  },
+  {
+    "name": "公共政策白皮書諮詢論壇",
+    "tags": [
+      "environment",
+      "business",
+      "opinion"
+    ],
+    "description": "蒐集利害關係人對永續或基礎建設政策草案的評論與提案。"
+  },
+  {
+    "name": "跨校合作課程工作坊",
+    "tags": [
+      "education",
+      "invitation",
+      "purpose"
+    ],
+    "description": "邀請姊妹校教師共同規劃課程內容、教學流程與評量方式。"
+  },
+  {
+    "name": "社區防災演練動員",
+    "tags": [
+      "social",
+      "warning",
+      "daily-life"
+    ],
+    "description": "通知居民整備物資、集合時間與演練流程，提升緊急應變能力。"
+  },
+  {
+    "name": "ESG 年度成果簡報",
+    "tags": [
+      "business",
+      "result",
+      "opinion"
+    ],
+    "description": "向董事會與投資人報告企業永續目標、指標追蹤與改進計畫。"
+  },
+  {
+    "name": "雲端內容審核例會",
+    "tags": [
+      "technology",
+      "cause",
+      "result"
+    ],
+    "description": "檢視用戶回報與審核決策，協調跨部門處理流程與政策更新。"
+  },
+  {
+    "name": "多語文化節宣傳企劃",
+    "tags": [
+      "culture",
+      "travel",
+      "purpose"
+    ],
+    "description": "規劃文化活動亮點、語言版本與宣傳管道，吸引國際旅客參與。"
+  },
+  {
+    "name": "家庭照護排班協調",
+    "tags": [
+      "family",
+      "daily-life",
+      "necessity"
+    ],
+    "description": "家族成員或看護討論長者照護時段、備品需求與緊急聯絡安排。"
+  },
+  {
+    "name": "親師座談共備會議",
+    "tags": [
+      "education",
+      "relationship",
+      "opinion"
+    ],
+    "description": "家長與老師彙整學習觀察、商量課堂調整與後續支援。"
+  },
+  {
+    "name": "週末社區影展策劃",
+    "tags": [
+      "entertainment",
+      "social",
+      "purpose"
+    ],
+    "description": "討論影片挑選、戶外放映設備與鄰里宣傳管道的企劃會。"
+  },
+  {
+    "name": "節慶市集美食宣傳",
+    "tags": [
+      "food",
+      "travel",
+      "purpose"
+    ],
+    "description": "介紹當地料理攤位、體驗活動與交通資訊，吸引旅客造訪。"
+  },
+  {
+    "name": "遠距伴侶生活筆記",
+    "tags": [
+      "relationship",
+      "personal",
+      "daily-life"
+    ],
+    "description": "記錄情侶透過線上同步日程、共享家務與維繫感情的方式。"
+  },
+  {
+    "name": "校園社團成果展準備",
+    "tags": [
+      "education",
+      "daily-life",
+      "purpose"
+    ],
+    "description": "學生規劃展區動線、主持稿與志工輪班以呈現學期成果。"
+  },
+  {
+    "name": "青少年運動訓練營籌備",
+    "tags": [
+      "sports",
+      "education",
+      "purpose"
+    ],
+    "description": "教練與志工規劃暑期訓練營的課程排程、器材準備與家長說明。"
+  },
+  {
+    "name": "公益音樂節舞台調度",
+    "tags": [
+      "entertainment",
+      "social",
+      "result"
+    ],
+    "description": "策展團隊協調表演者彩排、舞台換場與捐款宣傳時段。"
+  },
+  {
+    "name": "背包客跨城交通攻略",
+    "tags": [
+      "travel",
+      "daily-life",
+      "advice"
+    ],
+    "description": "分享背包客如何結合大眾運輸與在地資源完成多日行程。"
+  },
+  {
+    "name": "青年創客市集宣傳會",
+    "tags": [
+      "business",
+      "entertainment",
+      "purpose"
+    ],
+    "description": "討論攤位故事、現場體驗與線上宣傳腳本，吸引年輕族群。"
+  },
+  {
+    "name": "研究所論文口試模擬",
+    "tags": [
+      "academic",
+      "opinion",
+      "result"
+    ],
+    "description": "指導教授與同儕模擬論文答辯，演練提問、回應與時間掌控。"
+  },
+  {
+    "name": "社區健康推廣工作坊",
+    "tags": [
+      "health",
+      "social",
+      "purpose"
+    ],
+    "description": "衛生所與志工規劃健康講座、檢測站與後續追蹤計畫。"
+  },
+  {
+    "name": "非營利財務稽核回顧會",
+    "tags": [
+      "business",
+      "money",
+      "necessity"
+    ],
+    "description": "財務與專案團隊檢視年度支出、捐款運用與改善建議。"
+  },
+  {
+    "name": "跨文化博物館導覽培訓",
+    "tags": [
+      "culture",
+      "education",
+      "purpose"
+    ],
+    "description": "為導覽志工提供跨語種腳本、故事線與互動技巧訓練。"
+  },
+  {
+    "name": "資料隱私法遵循簡報",
+    "tags": [
+      "business",
+      "cause",
+      "necessity"
+    ],
+    "description": "資訊安全團隊向主管報告個資保護政策、風險控管與補救措施。"
+  },
+  {
+    "name": "語法工作坊課程設計會議",
+    "tags": [
+      "grammar",
+      "education",
+      "purpose"
+    ],
+    "description": "教師團隊規劃語法教學單元、教材範例與評量 rubrics。"
+  },
+  {
+    "name": "跨部門流程優化檢討",
+    "tags": [
+      "business",
+      "result",
+      "process"
+    ],
+    "description": "營運、客服與技術部門檢視工作流程瓶頸與改善方案。"
+  },
+  {
+    "name": "客戶旅程數據洞察簡報",
+    "tags": [
+      "business",
+      "technology",
+      "result"
+    ],
+    "description": "數據分析師向行銷與產品團隊分享客戶行為洞察與實驗結果。"
+  },
+  {
+    "name": "條件備援演練回顧會",
+    "tags": [
+      "conditional",
+      "technology",
+      "warning"
+    ],
+    "description": "SRE 與營運團隊檢討故障演練情境、觸發條件與改進措施。"
+  },
+  {
+    "name": "客戶請求流程檢討會",
+    "tags": [
+      "request",
+      "business",
+      "result"
+    ],
+    "description": "客服與產品團隊回顧請求處理效率、資訊收集 SOP 與改善方向。"
+  },
+  {
+    "name": "專案里程碑成果分享",
+    "tags": [
+      "present-perfect",
+      "business",
+      "result"
+    ],
+    "description": "專案團隊向利害關係人報告已完成的里程碑與後續計畫。"
+  },
+  {
+    "name": "倒裝句型教學共備",
+    "tags": [
+      "inversion",
+      "education",
+      "grammar"
+    ],
+    "description": "語文教師討論倒裝句教學案例、常見錯誤與練習設計。"
+  },
+  {
+    "name": "分詞與動名詞應用工作坊",
+    "tags": [
+      "gerund",
+      "education",
+      "grammar"
+    ],
+    "description": "研討動名詞與分詞在報導寫作、簡報中的實例與練習活動。"
+  },
+  {
+    "name": "假設語氣重點研習會",
+    "tags": [
+      "subjunctive",
+      "education",
+      "grammar"
+    ],
+    "description": "整理虛擬語氣在商務簡報、政策備忘錄中的用法與示例。"
+  },
+  {
+    "name": "關係子句寫作練習",
+    "tags": [
+      "relative-clause",
+      "education",
+      "grammar"
+    ],
+    "description": "學習如何以非限制性 / 限制性關係子句補充資訊與編修句子。"
+  },
+  {
+    "name": "比較級語氣行銷提案會",
+    "tags": [
+      "comparative",
+      "business",
+      "grammar"
+    ],
+    "description": "行銷團隊練習使用比較級與對比句，凸顯產品優勢。"
+  },
+  {
+    "name": "副詞子句連接詞應用討論",
+    "tags": [
+      "adverb-clause",
+      "education",
+      "grammar"
+    ],
+    "description": "教師與學員練習用 while、whereas、as soon as 等連接詞書寫段落。"
+  },
+  {
+    "name": "團隊例行站立會議筆記",
+    "tags": [
+      "present-simple",
+      "business",
+      "daily-life"
+    ],
+    "description": "記錄每日站會的固定流程、阻礙與待跟進項目。"
+  },
+  {
+    "name": "備援方案目的確認會",
+    "tags": [
+      "so-that",
+      "technology",
+      "purpose"
+    ],
+    "description": "工程團隊檢視備援設計，確認 so that 子句描述的預期效果是否到位。"
+  },
+  {
+    "name": "被動語態合規報告會",
+    "tags": [
+      "passive",
+      "business",
+      "necessity"
+    ],
+    "description": "法務與營運檢視政策公告、合規聲明的被動語態撰寫。"
+  },
+  {
+    "name": "分詞修飾寫作練習",
+    "tags": [
+      "participle",
+      "education",
+      "grammar"
+    ],
+    "description": "專注於現在/過去分詞修飾語在報導與簡報中的使用。"
+  },
+  {
+    "name": "環境影響評估公開說明會",
+    "tags": [
+      "environment",
+      "cause",
+      "opinion"
+    ],
+    "description": "向居民解釋建設案的環境影響評估、緩解措施與意見表達管道。"
+  },
+  {
+    "name": "資料保留政策審查會議",
+    "tags": [
+      "business",
+      "cause",
+      "as-clause"
+    ],
+    "description": "資訊治理團隊說明 as long as/as soon as 等條款對資料保留政策的影響。"
+  },
+  {
+    "name": "強調語氣文案研討",
+    "tags": [
+      "emphasis",
+      "business",
+      "grammar"
+    ],
+    "description": "行銷與客服團隊練習使用 do/does/did 強調語氣與對比句。"
+  },
+  {
+    "name": "災害應變跨單位模擬",
+    "tags": [
+      "conditional",
+      "environment",
+      "warning"
+    ],
+    "description": "緊急應變小組根據 if/should 條件演練多種災害情境與回報流程。"
+  },
+  {
+    "name": "家庭支持方案諮詢會",
+    "tags": [
+      "family",
+      "social",
+      "purpose"
+    ],
+    "description": "社福單位與家庭討論照護資源、補助與社區支援方案。"
+  },
+  {
+    "name": "運動表現數據分析會",
+    "tags": [
+      "sports",
+      "result",
+      "technology"
+    ],
+    "description": "教練與分析師檢視運動員追蹤數據、調整訓練指標。"
+  },
+  {
+    "name": "法律合約語句審查",
+    "tags": [
+      "business",
+      "cause",
+      "legal"
+    ],
+    "description": "法務團隊檢視合約條款的被動語態、條件句與責任界定。"
+  },
+  {
+    "name": "節目製作排程會議",
+    "tags": [
+      "entertainment",
+      "process",
+      "daily-life"
+    ],
+    "description": "製作人與技術團隊協調拍攝時程、場景調度與後製時間表。"
+  },
+  {
+    "name": "文化交流志工培訓",
+    "tags": [
+      "culture",
+      "education",
+      "purpose"
+    ],
+    "description": "志工學習跨文化導覽禮儀、語言要點與互動活動設計。"
+  },
+  {
+    "name": "家庭健康復健諮詢",
+    "tags": [
+      "family",
+      "health",
+      "result"
+    ],
+    "description": "物理治療師與家屬討論復健進度、家庭支持與下一階段目標。"
+  },
+  {
+    "name": "運動傷害復原跟進會",
+    "tags": [
+      "sports",
+      "health",
+      "result"
+    ],
+    "description": "教練與醫療團隊檢視運動員的復原數據與重返訓練計畫。"
+  },
+  {
+    "name": "永續發展年度回顧",
+    "tags": [
+      "environment",
+      "business",
+      "result"
+    ],
+    "description": "公司檢視年度永續指標、減碳成效與下一步承諾。"
+  },
+  {
+    "name": "研究實驗室週報會議",
+    "tags": [
+      "academic",
+      "present-perfect",
+      "result"
+    ],
+    "description": "研究團隊分享實驗進度、數據更新與待解決問題。"
+  },
+  {
+    "name": "企業財務月結檢討",
+    "tags": [
+      "business",
+      "money",
+      "process"
+    ],
+    "description": "財務、會計與營運團隊檢視月結報表、異常與改善計畫。"
+  },
+  {
+    "name": "品牌行銷代言提案會",
+    "tags": [
+      "entertainment",
+      "business",
+      "purpose"
+    ],
+    "description": "行銷團隊向藝人經紀公司提案合作內容與 KPI。"
+  },
+  {
+    "name": "運動賽事策略會議",
+    "tags": [
+      "sports",
+      "result",
+      "strategy"
+    ],
+    "description": "教練與分析師為賽事制定策略、調整陣容與對手分析。"
+  },
+  {
+    "name": "跨國法規遵循同步會",
+    "tags": [
+      "legal",
+      "cause",
+      "process"
+    ],
+    "description": "法務與產品團隊同步各市場法規更新與產品調整。"
+  },
+  {
+    "name": "職涯發展諮詢日",
+    "tags": [
+      "career",
+      "present-simple",
+      "purpose"
+    ],
+    "description": "人資與同仁討論職涯發展、培訓計畫與年度目標。"
+  },
+  {
+    "name": "產品路線圖規畫會",
+    "tags": [
+      "business",
+      "future-simple",
+      "result"
+    ],
+    "description": "產品、工程、行銷同步未來版本計畫與時間表。"
+  },
+  {
+    "name": "資料安全審核簡報",
+    "tags": [
+      "modal",
+      "legal",
+      "process"
+    ],
+    "description": "資安與法務報告必須遵守的安全與合規要求。"
+  },
+  {
+    "name": "語音導覽腳本工作坊",
+    "tags": [
+      "infinitive",
+      "culture",
+      "purpose"
+    ],
+    "description": "撰寫導覽腳本時練習 to-infinitive 用於目的與建議。"
+  },
+  {
+    "name": "研究計畫書評審會",
+    "tags": [
+      "academic",
+      "subjunctive",
+      "result"
+    ],
+    "description": "委員審查研究計畫書，提出 It is essential that... 等建議。"
+  },
+  {
+    "name": "跨國合作備忘錄審閱會",
+    "tags": [
+      "relative-clause",
+      "legal",
+      "result"
+    ],
+    "description": "法務與專案團隊檢視國際合作備忘錄，調整 who/which/that 等條款描述。"
+  },
+  {
+    "name": "創意寫作靈感日誌分享",
+    "tags": [
+      "gerund",
+      "entertainment",
+      "purpose"
+    ],
+    "description": "寫作者互相分享 using/keeping/collecting 等動名詞開頭的靈感筆記與寫作習慣。"
+  },
+  {
+    "name": "永續目標預測檢討會",
+    "tags": [
+      "future-perfect",
+      "environment",
+      "business"
+    ],
+    "description": "永續團隊評估在特定年份前將完成的承諾與指標。"
+  },
+  {
+    "name": "品牌危機溝通演練",
+    "tags": [
+      "emphasis",
+      "business",
+      "warning"
+    ],
+    "description": "公關團隊練習使用 do/does/did 強調承諾與回應策略。"
+  },
+  {
+    "name": "長期計畫條件檢視會",
+    "tags": [
+      "as-long-as",
+      "business",
+      "result"
+    ],
+    "description": "專案團隊確認只要條件成立（as long as）即可持續的資源與承諾。"
+  },
+  {
+    "name": "家庭照護危機演練",
+    "tags": [
+      "had-better",
+      "family",
+      "warning"
+    ],
+    "description": "照護成員討論緊急狀況下必須採取的行動與提醒。"
+  },
+  {
+    "name": "雙選題決策工作坊",
+    "tags": [
+      "either-or",
+      "education",
+      "purpose"
+    ],
+    "description": "協助團隊在 either...or 情境下快速做出決策的練習。"
+  },
+  {
+    "name": "精英運動員賽後分析會",
+    "tags": [
+      "sports",
+      "result",
+      "analysis"
+    ],
+    "description": "教練團與分析師檢視高階賽事的表現、恢復與下一步。"
+  },
+  {
+    "name": "數位產品法律稽核回覆會",
+    "tags": [
+      "legal",
+      "process",
+      "warning"
+    ],
+    "description": "法務與產品團隊回覆監管單位的稽核要求與改善計畫。"
+  },
+  {
+    "name": "危機溝通語氣校對會",
+    "tags": [
+      "emphasis",
+      "business",
+      "warning"
+    ],
+    "description": "公關團隊校對危機聲明，檢查 do/does/did 強調語氣與實際行動一致性。"
+  },
+  {
+    "name": "家庭長期照護規畫會",
+    "tags": [
+      "family",
+      "health",
+      "result"
+    ],
+    "description": "照護團隊與家屬規劃多階段照護、復健與資源配置。"
+  },
+  {
+    "name": "國際賽季戰略制定會",
+    "tags": [
+      "sports",
+      "strategy",
+      "future-perfect"
+    ],
+    "description": "教練與管理團隊制定賽季策略與未來達標計畫。"
+  },
+  {
+    "name": "智慧醫療合規會議",
+    "tags": [
+      "legal",
+      "health",
+      "process"
+    ],
+    "description": "法務與醫療團隊討論數位健康產品的法規要求與風險控管。"
+  },
+  {
+    "name": "娛樂合約條款談判",
+    "tags": [
+      "entertainment",
+      "legal",
+      "business"
+    ],
+    "description": "經紀公司與品牌協商代言條款、權利與付款里程碑。"
+  },
+  {
+    "name": "質性研究焦點團主持會",
+    "tags": [
+      "academic",
+      "analysis",
+      "present-simple"
+    ],
+    "description": "研究團隊規劃焦點團訪談腳本、倫理注意事項與分析架構。"
+  },
+  {
+    "name": "家庭財產信託諮詢會",
+    "tags": [
+      "family",
+      "legal",
+      "purpose"
+    ],
+    "description": "家族與法律顧問討論財產信託、照護安排與遺產規畫。"
+  },
+  {
+    "name": "娛樂公關危機日追蹤",
+    "tags": [
+      "entertainment",
+      "emphasis",
+      "warning"
+    ],
+    "description": "公關團隊每日追蹤危機處理進度與媒體回應策略。"
+  },
+  {
+    "name": "運動醫學研究進度會",
+    "tags": [
+      "sports",
+      "health",
+      "present-perfect"
+    ],
+    "description": "運動醫學團隊更新研究成果、康復數據與後續計畫。"
+  },
+  {
+    "name": "金融風險壓力測試會",
+    "tags": [
+      "business",
+      "money",
+      "analysis"
+    ],
+    "description": "金融與風控團隊檢視壓力測試結果與資本需求。"
+  },
+  {
+    "name": "家庭照護能力追蹤小組",
+    "tags": [
+      "ability",
+      "personal",
+      "health"
+    ],
+    "description": "家人與護理師定期檢視長者生活自理能力、復健進度與支援安排。"
+  },
+  {
+    "name": "社區活動延期致歉說明會",
+    "tags": [
+      "apology",
+      "social",
+      "culture"
+    ],
+    "description": "籌備團隊向居民說明活動延後原因、補救措施與重新排程。"
+  },
+  {
+    "name": "志工權限與安全訓練課",
+    "tags": [
+      "permission",
+      "prohibition",
+      "social"
+    ],
+    "description": "建立志工任務邊界、借用流程與禁止事項，確保服務安全。"
+  },
+  {
+    "name": "遠距實驗課同步排演",
+    "tags": [
+      "present-continuous",
+      "education",
+      "technology"
+    ],
+    "description": "教師與助教排練即時連線、示範步驟與學生互動分工。"
+  },
+  {
+    "name": "青春成長遺憾分享圈",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "description": "青少年彼此分享未完成的目標、調整計畫與支持資源。"
+  },
+  {
+    "name": "登山行程即時應變檢討",
+    "tags": [
+      "as-soon-as",
+      "travel",
+      "warning"
+    ],
+    "description": "山社回顧突發天候時如何立即調整路線與通報安排。"
+  },
+  {
+    "name": "強調句寫作練習會",
+    "tags": [
+      "cleft",
+      "grammar",
+      "academic"
+    ],
+    "description": "寫作教師帶領學生運用 It is ... that 結構凸顯關鍵資訊。"
+  },
+  {
+    "name": "Too...to 說服寫作坊",
+    "tags": [
+      "too-to",
+      "education",
+      "purpose"
+    ],
+    "description": "探討如何用 too...to 描述限制並提出替代方案。"
+  },
+  {
+    "name": "As...as 比較修辭共備",
+    "tags": [
+      "as-adjective-as",
+      "education",
+      "comparative"
+    ],
+    "description": "設計比較句例子，討論如何平衡正反面敘述。"
+  },
+  {
+    "name": "沿海保育範圍界定會",
+    "tags": [
+      "as-far-as",
+      "environment",
+      "purpose"
+    ],
+    "description": "專家協調保護區界線、監測據點與巡護範圍。"
+  },
+  {
+    "name": "偏鄉服務可行性評估會",
+    "tags": [
+      "possibility",
+      "social",
+      "result"
+    ],
+    "description": "團隊評估資源可行性、合作夥伴與啟動條件。"
+  },
+  {
+    "name": "社區提案建議論壇",
+    "tags": [
+      "suggestion",
+      "social",
+      "purpose"
+    ],
+    "description": "居民提出改善建議，整併為正式提案。"
+  },
+  {
+    "name": "客製餐飲喜好調查會",
+    "tags": [
+      "preference",
+      "food",
+      "personal"
+    ],
+    "description": "餐飲團隊蒐集顧客偏好、飲食禁忌與菜單測試結果。"
+  },
+  {
+    "name": "敘事重建工作坊",
+    "tags": [
+      "past-perfect",
+      "academic",
+      "complex-sentence"
+    ],
+    "description": "透過事故案例練習過去完成式敘述與事件時間線。"
+  },
+  {
+    "name": "歷史導覽排練工作坊",
+    "tags": [
+      "past-simple",
+      "culture",
+      "education"
+    ],
+    "description": "導覽員練習使用過去簡單式呈現史事與人物。"
+  },
+  {
+    "name": "非限制關係子句故事設計",
+    "tags": [
+      "noun-clause",
+      "education",
+      "complex-sentence"
+    ],
+    "description": "以故事板方式練習補充資訊的關係子句與名詞子句。"
+  },
+  {
+    "name": "越投入越收穫策略討論",
+    "tags": [
+      "the-more-the-more",
+      "environment",
+      "result"
+    ],
+    "description": "討論環境行動投入與成果累積的正向循環。"
+  },
+  {
+    "name": "學生選修意願圓桌",
+    "tags": [
+      "would-rather",
+      "preference",
+      "education"
+    ],
+    "description": "學生分享寧願選擇的課程與學習路徑。"
+  },
+  {
+    "name": "安全標準如此嚴格檢討",
+    "tags": [
+      "such-that",
+      "health",
+      "necessity"
+    ],
+    "description": "醫療團隊檢視安全標準嚴格到產生的影響與調整策略。"
+  },
+  {
+    "name": "倒裝句情境案例 2",
+    "tags": [
+      "inversion",
+      "workshop",
+      "planning"
+    ],
+    "description": "演練緊急通報或強調重點時運用倒裝結構，討論語氣與資訊排序。"
+  },
+  {
+    "name": "倒裝句情境案例 3",
+    "tags": [
+      "inversion",
+      "workshop",
+      "planning"
+    ],
+    "description": "演練緊急通報或強調重點時運用倒裝結構，討論語氣與資訊排序。"
+  },
+  {
+    "name": "倒裝句情境案例 4",
+    "tags": [
+      "inversion",
+      "workshop",
+      "planning"
+    ],
+    "description": "演練緊急通報或強調重點時運用倒裝結構，討論語氣與資訊排序。"
+  },
+  {
+    "name": "倒裝句情境案例 5",
+    "tags": [
+      "inversion",
+      "workshop",
+      "planning"
+    ],
+    "description": "演練緊急通報或強調重點時運用倒裝結構，討論語氣與資訊排序。"
+  },
+  {
+    "name": "倒裝句情境案例 6",
+    "tags": [
+      "inversion",
+      "workshop",
+      "planning"
+    ],
+    "description": "演練緊急通報或強調重點時運用倒裝結構，討論語氣與資訊排序。"
+  },
+  {
+    "name": "倒裝句情境案例 7",
+    "tags": [
+      "inversion",
+      "workshop",
+      "planning"
+    ],
+    "description": "演練緊急通報或強調重點時運用倒裝結構，討論語氣與資訊排序。"
+  },
+  {
+    "name": "請求流程協調會 2",
+    "tags": [
+      "request",
+      "workshop",
+      "planning"
+    ],
+    "description": "針對跨部門請求收集、資訊確認與回覆時程進行協作調整。"
+  },
+  {
+    "name": "請求流程協調會 3",
+    "tags": [
+      "request",
+      "workshop",
+      "planning"
+    ],
+    "description": "針對跨部門請求收集、資訊確認與回覆時程進行協作調整。"
+  },
+  {
+    "name": "請求流程協調會 4",
+    "tags": [
+      "request",
+      "workshop",
+      "planning"
+    ],
+    "description": "針對跨部門請求收集、資訊確認與回覆時程進行協作調整。"
+  },
+  {
+    "name": "請求流程協調會 5",
+    "tags": [
+      "request",
+      "workshop",
+      "planning"
+    ],
+    "description": "針對跨部門請求收集、資訊確認與回覆時程進行協作調整。"
+  },
+  {
+    "name": "請求流程協調會 6",
+    "tags": [
+      "request",
+      "workshop",
+      "planning"
+    ],
+    "description": "針對跨部門請求收集、資訊確認與回覆時程進行協作調整。"
+  },
+  {
+    "name": "請求流程協調會 7",
+    "tags": [
+      "request",
+      "workshop",
+      "planning"
+    ],
+    "description": "針對跨部門請求收集、資訊確認與回覆時程進行協作調整。"
+  },
+  {
+    "name": "副詞子句寫作共備 2",
+    "tags": [
+      "adverb-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "教師共備如何用時間與原因子句提升文章流暢度與連結。"
+  },
+  {
+    "name": "副詞子句寫作共備 3",
+    "tags": [
+      "adverb-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "教師共備如何用時間與原因子句提升文章流暢度與連結。"
+  },
+  {
+    "name": "副詞子句寫作共備 4",
+    "tags": [
+      "adverb-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "教師共備如何用時間與原因子句提升文章流暢度與連結。"
+  },
+  {
+    "name": "副詞子句寫作共備 5",
+    "tags": [
+      "adverb-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "教師共備如何用時間與原因子句提升文章流暢度與連結。"
+  },
+  {
+    "name": "副詞子句寫作共備 6",
+    "tags": [
+      "adverb-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "教師共備如何用時間與原因子句提升文章流暢度與連結。"
+  },
+  {
+    "name": "副詞子句寫作共備 7",
+    "tags": [
+      "adverb-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "教師共備如何用時間與原因子句提升文章流暢度與連結。"
+  },
+  {
+    "name": "So that 目的設計工作坊 2",
+    "tags": [
+      "so-that",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析行銷／教育文案如何使用 so that 強調目的與預期成效。"
+  },
+  {
+    "name": "So that 目的設計工作坊 3",
+    "tags": [
+      "so-that",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析行銷／教育文案如何使用 so that 強調目的與預期成效。"
+  },
+  {
+    "name": "So that 目的設計工作坊 4",
+    "tags": [
+      "so-that",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析行銷／教育文案如何使用 so that 強調目的與預期成效。"
+  },
+  {
+    "name": "So that 目的設計工作坊 5",
+    "tags": [
+      "so-that",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析行銷／教育文案如何使用 so that 強調目的與預期成效。"
+  },
+  {
+    "name": "So that 目的設計工作坊 6",
+    "tags": [
+      "so-that",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析行銷／教育文案如何使用 so that 強調目的與預期成效。"
+  },
+  {
+    "name": "So that 目的設計工作坊 7",
+    "tags": [
+      "so-that",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析行銷／教育文案如何使用 so that 強調目的與預期成效。"
+  },
+  {
+    "name": "As 子句語氣研究會 2",
+    "tags": [
+      "as-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論 as 引導的時間、條件與對比子句在專業寫作中的用法。"
+  },
+  {
+    "name": "As 子句語氣研究會 3",
+    "tags": [
+      "as-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論 as 引導的時間、條件與對比子句在專業寫作中的用法。"
+  },
+  {
+    "name": "As 子句語氣研究會 4",
+    "tags": [
+      "as-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論 as 引導的時間、條件與對比子句在專業寫作中的用法。"
+  },
+  {
+    "name": "As 子句語氣研究會 5",
+    "tags": [
+      "as-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論 as 引導的時間、條件與對比子句在專業寫作中的用法。"
+  },
+  {
+    "name": "As 子句語氣研究會 6",
+    "tags": [
+      "as-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論 as 引導的時間、條件與對比子句在專業寫作中的用法。"
+  },
+  {
+    "name": "As 子句語氣研究會 7",
+    "tags": [
+      "as-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論 as 引導的時間、條件與對比子句在專業寫作中的用法。"
+  },
+  {
+    "name": "被動語態稽核會 2",
+    "tags": [
+      "passive",
+      "workshop",
+      "planning"
+    ],
+    "description": "流程治理團隊檢視 SOP 中被動語態使用是否清楚責任與期限。"
+  },
+  {
+    "name": "被動語態稽核會 3",
+    "tags": [
+      "passive",
+      "workshop",
+      "planning"
+    ],
+    "description": "流程治理團隊檢視 SOP 中被動語態使用是否清楚責任與期限。"
+  },
+  {
+    "name": "被動語態稽核會 4",
+    "tags": [
+      "passive",
+      "workshop",
+      "planning"
+    ],
+    "description": "流程治理團隊檢視 SOP 中被動語態使用是否清楚責任與期限。"
+  },
+  {
+    "name": "被動語態稽核會 5",
+    "tags": [
+      "passive",
+      "workshop",
+      "planning"
+    ],
+    "description": "流程治理團隊檢視 SOP 中被動語態使用是否清楚責任與期限。"
+  },
+  {
+    "name": "被動語態稽核會 6",
+    "tags": [
+      "passive",
+      "workshop",
+      "planning"
+    ],
+    "description": "流程治理團隊檢視 SOP 中被動語態使用是否清楚責任與期限。"
+  },
+  {
+    "name": "被動語態稽核會 7",
+    "tags": [
+      "passive",
+      "workshop",
+      "planning"
+    ],
+    "description": "流程治理團隊檢視 SOP 中被動語態使用是否清楚責任與期限。"
+  },
+  {
+    "name": "分詞構句排版設計 2",
+    "tags": [
+      "participle",
+      "workshop",
+      "planning"
+    ],
+    "description": "設計簡報與手冊時，調整分詞片語位置避免歧義。"
+  },
+  {
+    "name": "分詞構句排版設計 3",
+    "tags": [
+      "participle",
+      "workshop",
+      "planning"
+    ],
+    "description": "設計簡報與手冊時，調整分詞片語位置避免歧義。"
+  },
+  {
+    "name": "分詞構句排版設計 4",
+    "tags": [
+      "participle",
+      "workshop",
+      "planning"
+    ],
+    "description": "設計簡報與手冊時，調整分詞片語位置避免歧義。"
+  },
+  {
+    "name": "分詞構句排版設計 5",
+    "tags": [
+      "participle",
+      "workshop",
+      "planning"
+    ],
+    "description": "設計簡報與手冊時，調整分詞片語位置避免歧義。"
+  },
+  {
+    "name": "分詞構句排版設計 6",
+    "tags": [
+      "participle",
+      "workshop",
+      "planning"
+    ],
+    "description": "設計簡報與手冊時，調整分詞片語位置避免歧義。"
+  },
+  {
+    "name": "分詞構句排版設計 7",
+    "tags": [
+      "participle",
+      "workshop",
+      "planning"
+    ],
+    "description": "設計簡報與手冊時，調整分詞片語位置避免歧義。"
+  },
+  {
+    "name": "不定詞目的語氣共學 2",
+    "tags": [
+      "infinitive",
+      "workshop",
+      "planning"
+    ],
+    "description": "探討 to-infinitive 在提案與簡報中表達目標的技巧。"
+  },
+  {
+    "name": "不定詞目的語氣共學 3",
+    "tags": [
+      "infinitive",
+      "workshop",
+      "planning"
+    ],
+    "description": "探討 to-infinitive 在提案與簡報中表達目標的技巧。"
+  },
+  {
+    "name": "不定詞目的語氣共學 4",
+    "tags": [
+      "infinitive",
+      "workshop",
+      "planning"
+    ],
+    "description": "探討 to-infinitive 在提案與簡報中表達目標的技巧。"
+  },
+  {
+    "name": "不定詞目的語氣共學 5",
+    "tags": [
+      "infinitive",
+      "workshop",
+      "planning"
+    ],
+    "description": "探討 to-infinitive 在提案與簡報中表達目標的技巧。"
+  },
+  {
+    "name": "不定詞目的語氣共學 6",
+    "tags": [
+      "infinitive",
+      "workshop",
+      "planning"
+    ],
+    "description": "探討 to-infinitive 在提案與簡報中表達目標的技巧。"
+  },
+  {
+    "name": "不定詞目的語氣共學 7",
+    "tags": [
+      "infinitive",
+      "workshop",
+      "planning"
+    ],
+    "description": "探討 to-infinitive 在提案與簡報中表達目標的技巧。"
+  },
+  {
+    "name": "情態動詞政策研討 2",
+    "tags": [
+      "modal",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析 must/should/might 在規範與指南中的語氣強度。"
+  },
+  {
+    "name": "情態動詞政策研討 3",
+    "tags": [
+      "modal",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析 must/should/might 在規範與指南中的語氣強度。"
+  },
+  {
+    "name": "情態動詞政策研討 4",
+    "tags": [
+      "modal",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析 must/should/might 在規範與指南中的語氣強度。"
+  },
+  {
+    "name": "情態動詞政策研討 5",
+    "tags": [
+      "modal",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析 must/should/might 在規範與指南中的語氣強度。"
+  },
+  {
+    "name": "情態動詞政策研討 6",
+    "tags": [
+      "modal",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析 must/should/might 在規範與指南中的語氣強度。"
+  },
+  {
+    "name": "情態動詞政策研討 7",
+    "tags": [
+      "modal",
+      "workshop",
+      "planning"
+    ],
+    "description": "分析 must/should/might 在規範與指南中的語氣強度。"
+  },
+  {
+    "name": "未來式專案站會 2",
+    "tags": [
+      "future-simple",
+      "workshop",
+      "planning"
+    ],
+    "description": "專案團隊使用 will/shall 說明下一步與承諾的站立會。"
+  },
+  {
+    "name": "未來式專案站會 3",
+    "tags": [
+      "future-simple",
+      "workshop",
+      "planning"
+    ],
+    "description": "專案團隊使用 will/shall 說明下一步與承諾的站立會。"
+  },
+  {
+    "name": "未來式專案站會 4",
+    "tags": [
+      "future-simple",
+      "workshop",
+      "planning"
+    ],
+    "description": "專案團隊使用 will/shall 說明下一步與承諾的站立會。"
+  },
+  {
+    "name": "未來式專案站會 5",
+    "tags": [
+      "future-simple",
+      "workshop",
+      "planning"
+    ],
+    "description": "專案團隊使用 will/shall 說明下一步與承諾的站立會。"
+  },
+  {
+    "name": "未來式專案站會 6",
+    "tags": [
+      "future-simple",
+      "workshop",
+      "planning"
+    ],
+    "description": "專案團隊使用 will/shall 說明下一步與承諾的站立會。"
+  },
+  {
+    "name": "未來式專案站會 7",
+    "tags": [
+      "future-simple",
+      "workshop",
+      "planning"
+    ],
+    "description": "專案團隊使用 will/shall 說明下一步與承諾的站立會。"
+  },
+  {
+    "name": "強調句故事工作坊 2",
+    "tags": [
+      "cleft",
+      "workshop",
+      "planning"
+    ],
+    "description": "以 cleft sentence 強調關鍵角色或事件的敘事練習。"
+  },
+  {
+    "name": "強調句故事工作坊 3",
+    "tags": [
+      "cleft",
+      "workshop",
+      "planning"
+    ],
+    "description": "以 cleft sentence 強調關鍵角色或事件的敘事練習。"
+  },
+  {
+    "name": "強調句故事工作坊 4",
+    "tags": [
+      "cleft",
+      "workshop",
+      "planning"
+    ],
+    "description": "以 cleft sentence 強調關鍵角色或事件的敘事練習。"
+  },
+  {
+    "name": "強調句故事工作坊 5",
+    "tags": [
+      "cleft",
+      "workshop",
+      "planning"
+    ],
+    "description": "以 cleft sentence 強調關鍵角色或事件的敘事練習。"
+  },
+  {
+    "name": "強調句故事工作坊 6",
+    "tags": [
+      "cleft",
+      "workshop",
+      "planning"
+    ],
+    "description": "以 cleft sentence 強調關鍵角色或事件的敘事練習。"
+  },
+  {
+    "name": "強調句故事工作坊 7",
+    "tags": [
+      "cleft",
+      "workshop",
+      "planning"
+    ],
+    "description": "以 cleft sentence 強調關鍵角色或事件的敘事練習。"
+  },
+  {
+    "name": "遺憾復盤分享圈 2",
+    "tags": [
+      "regret",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊回顧專案遺憾並擬定修正行動，練習 If only / wish 句型。"
+  },
+  {
+    "name": "遺憾復盤分享圈 3",
+    "tags": [
+      "regret",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊回顧專案遺憾並擬定修正行動，練習 If only / wish 句型。"
+  },
+  {
+    "name": "遺憾復盤分享圈 4",
+    "tags": [
+      "regret",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊回顧專案遺憾並擬定修正行動，練習 If only / wish 句型。"
+  },
+  {
+    "name": "遺憾復盤分享圈 5",
+    "tags": [
+      "regret",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊回顧專案遺憾並擬定修正行動，練習 If only / wish 句型。"
+  },
+  {
+    "name": "遺憾復盤分享圈 6",
+    "tags": [
+      "regret",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊回顧專案遺憾並擬定修正行動，練習 If only / wish 句型。"
+  },
+  {
+    "name": "遺憾復盤分享圈 7",
+    "tags": [
+      "regret",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊回顧專案遺憾並擬定修正行動，練習 If only / wish 句型。"
+  },
+  {
+    "name": "建議系統提案評審 2",
+    "tags": [
+      "advice",
+      "workshop",
+      "planning"
+    ],
+    "description": "評估社區／產品建議的可行性與優先順序，討論建議語氣。"
+  },
+  {
+    "name": "建議系統提案評審 3",
+    "tags": [
+      "advice",
+      "workshop",
+      "planning"
+    ],
+    "description": "評估社區／產品建議的可行性與優先順序，討論建議語氣。"
+  },
+  {
+    "name": "建議系統提案評審 4",
+    "tags": [
+      "advice",
+      "workshop",
+      "planning"
+    ],
+    "description": "評估社區／產品建議的可行性與優先順序，討論建議語氣。"
+  },
+  {
+    "name": "建議系統提案評審 5",
+    "tags": [
+      "advice",
+      "workshop",
+      "planning"
+    ],
+    "description": "評估社區／產品建議的可行性與優先順序，討論建議語氣。"
+  },
+  {
+    "name": "建議系統提案評審 6",
+    "tags": [
+      "advice",
+      "workshop",
+      "planning"
+    ],
+    "description": "評估社區／產品建議的可行性與優先順序，討論建議語氣。"
+  },
+  {
+    "name": "建議系統提案評審 7",
+    "tags": [
+      "advice",
+      "workshop",
+      "planning"
+    ],
+    "description": "評估社區／產品建議的可行性與優先順序，討論建議語氣。"
+  },
+  {
+    "name": "名詞子句資料彙整 2",
+    "tags": [
+      "noun-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "在研究報告中練習 that/wh- 名詞子句作主語或受詞。"
+  },
+  {
+    "name": "名詞子句資料彙整 3",
+    "tags": [
+      "noun-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "在研究報告中練習 that/wh- 名詞子句作主語或受詞。"
+  },
+  {
+    "name": "名詞子句資料彙整 4",
+    "tags": [
+      "noun-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "在研究報告中練習 that/wh- 名詞子句作主語或受詞。"
+  },
+  {
+    "name": "名詞子句資料彙整 5",
+    "tags": [
+      "noun-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "在研究報告中練習 that/wh- 名詞子句作主語或受詞。"
+  },
+  {
+    "name": "名詞子句資料彙整 6",
+    "tags": [
+      "noun-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "在研究報告中練習 that/wh- 名詞子句作主語或受詞。"
+  },
+  {
+    "name": "名詞子句資料彙整 7",
+    "tags": [
+      "noun-clause",
+      "workshop",
+      "planning"
+    ],
+    "description": "在研究報告中練習 that/wh- 名詞子句作主語或受詞。"
+  },
+  {
+    "name": "進行式進度更新會 2",
+    "tags": [
+      "present-continuous",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊即時分享正在進行的任務、阻礙與臨時調整。"
+  },
+  {
+    "name": "進行式進度更新會 3",
+    "tags": [
+      "present-continuous",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊即時分享正在進行的任務、阻礙與臨時調整。"
+  },
+  {
+    "name": "進行式進度更新會 4",
+    "tags": [
+      "present-continuous",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊即時分享正在進行的任務、阻礙與臨時調整。"
+  },
+  {
+    "name": "進行式進度更新會 5",
+    "tags": [
+      "present-continuous",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊即時分享正在進行的任務、阻礙與臨時調整。"
+  },
+  {
+    "name": "進行式進度更新會 6",
+    "tags": [
+      "present-continuous",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊即時分享正在進行的任務、阻礙與臨時調整。"
+  },
+  {
+    "name": "進行式進度更新會 7",
+    "tags": [
+      "present-continuous",
+      "workshop",
+      "planning"
+    ],
+    "description": "團隊即時分享正在進行的任務、阻礙與臨時調整。"
+  },
+  {
+    "name": "提案建議共創坊 2",
+    "tags": [
+      "suggestion",
+      "workshop",
+      "planning"
+    ],
+    "description": "居民、員工共同提出改善建議並分類歸檔，練習建議語氣。"
+  },
+  {
+    "name": "提案建議共創坊 3",
+    "tags": [
+      "suggestion",
+      "workshop",
+      "planning"
+    ],
+    "description": "居民、員工共同提出改善建議並分類歸檔，練習建議語氣。"
+  },
+  {
+    "name": "提案建議共創坊 4",
+    "tags": [
+      "suggestion",
+      "workshop",
+      "planning"
+    ],
+    "description": "居民、員工共同提出改善建議並分類歸檔，練習建議語氣。"
+  },
+  {
+    "name": "提案建議共創坊 5",
+    "tags": [
+      "suggestion",
+      "workshop",
+      "planning"
+    ],
+    "description": "居民、員工共同提出改善建議並分類歸檔，練習建議語氣。"
+  },
+  {
+    "name": "提案建議共創坊 6",
+    "tags": [
+      "suggestion",
+      "workshop",
+      "planning"
+    ],
+    "description": "居民、員工共同提出改善建議並分類歸檔，練習建議語氣。"
+  },
+  {
+    "name": "提案建議共創坊 7",
+    "tags": [
+      "suggestion",
+      "workshop",
+      "planning"
+    ],
+    "description": "居民、員工共同提出改善建議並分類歸檔，練習建議語氣。"
+  },
+  {
+    "name": "如同...般比較寫作坊 2",
+    "tags": [
+      "as-adjective-as",
+      "workshop",
+      "planning"
+    ],
+    "description": "撰寫比較句強化品牌／活動特色的共備。"
+  },
+  {
+    "name": "如同...般比較寫作坊 3",
+    "tags": [
+      "as-adjective-as",
+      "workshop",
+      "planning"
+    ],
+    "description": "撰寫比較句強化品牌／活動特色的共備。"
+  },
+  {
+    "name": "如同...般比較寫作坊 4",
+    "tags": [
+      "as-adjective-as",
+      "workshop",
+      "planning"
+    ],
+    "description": "撰寫比較句強化品牌／活動特色的共備。"
+  },
+  {
+    "name": "如同...般比較寫作坊 5",
+    "tags": [
+      "as-adjective-as",
+      "workshop",
+      "planning"
+    ],
+    "description": "撰寫比較句強化品牌／活動特色的共備。"
+  },
+  {
+    "name": "如同...般比較寫作坊 6",
+    "tags": [
+      "as-adjective-as",
+      "workshop",
+      "planning"
+    ],
+    "description": "撰寫比較句強化品牌／活動特色的共備。"
+  },
+  {
+    "name": "如同...般比較寫作坊 7",
+    "tags": [
+      "as-adjective-as",
+      "workshop",
+      "planning"
+    ],
+    "description": "撰寫比較句強化品牌／活動特色的共備。"
+  },
+  {
+    "name": "正向循環策略會 2",
+    "tags": [
+      "the-more-the-more",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論投入資源越多成果越佳的案例，擬定倡議口號。"
+  },
+  {
+    "name": "正向循環策略會 3",
+    "tags": [
+      "the-more-the-more",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論投入資源越多成果越佳的案例，擬定倡議口號。"
+  },
+  {
+    "name": "正向循環策略會 4",
+    "tags": [
+      "the-more-the-more",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論投入資源越多成果越佳的案例，擬定倡議口號。"
+  },
+  {
+    "name": "正向循環策略會 5",
+    "tags": [
+      "the-more-the-more",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論投入資源越多成果越佳的案例，擬定倡議口號。"
+  },
+  {
+    "name": "正向循環策略會 6",
+    "tags": [
+      "the-more-the-more",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論投入資源越多成果越佳的案例，擬定倡議口號。"
+  },
+  {
+    "name": "正向循環策略會 7",
+    "tags": [
+      "the-more-the-more",
+      "workshop",
+      "planning"
+    ],
+    "description": "討論投入資源越多成果越佳的案例，擬定倡議口號。"
+  },
+  {
+    "name": "偏好表態座談 2",
+    "tags": [
+      "would-rather",
+      "workshop",
+      "planning"
+    ],
+    "description": "收集成員寧願選擇的方案，練習 would rather / prefer 語氣。"
+  },
+  {
+    "name": "偏好表態座談 3",
+    "tags": [
+      "would-rather",
+      "workshop",
+      "planning"
+    ],
+    "description": "收集成員寧願選擇的方案，練習 would rather / prefer 語氣。"
+  },
+  {
+    "name": "偏好表態座談 4",
+    "tags": [
+      "would-rather",
+      "workshop",
+      "planning"
+    ],
+    "description": "收集成員寧願選擇的方案，練習 would rather / prefer 語氣。"
+  },
+  {
+    "name": "偏好表態座談 5",
+    "tags": [
+      "would-rather",
+      "workshop",
+      "planning"
+    ],
+    "description": "收集成員寧願選擇的方案，練習 would rather / prefer 語氣。"
+  },
+  {
+    "name": "偏好表態座談 6",
+    "tags": [
+      "would-rather",
+      "workshop",
+      "planning"
+    ],
+    "description": "收集成員寧願選擇的方案，練習 would rather / prefer 語氣。"
+  },
+  {
+    "name": "偏好表態座談 7",
+    "tags": [
+      "would-rather",
+      "workshop",
+      "planning"
+    ],
+    "description": "收集成員寧願選擇的方案，練習 would rather / prefer 語氣。"
   }
 ]

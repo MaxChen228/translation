@@ -2,7 +2,10 @@
   {
     "name": "永續能源政策公聽會紀要",
     "description": "整理國會討論再生能源配額與補助的重點摘要",
-    "tags": ["environment", "result"],
+    "tags": [
+      "environment",
+      "result"
+    ],
     "minDifficulty": 3,
     "maxDifficulty": 4,
     "focus": "討論政策建議與條件句",
@@ -13,7 +16,10 @@
   {
     "name": "高中國際交流活動邀請函",
     "description": "邀請姊妹校參與暑期科學營與文化體驗",
-    "tags": ["education", "invitation"],
+    "tags": [
+      "education",
+      "invitation"
+    ],
     "minDifficulty": 1,
     "maxDifficulty": 2,
     "focus": "友善語氣與簡單句",
@@ -24,7 +30,10 @@
   {
     "name": "金融科技新創 A 輪投資簡報",
     "description": "說服投資人理解產品優勢與市場規模",
-    "tags": ["business", "purpose"],
+    "tags": [
+      "business",
+      "purpose"
+    ],
     "minDifficulty": 3,
     "maxDifficulty": 5,
     "focus": "說服式語氣與數據描述",
@@ -35,7 +44,10 @@
   {
     "name": "醫院臨床試驗週報",
     "description": "向監管單位回報新藥第二期試驗進度",
-    "tags": ["health", "result"],
+    "tags": [
+      "health",
+      "result"
+    ],
     "minDifficulty": 4,
     "maxDifficulty": 5,
     "focus": "專業術語與被動語態",
@@ -46,7 +58,10 @@
   {
     "name": "初創團隊晨會紀錄",
     "description": "記錄軟體開發進度及阻礙，設定下一步行動",
-    "tags": ["technology", "result"],
+    "tags": [
+      "technology",
+      "result"
+    ],
     "minDifficulty": 2,
     "maxDifficulty": 3,
     "focus": "簡潔陳述與任務分配",
@@ -57,7 +72,10 @@
   {
     "name": "市政交通轉型政策白皮書",
     "description": "提出公共運輸改善與減碳目標的長期規畫",
-    "tags": ["environment", "necessity"],
+    "tags": [
+      "environment",
+      "necessity"
+    ],
     "minDifficulty": 4,
     "maxDifficulty": 5,
     "focus": "正式語氣與名詞子句",
@@ -68,7 +86,10 @@
   {
     "name": "旅遊部落客合作提案",
     "description": "提議與觀光局合作推出永續旅遊行程並撰寫專欄",
-    "tags": ["travel", "offer"],
+    "tags": [
+      "travel",
+      "offer"
+    ],
     "minDifficulty": 2,
     "maxDifficulty": 3,
     "focus": "說服語氣與條列亮點",
@@ -79,7 +100,10 @@
   {
     "name": "企業永續報告 CEO 前言",
     "description": "宣示公司 ESG 目標與成果，回應利害關係人關切",
-    "tags": ["business", "opinion"],
+    "tags": [
+      "business",
+      "opinion"
+    ],
     "minDifficulty": 3,
     "maxDifficulty": 4,
     "focus": "正式語氣與過去成就",
@@ -90,7 +114,10 @@
   {
     "name": "高中科展成果簡報",
     "description": "學生向評審介紹研究動機、方法與結論",
-    "tags": ["academic", "result"],
+    "tags": [
+      "academic",
+      "result"
+    ],
     "minDifficulty": 2,
     "maxDifficulty": 3,
     "focus": "邏輯清楚並強調過程",
@@ -101,7 +128,10 @@
   {
     "name": "公司內部衝突調解備忘錄",
     "description": "人資部彙整衝突背景、會議結論與後續跟進計畫",
-    "tags": ["career", "result"],
+    "tags": [
+      "career",
+      "result"
+    ],
     "minDifficulty": 3,
     "maxDifficulty": 4,
     "focus": "客觀描述與義務性語氣",
@@ -112,7 +142,10 @@
   {
     "name": "地方社區防災演練通知",
     "description": "通知居民參與颱風防災演練與所需準備事項",
-    "tags": ["social", "warning"],
+    "tags": [
+      "social",
+      "warning"
+    ],
     "minDifficulty": 1,
     "maxDifficulty": 2,
     "focus": "指示語氣與清楚步驟",
@@ -123,12 +156,2925 @@
   {
     "name": "大學研究倫理聲明",
     "description": "研究團隊向審查委員會說明倫理審查與數據保護措施",
-    "tags": ["academic", "necessity"],
+    "tags": [
+      "academic",
+      "necessity"
+    ],
     "minDifficulty": 4,
     "maxDifficulty": 5,
     "focus": "正式語氣與條款式句型",
     "exampleZh": "強調資料將匿名化並限制授權人員存取。",
     "exampleEn": "The statement emphasizes that all data will be anonymized and accessible only to authorized personnel.",
     "hint": "適合使用被動語態與情態動詞"
+  },
+  {
+    "name": "遠端事故協調會議摘要",
+    "description": "記錄雲端服務異常時，各職能團隊線上協調的診斷流程、決策與復原時程。",
+    "tags": [
+      "technology",
+      "result",
+      "cause"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "強調事件時間線、責任分工與受影響使用者的後續通知。",
+    "exampleZh": "描述凌晨系統轉移流量、通報 VIP 客戶並安排回顧會議的整體流程。",
+    "exampleEn": "The summary explains that engineers rerouted traffic at 2 a.m., restored core services within two hours, and issued follow-up notices to all premium accounts.",
+    "hint": "可結合條件句或被動語態，說明偵測到異常時的應變步驟。"
+  },
+  {
+    "name": "臨床試驗異常事件回報",
+    "description": "向監管機關報告受試者不良反應、採取的緊急處置與後續監測計畫。",
+    "tags": [
+      "health",
+      "necessity",
+      "result"
+    ],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "需精確描述症狀、統計數據與責任團隊的修訂措施。",
+    "exampleZh": "說明第二期試驗中某組出現嚴重頭暈，團隊已暫停給藥並安排追加檢測。",
+    "exampleEn": "The report notes that several participants experienced acute dizziness in the Phase II cohort, so dosing was paused and additional lab panels were scheduled.",
+    "hint": "搭配被動語態與名詞子句，保留正式醫療語氣並註明時間點。"
+  },
+  {
+    "name": "公共政策白皮書諮詢筆記",
+    "description": "整理諮詢會議收集的利害關係人意見、關鍵數據與政策修正方向。",
+    "tags": [
+      "environment",
+      "opinion",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "展現不同立場的建議並提出可行的修正方案。",
+    "exampleZh": "列出公民團體要求更透明的排碳量報告，以及企業希望延長稅賦優惠。",
+    "exampleEn": "The notes highlight that civic groups requested transparent emissions disclosures while manufacturers asked for an extended tax incentive window.",
+    "hint": "可運用對比結構與 reported speech，呈現多方立場。"
+  },
+  {
+    "name": "社區防災演練簡報",
+    "description": "向居民說明演練目標、集合地點與緊急聯絡流程，確保防災行動一致。",
+    "tags": [
+      "social",
+      "warning",
+      "daily-life"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣需明確而親切，兼顧指示步驟與家庭準備提醒。",
+    "exampleZh": "提醒居民攜帶備用電池與簡易醫療包，早上九點於里民活動中心集合。",
+    "exampleEn": "Residents are reminded to bring spare batteries and a basic first-aid kit before gathering at the community center at nine o'clock.",
+    "hint": "善用祈使句與時間副詞片語，加強行動順序。"
+  },
+  {
+    "name": "雲端部署風險控管指引",
+    "description": "彙整上線流程的風險評估、回滾方案與事前核對清單，供開發團隊遵循。",
+    "tags": [
+      "technology",
+      "cause",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "清楚交代前置檢查、應變責任與成功量測指標。",
+    "exampleZh": "說明在部署前需完成備份驗證、通知客服，並設定五分鐘內的監控門檻。",
+    "exampleEn": "The guideline states that teams must verify backups, alert customer support, and define five-minute monitoring thresholds before deployment.",
+    "hint": "可使用條件句或不定詞片語，指出每步驟的必要條件。"
+  },
+  {
+    "name": "跨校教師協作課程公告",
+    "description": "向師生介紹共同開設課程的主題、申請流程與學習成果展示。",
+    "tags": [
+      "education",
+      "invitation",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣需具邀請性，並清楚傳達報名期限與資源。",
+    "exampleZh": "邀請同學於十月底前報名，並說明課程將以專題發表作為期末成果。",
+    "exampleEn": "Students are invited to register before the end of October, and the announcement explains that the course culminates in a joint project showcase.",
+    "hint": "可結合情態動詞與目的子句，提高招募與參與意願。"
+  },
+  {
+    "name": "ESG 年度成果發佈稿",
+    "description": "整理公司在環境、社會與治理面向的年度亮點與下一步指標。",
+    "tags": [
+      "business",
+      "result",
+      "opinion"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "需提供量化成績並說明未達標的改進計畫。",
+    "exampleZh": "指出公司將再投資綠能設備，並提高女性主管比例至三成。",
+    "exampleEn": "The release states that the firm will reinvest in renewable facilities and raise the percentage of women in leadership roles to thirty percent.",
+    "hint": "使用現在完成式與未來式，連結成果回顧與展望。"
+  },
+  {
+    "name": "多語文化節宣傳腳本",
+    "description": "設計廣播或社群宣傳用語，介紹文化節亮點與多語導覽服務。",
+    "tags": [
+      "culture",
+      "travel",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣需熱情、句型簡潔，凸顯活動吸引力與實用資訊。",
+    "exampleZh": "邀請旅客參加夜間市集與街頭表演，並提醒可預約多語導覽。",
+    "exampleEn": "The script invites visitors to enjoy the night market, street performances, and reserve multilingual guided tours in advance.",
+    "hint": "善用祈使句、現在進行式與地點副詞片語，營造即時感。"
+  },
+  {
+    "name": "家庭照護交接筆記",
+    "description": "記錄每日照護重點、服藥時間與突發狀況，方便下一班照護者銜接。",
+    "tags": [
+      "family",
+      "daily-life",
+      "necessity"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣需溫和清楚，兼顧提醒與感謝協助。",
+    "exampleZh": "標註下午三點需要換藥，並提醒觀察血壓波動。",
+    "exampleEn": "The note reminds the evening caregiver to replace the dressing at 3 p.m. and monitor the patient's blood pressure closely.",
+    "hint": "適用祈使句與被動語態描述注意事項，搭配時間副詞片語。"
+  },
+  {
+    "name": "親師座談摘要報告",
+    "description": "整理學生學習亮點、家長提問與後續支援方案，供班級共享。",
+    "tags": [
+      "education",
+      "relationship",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "同時呈現老師與家長視角，保持合作語氣。",
+    "exampleZh": "說明老師將提供補充教材，家長會協助建立晚間閱讀時段。",
+    "exampleEn": "The summary notes that the teacher will share extra materials while parents agreed to set up a nightly reading routine at home.",
+    "hint": "可使用 reported speech 與目的子句描述協同方案。"
+  },
+  {
+    "name": "社區影展志工指南",
+    "description": "告知志工集合時間、場地布置、觀眾動線與安全提醒。",
+    "tags": [
+      "social",
+      "entertainment",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "清楚列出步驟與責任分區，兼具友善與指令感。",
+    "exampleZh": "提醒志工七點前完成投影設備檢查，並安排人員引導長者座位。",
+    "exampleEn": "Volunteers are asked to finish checking the projector by 7 p.m. and guide elderly guests to the front rows.",
+    "hint": "善用祈使句、被動語態與時間副詞片語指示順序。"
+  },
+  {
+    "name": "節慶市集攤位介紹",
+    "description": "撰寫市集官方貼文，介紹各攤販特色料理與限定活動。",
+    "tags": [
+      "food",
+      "travel",
+      "purpose"
+    ],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "語氣活潑，突出味覺與活動亮點。",
+    "exampleZh": "邀請旅客嘗試限定香料湯圓，並參加晚間手作課程。",
+    "exampleEn": "Visitors are invited to try the festival-only spiced dumplings and join the evening craft workshop.",
+    "hint": "運用現在進行式與形容詞強調氣氛，可加入 call-to-action。"
+  },
+  {
+    "name": "遠距伴侶行程同步信",
+    "description": "情侶分享一週行程、視訊時間與共同目標，維持生活節奏。",
+    "tags": [
+      "relationship",
+      "personal",
+      "daily-life"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣貼心，兼顧日常細節與未來計畫。",
+    "exampleZh": "提醒彼此週三晚上視訊、週末一起線上看電影。",
+    "exampleEn": "The letter notes their Wednesday video call and suggests streaming a movie together on Saturday night.",
+    "hint": "多用情態動詞與未來式安排，加入感謝或期待語句。"
+  },
+  {
+    "name": "校園成果展流程表",
+    "description": "整理展出作品、主持稿、音響測試與志工輪班時程。",
+    "tags": [
+      "education",
+      "daily-life",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "需要時間表與任務導向語氣，確保活動順暢。",
+    "exampleZh": "安排上午九點開幕、十點科學示範、下午兩點頒獎。",
+    "exampleEn": "The schedule sets the opening remarks at 9 a.m., a science demo at 10, and the awards ceremony at 2 p.m.",
+    "hint": "可運用被動語態與祈使句，搭配時間副詞片語。"
+  },
+  {
+    "name": "家庭餐桌新菜分享文",
+    "description": "記錄自家料理新菜色、食材來源與家人回饋，分享於社群。",
+    "tags": [
+      "food",
+      "family",
+      "personal"
+    ],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "語氣溫暖，突出味道、感受與簡易作法。",
+    "exampleZh": "描述孩子特別喜歡自製味噌雞肉，並附上簡短做法。",
+    "exampleEn": "The post explains how the kids loved the homemade miso chicken and includes a quick step-by-step method.",
+    "hint": "利用現在完成式或過去式講述體驗，可加入形容詞描寫風味。"
+  },
+  {
+    "name": "朋友週末健行約定",
+    "description": "與朋友協調集合地點、路線難度與攜帶物品，安排輕鬆健行行程。",
+    "tags": [
+      "social",
+      "daily-life",
+      "travel"
+    ],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "語氣友好，提供明確時間與裝備提醒。",
+    "exampleZh": "約定早上七點在登山口集合，並帶上雨衣與能量補給。",
+    "exampleEn": "Friends agree to meet at the trailhead at 7 a.m. and remind each other to pack rain jackets and snacks.",
+    "hint": "可用祈使句與未來式安排，加入 if 子句描述天候備案。"
+  },
+  {
+    "name": "體育社團訓練週報",
+    "description": "紀錄每週訓練重點、成員狀態與下一場友誼賽安排。",
+    "tags": [
+      "sports",
+      "education",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣專業但親切，兼顧紀律與鼓勵。",
+    "exampleZh": "整理本週速度訓練成果，提醒週末練習賽集合時間。",
+    "exampleEn": "The update recaps this week's speed drills and reminds players to gather for Saturday's scrimmage at 8 a.m.",
+    "hint": "可使用現在完成式呈現成果，搭配祈使句安排下一步。"
+  },
+  {
+    "name": "公益音樂節幕後日誌",
+    "description": "描述彩排心得、舞台調度與志工協作，呈現活動準備過程。",
+    "tags": [
+      "entertainment",
+      "social",
+      "daily-life"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣熱情，強調團隊合作與即時任務。",
+    "exampleZh": "記錄下午彩排的燈光調整與志工動線演練。",
+    "exampleEn": "The diary notes how the crew fine-tuned the lighting during the afternoon rehearsal and rehearsed volunteer traffic control.",
+    "hint": "適合用現在進行式與分詞構句描述同步作業。"
+  },
+  {
+    "name": "背包客交通備忘錄",
+    "description": "整理城市間交通票券、轉乘提醒與節省費用技巧。",
+    "tags": [
+      "travel",
+      "advice",
+      "daily-life"
+    ],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "語氣友善、資訊密集，著重指示與注意事項。",
+    "exampleZh": "提醒購買早鳥票、預留轉車時間並下載離線地圖。",
+    "exampleEn": "The memo suggests booking early-bird tickets, leaving extra time for transfers, and downloading offline maps before departure.",
+    "hint": "多用祈使句與條列式片語，必要時加入條件句描述備案。"
+  },
+  {
+    "name": "家庭健康晨間流程",
+    "description": "規劃全家晨間運動、早餐與行前檢查的時間表。",
+    "tags": [
+      "family",
+      "health",
+      "daily-life"
+    ],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "語氣溫暖，強調習慣與照護。",
+    "exampleZh": "安排七點做伸展、七點半共進高纖早餐，八點確認學用品。",
+    "exampleEn": "The routine schedules stretching at 7:00 a.m., a high-fiber breakfast at 7:30, and a final school-supplies check at 8:00.",
+    "hint": "可用頻率副詞與祈使句結合，突出每日規律。"
+  },
+  {
+    "name": "青年創客市集宣傳稿",
+    "description": "撰寫社群貼文，介紹創客攤位、工作坊與現場互動。",
+    "tags": [
+      "business",
+      "entertainment",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調創意與參與感。",
+    "exampleZh": "推薦 DIY 電子飾品工作坊與現場 DJ 表演。",
+    "exampleEn": "The post spotlights a DIY tech-jewelry workshop and the live DJ sets that run through the evening.",
+    "hint": "善用現在進行式與形容詞強調亮點，可加入 call-to-action。"
+  },
+  {
+    "name": "研究口試答辯準備手冊",
+    "description": "彙整答辯流程、常見問題與資料補充清單，協助研究生自我演練。",
+    "tags": [
+      "academic",
+      "result",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣專業，兼顧時間控制與資料備援提醒。",
+    "exampleZh": "列出十五分鐘簡報大綱與三種審查委員追問題型。",
+    "exampleEn": "The guide maps out a fifteen-minute presentation outline and lists three probe questions examiners often raise.",
+    "hint": "可運用條列式祈使句與條件句，提示若遇追問時的應對策略。"
+  },
+  {
+    "name": "社區健康篩檢企劃表",
+    "description": "規劃篩檢站動線、醫護班表與後續轉介流程，確保活動順暢。",
+    "tags": [
+      "health",
+      "social",
+      "necessity"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "交代時間、責任與風險控制，語氣務實。",
+    "exampleZh": "安排上午血壓測站、下午健康諮詢區並建立轉介名單。",
+    "exampleEn": "The plan schedules blood-pressure booths in the morning, a counseling corner in the afternoon, and sets up a referral roster for follow-up clinics.",
+    "hint": "善用被動語態與祈使句列出流程，必要時加入 if 子句說明備援。"
+  },
+  {
+    "name": "非營利財務稽核摘要",
+    "description": "向理監事簡述稽核發現、內控制度缺口與建議改進時程。",
+    "tags": [
+      "business",
+      "money",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，包含數據、風險分析與行動項目。",
+    "exampleZh": "指出捐款核銷流程延遲與改善里程碑。",
+    "exampleEn": "The summary notes delays in donation reimbursements and sets milestones for tightening the approval workflow.",
+    "hint": "結合現在完成式與未來式，清楚標示行動負責人與期限。"
+  },
+  {
+    "name": "資料隱私合規公告",
+    "description": "通知員工最新個資保護政策、違規後果與申訴管道。",
+    "tags": [
+      "business",
+      "cause",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣嚴謹，兼顧義務、期限與支援資源。",
+    "exampleZh": "說明新政策要求七日內回覆刪除請求並強化加密。",
+    "exampleEn": "The memo explains that the new policy requires responding to deletion requests within seven days and strengthening encryption on shared drives.",
+    "hint": "可用 must/need to 等情態動詞強調義務，並搭配條件句提醒違規後果。"
+  },
+  {
+    "name": "博物館多語導覽腳本",
+    "description": "編寫展品背景、互動提問與多語提示，支援導覽志工。",
+    "tags": [
+      "culture",
+      "education",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣親切，兼顧歷史脈絡與觀眾參與。",
+    "exampleZh": "介紹古文物來源並設計互動問題，引導訪客分享經驗。",
+    "exampleEn": "The script traces the artifact's origin and proposes an interactive prompt inviting visitors to share related traditions.",
+    "hint": "結合現在完成式與疑問句提高互動，可加入提示音效或動線指示。"
+  },
+  {
+    "name": "遠距醫療回診紀錄",
+    "description": "整理病患線上回診內容、檢驗結果與後續處方變更。",
+    "tags": [
+      "health",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣客觀，明確標示症狀、藥物與追蹤計畫。",
+    "exampleZh": "記錄病患回報夜間咳嗽改善並調整藥物劑量。",
+    "exampleEn": "The record notes that the patient's nocturnal cough has improved and documents a reduced evening dosage.",
+    "hint": "善用現在完成式與被動語態，附上 follow-up on + 時間 表示追蹤日。"
+  },
+  {
+    "name": "條件應變流程手冊",
+    "description": "定義系統異常時的備援條件、責任分工與通知程序。",
+    "tags": [
+      "conditional",
+      "technology",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣務實，強調 if 子句描述條件與主句指示動作。",
+    "exampleZh": "說明若 API 延遲超過閾值，輪值工程師需在五分鐘內啟用備援服務。",
+    "exampleEn": "The playbook states that if the API latency exceeds the threshold, the on-call engineer should activate the failover within five minutes.",
+    "hint": "建議使用 If...should 與 must/should 結合，清楚列出責任。"
+  },
+  {
+    "name": "請求類客服腳本",
+    "description": "提供客服在處理客戶請求時的開場、確認、結尾語句範例。",
+    "tags": [
+      "request",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "強調禮貌請求與資訊確認，語氣友善。",
+    "exampleZh": "開場請求客戶提供訂單編號，並提醒補充聯絡方式。",
+    "exampleEn": "The script opens with \"Please share your order number\" and closes with \"Please confirm the best email for follow-up.\"",
+    "hint": "多用 Please + VR 和 would you mind，保持禮貌語氣。"
+  },
+  {
+    "name": "已完成專案成果報告",
+    "description": "總結專案成果、指標與自上次檢討以來的改善。",
+    "tags": [
+      "present-perfect",
+      "business",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "以現在完成式敘述成就，連結過去行動與現在狀態。",
+    "exampleZh": "報告團隊已完成三項整合並提升轉換率 12%。",
+    "exampleEn": "The report highlights that the team has delivered three integrations and has raised the conversion rate by twelve percent.",
+    "hint": "搭配 since/for 與量化指標，強調成果持續性。"
+  },
+  {
+    "name": "非營利志工培訓講義",
+    "description": "整理參與者須知、服務流程與行為準則。",
+    "tags": [
+      "passive",
+      "social",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "講義常用被動語態傳達規範與指示。",
+    "exampleZh": "提醒所有志工都會被分配到不同站點，活動結束後器材須歸還。",
+    "exampleEn": "Volunteers are assigned to different stations, and all equipment must be returned after the event.",
+    "hint": "強調被動語態與 by + 時間，指出責任與期限。"
+  },
+  {
+    "name": "倒裝句型教案",
+    "description": "撰寫教案示範倒裝句用法、練習題與學生常見錯誤修正。",
+    "tags": [
+      "inversion",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣教學化，結合例句與指導語。",
+    "exampleZh": "說明 Not until / Only after 的倒裝規則並附學生練習。",
+    "exampleEn": "The lesson plan explains how to build Not until / Only after inversions and includes peer review exercises.",
+    "hint": "可結合教學目標、教具與評量方式，使用 passive voice 描述安排。"
+  },
+  {
+    "name": "動名詞與分詞實務指南",
+    "description": "整理動名詞作主語、受詞與分詞構句的應用情境與提醒。",
+    "tags": [
+      "gerund",
+      "grammar",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "提供例句與常見錯誤對照，語氣專業。",
+    "exampleZh": "解析 Writing reports is... 與 Having completed the task,... 的差異。",
+    "exampleEn": "The guide contrasts using \"Writing reports is essential\" with \"Having completed the task, the team...\" and highlights common pitfalls.",
+    "hint": "建議列出動名詞 vs. 不定詞選擇的情境，使用表格或條列描述。"
+  },
+  {
+    "name": "假設語氣案例彙編",
+    "description": "收錄商務與政策文件中的假設語氣句型與建議修正。",
+    "tags": [
+      "subjunctive",
+      "business",
+      "grammar"
+    ],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "語氣正式，強調若未滿足條件的風險。",
+    "exampleZh": "示例 If the proposal were approved,... 與 It is essential that the committee be notified...。",
+    "exampleEn": "The compendium notes cases such as \"If the funding were delayed...\" and \"It is essential that the committee be notified immediately.\"",
+    "hint": "可搭配 conditional 子句與要求型句式，提醒保持原形動詞。"
+  },
+  {
+    "name": "關係子句改寫練習題庫",
+    "description": "提供原句改寫、錯誤診斷與不同關係子句的運用範例。",
+    "tags": [
+      "relative-clause",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣教學；包含限制、非限制與關係副詞。",
+    "exampleZh": "要求學生將兩個句子整合成含 who 的複句並指出逗號位置。",
+    "exampleEn": "Exercises ask learners to merge sentences with \"who\" clauses and mark where commas are required.",
+    "hint": "建議附答案詳解，指出關係代名詞替換與先行詞對應。"
+  },
+  {
+    "name": "比較級行銷文案套件",
+    "description": "整理比較級與對比句式，協助行銷撰寫差異化賣點。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣說服性，強調優勢對比。",
+    "exampleZh": "提供 such as \"Our app loads faster than...\" 的模板。",
+    "exampleEn": "The toolkit showcases phrases like \"Our service delivers more reliable uptime than...\" with customizable slots.",
+    "hint": "建議搭配數據佐證，並提醒避免過度誇大；可加入比較圖表說明。"
+  },
+  {
+    "name": "副詞子句連接詞應用手冊",
+    "description": "總結 while/whereas/as soon as/though 等連接詞的用法與示例。",
+    "tags": [
+      "adverb-clause",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "說明各連接詞語氣差異與適用場景。",
+    "exampleZh": "對比 while 表示同時進行與 whereas 表示對比。",
+    "exampleEn": "The manual clarifies how \"while\" signals simultaneous actions whereas \"whereas\" draws a contrast.",
+    "hint": "可附短篇改寫練習，要求使用不同連接詞改寫段落。"
+  },
+  {
+    "name": "每日站會節奏指南",
+    "description": "整理團隊例行站立會議的進行順序、固定問題與紀錄方式。",
+    "tags": [
+      "present-simple",
+      "business",
+      "daily-life"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣簡潔，常用現在簡單式描述例行公事。",
+    "exampleZh": "列出每位成員每日回答三個問題的流程。",
+    "exampleEn": "The guide outlines that each member shares what they do today, what they finished yesterday, and whether anything blocks them.",
+    "hint": "善用 present simple 與時間副詞，強調規律流程。"
+  },
+  {
+    "name": "備援目的說明文件",
+    "description": "梳理 so that 子句描述的系統備援目標與使用情境。",
+    "tags": [
+      "so-that",
+      "technology",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣技術化，說明為什麼要這麼做與預期結果。",
+    "exampleZh": "說明啟動備援 so that 服務能在 1 分鐘內恢復。",
+    "exampleEn": "The memo states that traffic is rerouted so that end users experience less than one minute of downtime.",
+    "hint": "可搭配條列式條件，善用 so that 強調目的。"
+  },
+  {
+    "name": "被動進行式工程公告",
+    "description": "公告正在進行的維護作業與影響範圍。",
+    "tags": [
+      "passive",
+      "technology",
+      "warning"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣正式，採被動進行式描述維護進度。",
+    "exampleZh": "通知用戶服務正被更新，預計午夜完成。",
+    "exampleEn": "The infrastructure update is being deployed tonight, and critical endpoints are being monitored closely.",
+    "hint": "善用被動進行式與時間副詞，附上 fallback 說明。"
+  },
+  {
+    "name": "分詞修飾練習講義",
+    "description": "提供將兩句合併為分詞片語的練習題，強化寫作流暢度。",
+    "tags": [
+      "participle",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣教學，重點在避免懸垂分詞。",
+    "exampleZh": "要求學生把兩句改寫成 Using..., the team...。",
+    "exampleEn": "Exercises ask learners to rewrite pairs like \"The engineer checked the logs. He found errors.\" into \"Checking the logs, the engineer found errors.\"",
+    "hint": "提供錯誤示範與修正建議。"
+  },
+  {
+    "name": "環境影響說明會資料",
+    "description": "彙整 EIA 公開說明會的流程、問答紀錄與後續行動。",
+    "tags": [
+      "environment",
+      "cause",
+      "opinion"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，強調因果與利害關係人互動。",
+    "exampleZh": "列出居民提問與單位回覆，說明後續追蹤計畫。",
+    "exampleEn": "The brief summarizes citizen questions, agency responses, and the mitigation steps underway.",
+    "hint": "可使用 while/whereas 對比立場，並列出後續時間表。"
+  },
+  {
+    "name": "強調語氣客服腳本",
+    "description": "提供客服在安撫客戶時使用 do/does/did 強調語氣的句式。",
+    "tags": [
+      "emphasis",
+      "business",
+      "request"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣誠懇，強調服務承諾與行動。",
+    "exampleZh": "示範 We do appreciate your patience 等句型。",
+    "exampleEn": "Scripts highlight lines like \"We do value your feedback\" and \"We did escalate this case\" to reassure customers.",
+    "hint": "提醒避免過度堆疊，搭配實際行動說明。"
+  },
+  {
+    "name": "家庭支援計畫提案",
+    "description": "為需要照護資源的家庭撰寫支援計畫與需求摘要。",
+    "tags": [
+      "family",
+      "social",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣同理並具體列出支持項目。",
+    "exampleZh": "列出課後照顧補助、陪伴志工與心理諮商資源。",
+    "exampleEn": "The proposal outlines after-school care stipends, volunteer companions, and counseling resources for the household.",
+    "hint": "可運用 so that/as long as 描述目標與條件。"
+  },
+  {
+    "name": "運動數據週報",
+    "description": "整理隊伍的運動數據、趨勢分析與建議。",
+    "tags": [
+      "sports",
+      "result",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣專業，結合統計指標。",
+    "exampleZh": "報告本週加速度與心率區間變化。",
+    "exampleEn": "The report notes that the team's acceleration metrics have improved while recovery heart rates remain elevated.",
+    "hint": "搭配比較級、分詞與圖表說明，突出洞察。"
+  },
+  {
+    "name": "合約條款審查摘要",
+    "description": "整理合約被動句、條件與責任分配的修改建議。",
+    "tags": [
+      "passive",
+      "legal",
+      "cause"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，指出風險與修文理由。",
+    "exampleZh": "指出條款中責任歸屬不明確，建議改寫。",
+    "exampleEn": "The summary flags clauses where liability is currently ambiguous and recommends rewriting them to specify the responsible party.",
+    "hint": "多用被動語態、should/must，並引用條款編號。"
+  },
+  {
+    "name": "條件演練檢討報告",
+    "description": "紀錄 if/should 條件演練結果、時間軸與下一步行動。",
+    "tags": [
+      "conditional",
+      "environment",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣務實，強調時間線與責任。",
+    "exampleZh": "記錄若洪水到達某水位，等待 5 分鐘內啟動防洪閘。",
+    "exampleEn": "The report states that if river levels pass the threshold, the floodgates should be deployed within five minutes and the incident commander notified immediately.",
+    "hint": "結合 past perfect 時敘事件回顧，並列出 will/should 指令。"
+  },
+  {
+    "name": "資料保留政策通知信",
+    "description": "撰寫告知用戶資料保留條款的郵件，強調 as long as 條件與權益。",
+    "tags": [
+      "as-clause",
+      "business",
+      "cause"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，清楚說明條件與用戶權利。",
+    "exampleZh": "說明資料會在帳號有效期間內保存，若終止則在 30 天內刪除。",
+    "exampleEn": "The notice explains that data will be retained as long as the account remains active and is deleted within thirty days after termination.",
+    "hint": "使用 as long as/as soon as 強調條件與時程，搭配 must/should 指出遵循。"
+  },
+  {
+    "name": "節目製作進度表",
+    "description": "列出拍攝、剪輯與審稿時程，供節目組協作。",
+    "tags": [
+      "entertainment",
+      "process",
+      "present-simple"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣務實，強調排程與責任分工。",
+    "exampleZh": "說明各單位在開拍前完成場景搭建、燈光測試與排練。",
+    "exampleEn": "The schedule details when the set is prepared, when lighting checks happen, and when rehearsals wrap before each shoot day.",
+    "hint": "可結合 present simple 描述例行工作，搭配被動語態呈現進度。"
+  },
+  {
+    "name": "文化節互動活動腳本",
+    "description": "設計文化節互動攤位的腳本、問答與學習單。",
+    "tags": [
+      "culture",
+      "education",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，兼顧教育性與參與感。",
+    "exampleZh": "安排訪客完成任務即可獲得文化小卡。",
+    "exampleEn": "The script invites visitors to complete a mini quest so they can collect a cultural badge and share reflections.",
+    "hint": "可以使用 imperative 與疑問句，吸引互動。"
+  },
+  {
+    "name": "家庭復健追蹤報告",
+    "description": "記錄家庭成員的復健進度、家庭支援與下次目標。",
+    "tags": [
+      "family",
+      "health",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣關懷，結合數據與行動。",
+    "exampleZh": "報告已完成 6 週復健，建議增加居家伸展。",
+    "exampleEn": "The follow-up notes that the patient has completed six weeks of therapy and recommends adding nightly stretches with family support.",
+    "hint": "可使用 present perfect 與 to-infinitive 表達建議。"
+  },
+  {
+    "name": "運動員復原計畫",
+    "description": "詳述運動傷害復原的分階段目標、訓練內容與醫療監測。",
+    "tags": [
+      "sports",
+      "health",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣專業，結合時間軸與條件。",
+    "exampleZh": "設定四週內達成無痛慢跑，八週後恢復團隊訓練。",
+    "exampleEn": "The plan aims for pain-free jogging by week four and a full return to team drills by week eight.",
+    "hint": "可用 future perfect 描述目標，例如 will have regained full range by...。"
+  },
+  {
+    "name": "永續成效年報摘要",
+    "description": "整理企業永續指標、成果與未來承諾。",
+    "tags": [
+      "environment",
+      "business",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，善用數據與比較。",
+    "exampleZh": "報告減碳 18%、能源使用效率提升。",
+    "exampleEn": "The summary states the company has cut emissions by eighteen percent and will have transitioned to 100% renewable energy by 2027.",
+    "hint": "結合 present perfect 與 future perfect，標示指標與期限。"
+  },
+  {
+    "name": "不定詞用途表",
+    "description": "彙整 to-infinitive 在目的、補語與形容詞後用法的例句。",
+    "tags": [
+      "infinitive",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣教學，提供多種句型。",
+    "exampleZh": "說明 It is critical to notify...、The goal is to reduce... 等構句。",
+    "exampleEn": "The sheet lists patterns like \"It is critical to notify stakeholders\" and \"Our goal is to reduce churn\" with notes on formal tone.",
+    "hint": "可搭配表格整理常見搭配，並加入錯誤示例修正。"
+  },
+  {
+    "name": "複合句結構練習",
+    "description": "提供多句改寫為含名詞/副詞/形容詞子句的練習題。",
+    "tags": [
+      "complex-sentence",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣教學，強調子句連接詞選擇與逗號用法。",
+    "exampleZh": "要求學生用 because/although/that 改寫段落。",
+    "exampleEn": "Exercises ask learners to turn simple sentences into ones with because, although, and that clauses, then justify punctuation choices.",
+    "hint": "加入批改建議與常見錯誤，搭配答案解析。"
+  },
+  {
+    "name": "研究週報摘要",
+    "description": "整理實驗結果、採樣紀錄與後續步驟，提供給研究團隊與導師。",
+    "tags": [
+      "academic",
+      "present-perfect",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣專業，使用現在完成式描述進度。",
+    "exampleZh": "報告已完成三組實驗，尚有兩組待跑。",
+    "exampleEn": "The update notes the lab has completed three assay runs and will replicate the remaining two over the weekend.",
+    "hint": "結合圖表或表格說明，加入 next steps 與 blockers。"
+  },
+  {
+    "name": "財務月結報告",
+    "description": "彙整收支、異常科目與現金流分析，提交給管理層。",
+    "tags": [
+      "business",
+      "money",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，強調數據與異常解釋。",
+    "exampleZh": "指出營收減少原因與調整建議。",
+    "exampleEn": "The report highlights why revenue dipped this month and proposes adjustments to recover next quarter.",
+    "hint": "善用比較級和圖表描述趨勢，搭配 must/need to 指出行動。"
+  },
+  {
+    "name": "代言提案簡報稿",
+    "description": "撰寫品牌代言提案重點、KPI 與成本分析。",
+    "tags": [
+      "entertainment",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣說服性，兼顧商業數據與創意亮點。",
+    "exampleZh": "介紹預計曝光量與合作時程。",
+    "exampleEn": "The deck outlines projected impressions, campaign milestones, and creative assets tailored to the artist's brand.",
+    "hint": "可結合 so that 與比較級凸顯優勢。"
+  },
+  {
+    "name": "賽事策略備忘錄",
+    "description": "記錄下一場比賽的策略、陣容與對手分析。",
+    "tags": [
+      "sports",
+      "strategy",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣戰術化，包含條件與責任分配。",
+    "exampleZh": "分析對手的防守弱點與我方調整。",
+    "exampleEn": "The memo breaks down opponent tendencies, our defensive adjustments, and who is accountable for key matchups.",
+    "hint": "使用 if 子句與 must/should 描述策略，搭配數據比較。"
+  },
+  {
+    "name": "法規遵循更新簡報",
+    "description": "整理跨市場法規變動、影響評估與產品調整時程。",
+    "tags": [
+      "legal",
+      "cause",
+      "process"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，強調時程與責任單位。",
+    "exampleZh": "說明新法規要求並提供調整時間表。",
+    "exampleEn": "The briefing details the regulation change timeline, the products affected, and action owners for each market.",
+    "hint": "建議用 must/need to 強調義務，並附問答區。"
+  },
+  {
+    "name": "Would you mind 請求練習",
+    "description": "提供職場情境，練習使用 Would you mind + V-ing 的禮貌請求。",
+    "tags": [
+      "request",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣委婉，並提供回應範例。",
+    "exampleZh": "示範 Would you mind sharing the deck by 3 p.m.?",
+    "exampleEn": "The worksheet includes prompts like \"Would you mind sending the contract over for review?\" with suggested polite responses.",
+    "hint": "提醒 be sure to thank the listener; 可加入文化注意事項。"
+  },
+  {
+    "name": "職涯諮詢紀錄",
+    "description": "整理員工職涯目標、培訓建議與追蹤日期。",
+    "tags": [
+      "career",
+      "present-simple",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣鼓勵，著重 to-infinitive 目標與時間表。",
+    "exampleZh": "記錄員工希望在明年取得專業證照。",
+    "exampleEn": "The note captures that the employee plans to obtain a certification within twelve months and will meet quarterly for check-ins.",
+    "hint": "可用 present simple 描述現況，to-infinitive 描述目標。"
+  },
+  {
+    "name": "產品路線圖摘要",
+    "description": "概述未來版本、里程碑與跨部門責任分工。",
+    "tags": [
+      "business",
+      "future-simple",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣策略，善用 will + VR 表承諾。",
+    "exampleZh": "說明 Q3 將推出新功能並擴大測試。",
+    "exampleEn": "The summary states that the team will launch the analytics module in Q3 and will expand beta access to key accounts.",
+    "hint": "結合 timeline 與 so that 說明目的。"
+  },
+  {
+    "name": "資安合規稽核報告",
+    "description": "指出系統掃描結果、必須改善項目與整改時程。",
+    "tags": [
+      "modal",
+      "legal",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣嚴謹，常用 must/need to/should。",
+    "exampleZh": "說明必須在兩週內修補漏洞並更新政策。",
+    "exampleEn": "The audit notes that critical vulnerabilities must be patched within fourteen days and that onboarding scripts need to be updated accordingly.",
+    "hint": "可加入風險等級與責任單位，使用被動語態呈現要求。"
+  },
+  {
+    "name": "研究計畫評審紀錄",
+    "description": "記錄委員對研究計畫的意見與修改建議。",
+    "tags": [
+      "academic",
+      "subjunctive",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，使用 It is essential that... 語型。",
+    "exampleZh": "建議計畫必須增加樣本數並提供倫理審查證明。",
+    "exampleEn": "The review notes that it is essential that the study increase its sample size and secure IRB approval before recruiting participants.",
+    "hint": "結合 should/must 與條件句，並註明決議。"
+  },
+  {
+    "name": "不定詞應用練習冊",
+    "description": "提供 to-infinitive 在目的、補語與形容詞後的練習題。",
+    "tags": [
+      "infinitive",
+      "education",
+      "grammar"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣教學，包含錯誤辨識。",
+    "exampleZh": "要求學生改寫句子以 to-infinitive 表示目的。",
+    "exampleEn": "Exercises ask learners to rewrite sentences using to-infinitive phrases and identify incorrect forms like 'to not go'.",
+    "hint": "提供答案解析與常見錯誤對照。"
+  },
+  {
+    "name": "跨國備忘錄修訂稿",
+    "description": "整理關係子句重寫建議，確保條款定義明確。",
+    "tags": [
+      "relative-clause",
+      "legal",
+      "grammar"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，強調 who/which/that 的使用與逗號位置。",
+    "exampleZh": "指出條款需改寫為 supplier who provides..., 以避免模糊。",
+    "exampleEn": "The draft highlights clauses that should become \"suppliers who provide\" instead of \"suppliers providing\" to clarify obligations.",
+    "hint": "附上修改前後對照與理由，提醒非限制性需用逗號。"
+  },
+  {
+    "name": "創意寫作動名詞日誌",
+    "description": "引導作者以動名詞描述每日習慣與靈感來源。",
+    "tags": [
+      "gerund",
+      "entertainment",
+      "daily-life"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣柔和，鼓勵 using/keeping/collecting 等開頭。",
+    "exampleZh": "提示寫下 keeping a notebook by the bed 幫助捕捉夢境靈感。",
+    "exampleEn": "The journal prompts writers to note habits like \"scribbling ideas during commutes\" and \"collecting overheard dialogues\".",
+    "hint": "可加入反思題，要求比較 V-ing 與 to + VR 的語氣差異。"
+  },
+  {
+    "name": "永續承諾達標報告",
+    "description": "以未來完成式說明企業在特定年限前會完成的永續指標。",
+    "tags": [
+      "future-perfect",
+      "environment",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，使用 will have + p.p. 及 will have been + V-ing。",
+    "exampleZh": "承諾 2030 年前將完成零廢棄。",
+    "exampleEn": "The report states the company will have achieved zero-landfill operations by 2030 and will have been sourcing 100% renewable power for five consecutive years.",
+    "hint": "附上里程碑與指標，結合條件句或 so that 說明目的。"
+  },
+  {
+    "name": "危機溝通語句手冊",
+    "description": "提供 PR 團隊可用的強調語氣句與應對框架。",
+    "tags": [
+      "emphasis",
+      "business",
+      "warning"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣堅定，運用 do/does/did 強調承諾。",
+    "exampleZh": "示範 We do take accountability seriously.",
+    "exampleEn": "The handbook features templates such as \"We do understand your concerns\" and outlines follow-up actions to back the statement.",
+    "hint": "提醒搭配具體行動，避免空泛；可列出不建議語句。"
+  },
+  {
+    "name": "品牌路線願景文件",
+    "description": "說明未來幾年品牌將完成的策略與里程碑。",
+    "tags": [
+      "future-simple",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣前瞻，廣泛使用 will + VR 及 to-infinitive。",
+    "exampleZh": "描述品牌將拓展至國際市場並推出新服務。",
+    "exampleEn": "The vision outlines that the brand will expand into three new regions, will launch a mentorship program, and aims to double customer retention.",
+    "hint": "可搭配 timeline 與 KPI，提醒用 so that 描述目的。"
+  },
+  {
+    "name": "長期計畫條件備忘",
+    "description": "記錄專案只要條件成立就會執行的任務與監控指標。",
+    "tags": [
+      "as-long-as",
+      "business",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣務實，常用 as long as 描述持續條件。",
+    "exampleZh": "說明只要客戶留存率維持在 90%，專案就會持續投資。",
+    "exampleEn": "The memo states the initiative will continue as long as customer retention stays above ninety percent and quality audits remain green.",
+    "hint": "建議列出監控表與責任人，使用被動句說明保障。"
+  },
+  {
+    "name": "照護危機警示手冊",
+    "description": "提供照護家屬在緊急狀況下的 must/You'd better 建議與聯絡流程。",
+    "tags": [
+      "had-better",
+      "family",
+      "warning"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣關懷但明確，使用 You'd better / You must。",
+    "exampleZh": "提醒若病患喘息加劇，應立即聯絡醫院。",
+    "exampleEn": "The guide tells caregivers they'd better call the hotline if the patient shows labored breathing and to prepare medical history beforehand.",
+    "hint": "可加入 checklist 與時間記錄欄位。"
+  },
+  {
+    "name": "雙選決策練習題",
+    "description": "提供 either...or 情境，訓練團隊快速決策與溝通。",
+    "tags": [
+      "either-or",
+      "education",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣練習式，著重決策練習與討論紀錄。",
+    "exampleZh": "情境：要麼延後發佈，要麼降低功能。",
+    "exampleEn": "The worksheet presents scenarios such as \"Either we delay the launch or we trim the feature set\" and asks teams to document the rationale.",
+    "hint": "鼓勵寫出 pros/cons，維持語法一致。"
+  },
+  {
+    "name": "賽後數據深度分析報告",
+    "description": "針對高階運動賽事撰寫數據分析、恢復狀況與下一步策略。",
+    "tags": [
+      "sports",
+      "analysis",
+      "result"
+    ],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "語氣專業，結合長句與條件。",
+    "exampleZh": "分析球員平均速率與負荷並提出恢復建議。",
+    "exampleEn": "The report examines average speed, neuromuscular fatigue, and outlines recovery protocols before the rematch.",
+    "hint": "鼓勵使用 future perfect/future continuous 描述準備狀態。"
+  },
+  {
+    "name": "稽核回覆信範本",
+    "description": "回覆監管單位的稽核質問與改善計畫。",
+    "tags": [
+      "legal",
+      "process",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，包含 must/should 與時間表。",
+    "exampleZh": "說明已啟動整改並附上完成日期。",
+    "exampleEn": "The template confirms the issues identified, states remediation work has begun, and commits to closing gaps by set deadlines.",
+    "hint": "建議附上一覽表與聯絡窗口，保持被動語態呈現。"
+  },
+  {
+    "name": "危機聲明語句套件",
+    "description": "提供危機溝通時可用的強調語氣句與跟進流程。",
+    "tags": [
+      "emphasis",
+      "business",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣堅定，結合行動承諾。",
+    "exampleZh": "示範 We do take responsibility 並列出相應補救措施。",
+    "exampleEn": "The toolkit pairs statements like \"We do take responsibility\" with checklists of immediate actions and follow-up timelines.",
+    "hint": "提醒搭配具體行動與時間表，避免空泛。"
+  },
+  {
+    "name": "長期照護路徑表",
+    "description": "整理家庭照護分期目標、支援資源與醫療安排。",
+    "tags": [
+      "family",
+      "health",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣溫和，使用時間軸與條件句。",
+    "exampleZh": "說明三個月內需完成家庭環境調整。",
+    "exampleEn": "The roadmap notes that the family will have installed safety equipment by month three and will continue weekly therapy sessions.",
+    "hint": "可使用 future perfect/future continuous 描述進展。"
+  },
+  {
+    "name": "國際賽季策略簡報",
+    "description": "呈現賽季目標、對手分析與長期達標計畫。",
+    "tags": [
+      "sports",
+      "strategy",
+      "future-perfect"
+    ],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "語氣專業，結合資料與 will have + p.p.。",
+    "exampleZh": "設定賽季中段前達成勝率與身體狀態目標。",
+    "exampleEn": "The deck states the team will have secured at least eight wins by mid-season and will have been rotating players to manage recovery.",
+    "hint": "使用圖表展示指標，添加情境條件。"
+  },
+  {
+    "name": "智慧醫療合規報告",
+    "description": "整理醫療 AI 產品的法規要求、風險分析與整改計畫。",
+    "tags": [
+      "legal",
+      "health",
+      "process"
+    ],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "語氣嚴謹，包含 must/should 與被動句。",
+    "exampleZh": "說明需在 60 天內完成資料匿名化流程。",
+    "exampleEn": "The report confirms the AI system must undergo external validation and that data pipelines are being anonymized before launch.",
+    "hint": "建議附問答與聯絡窗口。"
+  },
+  {
+    "name": "娛樂合約談判紀錄",
+    "description": "記錄談判重點、折衷方案與後續審核事項。",
+    "tags": [
+      "entertainment",
+      "legal",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，記錄條款細節與責任。",
+    "exampleZh": "備註付款里程碑與使用權範圍。",
+    "exampleEn": "The minutes capture revised payment milestones, exclusive usage rights, and the next steps for contract review.",
+    "hint": "可加入表格或條款清單，維持第三人稱敘述。"
+  },
+  {
+    "name": "焦點團訪談指南",
+    "description": "整理焦點團主持步驟、倫理提醒與分析框架。",
+    "tags": [
+      "academic",
+      "analysis",
+      "present-simple"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣專業，使用祈使句與現在式敘述流程。",
+    "exampleZh": "說明訪談前需重申保密與錄音同意。",
+    "exampleEn": "The guide instructs moderators to reiterate confidentiality, manage dominant voices, and document emergent themes.",
+    "hint": "可加入表格或代碼本樣式。"
+  },
+  {
+    "name": "家庭信託計畫摘要",
+    "description": "整理財產信託架構、受益人與法律時間表。",
+    "tags": [
+      "family",
+      "legal",
+      "purpose"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，使用被動語態與截止日期。",
+    "exampleZh": "列出信託啟動條件與受益人分配。",
+    "exampleEn": "The summary specifies when the trust becomes active, who the beneficiaries are, and deadlines for documentation.",
+    "hint": "鼓勵使用 shall/must 描述義務。"
+  },
+  {
+    "name": "危機公關日報",
+    "description": "每日追蹤危機狀態、媒體報導與應對行動。",
+    "tags": [
+      "entertainment",
+      "emphasis",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣即時，結合 reported speech 與強調語氣。",
+    "exampleZh": "記錄媒體引用與公司回應。",
+    "exampleEn": "The daily brief notes what outlets reported, how spokespersons responded, and what actions are underway.",
+    "hint": "建議以表格呈現日期/風險等級/行動。"
+  },
+  {
+    "name": "運動醫學研究週報",
+    "description": "更新研究成果、參與者狀態與下一階段研究設計。",
+    "tags": [
+      "sports",
+      "health",
+      "present-perfect"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣客觀，使用現在完成式描述累積進展。",
+    "exampleZh": "報告已完成多少次測試並預告下一次測量。",
+    "exampleEn": "The update shows how many sessions have been completed and outlines the next assessment window.",
+    "hint": "可加入圖表與混合條件句描述風險。"
+  },
+  {
+    "name": "金融壓力測試報告",
+    "description": "整理壓力測試情境、結果與資本建議。",
+    "tags": [
+      "business",
+      "money",
+      "analysis"
+    ],
+    "minDifficulty": 4,
+    "maxDifficulty": 5,
+    "focus": "語氣正式，使用報導語氣與圖表。",
+    "exampleZh": "指出若某情境發生的資本缺口。",
+    "exampleEn": "The report states that regulators said capital buffers would be sufficient, but recommends maintaining contingency plans.",
+    "hint": "結合 reported speech 與混合條件描述風險與對策。"
+  },
+  {
+    "name": "活動延期致歉信模板",
+    "description": "提供主辦單位向參與者致歉、說明補償與新時程的信件格式。",
+    "tags": [
+      "apology",
+      "culture",
+      "social"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣真誠並提出補救措施，結合致謝與期待。",
+    "exampleZh": "說明因天候取消活動，提供改期選項與退款連結。",
+    "exampleEn": "The template explains that the event is postponed due to weather, offers new dates, and links to the refund request form.",
+    "hint": "善用 polite request、appreciation 與補救方案，結尾提醒後續聯繫方式。"
+  },
+  {
+    "name": "家庭照護能力評估表",
+    "description": "紀錄照護對象的日常自理能力、輔具需求與家人支援時段。",
+    "tags": [
+      "ability",
+      "personal",
+      "health"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣客觀，搭配量表與建議。",
+    "exampleZh": "顯示洗澡需要協助，建議安排週二物理治療。",
+    "exampleEn": "The assessment notes that bathing requires assistance and recommends scheduling physiotherapy on Tuesdays.",
+    "hint": "可使用 be able to / need assistance 表達能力評估，附上建議欄位。"
+  },
+  {
+    "name": "志工權限說明卡",
+    "description": "列出允許與禁止事項、聯絡窗口與緊急程序。",
+    "tags": [
+      "permission",
+      "prohibition",
+      "social"
+    ],
+    "minDifficulty": 1,
+    "maxDifficulty": 2,
+    "focus": "語氣清楚簡潔，強調 must not 與 allowed to。",
+    "exampleZh": "允許使用前台電腦查詢資訊；禁止擅自更改庫存。",
+    "exampleEn": "Volunteers are allowed to use the front-desk computer for lookups but must not change inventory records without approval.",
+    "hint": "結合 be allowed to、must not、please ensure 等句式，使規範明確。"
+  },
+  {
+    "name": "可行性分析備忘錄",
+    "description": "評估專案條件是否具備、待解決的阻礙與下一步研究。",
+    "tags": [
+      "possibility",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣理性，運用 It is possible that / may / might 表達評估。",
+    "exampleZh": "指出若取得地方合作，專案有望於半年內試辦。",
+    "exampleEn": "The memo states that the pilot may be feasible within six months if municipal partners provide venue access.",
+    "hint": "結合條件句與可能性表達，附上假設與風險。"
+  },
+  {
+    "name": "比較句宣傳文範例",
+    "description": "示範如何運用 as...as 形容產品或活動特色。",
+    "tags": [
+      "as-adjective-as",
+      "culture",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣生動，強調比喻與平衡。",
+    "exampleZh": "宣稱音樂節的夜景如星河般燦爛，邀請觀眾沉浸其中。",
+    "exampleEn": "The copy claims the festival's skyline is as dazzling as a river of stars, inviting visitors to experience it firsthand.",
+    "hint": "提醒避免過度誇飾，適度加入實際資訊，並可搭配 not as...as 對比。"
+  },
+  {
+    "name": "Too...to 安全提醒單",
+    "description": "列出因條件不足而不可執行的動作，並提供替代方案。",
+    "tags": [
+      "too-to",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣務實，指出限制並建議轉向。",
+    "exampleZh": "設備溫度太高無法繼續測試，改採備援裝置。",
+    "exampleEn": "The note states the equipment is too hot to continue testing and recommends switching to the backup unit.",
+    "hint": "搭配 because/therefore 說明原因與行動，避免僅停留在禁止層面。"
+  },
+  {
+    "name": "Such...that 事件通報",
+    "description": "記錄某情況嚴重到產生的具體結果，供主管決策。",
+    "tags": [
+      "such-that",
+      "health",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣嚴謹，清楚說明嚴重程度與後續措施。",
+    "exampleZh": "人流如此密集，以至於需要立即啟動人潮管制。",
+    "exampleEn": "Crowds were such a dense wave that the team activated crowd-control barriers immediately.",
+    "hint": "可搭配 therefore/so to 表示後續行動，避免與 so...that 混淆。"
+  },
+  {
+    "name": "If only 回顧札記",
+    "description": "個人回顧未完成目標、錯失時機並擬定新計畫。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結合 If only + past perfect 與未來計畫。",
+    "exampleZh": "感嘆當時若早些尋求協助就不會延誤申請，並設定新期限。",
+    "exampleEn": "The entry notes, \"If only I had asked for help earlier,\" and sets a new deadline for the grant application.",
+    "hint": "建議先敘述遺憾再提出補救行動，保持正向結尾。"
+  },
+  {
+    "name": "機器操作權限表",
+    "description": "列出哪些角色被允許/禁止操作設備，以及必要的授權程序。",
+    "tags": [
+      "permission",
+      "prohibition",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣明確，善用 be allowed to / must not。",
+    "exampleZh": "僅維護工程師被允許進入機房；其他人必須事先申請許可。",
+    "exampleEn": "Only maintenance engineers are allowed to enter the server room; all others must obtain approval beforehand.",
+    "hint": "建議加入 by + 時間 限制與聯絡方式，加強規範性。"
+  },
+  {
+    "name": "客製餐飲喜好報告",
+    "description": "彙整顧客的偏好、避免食材與例外需求供廚房參考。",
+    "tags": [
+      "preference",
+      "food",
+      "personal"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣友善，運用 would rather / prefer 表達選項。",
+    "exampleZh": "顧客寧可選擇低糖甜點並避免花生製品。",
+    "exampleEn": "The summary notes that the guests would rather have low-sugar desserts and prefer to avoid peanuts.",
+    "hint": "混用 prefer, would rather, would prefer 等句型，兼顧禮貌與清楚。"
+  },
+  {
+    "name": "沿海巡護界線說明",
+    "description": "告知巡護人員沿著哪裡巡查、邊界如何延伸與回報節點。",
+    "tags": [
+      "as-far-as",
+      "environment",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣務實，使用 as far as 片語界定範圍。",
+    "exampleZh": "沿海守望範圍從漁港一路延伸到北端燈塔。",
+    "exampleEn": "The notice states that patrols run as far as the north lighthouse and document checkpoints along the route.",
+    "hint": "善用 as far as + 地點/範圍，必要時附上地圖座標。"
+  },
+  {
+    "name": "即時警報通告模板",
+    "description": "範例說明一旦事件發生立即通報的 wording 與流程。",
+    "tags": [
+      "as-soon-as",
+      "technology",
+      "warning"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "使用 as soon as 描述觸發條件與後續行動。",
+    "exampleZh": "一旦監測到壓力下降，立即通知支援工程師。",
+    "exampleEn": "The template states that as soon as pressure drops below the threshold, the support engineer is alerted via SMS.",
+    "hint": "搭配主句祈使或 must，確保時間敏感。"
+  },
+  {
+    "name": "強調句新聞稿示例",
+    "description": "展示如何使用 It is...that 強調關鍵貢獻或成果。",
+    "tags": [
+      "cleft",
+      "culture",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，凸顯核心訊息。",
+    "exampleZh": "正是這群青年志工讓活動成功吸引上千人。",
+    "exampleEn": "It was the youth volunteer squad that kept the festival running smoothly and drew over a thousand visitors.",
+    "hint": "提醒變化時態與主語，避免重複強調同一資訊。"
+  },
+  {
+    "name": "事故重建過去完成報告",
+    "description": "重建事件前後發生的步驟與責任，便於後續改進。",
+    "tags": [
+      "past-perfect",
+      "technology",
+      "warning"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "善用 had + p.p. 描述事件先後順序。",
+    "exampleZh": "當伺服器崩潰前，我們已經完成兩次異常警示。",
+    "exampleEn": "The report notes that the team had issued two warnings before the server failure occurred.",
+    "hint": "搭配時間副詞與被動語態，清楚呈現時間線。"
+  },
+  {
+    "name": "歷史導覽簡報稿",
+    "description": "為志工提供過去簡單式敘述的導覽段落與互動提問。",
+    "tags": [
+      "past-simple",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣口語但資訊準確，使用 past simple 描述事件。",
+    "exampleZh": "該燈塔於 1897 年完工，當時守燈人與家人就住在旁邊。",
+    "exampleEn": "The brief explains that the lighthouse was completed in 1897 and the keeper lived with his family next door.",
+    "hint": "穿插時間副詞與地點片語，並提出引導問題。"
+  },
+  {
+    "name": "即時狀態更新告示",
+    "description": "描述團隊目前正在進行的任務與下一步，提供利害關係人掌握狀況。",
+    "tags": [
+      "present-continuous",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "使用 be + V-ing 說明進行中的活動。",
+    "exampleZh": "團隊目前正在部署修補程式，接著會重新啟動節點。",
+    "exampleEn": "The update states the team is rolling out the patch and will restart the nodes afterward.",
+    "hint": "可搭配現在完成式描述已完成項目，保持節奏清楚。"
+  },
+  {
+    "name": "社區建議彙整表",
+    "description": "整理居民提出的改善建議、預期影響與後續追蹤。",
+    "tags": [
+      "suggestion",
+      "social",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣合作，常用 should/might。",
+    "exampleZh": "居民建議增設遮雨棚並建立夜間照明巡檢制度。",
+    "exampleEn": "The sheet records suggestions such as installing rain shelters and setting up nightly lighting inspections.",
+    "hint": "提醒標註提案人、優先度與所需資源，便於後續追蹤。"
+  },
+  {
+    "name": "投入成效分析報告",
+    "description": "說明投入程度與成果之間的正向關係，使用 the more...the more 描述。",
+    "tags": [
+      "the-more-the-more",
+      "education",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣分析，呈現數據與趨勢。",
+    "exampleZh": "學生越常參與討論，越能在期末報告中展現批判思維。",
+    "exampleEn": "The analysis notes the more frequently students join discussions, the more confidently they demonstrate critical thinking in final projects.",
+    "hint": "建議提供數據佐證，可搭配圖表描述。"
+  },
+  {
+    "name": "意向調查摘要",
+    "description": "彙整成員寧願選擇的方案、備選理由與後續決策。",
+    "tags": [
+      "would-rather",
+      "preference",
+      "personal"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣友善，運用 would rather / would prefer。",
+    "exampleZh": "多數成員寧願延後一週以完成更多測試。",
+    "exampleEn": "The summary notes that most members would rather delay the rollout by a week to finish additional testing.",
+    "hint": "搭配 because/so that 說明理由，保留客觀性。"
+  },
+  {
+    "name": "故事板補充資訊表",
+    "description": "列出需以非限制關係子句補充的人物背景與地點資訊。",
+    "tags": [
+      "noun-clause",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "練習 who/which 子句補述細節。",
+    "exampleZh": "博物館導覽稿包含『這幅畫的作者，他生於 1860 年』等補充句。",
+    "exampleEn": "The storyboard lists sentences like \"The curator, who has studied this site for decades,\" to enrich narration.",
+    "hint": "提醒使用逗號隔開，避免 that；可結合 it is possible that 等句式。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 1",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 1",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 1",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 1",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 1",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 1",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 1",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 1",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 2",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 2",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 2",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 2",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 2",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 2",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 2",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 2",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 3",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 3",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 3",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 3",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 3",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 3",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 3",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 3",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 4",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 4",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 4",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 4",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 4",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 4",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 4",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 4",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 5",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 5",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 5",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 5",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 5",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 5",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 5",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 5",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 6",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 6",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 6",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 6",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 6",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 6",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 6",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 6",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 7",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 7",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 7",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 7",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 7",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 7",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 7",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 7",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "倒裝句緊急公告模板 8",
+    "description": "在緊急通知中例示倒裝句語氣，以提升警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "technology"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣警示，使用 Hardly/No sooner/Only 等倒裝。",
+    "exampleZh": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "exampleEn": "Hardly had we spotted the breach when the lockdown protocol kicked in.",
+    "hint": "提醒倒裝句搭配過去完成式與 when/than 子句。"
+  },
+  {
+    "name": "副詞子句操作指引 8",
+    "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
+    "tags": [
+      "adverb-clause",
+      "process",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣指示，確保時序清楚。",
+    "exampleZh": "Before shutting down the lab, remember to archive raw data.",
+    "exampleEn": "Before shutting down the lab, remember to archive the raw data.",
+    "hint": "注意副詞子句後要加逗號或連接詞，保持步驟順序。"
+  },
+  {
+    "name": "比較句宣傳案例 8",
+    "description": "提供 as...as/比較級句型的行銷文案。",
+    "tags": [
+      "comparative",
+      "business",
+      "purpose"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣活潑，強調差異或相似度。",
+    "exampleZh": "我們的線上展覽和實體展一樣沉浸。",
+    "exampleEn": "Our virtual exhibition is as immersive as the in-person showcase.",
+    "hint": "建議搭配具體亮點或客戶回饋。"
+  },
+  {
+    "name": "So that 目的任務單 8",
+    "description": "說明任務目的及預期效益，運用 so that。",
+    "tags": [
+      "so-that",
+      "purpose",
+      "technology"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣清晰，將目的與行動連結。",
+    "exampleZh": "請提前備份資料，以便系統更新時能快速回復。",
+    "exampleEn": "Back up the datasets so that the system can recover quickly during the upgrade.",
+    "hint": "可搭配 can/may/might 表達能力或可能性。"
+  },
+  {
+    "name": "分詞構句排程備忘 8",
+    "description": "利用分詞片語描述同步作業。",
+    "tags": [
+      "participle",
+      "process",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣流程化，避免懸垂分詞。",
+    "exampleZh": "Reviewing the test report, the QA lead noted two critical issues.",
+    "exampleEn": "Reviewing the test report, the QA lead noted two critical issues that require fixes.",
+    "hint": "確認分詞片語主語與主句一致，必要時改用完整子句。"
+  },
+  {
+    "name": "情態動詞政策公告 8",
+    "description": "示範 must/should/may 的規範語氣。",
+    "tags": [
+      "modal",
+      "business",
+      "necessity"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣正式，區分義務/建議/選項。",
+    "exampleZh": "Employees must wear safety goggles; contractors should check in at the main desk.",
+    "exampleEn": "Employees must wear safety goggles; contractors should check in at the main desk before entering the lab.",
+    "hint": "可追加 may 說明例外情況。"
+  },
+  {
+    "name": "建議彙整清單 8",
+    "description": "整理建議項目、理由與下一步。",
+    "tags": [
+      "suggestion",
+      "social",
+      "opinion"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣積極，使用 suggest/recommend。",
+    "exampleZh": "小組建議延長借閱時間並增設流動書櫃。",
+    "exampleEn": "The team suggests extending the borrowing period and recommends setting up a mobile book rack.",
+    "hint": "加入 should/could 語句增強禮貌。"
+  },
+  {
+    "name": "遺憾復盤筆記 8",
+    "description": "記錄遺憾與補救計畫，使用 If only / wish。",
+    "tags": [
+      "regret",
+      "personal",
+      "education"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，結尾轉向行動。",
+    "exampleZh": "若當時提早回覆，我們就不會錯過投稿截止。",
+    "exampleEn": "If only we had replied earlier, we wouldn't have missed the submission deadline.",
+    "hint": "建議附上下一步與時間表。"
+  },
+  {
+    "name": "非限制子句資訊稿 1",
+    "description": "包含非限制關係子句的說明文，提升細節。",
+    "tags": [
+      "noun-clause",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣敘事，使用逗號隔開補充資訊。",
+    "exampleZh": "The castle, which dates back to the 15th century, now hosts community events.",
+    "exampleEn": "The castle, which dates back to the fifteenth century, now hosts community events every weekend.",
+    "hint": "提醒避免用 that，引導詞需與先行詞類型一致。"
+  },
+  {
+    "name": "進行式任務看板 1",
+    "description": "即時呈現團隊正在進行的工作。",
+    "tags": [
+      "present-continuous",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣即時，使用 be + V-ing。",
+    "exampleZh": "工程師目前正在部署修補，上線完成後會宣布。",
+    "exampleEn": "Engineers are currently rolling out the hotfix and will announce completion once monitoring stabilises.",
+    "hint": "可搭配 has completed、will next 描述前後關係。"
+  },
+  {
+    "name": "非限制子句資訊稿 2",
+    "description": "包含非限制關係子句的說明文，提升細節。",
+    "tags": [
+      "noun-clause",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣敘事，使用逗號隔開補充資訊。",
+    "exampleZh": "The castle, which dates back to the 15th century, now hosts community events.",
+    "exampleEn": "The castle, which dates back to the fifteenth century, now hosts community events every weekend.",
+    "hint": "提醒避免用 that，引導詞需與先行詞類型一致。"
+  },
+  {
+    "name": "進行式任務看板 2",
+    "description": "即時呈現團隊正在進行的工作。",
+    "tags": [
+      "present-continuous",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣即時，使用 be + V-ing。",
+    "exampleZh": "工程師目前正在部署修補，上線完成後會宣布。",
+    "exampleEn": "Engineers are currently rolling out the hotfix and will announce completion once monitoring stabilises.",
+    "hint": "可搭配 has completed、will next 描述前後關係。"
+  },
+  {
+    "name": "非限制子句資訊稿 3",
+    "description": "包含非限制關係子句的說明文，提升細節。",
+    "tags": [
+      "noun-clause",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣敘事，使用逗號隔開補充資訊。",
+    "exampleZh": "The castle, which dates back to the 15th century, now hosts community events.",
+    "exampleEn": "The castle, which dates back to the fifteenth century, now hosts community events every weekend.",
+    "hint": "提醒避免用 that，引導詞需與先行詞類型一致。"
+  },
+  {
+    "name": "進行式任務看板 3",
+    "description": "即時呈現團隊正在進行的工作。",
+    "tags": [
+      "present-continuous",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣即時，使用 be + V-ing。",
+    "exampleZh": "工程師目前正在部署修補，上線完成後會宣布。",
+    "exampleEn": "Engineers are currently rolling out the hotfix and will announce completion once monitoring stabilises.",
+    "hint": "可搭配 has completed、will next 描述前後關係。"
+  },
+  {
+    "name": "非限制子句資訊稿 4",
+    "description": "包含非限制關係子句的說明文，提升細節。",
+    "tags": [
+      "noun-clause",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣敘事，使用逗號隔開補充資訊。",
+    "exampleZh": "The castle, which dates back to the 15th century, now hosts community events.",
+    "exampleEn": "The castle, which dates back to the fifteenth century, now hosts community events every weekend.",
+    "hint": "提醒避免用 that，引導詞需與先行詞類型一致。"
+  },
+  {
+    "name": "進行式任務看板 4",
+    "description": "即時呈現團隊正在進行的工作。",
+    "tags": [
+      "present-continuous",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣即時，使用 be + V-ing。",
+    "exampleZh": "工程師目前正在部署修補，上線完成後會宣布。",
+    "exampleEn": "Engineers are currently rolling out the hotfix and will announce completion once monitoring stabilises.",
+    "hint": "可搭配 has completed、will next 描述前後關係。"
+  },
+  {
+    "name": "非限制子句資訊稿 5",
+    "description": "包含非限制關係子句的說明文，提升細節。",
+    "tags": [
+      "noun-clause",
+      "culture",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣敘事，使用逗號隔開補充資訊。",
+    "exampleZh": "The castle, which dates back to the 15th century, now hosts community events.",
+    "exampleEn": "The castle, which dates back to the fifteenth century, now hosts community events every weekend.",
+    "hint": "提醒避免用 that，引導詞需與先行詞類型一致。"
+  },
+  {
+    "name": "進行式任務看板 5",
+    "description": "即時呈現團隊正在進行的工作。",
+    "tags": [
+      "present-continuous",
+      "technology",
+      "result"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣即時，使用 be + V-ing。",
+    "exampleZh": "工程師目前正在部署修補，上線完成後會宣布。",
+    "exampleEn": "Engineers are currently rolling out the hotfix and will announce completion once monitoring stabilises.",
+    "hint": "可搭配 has completed、will next 描述前後關係。"
+  },
+  {
+    "name": "投入成效分析報告 8",
+    "description": "延伸 the more...the more 分析案例。",
+    "tags": [
+      "the-more-the-more",
+      "business",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣分析，使用雙比較結構。",
+    "exampleZh": "投入越多時間在使用者訪談，改版方向越符合需求。",
+    "exampleEn": "The analysis shows the more time the team invests in user interviews, the more closely the redesign aligns with customer needs.",
+    "hint": "建議搭配圖表或數據支援論點。"
+  },
+  {
+    "name": "偏好調查綜合報告 1",
+    "description": "彙整 would rather / prefer 語句描述的偏好結果。",
+    "tags": [
+      "would-rather",
+      "preference",
+      "personal"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣友善，強調選擇理由。",
+    "exampleZh": "多數成員寧可保留線上會議，因為能節省通勤時間。",
+    "exampleEn": "The summary notes most members would rather keep online meetings because they save commuting time.",
+    "hint": "建議指出比例或受訪群體，加強可信度。"
+  },
+  {
+    "name": "偏好調查綜合報告 2",
+    "description": "彙整 would rather / prefer 語句描述的偏好結果。",
+    "tags": [
+      "would-rather",
+      "preference",
+      "personal"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣友善，強調選擇理由。",
+    "exampleZh": "多數成員寧可保留線上會議，因為能節省通勤時間。",
+    "exampleEn": "The summary notes most members would rather keep online meetings because they save commuting time.",
+    "hint": "建議指出比例或受訪群體，加強可信度。"
+  },
+  {
+    "name": "偏好調查綜合報告 3",
+    "description": "彙整 would rather / prefer 語句描述的偏好結果。",
+    "tags": [
+      "would-rather",
+      "preference",
+      "personal"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣友善，強調選擇理由。",
+    "exampleZh": "多數成員寧可保留線上會議，因為能節省通勤時間。",
+    "exampleEn": "The summary notes most members would rather keep online meetings because they save commuting time.",
+    "hint": "建議指出比例或受訪群體，加強可信度。"
+  },
+  {
+    "name": "正向循環行銷摘要 3",
+    "description": "以 the more...the more 描述投入與成果的正向循環，供行銷報告引用。",
+    "tags": [
+      "the-more-the-more",
+      "business",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣分析，搭配數據或客戶案例。",
+    "exampleZh": "團隊越頻繁更新教學內容，學員留存率越快回升。",
+    "exampleEn": "The summary notes the more often the team refreshes tutorials, the faster learner retention climbs.",
+    "hint": "建議附上圖表或指標支持敘述。"
+  },
+  {
+    "name": "偏好調查綜合報告 4",
+    "description": "彙整 would rather / prefer 語句提出的偏好與折衷方案。",
+    "tags": [
+      "would-rather",
+      "preference",
+      "business"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣中立，兼顧多方利益。",
+    "exampleZh": "大客戶寧願延後交付以換取更多測試時間。",
+    "exampleEn": "Key clients would rather delay delivery to secure additional testing time.",
+    "hint": "建議呈現比例與決策依據。"
+  },
+  {
+    "name": "非限制子句旅遊指南",
+    "description": "旅遊手冊運用非限制關係子句補充文化背景。",
+    "tags": [
+      "noun-clause",
+      "travel",
+      "culture"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣敘事，增加旅遊故事感。",
+    "exampleZh": "The village, which hosts a night market every Friday, welcomes volunteers from abroad.",
+    "exampleEn": "The village, which hosts a night market every Friday, welcomes volunteers from abroad and offers homestays.",
+    "hint": "提醒逗號位置與 who/which 選擇。"
+  },
+  {
+    "name": "進行式專案日誌",
+    "description": "專案團隊記錄當下正在處理的任務與阻礙。",
+    "tags": [
+      "present-continuous",
+      "business",
+      "process"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣即時，結合正在進行與下一步。",
+    "exampleZh": "團隊目前正在修補部署腳本，接著會執行煙霧測試。",
+    "exampleEn": "The team is currently fixing the deployment script and will run smoke tests afterward.",
+    "hint": "可搭配 has resolved 描述已完成項目。"
+  },
+  {
+    "name": "倒裝句危機演練記錄",
+    "description": "將演練流程以倒裝句記錄，提高警覺。",
+    "tags": [
+      "inversion",
+      "warning",
+      "education"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣詳實，記錄演練發生順序。",
+    "exampleZh": "No sooner had the alarm sounded than the class evacuated to the plaza.",
+    "exampleEn": "No sooner had the alarm sounded than the safety team escorted everyone to the plaza.",
+    "hint": "提醒 past perfect 與 than 子句搭配。"
+  },
+  {
+    "name": "分詞構句客服腳本",
+    "description": "客服對話中使用分詞片語表示同步處理。",
+    "tags": [
+      "participle",
+      "business",
+      "personal"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣親切，描述同時進行的動作。",
+    "exampleZh": "Checking your account details, I noticed the renewal is still pending.",
+    "exampleEn": "Checking your account details, I noticed the renewal is still pending and will process it right away.",
+    "hint": "避免懸垂分詞，保持主語一致。"
+  },
+  {
+    "name": "副詞子句安全巡檢卡",
+    "description": "巡檢表用 before/after/while/once 等子句說明步驟。",
+    "tags": [
+      "adverb-clause",
+      "safety",
+      "environment"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣操作型，突出先後順序。",
+    "exampleZh": "Once you finish inspecting the pumps, log the readings immediately.",
+    "exampleEn": "Once you finish inspecting the pumps, log the readings immediately and notify control if values drift.",
+    "hint": "提醒 once 子句位置與動詞時態。"
+  },
+  {
+    "name": "情態動詞遠距會議守則",
+    "description": "列出 must/should/may 等情態動詞表達遠距會議規範。",
+    "tags": [
+      "modal",
+      "technology",
+      "daily-life"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣務實，界定規範與例外。",
+    "exampleZh": "Participants must mute microphones when not speaking; presenters may keep video on.",
+    "exampleEn": "Participants must mute microphones when they are not speaking; presenters may keep video on for Q&A.",
+    "hint": "建議加入 may/can 規範例外。"
+  },
+  {
+    "name": "遺憾故事修稿指南",
+    "description": "寫作指南協助學生使用 If only / wish 敘述遺憾並展望。",
+    "tags": [
+      "regret",
+      "education",
+      "personal"
+    ],
+    "minDifficulty": 2,
+    "maxDifficulty": 3,
+    "focus": "語氣反思，鼓勵正向結尾。",
+    "exampleZh": "If only I had joined the club earlier, I would have met more teammates.",
+    "exampleEn": "If only I had joined the club earlier, I would have met more teammates, so now I plan to volunteer weekly.",
+    "hint": "建議搭配 so now / therefore 轉向行動。"
+  },
+  {
+    "name": "建議彙整決策表",
+    "description": "將社區建議分類、評估影響並決定採納與否。",
+    "tags": [
+      "suggestion",
+      "social",
+      "result"
+    ],
+    "minDifficulty": 3,
+    "maxDifficulty": 4,
+    "focus": "語氣合作，呈現建議與決策。",
+    "exampleZh": "The panel suggests extending library hours and decides to run a pilot in July.",
+    "exampleEn": "The panel suggests extending library hours, recommends recruiting additional volunteers, and decides to run a July pilot.",
+    "hint": "建議列出負責人與時程，便於追蹤。"
   }
 ]

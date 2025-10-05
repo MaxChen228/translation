@@ -3,56 +3,1160 @@
     "name": "第一型條件句",
     "pattern": "If + present simple, 主句 will/should/can + V",
     "focus": "描述真實可能的條件與結果",
-    "tags": ["conditional", "result"],
+    "tags": [
+      "conditional",
+      "result"
+    ],
     "hint": "主句選用適當助動詞，逗號置於條件子句後"
   },
   {
     "name": "被動語態搭配情態動詞",
     "pattern": "Modal + be + past participle",
     "focus": "強調外部規範或必要性",
-    "tags": ["passive", "modal"],
+    "tags": [
+      "passive",
+      "modal"
+    ],
     "hint": "確保動詞保持原形 + be + p.p. 的結構"
   },
   {
     "name": "讓步子句倒裝",
     "pattern": "Although/Even though + 子句，主句...",
     "focus": "突顯對比或意外的結果",
-    "tags": ["complex-sentence", "result"],
+    "tags": [
+      "complex-sentence",
+      "result"
+    ],
     "hint": "主句可搭配 nevertheless, still 等銜接詞"
   },
   {
     "name": "分詞構句開頭",
     "pattern": "Present/Past participle + 名詞/子句",
     "focus": "壓縮資訊、連結動作或原因",
-    "tags": ["participle", "complex-sentence"],
+    "tags": [
+      "participle",
+      "complex-sentence"
+    ],
     "hint": "需與主句主詞一致，避免懸垂分詞"
   },
   {
     "name": "名詞子句報告引述",
     "pattern": "It is reported/announced that ...",
     "focus": "傳達官方或媒體訊息",
-    "tags": ["noun-clause", "passive"],
+    "tags": [
+      "noun-clause",
+      "passive"
+    ],
     "hint": "that 子句中動詞時態需符合事實時間"
   },
   {
     "name": "比較級結果句",
     "pattern": "The more ... , the more ...",
     "focus": "描述變化的連動關係",
-    "tags": ["comparative", "result"],
+    "tags": [
+      "comparative",
+      "result"
+    ],
     "hint": "兩部分均需使用 the + 比較級"
   },
   {
     "name": "目的副詞子句",
     "pattern": "So that / In order that + S + can/may + V",
     "focus": "說明行動目的與預期效果",
-    "tags": ["purpose", "so-that"],
+    "tags": [
+      "purpose",
+      "so-that"
+    ],
     "hint": "目的子句常搭配情態動詞"
   },
   {
     "name": "虛擬語氣過去完成",
     "pattern": "If + had + p.p., would have + p.p.",
     "focus": "談論與事實相反的過去情境",
-    "tags": ["subjunctive", "past-perfect"],
+    "tags": [
+      "subjunctive",
+      "past-perfect"
+    ],
     "hint": "記得省略 if 時採 Had + S + p.p. 倒裝"
+  },
+  {
+    "name": "Not until 倒裝",
+    "pattern": "Not until + 時間/事件 + did/does + 主語 + V",
+    "focus": "突出事件延後發生的時間點與後果",
+    "tags": [
+      "inversion",
+      "result"
+    ],
+    "hint": "倒裝時須使用助動詞；若原句為 be 動詞改用 is/was 放在主語前"
+  },
+  {
+    "name": "Only when/after 倒裝",
+    "pattern": "Only when/after + 子句 + do/does/did + 主語 + V",
+    "focus": "強調條件達成後才能進行的動作",
+    "tags": [
+      "inversion",
+      "conditional"
+    ],
+    "hint": "限定語前置時，主句需搭配助動詞倒裝"
+  },
+  {
+    "name": "Under no circumstances 倒裝",
+    "pattern": "Under no circumstances + may/can/must + 主語 + V",
+    "focus": "表達強烈禁令或零容忍政策",
+    "tags": [
+      "inversion",
+      "prohibition"
+    ],
+    "hint": "否定副詞提前時，助動詞需置於主語前；常搭配情態動詞"
+  },
+  {
+    "name": "現在完成被動句",
+    "pattern": "has/have + been + past participle",
+    "focus": "描述已完成且與現在相關的被動狀態",
+    "tags": [
+      "present-perfect",
+      "passive"
+    ],
+    "hint": "注意主詞單複數選用 has/have，並確保動詞為過去分詞"
+  },
+  {
+    "name": "It is imperative that 子句",
+    "pattern": "It is imperative/essential/critical that + S + 原形動詞",
+    "focus": "表達必要性或緊急指令",
+    "tags": [
+      "subjunctive",
+      "necessity"
+    ],
+    "hint": "that 子句動詞保持原形，避免加第三人稱 s"
+  },
+  {
+    "name": "As long as 條件句",
+    "pattern": "As long as + S + present simple, 主句 will/can + V",
+    "focus": "表達條件成立期間即可持續的行為或結果",
+    "tags": [
+      "as-long-as",
+      "conditional"
+    ],
+    "hint": "條件子句多用現在式；主句可視需求選擇情態動詞"
+  },
+  {
+    "name": "Would rather 偏好句型",
+    "pattern": "S + would rather + V1 ... than + V2 ...",
+    "focus": "表達偏好的行為選擇或對比情境",
+    "tags": [
+      "would-rather",
+      "preference"
+    ],
+    "hint": "兩個動詞皆用原形；若主語不同，可改寫 would rather + 主語 + 過去式 表示婉轉建議"
+  },
+  {
+    "name": "Had better 建議句",
+    "pattern": "S + had better + V",
+    "focus": "給予強烈建議或警示日常行為",
+    "tags": [
+      "had-better",
+      "warning"
+    ],
+    "hint": "句型固定 had better；後接動詞原形，否定寫作 had better not"
+  },
+  {
+    "name": "Be supposed to 任務安排",
+    "pattern": "S + is/am/are supposed to + V",
+    "focus": "描述預定職責或社會期望",
+    "tags": [
+      "modal",
+      "necessity"
+    ],
+    "hint": "可搭配 tonight、this weekend 等時間副詞說明安排，注意 be 動詞與主語一致"
+  },
+  {
+    "name": "頻率副詞日常習慣",
+    "pattern": "S + always/often/usually + V (present simple)",
+    "focus": "敘述例行公事或個人習慣",
+    "tags": [
+      "present-simple",
+      "daily-life"
+    ],
+    "hint": "頻率副詞通常置於一般動詞前、be 動詞後"
+  },
+  {
+    "name": "Be in the middle of + V-ing",
+    "pattern": "S + be in the middle of + V-ing",
+    "focus": "描述進行中的行為或被打斷的活動",
+    "tags": [
+      "present-continuous",
+      "daily-life"
+    ],
+    "hint": "常搭配 when 子句或 just as 表示事件插入"
+  },
+  {
+    "name": "Prefer A to B",
+    "pattern": "S + prefer + N/V-ing + to + N/V-ing",
+    "focus": "比較兩種偏好，常見於生活決策",
+    "tags": [
+      "preference",
+      "comparative"
+    ],
+    "hint": "若後接動詞須使用動名詞；也可寫成 prefer to + V"
+  },
+  {
+    "name": "Could use + N",
+    "pattern": "S + could use + N",
+    "focus": "口語表達需要某物或休息",
+    "tags": [
+      "modal",
+      "daily-life"
+    ],
+    "hint": "語氣婉轉，常說 I could use some help / a break"
+  },
+  {
+    "name": "Not only... but also 倒裝",
+    "pattern": "Not only + 助動詞/一般動詞 + 主語 + V..., but also + ...",
+    "focus": "強調兩個並列行為或結果時的倒裝語序",
+    "tags": [
+      "inversion",
+      "complex-sentence"
+    ],
+    "hint": "Not only 置首時，主句需倒裝；第二子句維持正常語序。"
+  },
+  {
+    "name": "Either/Neither 對等連接",
+    "pattern": "Either + A + or + B / Neither + A + nor + B",
+    "focus": "表達二選一或完全否定的對等連接句",
+    "tags": [
+      "either-or",
+      "neither-nor"
+    ],
+    "hint": "注意主詞一致性；單數名詞搭配單數動詞，Neither...nor 可用倒裝強調。"
+  },
+  {
+    "name": "非限制性關係子句",
+    "pattern": "主語, who/which + V..., ...",
+    "focus": "補充說明資訊且以逗號隔開的關係子句",
+    "tags": [
+      "relative-clause",
+      "complex-sentence"
+    ],
+    "hint": "使用逗號分隔；避免以 that 開頭並確保先行詞明確。"
+  },
+  {
+    "name": "動名詞作主語",
+    "pattern": "V-ing + is/was + ...",
+    "focus": "以動名詞開頭表達一般活動或原則",
+    "tags": [
+      "gerund",
+      "grammar"
+    ],
+    "hint": "動名詞視為單數主語，多搭配第三人稱單數動詞。"
+  },
+  {
+    "name": "To-infinitive 表目的",
+    "pattern": "To + VR + ..., 主語 + V ...",
+    "focus": "使用不定詞說明行動目的或意圖",
+    "tags": [
+      "infinitive",
+      "purpose"
+    ],
+    "hint": "常置於句首或主要動作後；若主語不同需改為 in order for + 人 + to VR。"
+  },
+  {
+    "name": "Please + VR 請求句",
+    "pattern": "Please + VR + ...",
+    "focus": "禮貌地提出指示或要求",
+    "tags": [
+      "request",
+      "present-simple"
+    ],
+    "hint": "常搭配時間或地點副詞；避免重複使用 please 造成口氣突兀。"
+  },
+  {
+    "name": "Present perfect + since/for",
+    "pattern": "S + has/have + p.p. + since/for + 時間",
+    "focus": "描述從過去持續到現在的情況",
+    "tags": [
+      "present-perfect",
+      "result"
+    ],
+    "hint": "since 接具體時間點，for 接時間長度；常見於進度報告或習慣描述。"
+  },
+  {
+    "name": "If...should 條件句",
+    "pattern": "If + S + should + VR, 主句 will/can + VR",
+    "focus": "表示意外或低機率情境的預防性指示",
+    "tags": [
+      "conditional",
+      "warning"
+    ],
+    "hint": "用於程序文件，如 If any error should occur... 以呈現預防措施。"
+  },
+  {
+    "name": "被動語態 + by + 時間",
+    "pattern": "S + will/is to be + past participle + by + time",
+    "focus": "強調截止時間內應完成的被動任務",
+    "tags": [
+      "passive",
+      "necessity"
+    ],
+    "hint": "常見於專案排程：The report must be submitted by Friday 等。"
+  },
+  {
+    "name": "As soon as + 子句",
+    "pattern": "As soon as + S + V, 主句 + V",
+    "focus": "描述一事件緊接另一事件的時間子句",
+    "tags": [
+      "as-clause",
+      "adverb-clause"
+    ],
+    "hint": "可與 when/once 交替；常用於程序與事件通知。"
+  },
+  {
+    "name": "So that + 結果子句",
+    "pattern": "..., so that + S + can/will + V",
+    "focus": "表達行動目的或預期結果的連接句",
+    "tags": [
+      "so-that",
+      "purpose"
+    ],
+    "hint": "常見於說明流程與目的時；現代寫作也可省略 that。"
+  },
+  {
+    "name": "Emphatic do 強調句",
+    "pattern": "S + do/does/did + VR ...",
+    "focus": "使用 do 來強調肯定語氣或對比",
+    "tags": [
+      "emphasis",
+      "present-simple"
+    ],
+    "hint": "常用於客服或提案強調：We do value your feedback."
+  },
+  {
+    "name": "As long as + 子句",
+    "pattern": "As long as + S + present simple, 主句 + will/can + V",
+    "focus": "表達條件成立期間的行為或保障",
+    "tags": [
+      "as-clause",
+      "conditional"
+    ],
+    "hint": "常用於政策條款：As long as users agree to...，主句描述允許的行為。"
+  },
+  {
+    "name": "現在分詞作伴隨狀態",
+    "pattern": "S + V, V-ing + ...",
+    "focus": "用現在分詞描述伴隨動作或結果",
+    "tags": [
+      "participle",
+      "complex-sentence"
+    ],
+    "hint": "確保分詞與主語一致，避免懸垂分詞。"
+  },
+  {
+    "name": "被動進行式",
+    "pattern": "S + is/are being + past participle",
+    "focus": "描述正在進行的被動動作，常見於公告或工程進度",
+    "tags": [
+      "passive",
+      "present-continuous"
+    ],
+    "hint": "例：The servers are being upgraded tonight，適合強調進行中的工作。"
+  },
+  {
+    "name": "Past perfect + before/after",
+    "pattern": "S + had + p.p. before/after + S + past simple",
+    "focus": "交代兩個過去事件的先後順序",
+    "tags": [
+      "past-perfect",
+      "adverb-clause"
+    ],
+    "hint": "常見於報告事件流程：After the team had deployed..., the incident resolved."
+  },
+  {
+    "name": "It is reported/said that 子句",
+    "pattern": "It is reported/said/expected that + S + V",
+    "focus": "以被動語態報導資訊或預期",
+    "tags": [
+      "noun-clause",
+      "passive"
+    ],
+    "hint": "適用於報導與公告，避免直接指名責任方。"
+  },
+  {
+    "name": "No ... until + 子句",
+    "pattern": "No + N + until + 子句",
+    "focus": "用否定名詞短語表達禁止或延後條件",
+    "tags": [
+      "prohibition",
+      "adverb-clause"
+    ],
+    "hint": "例：No devices until the briefing ends. 可與被動句結合強調規範。"
+  },
+  {
+    "name": "Neither...nor 強調句",
+    "pattern": "Neither + A + nor + B + 助動詞 + 主語 + V",
+    "focus": "同時否定兩個選項並進行倒裝",
+    "tags": [
+      "neither-nor",
+      "inversion"
+    ],
+    "hint": "倒裝時助動詞需置於主語前，如 Neither the manager nor the clients were informed."
+  },
+  {
+    "name": "Future perfect by + time",
+    "pattern": "S + will have + p.p. by + 時間",
+    "focus": "描述在未來特定時間前完成的行動",
+    "tags": [
+      "future-perfect",
+      "result"
+    ],
+    "hint": "常見於專案排程，例如 We will have completed the rollout by Q3。"
+  },
+  {
+    "name": "Must/Need to 規範句",
+    "pattern": "S + must/need to + V",
+    "focus": "強調義務與強制動作",
+    "tags": [
+      "modal",
+      "necessity"
+    ],
+    "hint": "常見於政策或公告：Members must submit the form by Friday。"
+  },
+  {
+    "name": "Would you mind + V-ing",
+    "pattern": "Would you mind + V-ing ...?",
+    "focus": "禮貌請求或委婉提醒",
+    "tags": [
+      "request",
+      "present-simple"
+    ],
+    "hint": "回答可用 Not at all/No problem；注意後接動名詞。"
+  },
+  {
+    "name": "It is crucial that 子句",
+    "pattern": "It is crucial/important/essential that + S + 原形動詞",
+    "focus": "表達必要性與建議，常見於正式文件",
+    "tags": [
+      "grammar",
+      "subjunctive"
+    ],
+    "hint": "保持動詞原形；可搭配 should 形成較口語版本。"
+  },
+  {
+    "name": "To-infinitive as object",
+    "pattern": "S + V + to + VR",
+    "focus": "動詞後接 to-infinitive 作受詞",
+    "tags": [
+      "infinitive",
+      "grammar"
+    ],
+    "hint": "例：plan to launch, aim to reduce；注意與動名詞的選擇。"
+  },
+  {
+    "name": "Future simple commitments",
+    "pattern": "S + will + VR",
+    "focus": "描述承諾或未來安排",
+    "tags": [
+      "future-simple",
+      "result"
+    ],
+    "hint": "常見於產品路線圖、永續承諾：We will release..., We will continue to...."
+  },
+  {
+    "name": "限制/非限制關係子句",
+    "pattern": "N + who/which/that + 子句",
+    "focus": "區分限制與非限制用法",
+    "tags": [
+      "relative-clause",
+      "grammar"
+    ],
+    "hint": "限制性不加逗號、可用 that；非限制性須用逗號與 who/which。"
+  },
+  {
+    "name": "Gerund vs. to-infinitive 選擇",
+    "pattern": "S + prefer/like + V-ing / to + VR",
+    "focus": "說明某些動詞後可搭配動名詞或不定詞的語意差異",
+    "tags": [
+      "gerund",
+      "infinitive"
+    ],
+    "hint": "例如 stop doing vs. stop to do；鼓勵列出常見清單。"
+  },
+  {
+    "name": "Would rather ... than ...",
+    "pattern": "S + would rather + V1 + than + V2",
+    "focus": "表達偏好或比較選擇",
+    "tags": [
+      "would-rather",
+      "comparative"
+    ],
+    "hint": "兩動詞皆用原形；若主語不同可寫 would rather + sb + past tense。"
+  },
+  {
+    "name": "Future perfect continuous",
+    "pattern": "S + will have been + V-ing",
+    "focus": "描述未來某時點前持續進行的動作",
+    "tags": [
+      "future-perfect",
+      "future-simple"
+    ],
+    "hint": "常用於長期專案：By 2030, we will have been monitoring emissions for a decade."
+  },
+  {
+    "name": "As long as + 被動句",
+    "pattern": "As long as + S + is/are + past participle, 主句 + will + VR",
+    "focus": "結合條件子句與被動語態表達保障或需求",
+    "tags": [
+      "as-long-as",
+      "passive"
+    ],
+    "hint": "例：As long as data is encrypted, regulators will approve the rollout."
+  },
+  {
+    "name": "You'd better + V",
+    "pattern": "You'd better + V",
+    "focus": "給予強烈建議或警告",
+    "tags": [
+      "had-better",
+      "warning"
+    ],
+    "hint": "可用於家庭照護、客服提醒：You'd better call the clinic if symptoms worsen."
+  },
+  {
+    "name": "Either...or 選擇句",
+    "pattern": "Either + A + or + B + 動詞",
+    "focus": "在同一主語內表示二選一的選項",
+    "tags": [
+      "either-or",
+      "comparative"
+    ],
+    "hint": "注意主語一致性；若連結兩主語，動詞可依靠近的主語一致。"
+  },
+  {
+    "name": "Do/Does/Did + 副詞強調",
+    "pattern": "S + do/does/did + adv + VR",
+    "focus": "使用副詞加強語氣與誠意",
+    "tags": [
+      "emphasis",
+      "present-simple"
+    ],
+    "hint": "例：We do sincerely apologize；注意副詞位置與後續行動。"
+  },
+  {
+    "name": "Mixed conditional (past -> present)",
+    "pattern": "If + S + had + p.p., S + would + VR",
+    "focus": "談過去事件對現在狀態的影響",
+    "tags": [
+      "conditional",
+      "subjunctive"
+    ],
+    "hint": "例：If we had invested earlier, we would enjoy higher returns now."
+  },
+  {
+    "name": "Reported speech 概述",
+    "pattern": "S + said/claimed + that + 子句",
+    "focus": "轉述他人說法與時態回推",
+    "tags": [
+      "grammar",
+      "noun-clause"
+    ],
+    "hint": "注意時態回推與代名詞調整。"
+  },
+  {
+    "name": "Participial adjectives",
+    "pattern": "S + be + V-ing/V-ed 形容詞",
+    "focus": "使用 -ing/-ed 形容詞描述感受或特性",
+    "tags": [
+      "participle",
+      "grammar"
+    ],
+    "hint": "區分令人感到 vs 自身感受：exciting/excited。"
+  },
+  {
+    "name": "As...as 比較句",
+    "pattern": "S + be + as + adj + as + N/代名詞",
+    "focus": "比較兩者程度相同的情況",
+    "tags": [
+      "as-adjective-as",
+      "comparative"
+    ],
+    "hint": "如需否定可改用 not as...as；常搭配副詞修飾比較程度。"
+  },
+  {
+    "name": "Too...to 結構",
+    "pattern": "S + be + too + adj + to + VR",
+    "focus": "說明因過度某特質而無法執行動作",
+    "tags": [
+      "too-to",
+      "result"
+    ],
+    "hint": "可搭配 for + 受詞 表示對誰而言過度；與 so...that 差異可在說明中提示。"
+  },
+  {
+    "name": "Such...that 結果句",
+    "pattern": "Such + (adj) + N + that + S + V",
+    "focus": "描述強度導致的結果",
+    "tags": [
+      "such-that",
+      "result"
+    ],
+    "hint": "若名詞為不可數可搭配 such + adj + uncountable noun；注意 that 子句敘述結果。"
+  },
+  {
+    "name": "As soon as 子句",
+    "pattern": "As soon as + S + V, 主句 + V",
+    "focus": "表達一事件緊接另一事件發生",
+    "tags": [
+      "as-soon-as",
+      "adverb-clause"
+    ],
+    "hint": "用一般現在式描述未來安排；常見於應變流程。"
+  },
+  {
+    "name": "As far as 表範圍",
+    "pattern": "As far as + N + be concerned, 主句",
+    "focus": "表達在某人/領域內的觀點或範圍",
+    "tags": [
+      "as-far-as",
+      "complex-sentence"
+    ],
+    "hint": "常用於正式討論，如 As far as budget is concerned...。"
+  },
+  {
+    "name": "Cleft sentence 強調句",
+    "pattern": "It is/was + 強調成分 + that/who + 句子",
+    "focus": "凸顯特定資訊以突出重點",
+    "tags": [
+      "cleft",
+      "grammar"
+    ],
+    "hint": "注意時態一致；強調人時多用 who，事物用 that。"
+  },
+  {
+    "name": "Permission: be allowed to",
+    "pattern": "S + be allowed to + VR",
+    "focus": "說明被允許做某事的情境",
+    "tags": [
+      "permission",
+      "modal"
+    ],
+    "hint": "常搭配否定 not allowed to 表禁止；可與時間/地點副詞結合。"
+  },
+  {
+    "name": "Possibility: It is possible that",
+    "pattern": "It is possible that + S + V",
+    "focus": "表達可能性與評估",
+    "tags": [
+      "possibility",
+      "noun-clause"
+    ],
+    "hint": "可搭配情態動詞 might/may 形成變化；注意 that 子句中時態。"
+  },
+  {
+    "name": "If only + past perfect",
+    "pattern": "If only + S + had + p.p., ...",
+    "focus": "表達對過去行為的後悔",
+    "tags": [
+      "regret",
+      "past-perfect"
+    ],
+    "hint": "常搭配情感語句，如 If only I had informed them earlier."
+  },
+  {
+    "name": "Hardly...when 倒裝句",
+    "pattern": "Hardly/Scarcely + had + 主語 + p.p. when + 子句",
+    "focus": "強調事件幾乎同時發生",
+    "tags": [
+      "inversion",
+      "adverb-clause"
+    ],
+    "hint": "強調事件幾乎同時發生"
+  },
+  {
+    "name": "No sooner...than 倒裝句",
+    "pattern": "No sooner + had + 主語 + p.p. than + 子句",
+    "focus": "突顯前後兩事件緊密相連",
+    "tags": [
+      "inversion",
+      "adverb-clause"
+    ],
+    "hint": "突顯前後兩事件緊密相連"
+  },
+  {
+    "name": "Little did 主語知曉 倒裝",
+    "pattern": "Little did + 主語 + VR",
+    "focus": "表達事先未察覺的結果",
+    "tags": [
+      "inversion",
+      "result"
+    ],
+    "hint": "表達事先未察覺的結果"
+  },
+  {
+    "name": "Seldom/Rarely 倒裝",
+    "pattern": "Seldom / Rarely / Never + do/does/did + 主語 + VR",
+    "focus": "描述罕見情況時的倒裝",
+    "tags": [
+      "inversion",
+      "frequency"
+    ],
+    "hint": "描述罕見情況時的倒裝"
+  },
+  {
+    "name": "Only after 倒裝句",
+    "pattern": "Only after + 子句 + do/does/did + 主語 + VR",
+    "focus": "強調完成條件後才採取的動作",
+    "tags": [
+      "inversion",
+      "conditional"
+    ],
+    "hint": "強調完成條件後才採取的動作"
+  },
+  {
+    "name": "Only if 倒裝句",
+    "pattern": "Only if + 子句 + will/would + 主語 + VR",
+    "focus": "表達唯一成立條件",
+    "tags": [
+      "inversion",
+      "conditional"
+    ],
+    "hint": "表達唯一成立條件"
+  },
+  {
+    "name": "Only when 倒裝句",
+    "pattern": "Only when + 子句 + do/does/did + 主語 + VR",
+    "focus": "凸顯特定情境下才成立的行為",
+    "tags": [
+      "inversion",
+      "conditional"
+    ],
+    "hint": "凸顯特定情境下才成立的行為"
+  },
+  {
+    "name": "Not until + be 倒裝",
+    "pattern": "Not until + 時間/事件 + is/was + 主語",
+    "focus": "適用 be 動詞的倒裝格式",
+    "tags": [
+      "inversion",
+      "result"
+    ],
+    "hint": "適用 be 動詞的倒裝格式"
+  },
+  {
+    "name": "Never before 倒裝句",
+    "pattern": "Never before + has/have + 主語 + p.p.",
+    "focus": "突顯史無前例的情況",
+    "tags": [
+      "inversion",
+      "result"
+    ],
+    "hint": "突顯史無前例的情況"
+  },
+  {
+    "name": "Hardly ever 倒裝句",
+    "pattern": "Hardly ever + do/does + 主語 + VR",
+    "focus": "描述幾乎不發生的習慣",
+    "tags": [
+      "inversion",
+      "frequency"
+    ],
+    "hint": "描述幾乎不發生的習慣"
+  },
+  {
+    "name": "Not only...but also 正式倒裝",
+    "pattern": "Not only + do/does/did + 主語 + VR, but also + 子句",
+    "focus": "正式文稿強調並列結果",
+    "tags": [
+      "inversion",
+      "complex-sentence"
+    ],
+    "hint": "正式文稿強調並列結果"
+  },
+  {
+    "name": "So + adj + 倒裝結構",
+    "pattern": "So + adj + was/were + 主語 + that + 子句",
+    "focus": "以倒裝呈現程度導致的結果",
+    "tags": [
+      "inversion",
+      "such-that"
+    ],
+    "hint": "以倒裝呈現程度導致的結果"
+  },
+  {
+    "name": "Barely...when 倒裝句",
+    "pattern": "Barely + had + 主語 + p.p. when + 子句",
+    "focus": "口語常見的倒裝變體",
+    "tags": [
+      "inversion",
+      "adverb-clause"
+    ],
+    "hint": "口語常見的倒裝變體"
+  },
+  {
+    "name": "Never again 倒裝句",
+    "pattern": "Never again + will/would + 主語 + VR",
+    "focus": "表達強烈決心或保證",
+    "tags": [
+      "inversion",
+      "warning"
+    ],
+    "hint": "表達強烈決心或保證"
+  },
+  {
+    "name": "At no time 倒裝句",
+    "pattern": "At no time + did + 主語 + VR",
+    "focus": "正式否定語氣",
+    "tags": [
+      "inversion",
+      "warning"
+    ],
+    "hint": "正式否定語氣"
+  },
+  {
+    "name": "Under no circumstance 倒裝",
+    "pattern": "Under no circumstance + may/must + 主語 + VR",
+    "focus": "嚴格禁止條款",
+    "tags": [
+      "inversion",
+      "prohibition"
+    ],
+    "hint": "嚴格禁止條款"
+  },
+  {
+    "name": "Nowhere 倒裝句",
+    "pattern": "Nowhere + do/does/did + 主語 + VR",
+    "focus": "強調找不到或不存在",
+    "tags": [
+      "inversion",
+      "result"
+    ],
+    "hint": "強調找不到或不存在"
+  },
+  {
+    "name": "Seldom have I seen",
+    "pattern": "Seldom have + 主語 + p.p.",
+    "focus": "評論類文章常用句型",
+    "tags": [
+      "inversion",
+      "opinion"
+    ],
+    "hint": "評論類文章常用句型"
+  },
+  {
+    "name": "Personal reflection opener",
+    "pattern": "In my experience, + 子句",
+    "focus": "個人反思段落開頭",
+    "tags": [
+      "personal",
+      "opinion"
+    ],
+    "hint": "個人反思段落開頭"
+  },
+  {
+    "name": "Personal regret opener",
+    "pattern": "If only + 主語 + had + p.p.",
+    "focus": "遺憾文章常用開頭",
+    "tags": [
+      "regret",
+      "past-perfect"
+    ],
+    "hint": "遺憾文章常用開頭"
+  },
+  {
+    "name": "Personal resolution closer",
+    "pattern": "From now on, I will + VR",
+    "focus": "承諾改變的結尾",
+    "tags": [
+      "personal",
+      "future-simple"
+    ],
+    "hint": "承諾改變的結尾"
+  },
+  {
+    "name": "Business metric lead-in",
+    "pattern": "Data shows that + 子句",
+    "focus": "商業報告引用數據句型",
+    "tags": [
+      "business",
+      "noun-clause"
+    ],
+    "hint": "商業報告引用數據句型"
+  },
+  {
+    "name": "Business recommendation frame",
+    "pattern": "It is recommended that + 主語 + VR",
+    "focus": "商業建議常用虛擬語氣",
+    "tags": [
+      "business",
+      "advice"
+    ],
+    "hint": "商業建議常用虛擬語氣"
+  },
+  {
+    "name": "Technology update phrase",
+    "pattern": "We are currently + V-ing",
+    "focus": "技術團隊進度更新語氣",
+    "tags": [
+      "technology",
+      "present-continuous"
+    ],
+    "hint": "技術團隊進度更新語氣"
+  },
+  {
+    "name": "Education reflection pattern",
+    "pattern": "Students have been + V-ing",
+    "focus": "教育報告呈現持續行動",
+    "tags": [
+      "education",
+      "present-perfect"
+    ],
+    "hint": "教育報告呈現持續行動"
+  },
+  {
+    "name": "Culture comparison frame",
+    "pattern": "Compared with + 名詞, 主語 + VR",
+    "focus": "文化比較文章常用結構",
+    "tags": [
+      "culture",
+      "comparative"
+    ],
+    "hint": "文化比較文章常用結構"
+  },
+  {
+    "name": "Health advisory modal",
+    "pattern": "Patients should + VR",
+    "focus": "健康諮詢的建議語氣",
+    "tags": [
+      "health",
+      "advice"
+    ],
+    "hint": "健康諮詢的建議語氣"
+  },
+  {
+    "name": "Environment warning modal",
+    "pattern": "Residents must not + VR",
+    "focus": "環境公告禁止語氣",
+    "tags": [
+      "environment",
+      "prohibition"
+    ],
+    "hint": "環境公告禁止語氣"
+  },
+  {
+    "name": "Academic citation lead",
+    "pattern": "According to the study, + 子句",
+    "focus": "學術寫作引用來源",
+    "tags": [
+      "academic",
+      "noun-clause"
+    ],
+    "hint": "學術寫作引用來源"
+  },
+  {
+    "name": "Entertainment preview frame",
+    "pattern": "Fans can look forward to + V-ing",
+    "focus": "娛樂宣傳常用語",
+    "tags": [
+      "entertainment",
+      "future-simple"
+    ],
+    "hint": "娛樂宣傳常用語"
+  },
+  {
+    "name": "Travel itinerary expression",
+    "pattern": "The group will be + V-ing",
+    "focus": "旅行計畫的進行式描述",
+    "tags": [
+      "travel",
+      "future-continuous"
+    ],
+    "hint": "旅行計畫的進行式描述"
+  },
+  {
+    "name": "Career development phrase",
+    "pattern": "The trainee is expected to + VR",
+    "focus": "職涯指導常用句型",
+    "tags": [
+      "career",
+      "necessity"
+    ],
+    "hint": "職涯指導常用句型"
+  },
+  {
+    "name": "Finance forecast pattern",
+    "pattern": "Revenue is projected to + VR",
+    "focus": "財務預測語氣",
+    "tags": [
+      "business",
+      "future-simple"
+    ],
+    "hint": "財務預測語氣"
+  },
+  {
+    "name": "Sports commentary opener",
+    "pattern": "Rarely have we seen + 名詞",
+    "focus": "運動轉播高潮語氣",
+    "tags": [
+      "sports",
+      "inversion"
+    ],
+    "hint": "運動轉播高潮語氣"
+  },
+  {
+    "name": "Relationship advice frame",
+    "pattern": "You might consider + V-ing",
+    "focus": "情感／人際建議語氣",
+    "tags": [
+      "relationship",
+      "suggestion"
+    ],
+    "hint": "情感／人際建議語氣"
+  },
+  {
+    "name": "Money-saving recommendation",
+    "pattern": "It would be wise to + VR",
+    "focus": "理財建議常用句型",
+    "tags": [
+      "money",
+      "advice"
+    ],
+    "hint": "理財建議常用句型"
+  },
+  {
+    "name": "Community call-to-action",
+    "pattern": "Let's make sure to + VR",
+    "focus": "社群號召語氣",
+    "tags": [
+      "social",
+      "request"
+    ],
+    "hint": "社群號召語氣"
+  },
+  {
+    "name": "Possibility hedging",
+    "pattern": "There is a chance that + 子句",
+    "focus": "保留語氣表達可能性",
+    "tags": [
+      "possibility",
+      "noun-clause"
+    ],
+    "hint": "保留語氣表達可能性"
+  },
+  {
+    "name": "Permission reminder",
+    "pattern": "Members are allowed to + VR",
+    "focus": "授權與限制說明",
+    "tags": [
+      "permission",
+      "modal"
+    ],
+    "hint": "授權與限制說明"
+  },
+  {
+    "name": "Process checklist intro",
+    "pattern": "Before you + VR, make sure...",
+    "focus": "操作手冊常用句型",
+    "tags": [
+      "process",
+      "adverb-clause"
+    ],
+    "hint": "操作手冊常用句型"
+  },
+  {
+    "name": "Result summary closer",
+    "pattern": "As a result, + 子句",
+    "focus": "結尾總結因果",
+    "tags": [
+      "result",
+      "cause"
+    ],
+    "hint": "結尾總結因果"
+  },
+  {
+    "name": "Cause explanation opener",
+    "pattern": "Because of + 名詞, 主語 + VR",
+    "focus": "原因說明常見開頭",
+    "tags": [
+      "cause",
+      "adverb-clause"
+    ],
+    "hint": "原因說明常見開頭"
+  },
+  {
+    "name": "Purpose infinitive",
+    "pattern": "The aim is to + VR",
+    "focus": "說明文件目的句",
+    "tags": [
+      "purpose",
+      "infinitive"
+    ],
+    "hint": "說明文件目的句"
+  },
+  {
+    "name": "Gerund subject pattern",
+    "pattern": "V-ing + helps + 主語 + VR",
+    "focus": "以動名詞作主語強調效益",
+    "tags": [
+      "gerund",
+      "result"
+    ],
+    "hint": "以動名詞作主語強調效益"
+  },
+  {
+    "name": "Infinitive noun phrase",
+    "pattern": "To + VR + is to + VR",
+    "focus": "抽象說明常用結構",
+    "tags": [
+      "infinitive",
+      "definition"
+    ],
+    "hint": "抽象說明常用結構"
+  },
+  {
+    "name": "Comparative emphasis",
+    "pattern": "The more + S + VR, the better + 結果",
+    "focus": "雙比較句結構",
+    "tags": [
+      "the-more-the-more",
+      "result"
+    ],
+    "hint": "雙比較句結構"
+  },
+  {
+    "name": "Adverb-clause contrast",
+    "pattern": "Whereas + 子句, 主句",
+    "focus": "正式對比句型",
+    "tags": [
+      "as-clause",
+      "opinion"
+    ],
+    "hint": "正式對比句型"
+  },
+  {
+    "name": "Passive responsibility",
+    "pattern": "It is handled by + 單位",
+    "focus": "規範責任歸屬",
+    "tags": [
+      "passive",
+      "business"
+    ],
+    "hint": "規範責任歸屬"
+  },
+  {
+    "name": "Modal obligation",
+    "pattern": "You are expected to + VR",
+    "focus": "公司／學校要求語氣",
+    "tags": [
+      "modal",
+      "necessity"
+    ],
+    "hint": "公司／學校要求語氣"
+  },
+  {
+    "name": "Future scheduling",
+    "pattern": "We will be able to + VR by + 時間",
+    "focus": "交付時程表述",
+    "tags": [
+      "future-simple",
+      "result"
+    ],
+    "hint": "交付時程表述"
   }
 ]
