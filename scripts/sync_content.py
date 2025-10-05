@@ -25,7 +25,7 @@ def lint_basic(root: Path) -> None:
                 with path.open("r", encoding="utf-8") as handle:
                     json.load(handle)
             except Exception as exc:  # pragma: no cover - user facing
-                raise SystemExit(f"Invalid JSON file: {path} ({exc})")
+                raise SystemExit(f"Invalid JSON file: {path} ({exc})") from exc
 
 
 def collect_content_files(source: Path) -> List[Tuple[Path, str]]:

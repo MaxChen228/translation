@@ -38,13 +38,13 @@ def _req(method: str, url: str, body: Dict[str, Any] | None = None, timeout: int
         with urlopen(req, timeout=timeout) as resp:
             raw = resp.read().decode("utf-8")
             status = getattr(resp, "status", 200)
-    except Exception as e:
-        raise RuntimeError(f"{method} {url} failed: {e}")
+    except Exception as exc:
+        raise RuntimeError(f"{method} {url} failed: {exc}") from exc
     dt = (time.time() - t0) * 1000.0
     try:
         obj = json.loads(raw) if raw else {}
-    except Exception:
-        raise RuntimeError(f"Invalid JSON from {url}: {raw[:280]}")
+    except Exception as exc:
+        raise RuntimeError(f"Invalid JSON from {url}: {raw[:280]}") from exc
     return status, obj, dt
 
 
@@ -77,35 +77,47 @@ def main() -> int:
         provider = obj.get("provider")
         health = obj.get("status")
         has_key = (health != "no_key")
-    except Exception as e:
-        _ok(False); print(str(e)); return 1
+    except Exception as exc:
+        _ok(False)
+        print(str(exc))
+        return 1
 
     # 2) /cloud/decks
     try:
         status, decks, dt = _req("GET", urljoin(base, "cloud/decks"), timeout=timeout)
         ok = status // 100 == 2 and isinstance(decks, list)
-        _ok(ok); print(f"GET /cloud/decks {status} ({dt:.0f} ms) count={len(decks) if ok else '?'}")
+        _ok(ok)
+        print(f"GET /cloud/decks {status} ({dt:.0f} ms) count={len(decks) if ok else '?'}")
         if not ok:
             failures += 1
         else:
             for d in decks[: max(0, args.max_decks)]:
                 did = d.get("id")
                 if not did:
-                    failures += 1; print("  ❌ deck missing id"); continue
+                    failures += 1
+                    print("  ❌ deck missing id")
+                    continue
                 durl = urljoin(base, f"cloud/decks/{did}")
                 s2, det, t2 = _req("GET", durl, timeout=timeout)
                 ok2 = s2 // 100 == 2 and isinstance(det, dict) and isinstance(det.get("cards"), list)
-                _ok(ok2); print(f"  GET /cloud/decks/{did} {s2} ({t2:.0f} ms) cards={len(det.get('cards', [])) if ok2 else '?'}")
+                _ok(ok2)
+                print(
+                    f"  GET /cloud/decks/{did} {s2} ({t2:.0f} ms) cards="
+                    f"{len(det.get('cards', [])) if ok2 else '?'}"
+                )
                 if not ok2:
                     failures += 1
-    except Exception as e:
-        _ok(False); print(str(e)); return 1
+    except Exception as exc:
+        _ok(False)
+        print(str(exc))
+        return 1
 
     # 3) /cloud/books
     try:
         status, books, dt = _req("GET", urljoin(base, "cloud/books"), timeout=timeout)
         ok = status // 100 == 2 and isinstance(books, list)
-        _ok(ok); print(f"GET /cloud/books {status} ({dt:.0f} ms) count={len(books) if ok else '?'}")
+        _ok(ok)
+        print(f"GET /cloud/books {status} ({dt:.0f} ms) count={len(books) if ok else '?'}")
         if not ok:
             failures += 1
         else:
@@ -115,7 +127,11 @@ def main() -> int:
                 s2, det, t2 = _req("GET", burl, timeout=timeout)
                 items = det.get("items") if isinstance(det, dict) else None
                 ok2 = s2 // 100 == 2 and isinstance(items, list)
-                _ok(ok2); print(f"  GET /cloud/books/{{name}} {s2} ({t2:.0f} ms) items={len(items) if ok2 else '?'} name='{name}'")
+                _ok(ok2)
+                print(
+                    f"  GET /cloud/books/{{name}} {s2} ({t2:.0f} ms) items="
+                    f"{len(items) if ok2 else '?'} name='{name}'"
+                )
                 if not ok2:
                     failures += 1
                 else:
@@ -127,8 +143,10 @@ def main() -> int:
                         if bad:
                             failures += 1
                             print(f"    ❌ invalid hint category: {bad[:2]}")
-    except Exception as e:
-        _ok(False); print(str(e)); return 1
+    except Exception as exc:
+        _ok(False)
+        print(str(exc))
+        return 1
 
     # 4) POST /correct (skip if no key)
     if provider == "gemini" and not has_key:
@@ -148,11 +166,17 @@ def main() -> int:
         try:
             s, obj, dt = _req("POST", urljoin(base, "correct"), body=body, timeout=max(60, timeout))
             ok = s // 100 == 2 and isinstance(obj, dict) and isinstance(obj.get("errors"), list)
-            _ok(ok); print(f"POST /correct {s} ({dt:.0f} ms) errors={len(obj.get('errors', [])) if ok else '?'}")
+            _ok(ok)
+            print(
+                f"POST /correct {s} ({dt:.0f} ms) errors="
+                f"{len(obj.get('errors', [])) if ok else '?'}"
+            )
             if not ok:
                 failures += 1
-        except Exception as e:
-            _ok(False); print(str(e)); failures += 1
+        except Exception as exc:
+            _ok(False)
+            print(str(exc))
+            failures += 1
 
     # 5) POST /make_deck (skip if no key)
     if provider == "gemini" and not has_key:
@@ -177,11 +201,17 @@ def main() -> int:
         try:
             s, obj, dt = _req("POST", urljoin(base, "make_deck"), body=deck_body, timeout=max(60, timeout))
             ok = s // 100 == 2 and isinstance(obj, dict) and isinstance(obj.get("cards"), list) and len(obj.get("cards", [])) > 0
-            _ok(ok); print(f"POST /make_deck {s} ({dt:.0f} ms) cards={len(obj.get('cards', [])) if ok else '?'}")
+            _ok(ok)
+            print(
+                f"POST /make_deck {s} ({dt:.0f} ms) cards="
+                f"{len(obj.get('cards', [])) if ok else '?'}"
+            )
             if not ok:
                 failures += 1
-        except Exception as e:
-            _ok(False); print(str(e)); failures += 1
+        except Exception as exc:
+            _ok(False)
+            print(str(exc))
+            failures += 1
 
     print("\nSummary: {} failures".format(failures))
     return 0 if failures == 0 else 1

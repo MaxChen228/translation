@@ -77,7 +77,7 @@ def standardize_book_tags(input_dir, output_dir=None):
         except Exception as e:
             print(f"✗ 處理失敗: {file_path} - {str(e)}")
 
-    print(f"\n=== 處理摘要 ===")
+    print("\n=== 處理摘要 ===")
     print(f"處理文件: {processed_files}/{total_files}")
     print(f"處理項目: {total_items}")
     print(f"標籤數量: {total_tags_before} -> {total_tags_after}")
@@ -106,12 +106,12 @@ def analyze_tag_changes(input_dir):
                     for tag in new_tags:
                         new_tag_count[tag] = new_tag_count.get(tag, 0) + 1
 
-    print(f"\n=== 標籤變更分析 ===")
+    print("\n=== 標籤變更分析 ===")
     print(f"原始標籤種類: {len(old_tag_count)}")
     print(f"標準化後標籤種類: {len(new_tag_count)}")
     print(f"標籤種類減少: {len(old_tag_count) - len(new_tag_count)} ({(len(old_tag_count) - len(new_tag_count))/len(old_tag_count)*100:.1f}%)")
 
-    print(f"\n最常用的標準化標籤 (前20):")
+    print("\n最常用的標準化標籤 (前20):")
     sorted_tags = sorted(new_tag_count.items(), key=lambda x: x[1], reverse=True)
     for tag, count in sorted_tags[:20]:
         print(f"  {tag}: {count}")
@@ -130,5 +130,5 @@ if __name__ == "__main__":
     print("=== 分析現有標籤 ===")
     analyze_tag_changes(input_dir)
 
-    print(f"\n=== 開始標準化處理 ===")
+    print("\n=== 開始標準化處理 ===")
     standardize_book_tags(input_dir, output_dir)

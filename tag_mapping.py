@@ -1177,27 +1177,32 @@ TAG_MAPPING = {
     "as": ["grammar"],
     "if": ["grammar"],
     "unless": ["grammar"],
-    "although": ["grammar"],
-    "though": ["grammar"],
-    "even-though": ["grammar"],
-    "despite": ["grammar"],
-    "in-spite-of": ["grammar"],
-    "whereas": ["grammar"],
-    "while": ["grammar"],
-    "when": ["grammar"],
-    "whenever": ["grammar"],
-    "where": ["grammar"],
-    "wherever": ["grammar"],
-    "why": ["grammar"],
-    "how": ["grammar"],
-    "whether": ["grammar"],
-    "what": ["grammar"],
-    "which": ["grammar"],
-    "who": ["grammar"],
-    "whom": ["grammar"],
-    "whose": ["grammar"],
-    "that": ["grammar"],
 }
+
+GRAMMAR_CONNECTIVES = {
+    "although",
+    "though",
+    "even-though",
+    "despite",
+    "in-spite-of",
+    "whereas",
+    "while",
+    "when",
+    "whenever",
+    "where",
+    "wherever",
+    "why",
+    "how",
+    "whether",
+    "what",
+    "which",
+    "who",
+    "whom",
+    "whose",
+    "that",
+}
+
+TAG_MAPPING.update({tag: ["grammar"] for tag in GRAMMAR_CONNECTIVES})
 
 def map_old_tag_to_new(old_tag):
     """將舊標籤映射到新標籤"""
