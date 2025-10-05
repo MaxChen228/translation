@@ -20,9 +20,9 @@ class Settings(BaseSettings):
     LLM_TEMPERATURE: float = 0.1
     LLM_TOP_P: float = 0.1
     LLM_TOP_K: int = 1
-    # Set a very high default cap to avoid truncation under JSON mode
-    # Can still be overridden by environment variable LLM_MAX_OUTPUT_TOKENS
-    LLM_MAX_OUTPUT_TOKENS: int = 8192
+    # Optional cap for model output tokens; when unset we do not send maxOutputTokens
+    # allowing the provider to decide the limit. Can be re-enabled via env var.
+    LLM_MAX_OUTPUT_TOKENS: Optional[int] = None
 
     # Content/data
     CONTENT_DIR: str = "data"
@@ -63,13 +63,18 @@ class Settings(BaseSettings):
         return {m.strip() for m in raw.split(",") if m.strip()}
 
     def generation_config(self) -> Dict[str, object]:
-        return {
+        config: Dict[str, object] = {
             "response_mime_type": "application/json",
             "temperature": float(self.LLM_TEMPERATURE),
             "topP": float(self.LLM_TOP_P),
             "topK": int(self.LLM_TOP_K),
-            "maxOutputTokens": int(self.LLM_MAX_OUTPUT_TOKENS),
         }
+        max_tokens = self.LLM_MAX_OUTPUT_TOKENS
+        if max_tokens is not None:
+            max_tokens_int = int(max_tokens)
+            if max_tokens_int > 0:
+                config["maxOutputTokens"] = max_tokens_int
+        return config
 
     def deck_debug_enabled(self) -> bool:
         v = (self.DECK_DEBUG_LOG or "").strip().lower()

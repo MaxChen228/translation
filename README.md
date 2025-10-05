@@ -48,7 +48,7 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 - `QUESTION_PROMPT_FILE`：每日題目生成提示檔路徑（預設 `prompts/prompt_generate_questions.txt`）。
 - `GENERATOR_DEFAULT_COUNT`：每日題目生成腳本的預設題數（預設 `8`）。
 - `DECK_DEBUG_LOG`：控制是否輸出 `/make_deck` 呼叫摘要，預設 `1`（啟用）；設為 `0`/`false` 可停用。
-- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1 / 0.1 / 1 / 8192）。
+- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1 / 0.1 / 1；`LLM_MAX_OUTPUT_TOKENS` 未設定時不限制輸出 tokens）。
 - `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應（`off`｜`input`｜`output`｜`both`，預設 `both`）。
 - `LLM_LOG_PRETTY`：是否以縮排行輸出 LLM JSON 日誌（預設 `true`）。
 - `LOG_LEVEL`：一般日誌層級（預設 `INFO`）。

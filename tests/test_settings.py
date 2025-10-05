@@ -48,6 +48,12 @@ def test_generation_config_casts(monkeypatch):
     assert config["maxOutputTokens"] == 1024
 
 
+def test_generation_config_without_max_tokens():
+    settings = get_settings()
+    config = settings.generation_config()
+    assert "maxOutputTokens" not in config
+
+
 def test_deck_debug_enabled(monkeypatch):
     monkeypatch.setenv("DECK_DEBUG_LOG", "off")
     settings = get_settings()
