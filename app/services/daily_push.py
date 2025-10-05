@@ -5,7 +5,7 @@ from typing import List
 
 from app.core.settings import get_settings
 from app.question_store import QuestionStore
-from app.schemas import DailyPushQuestion, BankHint
+from app.schemas import BankHint, DailyPushQuestion
 
 
 def fetch_daily_push_questions(

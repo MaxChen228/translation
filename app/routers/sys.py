@@ -3,9 +3,8 @@ from __future__ import annotations
 import requests
 from fastapi import APIRouter
 
-from app.llm import GEMINI_BASE, get_current_model
 from app.core.settings import get_settings
-
+from app.llm import GEMINI_BASE, get_current_model
 
 router = APIRouter()
 

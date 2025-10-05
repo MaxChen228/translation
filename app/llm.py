@@ -13,7 +13,6 @@ from app.core.settings import get_settings
 from app.services.prompt_manager import get_prompt_config, read_prompt
 from app.usage.models import LLMUsage
 
-
 GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
 
 _PROMPT_CACHE: Dict[str, str] = {}

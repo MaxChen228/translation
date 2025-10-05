@@ -1,20 +1,19 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 
-from app.llm import load_system_prompt, load_merge_prompt
+from app.llm import load_merge_prompt, load_system_prompt
 from app.providers.llm import LLMProvider, get_provider
 from app.routers.model_utils import resolve_model_or_422
 from app.schemas import (
     CorrectRequest,
     CorrectResponse,
-    MergeErrorsRequest,
     MergeErrorResponse,
+    MergeErrorsRequest,
 )
 from app.services.corrector import build_user_content, validate_correct_response
 from app.services.merge import build_merge_user_content, validate_merge_response
 from app.usage.recorder import record_usage
-
 
 router = APIRouter()
 
@@ -35,12 +34,12 @@ async def correct(req: CorrectRequest, request: Request, provider: LLMProvider =
         resp = validate_correct_response(obj)
     except HTTPException as he:
         raise he
-    except Exception as e:
-        msg = str(e)
+    except Exception as exc:
+        msg = str(exc)
         status = 500
         if "status=429" in msg:
             status = 429
-        raise HTTPException(status_code=status, detail=msg)
+        raise HTTPException(status_code=status, detail=msg) from exc
     return resp
 
 
@@ -61,10 +60,10 @@ async def merge(req: MergeErrorsRequest, request: Request, provider: LLMProvider
         resp = validate_merge_response(obj)
     except HTTPException as he:
         raise he
-    except Exception as e:
-        msg = str(e)
+    except Exception as exc:
+        msg = str(exc)
         status = 500
         if "status=429" in msg:
             status = 429
-        raise HTTPException(status_code=status, detail=msg)
+        raise HTTPException(status_code=status, detail=msg) from exc
     return resp

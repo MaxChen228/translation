@@ -3,10 +3,12 @@
 批量標準化書籍標籤
 """
 
+import glob
 import json
 import os
-import glob
+
 from tag_mapping import standardize_tags
+
 
 def standardize_book_tags(input_dir, output_dir=None):
     """標準化指定目錄下所有書籍文件的標籤"""

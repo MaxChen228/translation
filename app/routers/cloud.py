@@ -16,7 +16,6 @@ from app.schemas import (
     CourseBookDetail,
 )
 
-
 router = APIRouter()
 _CONTENT = get_content_store()
 

@@ -3,9 +3,9 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException, Request
 
 from app.providers.llm import LLMProvider, get_provider
+from app.routers.model_utils import resolve_model_or_422
 from app.schemas import FlashcardCompletionRequest, FlashcardCompletionResponse
 from app.services.flashcard_completion import complete_flashcard
-from app.routers.model_utils import resolve_model_or_422
 
 router = APIRouter()
 
@@ -30,4 +30,4 @@ async def flashcard_complete(
     except HTTPException:
         raise
     except Exception as exc:  # pragma: no cover - defensive path
-        raise HTTPException(status_code=500, detail=str(exc))
+        raise HTTPException(status_code=500, detail=str(exc)) from exc

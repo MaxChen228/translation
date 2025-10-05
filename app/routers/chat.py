@@ -4,12 +4,12 @@ from fastapi import APIRouter, Depends, Request
 
 from app.providers.llm import LLMProvider, get_provider
 from app.schemas import (
-    ChatTurnRequest,
-    ChatTurnResponse,
     ChatResearchRequest,
     ChatResearchResponse,
+    ChatTurnRequest,
+    ChatTurnResponse,
 )
-from app.services.chat import run_turn, run_research
+from app.services.chat import run_research, run_turn
 
 router = APIRouter(prefix="/chat", tags=["chat"])
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Optional, Protocol, Sequence, Mapping
+from typing import Mapping, Optional, Protocol, Sequence
 
-from app.llm import call_gemini_json, resolve_model as llm_resolve_model
+from app.llm import call_gemini_json
+from app.llm import resolve_model as llm_resolve_model
 from app.usage.models import LLMUsage
 
 

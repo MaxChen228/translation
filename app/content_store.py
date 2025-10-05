@@ -5,10 +5,9 @@ import os
 import uuid
 from typing import Dict, List, Optional
 
-from app.schemas import BankHint, BankItem
-from app.core.settings import get_settings
 from app.core.logging import logger
-
+from app.core.settings import get_settings
+from app.schemas import BankHint, BankItem
 
 # Fallback in-code seeds (used only when data/ folders are empty)
 CLOUD_DECKS_SEED = [

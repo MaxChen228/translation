@@ -6,18 +6,18 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 
+from app.core.http_client import close_http_client, init_http_client
+from app.routers.admin import router as admin_router
+from app.routers.chat import router as chat_router
+from app.routers.cloud import router as cloud_router
+from app.routers.content_ui import router as content_ui_router
+from app.routers.control_center import router as control_center_router
 from app.routers.correct import router as correct_router
+from app.routers.daily_push import router as daily_push_router
 from app.routers.deck import router as deck_router
 from app.routers.flashcards import router as flashcards_router
-from app.routers.cloud import router as cloud_router
 from app.routers.sys import router as sys_router
-from app.routers.chat import router as chat_router
-from app.routers.control_center import router as control_center_router
-from app.routers.daily_push import router as daily_push_router
 from app.usage.router import router as usage_router
-from app.routers.admin import router as admin_router
-from app.routers.content_ui import router as content_ui_router
-from app.core.http_client import init_http_client, close_http_client
 
 
 def create_app() -> FastAPI:

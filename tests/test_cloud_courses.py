@@ -3,10 +3,10 @@ import json
 import pytest
 from fastapi.testclient import TestClient
 
+import app.routers.cloud as cloud_router
 from app.app import create_app
 from app.content_store import ContentStore
 from app.core.settings import get_settings
-import app.routers.cloud as cloud_router
 
 
 @pytest.fixture()

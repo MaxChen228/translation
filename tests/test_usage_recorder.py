@@ -5,7 +5,7 @@ import unittest
 
 os.environ.setdefault("USAGE_DB_PATH", os.path.join(tempfile.gettempdir(), "usage_test.sqlite"))
 
-from app.usage import LLMUsage, record_usage, query_usage, summarize_usage, reset_usage
+from app.usage import LLMUsage, query_usage, record_usage, reset_usage, summarize_usage
 
 
 class UsageRecorderTests(unittest.TestCase):

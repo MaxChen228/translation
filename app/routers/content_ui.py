@@ -4,8 +4,8 @@ from pathlib import Path
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 
 from app.content_store import get_content_store
@@ -13,7 +13,6 @@ from app.core.settings import get_settings
 from app.llm import reload_prompts
 from app.routers.admin import _verify_content_token
 from app.services.content_manager import get_content_manager
-
 
 router = APIRouter(prefix="/admin/content/ui", tags=["admin-content-ui"])
 _CONTENT = get_content_store()

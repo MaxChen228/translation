@@ -3,12 +3,11 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional
 
-from fastapi import APIRouter, Query, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.templating import Jinja2Templates
 
 from .models import LLMUsageQueryResponse
-from .recorder import query_usage, summarize_usage, get_usage
-
+from .recorder import get_usage, query_usage, summarize_usage
 
 router = APIRouter(prefix="/usage", tags=["usage"])
 _TEMPLATES = Jinja2Templates(directory=str(Path(__file__).resolve().parent.parent / "templates"))

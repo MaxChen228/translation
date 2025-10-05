@@ -1,10 +1,8 @@
 import json
-import os
-from pathlib import Path
 
 import pytest
 
-from app.content_store import ContentStore, CLOUD_DECKS_SEED
+from app.content_store import CLOUD_DECKS_SEED, ContentStore
 
 
 @pytest.fixture

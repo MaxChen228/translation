@@ -1,7 +1,7 @@
 import datetime as dt
+from typing import Optional
 
 import pytest
-from typing import Optional
 
 from app.question_store import QuestionRecord, QuestionStore, _extract_review_note
 

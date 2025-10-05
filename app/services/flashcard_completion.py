@@ -2,13 +2,17 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Dict, Any
+from typing import Any, Dict
 
 from fastapi import HTTPException
 
 from app.llm import load_flashcard_completion_prompt
 from app.providers.llm import LLMProvider
-from app.schemas import FlashcardCompletionRequest, FlashcardCompletionResponse, FlashcardCompletionCard
+from app.schemas import (
+    FlashcardCompletionCard,
+    FlashcardCompletionRequest,
+    FlashcardCompletionResponse,
+)
 from app.usage.recorder import record_usage
 
 

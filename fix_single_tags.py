@@ -3,9 +3,9 @@
 修復只有單個標籤的項目
 """
 
-import json
 import glob
-from tag_mapping import standardize_tags
+import json
+
 
 def fix_single_tags(directory):
     """修復只有單個標籤的項目"""

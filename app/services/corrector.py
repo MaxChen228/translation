@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 import json
-from typing import Dict, Iterable, Any
+from typing import Any, Dict, Iterable
 
 from fastapi import HTTPException
 
 from app.schemas import CorrectRequest, CorrectResponse
-
 
 ALLOWED_ERROR_TYPES = {"morphological", "syntactic", "lexical", "phonological", "pragmatic"}
 

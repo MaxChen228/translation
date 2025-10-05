@@ -8,11 +8,11 @@ import hashlib
 import json
 import random
 import sys
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from string import Template
 from typing import Iterable, List, Optional, Sequence
-import uuid
 
 from pydantic import BaseModel, Field, ValidationError
 

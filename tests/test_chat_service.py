@@ -8,13 +8,12 @@ from fastapi import HTTPException
 from app.schemas import (
     ChatAttachment,
     ChatMessage,
-    ChatTurnRequest,
     ChatResearchRequest,
     ChatResearchResponse,
+    ChatTurnRequest,
 )
 from app.services import chat
 from app.usage.models import LLMUsage
-
 
 pytestmark = pytest.mark.anyio
 

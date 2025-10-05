@@ -5,7 +5,7 @@ from typing import Any, Dict
 
 from fastapi import HTTPException
 
-from app.schemas import MergeErrorsRequest, MergeErrorResponse
+from app.schemas import MergeErrorResponse, MergeErrorsRequest
 from app.services.corrector import normalize_errors
 
 

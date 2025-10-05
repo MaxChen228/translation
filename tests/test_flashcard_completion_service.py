@@ -9,9 +9,9 @@ from fastapi import HTTPException
 
 os.environ.setdefault("USAGE_DB_PATH", os.path.join(tempfile.gettempdir(), "usage_test.sqlite"))
 
-from app.schemas import FlashcardCompletionRequest, FlashcardCompletionCard
-from app.services.flashcard_completion import complete_flashcard
 from app.providers.llm import LLMProvider
+from app.schemas import FlashcardCompletionCard, FlashcardCompletionRequest
+from app.services.flashcard_completion import complete_flashcard
 from app.usage.models import LLMUsage
 from app.usage.recorder import reset_usage
 

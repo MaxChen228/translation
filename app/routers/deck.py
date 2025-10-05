@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 
 from app.llm import load_deck_prompt
-from app.schemas import DeckMakeRequest, DeckMakeResponse
-from app.services.deck_maker import make_deck_from_request
 from app.providers.llm import LLMProvider, get_provider
 from app.routers.model_utils import resolve_model_or_422
-
+from app.schemas import DeckMakeRequest, DeckMakeResponse
+from app.services.deck_maker import make_deck_from_request
 
 router = APIRouter()
 
@@ -28,9 +27,9 @@ async def make_deck(req: DeckMakeRequest, request: Request, provider: LLMProvide
         )
     except HTTPException as he:
         raise he
-    except Exception as e:
+    except Exception as exc:
         status = 500
-        msg = str(e)
+        msg = str(exc)
         if "status=429" in msg:
             status = 429
-        raise HTTPException(status_code=status, detail=msg)
+        raise HTTPException(status_code=status, detail=msg) from exc

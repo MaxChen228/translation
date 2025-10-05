@@ -2,24 +2,25 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
-from typing import Optional, List, Dict
+from typing import Dict, List, Optional
 
 from fastapi import HTTPException
 
+from app.core.logging import logger
 from app.llm import (
-    load_chat_turn_prompt,
     load_chat_research_prompt,
+    load_chat_turn_prompt,
 )
 from app.providers.llm import LLMProvider
 from app.schemas import (
-    ChatTurnRequest,
-    ChatTurnResponse,
+    ChatMessage,
     ChatResearchRequest,
     ChatResearchResponse,
-    ChatMessage,
+    ChatTurnRequest,
+    ChatTurnResponse,
 )
-from app.core.logging import logger
 from app.usage.recorder import record_usage
+
 
 def _safe_dump(value, limit: int = 2000) -> str:
     try:

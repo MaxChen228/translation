@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+
 try:
     from dotenv import load_dotenv  # type: ignore
 except Exception:  # pragma: no cover - optional

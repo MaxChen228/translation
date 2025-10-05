@@ -5,7 +5,6 @@ from typing import Optional
 
 import httpx
 
-
 _client: Optional[httpx.AsyncClient] = None
 _client_lock: Optional[asyncio.Lock] = None
 

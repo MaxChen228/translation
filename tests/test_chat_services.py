@@ -6,8 +6,8 @@ import unittest
 
 os.environ.setdefault("USAGE_DB_PATH", os.path.join(tempfile.gettempdir(), "usage_test.sqlite"))
 
-from app.schemas import ChatMessage, ChatTurnRequest, ChatResearchRequest, ChatAttachment
-from app.services.chat import run_turn, run_research, _serialize_messages
+from app.schemas import ChatAttachment, ChatMessage, ChatResearchRequest, ChatTurnRequest
+from app.services.chat import _serialize_messages, run_research, run_turn
 from app.usage import reset_usage
 from app.usage.models import LLMUsage
 

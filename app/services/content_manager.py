@@ -5,13 +5,13 @@ import os
 import shutil
 import uuid
 from datetime import datetime
-from typing import Dict, List, Optional
 from pathlib import Path
+from typing import Dict, List, Optional
 
-from app.core.settings import get_settings
 from app.core.logging import logger
-from app.schemas import BankHint, BankItem, ContentUploadResult
+from app.core.settings import get_settings
 from app.core.tags import VALID_TAGS
+from app.schemas import BankHint, BankItem, ContentUploadResult
 
 
 class ContentManager:

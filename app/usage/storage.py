@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 from app.core.settings import get_settings
+
 from .models import LLMUsage, LLMUsageSummary
 
 try:  # psycopg2 僅在需要 Postgres 時才會用到

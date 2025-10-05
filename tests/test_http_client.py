@@ -4,7 +4,6 @@ import pytest
 
 from app.core import http_client
 
-
 pytestmark = pytest.mark.anyio("asyncio")
 
 

@@ -8,9 +8,9 @@ from typing import Dict
 
 from fastapi import HTTPException
 
-from app.llm import call_gemini_json
-from app.schemas import DeckMakeRequest, DeckMakeResponse, DeckCard
 from app.core.settings import get_settings
+from app.llm import call_gemini_json
+from app.schemas import DeckCard, DeckMakeRequest, DeckMakeResponse
 from app.usage.recorder import record_usage
 
 

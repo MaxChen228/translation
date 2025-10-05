@@ -21,8 +21,8 @@ import argparse
 import json
 import sys
 import time
-from typing import Any, Dict, List, Tuple
-from urllib.parse import urljoin, quote
+from typing import Any, Dict, Tuple
+from urllib.parse import quote, urljoin
 from urllib.request import Request, urlopen
 
 

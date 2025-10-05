@@ -26,6 +26,9 @@ select = [
 ]
 ignore = [
     "B008",  # function-call-argument-default
+    "E402",  # module import not at top level (legacy scripts adjusting sys.path)
+    "E501",  # line length, to be handled via formatter later
+    "E722",  # bare except in historical scripts
 ]
 
 [tool.ruff.lint.isort]

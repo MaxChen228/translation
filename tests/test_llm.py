@@ -1,4 +1,3 @@
-import asyncio
 import json
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock
@@ -7,7 +6,6 @@ import httpx
 import pytest
 
 from app import llm
-
 
 pytestmark = pytest.mark.anyio
 

@@ -1,4 +1,3 @@
-import json
 from unittest.mock import AsyncMock, Mock
 
 import pytest
@@ -7,7 +6,6 @@ from fastapi import HTTPException
 from app.schemas import DeckKnowledgeItem, DeckMakeRequest
 from app.services import deck_maker
 from app.usage.models import LLMUsage
-
 
 pytestmark = pytest.mark.anyio
 

@@ -6,10 +6,10 @@ from typing import Optional
 import pytest
 from fastapi.testclient import TestClient
 
+from app import content_store as content_store_module
 from app.app import create_app
 from app.core.settings import get_settings
-from app import content_store as content_store_module
-from app.llm import reload_prompts, load_system_prompt
+from app.llm import load_system_prompt, reload_prompts
 
 
 @pytest.fixture(autouse=True)
@@ -106,7 +106,7 @@ def create_client(tmp_path: Path, token: Optional[str]) -> TestClient:
     get_settings.cache_clear()
     content_store_module._GLOBAL_STORE = content_store_module.ContentStore(base_path=str(tmp_path))
     store = content_store_module.get_content_store()
-    from app.routers import cloud, admin
+    from app.routers import admin, cloud
     cloud._CONTENT = store
     admin._CONTENT = store
     return TestClient(create_app())

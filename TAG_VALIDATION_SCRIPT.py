@@ -3,18 +3,19 @@
 標籤驗證腳本 - 檢查題目是否符合標準化標籤體系
 """
 
-import json
 import glob
+import json
 import sys
 from pathlib import Path
-from typing import List, Dict, Set
+from typing import Dict, List
 
 # 確保可以匯入 app 套件（腳本通常位於 repo 根目錄）
 REPO_ROOT = Path(__file__).resolve().parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from app.core.tags import VALID_TAGS, FORBIDDEN_TAGS
+from app.core.tags import FORBIDDEN_TAGS, VALID_TAGS
+
 
 class TagValidator:
     def __init__(self):
