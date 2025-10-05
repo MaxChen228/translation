@@ -32,32 +32,23 @@ curl -s http://127.0.0.1:8080/healthz | jq .
 預設情況下，若未設定 API Key，`/healthz` 會顯示 `{"status": "no_key"}`。
 
 ## 環境變數
+建議先閱讀 [`docs/configuration.md`](docs/configuration.md) 或直接複製 `.env.example` 進行編輯：
+
+```bash
+cp translation-backend/.env.example .env
+```
+
+下方為關鍵變數摘錄，完整列表請參考文件：
 - `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`：Gemini API 金鑰（必要，擇一即可）。
 - `GEMINI_MODEL`：預設模型名稱（預設 `gemini-2.5-flash-preview-09-2025`）。可使用 `-latest` 別名自動使用最新版本（如 `gemini-flash-latest`、`gemini-flash-lite-latest`）。
-- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，預設包含 `gemini-2.5-pro`、`gemini-2.5-flash`、`gemini-2.5-flash-preview-09-2025`、`gemini-flash-latest`、`gemini-2.5-flash-lite`、`gemini-2.5-flash-lite-preview-09-2025`、`gemini-flash-lite-latest`）。
+- `ALLOWED_MODELS`：允許的模型白名單（逗號分隔，若留空則套用內建集合）。
 - `CONTENT_DIR`：雲端瀏覽內容根目錄（預設 `./data`）。
-- `USAGE_DB_PATH`：LLM 用量統計的 SQLite 檔案路徑（預設 `data/usage.db`，若只使用 Postgres 可忽略）。
-- `USAGE_DB_URL`：可選的 Postgres 連線字串；設定後會改寫 `/usage/llm*` 紀錄至該資料庫，`USAGE_DB_PATH` 仍保留作為本機備援。
-- `QUESTION_DB_PATH`：每日題目生成結果的 SQLite 檔案路徑（預設 `data/questions.sqlite`）。
-- `QUESTION_DB_URL`：可選的 Postgres 連線字串；設定後每日題目資料改寫入該資料庫。
-- `PROMPT_FILE`：批改系統提示檔路徑（預設 `prompts/prompt.txt`）。
-- `DECK_PROMPT_FILE`：單字卡生成提示檔路徑（預設 `prompts/prompt_deck.txt`）。
-- `CHAT_TURN_PROMPT_FILE`：聊天回合提示檔路徑（預設 `prompts/prompt_chat_turn.txt`）。
-- `CHAT_RESEARCH_PROMPT_FILE`：聊天研究提示檔路徑（預設 `prompts/prompt_chat_research.txt`）。
-- `MERGE_PROMPT_FILE`：錯誤合併提示檔路徑（預設 `prompts/prompt_merge.txt`）。
-- `QUESTION_PROMPT_FILE`：每日題目生成提示檔路徑（預設 `prompts/prompt_generate_questions.txt`）。
-- `GENERATOR_DEFAULT_COUNT`：每日題目生成腳本的預設題數（預設 `8`）。
-- `DECK_DEBUG_LOG`：控制是否輸出 `/make_deck` 呼叫摘要，預設 `1`（啟用）；設為 `0`/`false` 可停用。
-- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數（預設 0.1 / 0.1 / 1；`LLM_MAX_OUTPUT_TOKENS` 未設定時不限制輸出 tokens）。
-- `LLM_LOG_MODE`：控制是否輸出 LLM 請求/回應（`off`｜`input`｜`output`｜`both`，預設 `both`）。
-- `LLM_LOG_PRETTY`：是否以縮排行輸出 LLM JSON 日誌（預設 `true`）。
-- `LOG_LEVEL`：一般日誌層級（預設 `INFO`）。
-- `HOST`、`PORT`：本機啟動位址與連接埠（`uvicorn` 參數也可覆蓋）。
-
-將範例複製為 `.env`（可選）：
-```bash
-cp .env.example .env
-```
+- `USAGE_DB_PATH` / `USAGE_DB_URL`：LLM 用量紀錄位置；SQLite 與 Postgres 二擇一或並用。
+- `QUESTION_DB_PATH` / `QUESTION_DB_URL`：每日題目資料庫位置。
+- `PROMPT_FILE`、`DECK_PROMPT_FILE` 等：對應各流程的提示檔路徑。
+- `LLM_TEMPERATURE`、`LLM_TOP_P`、`LLM_TOP_K`、`LLM_MAX_OUTPUT_TOKENS`：生成參數。
+- `LLM_LOG_MODE`、`LLM_LOG_PRETTY`、`DECK_DEBUG_LOG`：控制 LLM 請求/回應與除錯輸出。
+- `HOST`、`PORT`：開發環境綁定位址與連接埠。
 
 ## API 介面
 
