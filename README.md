@@ -269,6 +269,23 @@ cp translation-backend/.env.example .env
 - 設定集中：所有設定集中於 `app/core/settings.py`，程式以 `get_settings()` 取得；請避免在其他模組直接讀取環境變數。
 - LLM 請求監控：設定 `LLM_LOG_MODE=input`（或 `output`/`both`）即可在日誌中看到縮排後的請求/回應 JSON，若需關閉縮排可將 `LLM_LOG_PRETTY` 設為 `false`。
 
+### 型別檢查與 Lint
+1. 安裝開發工具（僅需一次）：
+   ```bash
+   pip install -r requirements-dev.txt
+   ```
+2. 執行 mypy 型別檢查：
+   ```bash
+   mypy
+   ```
+3. 執行 Ruff lint 與格式檢查：
+   ```bash
+   ruff check
+   ```
+   若需自動修正可加入 `--fix` 參數。
+
+> 設定皆集中於 `pyproject.toml`，檢查範圍涵蓋 `app/`、`scripts/`、`tests/`。
+
 ### 非同步 LLM 呼叫小抄
 - FastAPI 會在 lifespan 中呼叫 `app/core/http_client.py` 的 `init_http_client()`，共用單一 `httpx.AsyncClient` 連線池並於關閉時自動釋放。
 - 若你寫額外腳本（例如資料匯入、一次性工具）需要直接呼叫 `call_gemini_json` 或服務層函式，記得自行管理事件迴圈，範例如下：
