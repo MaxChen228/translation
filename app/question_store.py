@@ -349,6 +349,19 @@ class QuestionStore:
         row = cursor.fetchone()
         return int(row[0]) if row else 0
 
+    def reset_deliveries_for_device(self, *, question_date: dt.date, device_id: str) -> None:
+        if self._backend == "postgres":
+            query = "DELETE FROM generated_question_deliveries WHERE device_id = %s AND delivered_date = %s"
+            with self._conn.cursor() as cur:
+                cur.execute(query, (device_id, question_date))
+            self._conn.commit()
+            return
+
+        query = "DELETE FROM generated_question_deliveries WHERE device_id = ? AND delivered_date = ?"
+        cursor = self._conn.cursor()
+        cursor.execute(query, (device_id, question_date.isoformat()))
+        self._conn.commit()
+
     def recent_summary(self, limit: int = 7) -> list[dict]:
         limit = max(1, limit)
         if self._backend == "postgres":

@@ -22,6 +22,7 @@ def pull_daily_questions(payload: DailyPushPullRequest) -> DailyPushPullResponse
             question_date=question_date,
             count=payload.count,
             device_id=device_id,
+            force_reset=payload.forceReset,
         )
     except Exception as exc:  # pragma: no cover - defensive logging
         raise HTTPException(status_code=500, detail=f"daily_push_failed:{exc}") from exc

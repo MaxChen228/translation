@@ -294,6 +294,7 @@ class DailyPushPullRequest(BaseModel):
     deviceId: str
     date: dt.date
     count: int = Field(ge=1, le=50)
+    forceReset: bool = False
 
 
 class DailyPushPullResponse(BaseModel):
