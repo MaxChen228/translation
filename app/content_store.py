@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import os
 import uuid
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional, cast
 
 from app.core.logging import logger
 from app.core.settings import get_settings
@@ -139,6 +139,16 @@ class ContentStore:
         clone["cards"] = cards
         return clone
 
+    @staticmethod
+    def _as_dict_list(value: Any) -> List[dict]:
+        if isinstance(value, list):
+            result: List[dict] = []
+            for entry in value:
+                if isinstance(entry, dict):
+                    result.append(dict(entry))
+            return result
+        return []
+
     def _normalize_bank_items(self, raw_items: List[dict]) -> List[dict]:
         items: List[dict] = []
         for entry in raw_items:
@@ -203,7 +213,11 @@ class ContentStore:
             except Exception as exc:
                 logger.warning("cloud_deck_load_error", extra={"path": fp, "error": str(exc)})
         if not decks:
-            decks = {seed["id"]: self._ensure_card_ids(seed) for seed in CLOUD_DECKS_SEED}
+            for seed in CLOUD_DECKS_SEED:
+                deck_id = str(seed.get("id") or "")
+                if not deck_id:
+                    continue
+                decks[deck_id] = self._ensure_card_ids(seed)
         self._decks_by_id = decks
 
     def _load_books(self, book_files: List[str]) -> None:
@@ -213,7 +227,7 @@ class ContentStore:
                 raw = self._read(fp)
                 book_id = raw.get("id") or os.path.splitext(os.path.basename(fp))[0]
                 name = raw.get("name") or book_id
-                items = self._normalize_bank_items(raw.get("items", []))
+                items = self._normalize_bank_items(self._as_dict_list(raw.get("items", [])))
                 tags = sorted({tag for it in items for tag in it.get("tags", []) if tag})
                 books[book_id] = {
                     "id": book_id,
@@ -227,11 +241,14 @@ class ContentStore:
                 logger.warning("cloud_book_load_error", extra={"path": fp, "error": str(exc)})
         if not books:
             for seed in CLOUD_BOOKS_SEED:
-                items = self._normalize_bank_items(seed.get("items", []))
+                seed_id = str(seed.get("id") or "")
+                if not seed_id:
+                    continue
+                items = self._normalize_bank_items(self._as_dict_list(seed.get("items", [])))
                 tags = sorted({tag for it in items for tag in it.get("tags", []) if tag})
-                books[seed["id"]] = {
-                    "id": seed["id"],
-                    "name": seed["name"],
+                books[seed_id] = {
+                    "id": seed_id,
+                    "name": seed.get("name"),
                     "summary": seed.get("summary"),
                     "coverImage": seed.get("coverImage"),
                     "tags": tags or seed.get("tags", []),
@@ -248,8 +265,8 @@ class ContentStore:
                 title = raw.get("title") or raw.get("name") or course_id
                 summary = raw.get("summary")
                 cover = raw.get("coverImage")
-                tags = raw.get("tags", [])
-                books = self._build_course_books(course_id, raw.get("books", []))
+                tags = list(raw.get("tags", []))
+                books = self._build_course_books(course_id, self._as_dict_list(raw.get("books", [])))
                 courses[course_id] = {
                     "id": course_id,
                     "title": title,
@@ -262,13 +279,17 @@ class ContentStore:
                 logger.warning("cloud_course_load_error", extra={"path": fp, "error": str(exc)})
         if not courses:
             for seed in CLOUD_COURSES_SEED:
-                books = self._build_course_books(seed["id"], seed.get("books", []))
-                courses[seed["id"]] = {
-                    "id": seed["id"],
-                    "title": seed["title"],
+                seed_id = str(seed.get("id") or "")
+                if not seed_id:
+                    continue
+                seed_books = self._as_dict_list(seed.get("books", []))
+                books = self._build_course_books(seed_id, seed_books)
+                courses[seed_id] = {
+                    "id": seed_id,
+                    "title": seed.get("title"),
                     "summary": seed.get("summary"),
                     "coverImage": seed.get("coverImage"),
-                    "tags": seed.get("tags", []),
+                    "tags": list(seed.get("tags", [])),
                     "books": books,
                 }
         if not courses and self._books_by_id:
@@ -320,7 +341,7 @@ class ContentStore:
                 )
                 continue
             book_id = resolved.get("id")
-            if book_id in seen:
+            if not book_id or book_id in seen:
                 continue
             seen.add(book_id)
             books.append(resolved)
@@ -369,9 +390,10 @@ class ContentStore:
         course = self._courses_by_id.get(course_id)
         if not course:
             return None
+        books = self._as_dict_list(course.get("books", []))
         return {
             **self._course_summary(course),
-            "books": [self._book_detail(book) for book in course.get("books", [])],
+            "books": [self._book_detail(book) for book in books],
         }
 
     def get_course_book(self, course_id: str, book_id: str) -> Optional[dict]:
@@ -393,41 +415,45 @@ class ContentStore:
         seen_courses: set[str] = set()
         seen_books: set[tuple[str, str]] = set()
         for course in self._courses_by_id.values():
-            course_id = course.get("id")
+            course_id = str(course.get("id") or "")
+            tags_text = " ".join(cast(List[str], course.get("tags", [])))
             haystack = " ".join(
                 filter(
                     None,
                     [
                         course.get("title"),
                         course.get("summary"),
-                        " ".join(course.get("tags", [])),
+                        tags_text,
                     ],
                 )
             ).lower()
             course_match = term in haystack
-            for book in course.get("books", []):
-                book_key = (course_id, book.get("id"))
+            books = self._as_dict_list(course.get("books", []))
+            for book in books:
+                book_id = str(book.get("id") or "")
+                book_key = (course_id, book_id)
                 if book_key in seen_books:
                     continue
                 book_text = " ".join(
                     filter(
                         None,
                         [
-                            book.get("title"),
-                            book.get("summary"),
-                            " ".join(book.get("tags", [])),
+                        book.get("title"),
+                        book.get("summary"),
+                        " ".join(cast(List[str], book.get("tags", []))),
                         ],
                     )
                 ).lower()
                 matched = term in book_text
                 if not matched:
-                    for item in book.get("items", []):
-                        if term in item.get("zh", "").lower():
+                    for item in self._as_dict_list(book.get("items", [])):
+                        zh_value = str(item.get("zh", ""))
+                        if term in zh_value.lower():
                             matched = True
                             break
                 if matched:
                     seen_books.add(book_key)
-                    book_hits.append((course["id"], self._book_summary(book)))
+                    book_hits.append((course_id, self._book_summary(book)))
                     course_match = True
             if course_match and course_id not in seen_courses:
                 seen_courses.add(course_id)
@@ -445,7 +471,7 @@ class ContentStore:
 
     # ----- Helpers ----------------------------------------------------
     def _course_summary(self, course: dict) -> dict:
-        books = course.get("books", [])
+        books = self._as_dict_list(course.get("books", []))
         return {
             "id": course.get("id"),
             "title": course.get("title"),

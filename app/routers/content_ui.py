@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import HTMLResponse
@@ -84,7 +84,7 @@ def create_or_update_course(payload: CourseDraftPayload, _: None = Depends(_veri
         if alias in seen_aliases:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"課程書籍 id 重複: {alias}")
         seen_aliases.add(alias)
-        overrides = {}
+        overrides: Dict[str, object] = {}
         if entry.title:
             overrides["title"] = entry.title
         if entry.summary:

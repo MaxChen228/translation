@@ -12,8 +12,8 @@ try:
     import psycopg2
     from psycopg2.extras import Json
 except ImportError:  # pragma: no cover - optional dependency
-    psycopg2 = None  # type: ignore[assignment]
-    Json = None  # type: ignore[assignment]
+    psycopg2 = None
+    Json = None
 
 
 @dataclass
@@ -315,16 +315,17 @@ class QuestionStore:
         rows = cursor.fetchall()
         records = [self._row_to_record(row) for row in rows]
         if records:
-            delivered_at = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat()
+            delivered_at_dt = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+            delivered_at_str = delivered_at_dt.isoformat()
             insert_sql = (
                 "INSERT OR IGNORE INTO generated_question_deliveries (question_id, device_id, delivered_date, delivered_at) "
                 "VALUES (?, ?, ?, ?)"
             )
-            payload = [
-                (rec.id, device_id, question_date.isoformat(), delivered_at)
+            payload_sqlite: list[tuple[str, str, str, str]] = [
+                (rec.id, device_id, question_date.isoformat(), delivered_at_str)
                 for rec in records
             ]
-            cursor.executemany(insert_sql, payload)
+            cursor.executemany(insert_sql, payload_sqlite)
             self._conn.commit()
         return records
 

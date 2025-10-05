@@ -192,9 +192,10 @@ def control_center_update_prompt(
 
     reload_prompts()
     written_bytes = len((payload.content.rstrip() + "\n").encode("utf-8"))
+    path_value = str(result.get("path", ""))
     response_payload = PromptUploadResult(
         promptId=payload.promptId,
-        path=result.get("path", ""),
+        path=path_value,
         backupPath=result.get("backup_path"),
         bytesWritten=written_bytes,
     )

@@ -34,8 +34,8 @@ def _serialize_messages(messages: List[ChatMessage]) -> tuple[str, List[Dict[str
     inline_parts: list[Dict[str, object]] = []
 
     for msg in messages:
-        base = {"role": msg.role, "content": msg.content}
-        atts = []
+        base: Dict[str, object] = {"role": msg.role, "content": msg.content}
+        atts: List[Dict[str, object]] = []
         for attachment in msg.attachments or []:
             if attachment.type != "image":
                 continue

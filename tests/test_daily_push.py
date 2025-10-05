@@ -21,7 +21,7 @@ def _reset_env(monkeypatch):
 
 
 def _create_question(question_date: date) -> QuestionRecord:
-    payload = {
+    payload: dict[str, object] = {
         "id": "daily-test-001",
         "zh": "這是一個每日推送測試題目。",
         "hints": [
@@ -32,10 +32,11 @@ def _create_question(question_date: date) -> QuestionRecord:
         "difficulty": 2,
         "referenceEn": "This is a test daily push question."
     }
+    reference_en = str(payload.get("referenceEn", ""))
     return QuestionRecord.from_payload(
         question_date=question_date,
         item=payload,
-        reference_en=payload["referenceEn"],
+        reference_en=reference_en,
         model="gemini-2.5-flash",
         prompt_hash="hash",
     )

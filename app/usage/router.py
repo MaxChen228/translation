@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional, cast
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.templating import Jinja2Templates
@@ -24,17 +24,16 @@ def get_llm_usage(
     limit: int = Query(default=100, ge=1, le=1000),
     offset: int = Query(default=0, ge=0),
 ) -> LLMUsageQueryResponse:
-    query_kwargs = {
-        "device_id": device_id,
-        "route": route,
-        "model": model,
-        "provider": provider,
-        "since": since,
-        "until": until,
-        "limit": limit,
-        "offset": offset,
-    }
-    records = query_usage(**query_kwargs)
+    records = query_usage(
+        device_id=device_id,
+        route=route,
+        model=model,
+        provider=provider,
+        since=since,
+        until=until,
+        limit=limit,
+        offset=offset,
+    )
     summary = summarize_usage(
         device_id=device_id,
         route=route,
@@ -60,7 +59,7 @@ def llm_usage_detail_view(request: Request, usage_id: int):
     try:
         import yaml
     except Exception:
-        yaml = None
+        yaml = cast(Any, None)
 
     def _normalize_newlines(obj):
         if isinstance(obj, str):

@@ -4,7 +4,7 @@ import contextlib
 import os
 import sqlite3
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Any, List, Optional, Tuple, cast
 
 from app.core.settings import get_settings
 
@@ -15,8 +15,8 @@ try:  # psycopg2 僅在需要 Postgres 時才會用到
     import psycopg2.extras
     from psycopg2.pool import ThreadedConnectionPool
 except Exception:  # pragma: no cover - 避免本地未安裝時導致 ImportError
-    psycopg2 = None  # type: ignore
-    ThreadedConnectionPool = None  # type: ignore
+    psycopg2 = cast(Any, None)
+    ThreadedConnectionPool = cast(Any, None)
 
 
 class _BaseStorage:
@@ -183,7 +183,8 @@ class _SQLiteUsageStorage(_BaseStorage):
                 ),
             )
             conn.commit()
-            return int(cursor.lastrowid)
+            row_id = cursor.lastrowid
+            return int(row_id) if row_id is not None else 0
 
     def query(
         self,

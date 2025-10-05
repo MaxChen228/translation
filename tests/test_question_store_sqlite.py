@@ -22,7 +22,7 @@ def _build_record(
     zh: Optional[str] = None,
     review_note: Optional[str] = "note",
 ) -> QuestionRecord:
-    payload = {
+    payload: dict[str, object] = {
         "id": f"daily-test-{idx:03d}",
         "zh": zh or f"question-{idx}",
         "hints": [{"category": "lexical", "text": "hint"}],
@@ -32,10 +32,11 @@ def _build_record(
     }
     if review_note is not None:
         payload["reviewNote"] = review_note
+    reference_en = str(payload.get("referenceEn", ""))
     return QuestionRecord.from_payload(
         question_date=question_date,
         item=payload,
-        reference_en=payload["referenceEn"],
+        reference_en=reference_en,
         model="gemini-test",
         prompt_hash=f"hash-{idx}",
     )

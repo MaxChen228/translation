@@ -21,12 +21,14 @@ import argparse
 import json
 import sys
 import time
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, List, Tuple, cast
 from urllib.parse import quote, urljoin
 from urllib.request import Request, urlopen
 
+JsonDict = Dict[str, Any]
 
-def _req(method: str, url: str, body: Dict[str, Any] | None = None, timeout: int = 30) -> Tuple[int, Dict[str, Any], float]:
+
+def _req(method: str, url: str, body: Dict[str, Any] | None = None, timeout: int = 30) -> Tuple[int, Any, float]:
     data = None
     headers = {"Accept": "application/json"}
     if body is not None:
@@ -84,27 +86,38 @@ def main() -> int:
 
     # 2) /cloud/decks
     try:
-        status, decks, dt = _req("GET", urljoin(base, "cloud/decks"), timeout=timeout)
-        ok = status // 100 == 2 and isinstance(decks, list)
+        status, decks_raw, dt = _req("GET", urljoin(base, "cloud/decks"), timeout=timeout)
+        decks_list: List[JsonDict] = []
+        if isinstance(decks_raw, list):
+            decks_list = [cast(JsonDict, deck) for deck in decks_raw if isinstance(deck, dict)]
+        ok = status // 100 == 2 and bool(decks_list)
         _ok(ok)
-        print(f"GET /cloud/decks {status} ({dt:.0f} ms) count={len(decks) if ok else '?'}")
+        deck_count = len(decks_list) if ok else "?"
+        print(f"GET /cloud/decks {status} ({dt:.0f} ms) count={deck_count}")
         if not ok:
             failures += 1
         else:
-            for d in decks[: max(0, args.max_decks)]:
-                did = d.get("id")
+            for d in decks_list[: max(0, args.max_decks)]:
+                did = str(d.get("id") or "")
                 if not did:
                     failures += 1
                     print("  ❌ deck missing id")
                     continue
                 durl = urljoin(base, f"cloud/decks/{did}")
-                s2, det, t2 = _req("GET", durl, timeout=timeout)
-                ok2 = s2 // 100 == 2 and isinstance(det, dict) and isinstance(det.get("cards"), list)
+                s2, det_raw, t2 = _req("GET", durl, timeout=timeout)
+                cards: List[JsonDict] = []
+                if isinstance(det_raw, dict):
+                    cards_value = det_raw.get("cards")
+                    if isinstance(cards_value, list):
+                        cards = [
+                            cast(JsonDict, card)
+                            for card in cards_value
+                            if isinstance(card, dict)
+                        ]
+                ok2 = s2 // 100 == 2 and bool(cards)
                 _ok(ok2)
-                print(
-                    f"  GET /cloud/decks/{did} {s2} ({t2:.0f} ms) cards="
-                    f"{len(det.get('cards', [])) if ok2 else '?'}"
-                )
+                cards_count = len(cards) if ok2 else "?"
+                print(f"  GET /cloud/decks/{did} {s2} ({t2:.0f} ms) cards={cards_count}")
                 if not ok2:
                     failures += 1
     except Exception as exc:
@@ -114,30 +127,40 @@ def main() -> int:
 
     # 3) /cloud/books
     try:
-        status, books, dt = _req("GET", urljoin(base, "cloud/books"), timeout=timeout)
-        ok = status // 100 == 2 and isinstance(books, list)
+        status, books_raw, dt = _req("GET", urljoin(base, "cloud/books"), timeout=timeout)
+        books_list: List[JsonDict] = []
+        if isinstance(books_raw, list):
+            books_list = [cast(JsonDict, book) for book in books_raw if isinstance(book, dict)]
+        ok = status // 100 == 2 and bool(books_list)
         _ok(ok)
-        print(f"GET /cloud/books {status} ({dt:.0f} ms) count={len(books) if ok else '?'}")
+        book_count = len(books_list) if ok else "?"
+        print(f"GET /cloud/books {status} ({dt:.0f} ms) count={book_count}")
         if not ok:
             failures += 1
         else:
-            for b in books[: max(0, args.max_books)]:
-                name = b.get("name") or ""
+            for b in books_list[: max(0, args.max_books)]:
+                name = str(b.get("name") or "")
                 burl = urljoin(base, "cloud/books/") + quote(name, safe="")
-                s2, det, t2 = _req("GET", burl, timeout=timeout)
-                items = det.get("items") if isinstance(det, dict) else None
-                ok2 = s2 // 100 == 2 and isinstance(items, list)
+                s2, det_raw, t2 = _req("GET", burl, timeout=timeout)
+                items_list: List[JsonDict] = []
+                if isinstance(det_raw, dict):
+                    items_value = det_raw.get("items")
+                    if isinstance(items_value, list):
+                        items_list = [
+                            cast(JsonDict, item)
+                            for item in items_value
+                            if isinstance(item, dict)
+                        ]
+                ok2 = s2 // 100 == 2 and bool(items_list)
                 _ok(ok2)
-                print(
-                    f"  GET /cloud/books/{{name}} {s2} ({t2:.0f} ms) items="
-                    f"{len(items) if ok2 else '?'} name='{name}'"
-                )
+                item_count = len(items_list) if ok2 else "?"
+                print(f"  GET /cloud/books/{{name}} {s2} ({t2:.0f} ms) items={item_count} name='{name}'")
                 if not ok2:
                     failures += 1
                 else:
                     # Validate hints category within five allowed (when present)
                     allowed = {"morphological", "syntactic", "lexical", "phonological", "pragmatic"}
-                    for it in items[:3]:
+                    for it in items_list[:3]:
                         hints = it.get("hints") or []
                         bad = [h for h in hints if h.get("category") not in allowed]
                         if bad:
@@ -164,13 +187,20 @@ def main() -> int:
         if args.model:
             body["model"] = args.model
         try:
-            s, obj, dt = _req("POST", urljoin(base, "correct"), body=body, timeout=max(60, timeout))
-            ok = s // 100 == 2 and isinstance(obj, dict) and isinstance(obj.get("errors"), list)
+            s, obj_raw, dt = _req("POST", urljoin(base, "correct"), body=body, timeout=max(60, timeout))
+            errors_list: List[JsonDict] = []
+            if isinstance(obj_raw, dict):
+                errors_value = obj_raw.get("errors")
+                if isinstance(errors_value, list):
+                    errors_list = [
+                        cast(JsonDict, err)
+                        for err in errors_value
+                        if isinstance(err, dict)
+                    ]
+            ok = s // 100 == 2 and bool(errors_list)
             _ok(ok)
-            print(
-                f"POST /correct {s} ({dt:.0f} ms) errors="
-                f"{len(obj.get('errors', [])) if ok else '?'}"
-            )
+            error_count = len(errors_list) if ok else "?"
+            print(f"POST /correct {s} ({dt:.0f} ms) errors={error_count}")
             if not ok:
                 failures += 1
         except Exception as exc:
@@ -199,13 +229,20 @@ def main() -> int:
         if args.model:
             deck_body["model"] = args.model
         try:
-            s, obj, dt = _req("POST", urljoin(base, "make_deck"), body=deck_body, timeout=max(60, timeout))
-            ok = s // 100 == 2 and isinstance(obj, dict) and isinstance(obj.get("cards"), list) and len(obj.get("cards", [])) > 0
+            s, obj_raw, dt = _req("POST", urljoin(base, "make_deck"), body=deck_body, timeout=max(60, timeout))
+            cards_list: List[JsonDict] = []
+            if isinstance(obj_raw, dict):
+                cards_value = obj_raw.get("cards")
+                if isinstance(cards_value, list):
+                    cards_list = [
+                        cast(JsonDict, card)
+                        for card in cards_value
+                        if isinstance(card, dict)
+                    ]
+            ok = s // 100 == 2 and bool(cards_list)
             _ok(ok)
-            print(
-                f"POST /make_deck {s} ({dt:.0f} ms) cards="
-                f"{len(obj.get('cards', [])) if ok else '?'}"
-            )
+            card_count = len(cards_list) if ok else "?"
+            print(f"POST /make_deck {s} ({dt:.0f} ms) cards={card_count}")
             if not ok:
                 failures += 1
         except Exception as exc:

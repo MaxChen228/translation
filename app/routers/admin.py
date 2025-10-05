@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from fastapi import APIRouter, Depends, Header, HTTPException, status
 
@@ -12,6 +12,7 @@ from app.schemas import (
     BulkUploadRequest,
     ContentUploadRequest,
     ContentUploadResponse,
+    PromptId,
     PromptInfo,
     PromptListResponse,
     PromptUploadRequest,
@@ -128,7 +129,10 @@ def get_content_stats(_: None = Depends(_verify_content_token)):
 @router.get("/prompts", response_model=PromptListResponse)
 def get_prompts(_: None = Depends(_verify_content_token)):
     summaries = list_prompts()
-    items = [PromptInfo(promptId=pid, path=info["path"]) for pid, info in summaries.items()]
+    items = [
+        PromptInfo(promptId=cast(PromptId, pid), path=str(info["path"]))
+        for pid, info in summaries.items()
+    ]
     return PromptListResponse(prompts=items)
 
 
@@ -148,9 +152,10 @@ def upload_prompt(req: PromptUploadRequest, _: None = Depends(_verify_content_to
         extra={"prompt_id": req.promptId, "path": result["path"], "backup_path": result["backup_path"]},
     )
     written_content = (req.content.rstrip() + "\n").encode("utf-8")
+    path_value = str(result.get("path", ""))
     payload = PromptUploadResult(
         promptId=req.promptId,
-        path=result["path"],
+        path=path_value,
         backupPath=result.get("backup_path"),
         bytesWritten=len(written_content),
     )

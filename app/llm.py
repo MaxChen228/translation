@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import time
-from typing import Callable, Dict, Mapping, Optional, Sequence, Union
+from typing import Callable, Dict, List, Mapping, Optional, Sequence, Union, cast
 
 import httpx
 
@@ -133,12 +133,13 @@ async def call_gemini_json(
     chosen_model = (model or get_current_model()).strip()
     url = f"{GEMINI_BASE}/models/{chosen_model}:generateContent?key={api_key}"
 
-    parts = [{"text": user_content}]
+    parts: List[Dict[str, object]] = [{"text": user_content}]
     inline_count = len(list(inline_parts or []))
     if inline_parts:
         for part in inline_parts:
             if part:
-                parts.append(dict(part))
+                converted = {key: value for key, value in part.items()}
+                parts.append(converted)
 
     payload = {
         "system_instruction": {"parts": [{"text": system_prompt}]},
@@ -169,9 +170,11 @@ async def call_gemini_json(
     while attempt <= max_retries:
         started = time.perf_counter()
         try:
-            request_timeout = timeout
+            request_timeout: Union[float, httpx.Timeout, None]
             if timeout is None:
                 request_timeout = httpx.Timeout(connect=10.0, read=None, write=None, pool=None)
+            else:
+                request_timeout = float(timeout)
 
             response = await client.post(
                 url,
@@ -218,7 +221,8 @@ async def call_gemini_json(
                 try:
                     parsed_obj = json.loads(content)
                     usage_metadata = data.get("usageMetadata") or {}
-                    sanitized_payload = _sanitize_payload_for_storage(payload)
+                    payload_for_storage = cast(Dict[str, object], payload)
+                    sanitized_payload = _sanitize_payload_for_storage(payload_for_storage)
                     response_payload = json.dumps(parsed_obj, ensure_ascii=False)
                     usage = LLMUsage(
                         timestamp=time.time(),
