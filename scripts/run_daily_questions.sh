@@ -28,8 +28,7 @@ run_batch() {
   python -m scripts.generate_daily_questions --count "$count" --difficulty "$difficulty" "${shared_args[@]}"
 }
 
-run_batch 5 2
-run_batch 5 4
 run_batch 6 3
+run_batch 6 2
 
 echo "[run_daily_questions] All batches completed."

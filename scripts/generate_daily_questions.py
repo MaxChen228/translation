@@ -22,7 +22,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 DEFAULT_TOPIC_SAMPLE = 4
-DEFAULT_STRUCTURE_SAMPLE = 2
+DEFAULT_STRUCTURE_SAMPLE = 3
 DEFAULT_TOPIC_POOL = ROOT / "prompts" / "pools" / "topics_pool.json"
 DEFAULT_STRUCTURE_POOL = ROOT / "prompts" / "pools" / "structures_pool.json"
 DEFAULT_CONTENT_POOL = ROOT / "prompts" / "pools" / "content_pool.json"
