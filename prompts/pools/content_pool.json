@@ -847,7 +847,7 @@
     "description": "整理合約被動句、條件與責任分配的修改建議。",
     "tags": [
       "passive",
-      "legal",
+      "business",
       "cause"
     ],
     "minDifficulty": 3,
@@ -892,7 +892,7 @@
     "description": "列出拍攝、剪輯與審稿時程，供節目組協作。",
     "tags": [
       "entertainment",
-      "process",
+      "purpose",
       "present-simple"
     ],
     "minDifficulty": 2,
@@ -1042,7 +1042,7 @@
     "description": "記錄下一場比賽的策略、陣容與對手分析。",
     "tags": [
       "sports",
-      "strategy",
+      "business",
       "result"
     ],
     "minDifficulty": 3,
@@ -1056,9 +1056,9 @@
     "name": "法規遵循更新簡報",
     "description": "整理跨市場法規變動、影響評估與產品調整時程。",
     "tags": [
-      "legal",
+      "business",
       "cause",
-      "process"
+      "purpose"
     ],
     "minDifficulty": 3,
     "maxDifficulty": 4,
@@ -1117,7 +1117,7 @@
     "description": "指出系統掃描結果、必須改善項目與整改時程。",
     "tags": [
       "modal",
-      "legal",
+      "business",
       "necessity"
     ],
     "minDifficulty": 3,
@@ -1162,7 +1162,7 @@
     "description": "整理關係子句重寫建議，確保條款定義明確。",
     "tags": [
       "relative-clause",
-      "legal",
+      "business",
       "grammar"
     ],
     "minDifficulty": 3,
@@ -1282,7 +1282,7 @@
     "description": "針對高階運動賽事撰寫數據分析、恢復狀況與下一步策略。",
     "tags": [
       "sports",
-      "analysis",
+      "result",
       "result"
     ],
     "minDifficulty": 4,
@@ -1296,8 +1296,8 @@
     "name": "稽核回覆信範本",
     "description": "回覆監管單位的稽核質問與改善計畫。",
     "tags": [
-      "legal",
-      "process",
+      "business",
+      "purpose",
       "warning"
     ],
     "minDifficulty": 3,
@@ -1342,7 +1342,7 @@
     "description": "呈現賽季目標、對手分析與長期達標計畫。",
     "tags": [
       "sports",
-      "strategy",
+      "business",
       "future-perfect"
     ],
     "minDifficulty": 4,
@@ -1356,9 +1356,9 @@
     "name": "智慧醫療合規報告",
     "description": "整理醫療 AI 產品的法規要求、風險分析與整改計畫。",
     "tags": [
-      "legal",
+      "business",
       "health",
-      "process"
+      "purpose"
     ],
     "minDifficulty": 4,
     "maxDifficulty": 5,
@@ -1372,7 +1372,7 @@
     "description": "記錄談判重點、折衷方案與後續審核事項。",
     "tags": [
       "entertainment",
-      "legal",
+      "business",
       "business"
     ],
     "minDifficulty": 3,
@@ -1387,7 +1387,7 @@
     "description": "整理焦點團主持步驟、倫理提醒與分析框架。",
     "tags": [
       "academic",
-      "analysis",
+      "result",
       "present-simple"
     ],
     "minDifficulty": 3,
@@ -1402,7 +1402,7 @@
     "description": "整理財產信託架構、受益人與法律時間表。",
     "tags": [
       "family",
-      "legal",
+      "business",
       "purpose"
     ],
     "minDifficulty": 3,
@@ -1448,7 +1448,7 @@
     "tags": [
       "business",
       "money",
-      "analysis"
+      "result"
     ],
     "minDifficulty": 4,
     "maxDifficulty": 5,
@@ -1777,7 +1777,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -1822,7 +1822,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -1897,7 +1897,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -1942,7 +1942,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2017,7 +2017,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -2062,7 +2062,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2137,7 +2137,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -2182,7 +2182,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2257,7 +2257,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -2302,7 +2302,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2377,7 +2377,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -2422,7 +2422,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2497,7 +2497,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -2542,7 +2542,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2617,7 +2617,7 @@
     "description": "使用 before/after/while/whenever 等副詞子句安排流程。",
     "tags": [
       "adverb-clause",
-      "process",
+      "purpose",
       "education"
     ],
     "minDifficulty": 2,
@@ -2662,7 +2662,7 @@
     "description": "利用分詞片語描述同步作業。",
     "tags": [
       "participle",
-      "process",
+      "purpose",
       "business"
     ],
     "minDifficulty": 3,
@@ -2978,7 +2978,7 @@
     "tags": [
       "present-continuous",
       "business",
-      "process"
+      "purpose"
     ],
     "minDifficulty": 2,
     "maxDifficulty": 3,
@@ -3022,7 +3022,7 @@
     "description": "巡檢表用 before/after/while/once 等子句說明步驟。",
     "tags": [
       "adverb-clause",
-      "safety",
+      "warning",
       "environment"
     ],
     "minDifficulty": 2,

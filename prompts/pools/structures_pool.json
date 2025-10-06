@@ -695,7 +695,7 @@
     "focus": "描述罕見情況時的倒裝",
     "tags": [
       "inversion",
-      "frequency"
+      "present-simple"
     ],
     "hint": "描述罕見情況時的倒裝"
   },
@@ -755,7 +755,7 @@
     "focus": "描述幾乎不發生的習慣",
     "tags": [
       "inversion",
-      "frequency"
+      "present-simple"
     ],
     "hint": "描述幾乎不發生的習慣"
   },
@@ -965,7 +965,7 @@
     "focus": "旅行計畫的進行式描述",
     "tags": [
       "travel",
-      "future-continuous"
+      "future-simple"
     ],
     "hint": "旅行計畫的進行式描述"
   },
@@ -1054,7 +1054,7 @@
     "pattern": "Before you + VR, make sure...",
     "focus": "操作手冊常用句型",
     "tags": [
-      "process",
+      "purpose",
       "adverb-clause"
     ],
     "hint": "操作手冊常用句型"
@@ -1105,7 +1105,7 @@
     "focus": "抽象說明常用結構",
     "tags": [
       "infinitive",
-      "definition"
+      "education"
     ],
     "hint": "抽象說明常用結構"
   },
