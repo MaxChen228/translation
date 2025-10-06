@@ -55,6 +55,8 @@ def build_user_content(req: CorrectRequest) -> str:
     if req.reviewNote:
         payload["reviewNote"] = req.reviewNote
         payload["suggestion"] = req.reviewNote  # backward compat for existing prompts
+    if req.strictness:
+        payload["strictness"] = req.strictness
     return json.dumps(payload, ensure_ascii=False)
 
 

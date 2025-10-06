@@ -62,7 +62,8 @@ cp translation-backend/.env.example .env
   "deviceId": "可選",
   "hints": [ { "category": "morphological", "text": "過去式" } ],
   "reviewNote": "（批改者提示，描述得分重點或常見錯誤）",
-  "model": "gemini-2.5-pro | gemini-2.5-flash"  // 可選，覆蓋預設模型
+  "model": "gemini-2.5-pro | gemini-2.5-flash",  // 可選，覆蓋預設模型
+  "strictness": "standard | lenient"             // 可選，切換批改風格
 }
 ```
 回應（JSON）：

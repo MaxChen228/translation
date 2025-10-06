@@ -34,6 +34,7 @@ class Settings(BaseSettings):
 
     # Prompts
     PROMPT_FILE: str = "prompts/prompt.txt"
+    PROMPT_LENIENT_FILE: str = "prompts/prompt_lenient.txt"
     DECK_PROMPT_FILE: str = "prompts/prompt_deck.txt"
     CHAT_TURN_PROMPT_FILE: str = "prompts/prompt_chat_turn.txt"
     CHAT_RESEARCH_PROMPT_FILE: str = "prompts/prompt_chat_research.txt"

@@ -19,6 +19,7 @@
 | `QUESTION_DB_URL` | database URL | — | 選填 | Postgres 版本的每日題庫儲存。 |
 | `CONTENT_ADMIN_TOKEN` | string | — | 建議 | `/admin/content/*` 管理介面所需 Token。 |
 | `PROMPT_FILE` | path | `prompts/prompt.txt` | 選填 | 批改系統提示檔。 |
+| `PROMPT_LENIENT_FILE` | path | `prompts/prompt_lenient.txt` | 選填 | 寬鬆批改模式使用的提示檔。 |
 | `DECK_PROMPT_FILE` | path | `prompts/prompt_deck.txt` | 選填 | 單字卡生成提示檔。 |
 | `CHAT_TURN_PROMPT_FILE` | path | `prompts/prompt_chat_turn.txt` | 選填 | 聊天回合提示檔。 |
 | `CHAT_RESEARCH_PROMPT_FILE` | path | `prompts/prompt_chat_research.txt` | 選填 | 聊天研究提示檔。 |

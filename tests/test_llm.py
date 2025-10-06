@@ -62,6 +62,20 @@ def test_load_prompt_caches(monkeypatch):
     assert calls == ["system", "deck"]
 
 
+def test_load_system_prompt_lenient(monkeypatch):
+    def fake_config(prompt_id: str):
+        return SimpleNamespace(cache_key=f"cache:{prompt_id}")
+
+    def fake_read(prompt_id: str):
+        return f"prompt:{prompt_id}"
+
+    monkeypatch.setattr(llm, "get_prompt_config", fake_config)
+    monkeypatch.setattr(llm, "read_prompt", fake_read)
+
+    assert llm.load_system_prompt("lenient") == "prompt:system_lenient"
+    # default fallback仍使用標準 prompt
+    assert llm.load_system_prompt("standard") == "prompt:system"
+
 def test_resolve_model_with_override(monkeypatch):
     monkeypatch.setattr(llm, "get_settings", lambda: DummySettings())
     assert llm.resolve_model(" gemini-alt ") == "gemini-alt"

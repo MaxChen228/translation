@@ -22,7 +22,7 @@ async def correct(req: CorrectRequest, request: Request, provider: LLMProvider =
     route = request.url.path
     device_id = getattr(request.state, "device_id", "unknown")
     try:
-        system_prompt = load_system_prompt()
+        system_prompt = load_system_prompt(req.strictness)
         user_content = build_user_content(req)
         chosen_model = resolve_model_or_422(provider, req.model)
         obj, usage = await provider.generate_json(

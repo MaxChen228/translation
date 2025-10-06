@@ -33,7 +33,9 @@ def _load_prompt_by_id(prompt_id: str) -> str:
     return _cache_prompt(config.cache_key, lambda: read_prompt(prompt_id))
 
 
-def load_system_prompt() -> str:
+def load_system_prompt(strictness: Optional[str] = None) -> str:
+    if strictness and strictness.strip().lower() == "lenient":
+        return _load_prompt_by_id("system_lenient")
     return _load_prompt_by_id("system")
 
 

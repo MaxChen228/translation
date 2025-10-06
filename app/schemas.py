@@ -53,6 +53,7 @@ class CorrectRequest(BaseModel):
     hints: Optional[List[InputHintDTO]] = None
     reviewNote: Optional[str] = None
     model: Optional[str] = None
+    strictness: Optional[Literal["standard", "lenient"]] = None
 
 
 class MergeErrorsRequest(BaseModel):
@@ -244,6 +245,7 @@ class BulkUploadRequest(BaseModel):
 
 PromptId = Literal[
     "system",
+    "system_lenient",
     "deck",
     "chat_turn",
     "chat_research",

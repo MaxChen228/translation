@@ -39,6 +39,13 @@ _PROMPT_CONFIGS: Dict[str, PromptConfig] = {
         cache_key="system_prompt",
         error_token=None,
     ),
+    "system_lenient": PromptConfig(
+        prompt_id="system_lenient",
+        setting_name="PROMPT_LENIENT_FILE",
+        default_path="prompts/prompt_lenient.txt",
+        cache_key="system_lenient_prompt",
+        error_token=None,
+    ),
     "deck": PromptConfig(
         prompt_id="deck",
         setting_name="DECK_PROMPT_FILE",
