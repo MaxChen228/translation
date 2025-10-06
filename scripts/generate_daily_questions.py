@@ -33,7 +33,7 @@ DEFAULT_DIFFICULTY_PROMPT_DIR = ROOT / "prompts" / "difficulty"
 from app.core.http_client import close_http_client, init_http_client  # noqa: E402
 from app.core.settings import get_settings  # noqa: E402
 from app.core.tags import VALID_TAGS  # noqa: E402
-from app.llm import call_gemini_json  # noqa: E402
+from app.llm import call_gemini_json, resolve_model  # noqa: E402
 from app.question_store import QuestionRecord, QuestionStore  # noqa: E402
 from app.schemas import BankHint, BankItem  # noqa: E402
 from app.services.prompt_manager import read_prompt  # noqa: E402
@@ -316,8 +316,6 @@ async def _request_questions(
     target_difficulty: int,
     model: Optional[str],
 ) -> tuple[List[GeneratedQuestion], dict]:
-    settings = get_settings()
-
     topic_text = _format_topics_text(topics_detail)
     structure_text = _format_structures_text(structures_detail)
     content_text = _format_content_briefs(content_detail)
@@ -366,10 +364,11 @@ async def _request_questions(
 
     await init_http_client()
     try:
+        chosen_model = resolve_model(model)
         response_obj, usage = await call_gemini_json(
             system_prompt,
             json.dumps(payload, ensure_ascii=False),
-            model=model or settings.GEMINI_MODEL,
+            model=chosen_model,
         )
     finally:
         await close_http_client()
@@ -508,6 +507,14 @@ def main() -> None:
     args.structure_count = _validate_positive(args.structure_count, DEFAULT_STRUCTURE_SAMPLE)
     args.content_count = _validate_positive(args.content_count, DEFAULT_CONTENT_SAMPLE)
 
+    try:
+        chosen_model = resolve_model(args.model)
+    except ValueError as exc:
+        detail = exc.args[0] if exc.args else str(exc)
+        if not isinstance(detail, str):
+            detail = json.dumps(detail, ensure_ascii=False)
+        raise SystemExit(f"模型參數無效: {detail}") from exc
+
     count = max(1, args.count)
     question_date = _parse_date(args.date)
     target_difficulty = max(1, min(5, args.difficulty or DEFAULT_DIFFICULTY))
@@ -527,7 +534,7 @@ def main() -> None:
                 content_detail=content_detail,
                 prompt_template=prompt_template,
                 target_difficulty=target_difficulty,
-                model=args.model,
+                model=chosen_model,
             )
         )
     except Exception as exc:

@@ -9,6 +9,7 @@ import httpx
 
 from app.core.http_client import get_http_client
 from app.core.logging import logger
+from app.core.model_registry import resolve_model_name
 from app.core.settings import get_settings
 from app.services.prompt_manager import get_prompt_config, read_prompt
 from app.usage.models import LLMUsage
@@ -61,9 +62,10 @@ def load_flashcard_completion_prompt() -> str:
 
 def _env_model_defaults() -> tuple[str, set[str]]:
     settings = get_settings()
-    gemini_model = settings.GEMINI_MODEL or "gemini-2.5-flash"
+    default_resolved = resolve_model_name(settings.GEMINI_MODEL)
     allowed = settings.allowed_models_set()
-    return gemini_model, allowed
+    allowed.update(default_resolved.info.all_names())
+    return default_resolved.name, allowed
 
 
 def get_current_model() -> str:
@@ -80,10 +82,13 @@ def resolve_model(override: Optional[str]) -> str:
     default, allowed = _env_model_defaults()
     if override is None or not str(override).strip():
         return default
-    candidate = str(override).strip()
-    if candidate in allowed:
-        return candidate
-    raise ValueError(json.dumps({"invalid_model": candidate, "allowed": sorted(allowed)}))
+    candidate_info = resolve_model_name(str(override))
+    if candidate_info.name in allowed:
+        return candidate_info.name
+    # Fallback: allow canonical if alias was missing but canonical is available.
+    if candidate_info.canonical_name in allowed:
+        return candidate_info.canonical_name
+    raise ValueError(json.dumps({"invalid_model": candidate_info.name, "allowed": sorted(allowed)}))
 
 
 def has_api_key() -> bool:

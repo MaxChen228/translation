@@ -6,6 +6,11 @@ from typing import Dict, Optional, Set
 from pydantic import Field
 from pydantic_settings import BaseSettings
 
+from app.core.model_registry import (
+    allowed_model_names,
+    default_model,
+    resolve_model_name,
+)
 
 class Settings(BaseSettings):
     # API keys
@@ -13,7 +18,7 @@ class Settings(BaseSettings):
     GOOGLE_API_KEY: Optional[str] = None
 
     # Model selection
-    GEMINI_MODEL: str = "gemini-2.5-flash-preview-09-2025"
+    GEMINI_MODEL: str = Field(default_factory=default_model)
     ALLOWED_MODELS: Optional[str] = Field(default=None, description="Comma separated allow-list")
 
     # Generation configuration
@@ -52,16 +57,18 @@ class Settings(BaseSettings):
     def allowed_models_set(self) -> Set[str]:
         raw = (self.ALLOWED_MODELS or "").strip()
         if not raw:
-            return {
-                "gemini-2.5-pro",
-                "gemini-2.5-flash",
-                "gemini-2.5-flash-preview-09-2025",
-                "gemini-flash-latest",
-                "gemini-2.5-flash-lite",
-                "gemini-2.5-flash-lite-preview-09-2025",
-                "gemini-flash-lite-latest",
-            }
-        return {m.strip() for m in raw.split(",") if m.strip()}
+            return set(allowed_model_names())
+
+        allowed: Set[str] = set()
+        for token in raw.split(","):
+            candidate = token.strip()
+            if not candidate:
+                continue
+            resolved = resolve_model_name(candidate, include_deprecated=True)
+            allowed.update(resolved.info.all_names())
+        if not allowed:
+            raise ValueError("ALLOWED_MODELS produced empty set")
+        return allowed
 
     def generation_config(self) -> Dict[str, object]:
         config: Dict[str, object] = {

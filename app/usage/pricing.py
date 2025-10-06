@@ -1,22 +1,24 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple
+from typing import Dict, Optional, Tuple
 
-# Pricing in USD per million tokens
-# Values sourced from Google Gemini public pricing (2025-02)
-_PRICING_TABLE: dict[str, Tuple[float, float]] = {
-    "gemini-2.5-flash": (0.30, 2.50),
-    "gemini-2.5-flash-lite": (0.10, 0.40),
-    "gemini-2.5-pro": (1.25, 10.00),
-}
+from app.core.model_registry import (
+    allowed_model_names,
+    get_model_info,
+    pricing_for_model,
+    resolve_model_name,
+)
 
 
 def get_pricing(model: str) -> Optional[Tuple[float, float]]:
-    key = (model or "").strip().lower()
-    for name, pricing in _PRICING_TABLE.items():
-        if name.lower() == key:
-            return pricing
-    return None
+    try:
+        resolved = resolve_model_name(model)
+    except ValueError:
+        return None
+    pricing = pricing_for_model(resolved.canonical_name)
+    if pricing == (0.0, 0.0):
+        return None
+    return pricing
 
 
 def compute_cost(model: str, input_tokens: int, output_tokens: int) -> Tuple[float, float, float]:
@@ -29,6 +31,15 @@ def compute_cost(model: str, input_tokens: int, output_tokens: int) -> Tuple[flo
     return cost_input, cost_output, cost_input + cost_output
 
 
-def pricing_table() -> dict[str, Tuple[float, float]]:
-    return dict(_PRICING_TABLE)
-
+def pricing_table() -> Dict[str, Tuple[float, float]]:
+    table: Dict[str, Tuple[float, float]] = {}
+    seen: set[str] = set()
+    for name in allowed_model_names(include_deprecated=True):
+        info = get_model_info(name)
+        if info is None:
+            continue
+        if info.canonical_name in seen:
+            continue
+        seen.add(info.canonical_name)
+        table[info.canonical_name] = pricing_for_model(info.canonical_name)
+    return table
