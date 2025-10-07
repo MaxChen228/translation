@@ -100,3 +100,34 @@ def test_reserve_and_summary_flow(store):
     assert summary and summary[0]["question_count"] == 4
     assert summary[0]["delivered_devices"] == 2
     assert isinstance(summary[0]["question_date"], dt.date)
+
+
+def test_row_to_record_derives_review_note(store):
+    today = dt.date.today()
+    record = _build_record(today, idx=5, review_note="")
+    record.raw["reviewNote"] = "  "
+    record.raw["suggestions"] = [{"text": " keep this "}, {"text": ""}]
+    store.save_many([record])
+
+    fetched = store.reserve_questions_for_delivery(question_date=today, count=1, device_id="device-derived")
+    assert len(fetched) == 1
+    retrieved = fetched[0]
+    assert retrieved.review_note == "keep this"
+    assert retrieved.tags == ["tag"]
+    assert retrieved.hints and retrieved.hints[0]["text"] == "hint"
+
+
+def test_reset_deliveries_for_device_allows_rereserve(store):
+    today = dt.date.today()
+    records = [_build_record(today, idx=i) for i in range(10, 12)]
+    store.save_many(records)
+
+    initial = store.reserve_questions_for_delivery(question_date=today, count=5, device_id="device-reset")
+    assert len(initial) == 2
+    assert store.remaining_questions_for_date(question_date=today, device_id="device-reset") == 0
+
+    store.reset_deliveries_for_device(question_date=today, device_id="device-reset")
+
+    rerun = store.reserve_questions_for_delivery(question_date=today, count=5, device_id="device-reset")
+    assert len(rerun) == 2
+    assert store.remaining_questions_for_date(question_date=today, device_id="device-reset") == 0

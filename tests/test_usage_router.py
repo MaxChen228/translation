@@ -27,6 +27,8 @@ def test_usage_endpoint_returns_records():
         total_tokens=75,
         latency_ms=88.2,
         status_code=200,
+        request_payload='{"example":true}',
+        response_payload='{"ok":true}',
     )
     saved = record_usage(usage, route=usage.route, device_id=usage.device_id)
 
@@ -41,6 +43,12 @@ def test_usage_endpoint_returns_records():
     detail = client.get(f"/usage/llm/{saved.id}/view")
     assert detail.status_code == 200
     assert "Request Payload" in detail.text
+
+    api_detail = client.get(f"/usage/llm/{saved.id}")
+    assert api_detail.status_code == 200
+    json_detail = api_detail.json()
+    assert json_detail["id"] == saved.id
+    assert json_detail["request_payload"]
 
 
 def test_usage_endpoint_filters():

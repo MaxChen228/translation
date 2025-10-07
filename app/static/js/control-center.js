@@ -35,6 +35,9 @@ export function initControlCenter() {
     summaryGrid: document.getElementById('summary-grid'),
     usageStatus: document.getElementById('usage-status'),
     usageTable: document.getElementById('usage-table'),
+    usageDetailStatus: document.getElementById('usage-detail-status'),
+    usageDetailRequest: document.getElementById('usage-detail-request'),
+    usageDetailResponse: document.getElementById('usage-detail-response'),
     dailyStatus: document.getElementById('daily-status'),
     dailyLatest: document.getElementById('daily-latest'),
     dailyTable: document.getElementById('daily-table'),
@@ -172,6 +175,33 @@ export function initControlCenter() {
     }
   }
 
+  function formatPayload(raw) {
+    if (!raw) return '(無內容)';
+    try {
+      const parsed = JSON.parse(raw);
+      return JSON.stringify(parsed, null, 2);
+    } catch (err) {
+      return String(raw).replace(/\\n/g, '\n');
+    }
+  }
+
+  async function loadUsageDetail(usageId) {
+    if (!usageId) return;
+    setStatus(elements.usageDetailStatus, `載入紀錄 #${usageId}...`, '');
+    try {
+      const detail = await authedJson(`/usage/llm/${usageId}`);
+      if (elements.usageDetailRequest) {
+        elements.usageDetailRequest.textContent = formatPayload(detail.request_payload);
+      }
+      if (elements.usageDetailResponse) {
+        elements.usageDetailResponse.textContent = formatPayload(detail.response_payload);
+      }
+      setStatus(elements.usageDetailStatus, `顯示紀錄 #${usageId}`, 'success');
+    } catch (err) {
+      setStatus(elements.usageDetailStatus, `讀取失敗：${err.message}`, 'error');
+    }
+  }
+
   function renderUsageTable(items) {
     const tbody = elements.usageTable;
     if (!tbody) return;
@@ -195,8 +225,12 @@ export function initControlCenter() {
         <td>${formatNumber(item.input_tokens)}/${formatNumber(item.output_tokens)}</td>
         <td>${item.status_code ?? '—'}</td>
       `;
-      tr.addEventListener('click', () => {
-        window.open(`/usage/llm/${item.id}/view`, '_blank', 'noopener');
+      tr.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey) {
+          window.open(`/usage/llm/${item.id}/view`, '_blank', 'noopener');
+          return;
+        }
+        loadUsageDetail(item.id);
       });
       tbody.appendChild(tr);
     });

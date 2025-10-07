@@ -6,7 +6,7 @@ from typing import Any, Optional, cast
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.templating import Jinja2Templates
 
-from .models import LLMUsageQueryResponse
+from .models import LLMUsage, LLMUsageQueryResponse
 from .recorder import get_usage, query_usage, summarize_usage
 
 router = APIRouter(prefix="/usage", tags=["usage"])
@@ -101,3 +101,11 @@ def llm_usage_detail_view(request: Request, usage_id: int):
         "response_pretty": response_pretty,
     }
     return _TEMPLATES.TemplateResponse("admin/usage_detail.html", context)
+
+
+@router.get("/llm/{usage_id}", response_model=LLMUsage)
+def llm_usage_detail_api(usage_id: int) -> LLMUsage:
+    record = get_usage(usage_id)
+    if record is None:
+        raise HTTPException(status_code=404, detail="usage_not_found")
+    return record
