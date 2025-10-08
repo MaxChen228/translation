@@ -18,11 +18,17 @@ $DIFFICULTY_EXAMPLE
 2. 日期背景為 $DATE，可參考當前事件，但避免不可驗證的虛構新聞。
 3. 每題欄位僅能包含：`id`, `zh`, `referenceEn`, `hints`, `reviewNote`, `tags`, `difficulty`。
 4. `id` 需為 `daily-$DATE-XXX` 形式（XXX 為三位數遞增）。
-5. `zh` 為完整中文句或短段，與難度輪廓一致；不得使用條列或片段。 
+5. `zh` 為完整中文句或短段，與難度輪廓一致；不得使用條列或片段。
 6. `referenceEn` 提供自然流暢且語意完整的英文譯文，可為 1–2 句。
-7. `hints` 至少 2 個，`category` 僅能使用 $HINT_CATEGORIES，內容需提供具體語法／用字建議。
+7. `hints` 建議 2-4 個。**每個 hint 應聚焦單一知識點**：
+   - `category` **必須且只能**從以下五種選一：morphological, syntactic, lexical, phonological, pragmatic
+   - **嚴禁使用其他值**（如 modal, conditional, tense, passive 等都不允許）
+   - 每個 hint 只提示一個具體的語法結構、詞彙選擇或表達技巧
+   - 使用引導式問句或提醒，例如：「考慮用什麼連接詞」、「想想主詞和動詞的搭配」
+   - 避免在單一 hint 中混合多個概念，保持提示的純粹性
+   - 提示應該啟發思考，而非直接告知答案
 8. `reviewNote` 為給批改者看的摘要，說明重點、常見錯誤或採分重點。
-9. `tags` 至少 2 個，全數必須落在 $VALID_TAGS；至少含一個語法相關標籤與一個語意／主題標籤。
+9. `tags` 建議使用，可參考 $VALID_TAGS 清單，有助於題目分類與檢索。
 10. `difficulty` 必須固定為 $TARGET_DIFFICULTY。
 11. 不得輸出任何額外文字、解說或程式碼框，僅能輸出 JSON 陣列。
 

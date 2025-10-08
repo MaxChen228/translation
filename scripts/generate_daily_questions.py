@@ -69,8 +69,9 @@ DIFFICULTY_EXAMPLES = {
     \"zh\": \"寫一封簡短的電子郵件，向外籍交換生說明校園導覽路線與集合時間。\",
     \"referenceEn\": \"Please meet us at the main gate at 9 a.m.; we will tour the library first and then visit the science labs.\",
     \"hints\": [
-      {\"category\": \"syntactic\", \"text\": \"利用分號或 because 連接兩個相關句子\"},
-      {\"category\": \"lexical\", \"text\": \"提醒使用禮貌祈使句，如 please remember 或 kindly note\"}
+      {\"category\": \"syntactic\", \"text\": \"考慮如何連接前後兩個動作\"},
+      {\"category\": \"pragmatic\", \"text\": \"想想如何讓語氣更禮貌\"},
+      {\"category\": \"lexical\", \"text\": \"注意時間資訊的位置\"}
     ],
     \"reviewNote\": \"檢查是否掌握祈使句與時間副詞片語的正確位置。\",
     \"tags\": [\"education\", \"request\", \"present-simple\"],
@@ -80,14 +81,15 @@ DIFFICULTY_EXAMPLES = {
     3: """[
   {
     \"id\": \"example-d3-001\",
-    \"zh\": \"撰寫一段對董事會的進度簡報，說明新產品試點的成果與下一步計畫。\",
-    \"referenceEn\": \"The pilot attracted two hundred beta users within a month, so the marketing team will expand the rollout to three additional cities next quarter.\",
+    \"zh\": \"這個專案讓團隊學到寶貴經驗，所以我們決定下季度擴大實施範圍。\",
+    \"referenceEn\": \"This project taught the team valuable lessons, so we decided to expand its scope next quarter.\",
     \"hints\": [
-      {\"category\": \"result\", \"text\": \"建議使用 so 或 therefore 描述成果與後續動作\"},
-      {\"category\": \"lexical\", \"text\": \"引導學生使用數據搭配名詞化 expressions，如 expansion, adoption rate\"}
+      {\"category\": \"syntactic\", \"text\": \"想想如何表達因果關係\"},
+      {\"category\": \"lexical\", \"text\": \"注意『經驗』這類抽象名詞的選擇\"},
+      {\"category\": \"syntactic\", \"text\": \"考慮時態如何呼應時間脈絡\"}
     ],
-    \"reviewNote\": \"留意是否能正確呈現數據與未來計畫，必要時提醒使用未來式。\",
-    \"tags\": [\"business\", \"result\", \"future-simple\"],
+    \"reviewNote\": \"觀察學生是否能正確使用因果連接詞，並保持時態一致性。\",
+    \"tags\": [\"business\", \"result\", \"past-simple\"],
     \"difficulty\": 3
   }
 ]""",
@@ -416,16 +418,6 @@ def _filter_questions(
 
         if not item.zh.strip():
             rejected.append(f"題目 {item.id} 中文原文為空")
-            continue
-        if len(item.hints) < 2:
-            rejected.append(f"題目 {item.id} 提示數量不足（至少 2 個）")
-            continue
-        if len(item.tags) < 2:
-            rejected.append(f"題目 {item.id} 標籤數量不足：{item.tags}")
-            continue
-        invalid_tags = [tag for tag in item.tags if tag not in VALID_TAGS]
-        if invalid_tags:
-            rejected.append(f"題目 {item.id} 含非法標籤：{invalid_tags}")
             continue
         if not question.referenceEn.strip():
             rejected.append(f"題目 {item.id} 缺少 referenceEn")
